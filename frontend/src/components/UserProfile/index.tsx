@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 interface UserProfileProps {
@@ -11,7 +11,7 @@ const UserProfile = (props: UserProfileProps) => {
     let params = useParams();
     return (
         <div>
-            {params.userId} who is dumb
+            {params.userId}
         </div>
     )
 }

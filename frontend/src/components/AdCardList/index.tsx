@@ -1,34 +1,11 @@
 import React from "react";
 import AdCard, { AdCardProps } from "../AdCard";
-import { List, Card, Row, Col } from 'antd';
-import Item from "antd/lib/list/Item";
-
+import { List } from 'antd';
 
 interface Props {
     data: AdCardProps[],
 }
 
-/* const AdCardList: React.FunctionComponent<Props> = (props) => {
-
-
-    const listElements = props.data.map((value) => {
-        return (
-            <Col span={6} style={{ height: 50 }}>
-                <AdCard
-                    adImage={value.adImage}
-                    title={value.title}
-                    description={value.description}
-                    user={value.user}
-                />
-            </Col>)
-    })
-
-    return (
-        <Row gutter={16} >
-            {listElements}
-        </Row>
-    )
-} */
 
 const AdCardList: React.FunctionComponent<Props> = (props) => {
     return (

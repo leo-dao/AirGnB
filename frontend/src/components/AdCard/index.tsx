@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Avatar } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 

@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import AdCardList from './components/AdCardList';
 import Header from './components/Header';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import UserProfile from './components/UserProfile';
 
 const data = [
