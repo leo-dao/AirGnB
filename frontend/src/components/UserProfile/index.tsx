@@ -1,17 +1,26 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { User } from "../AdCard"
+import { Avatar } from 'antd';
 
 
 interface UserProfileProps {
-    //userId: string,
+    data: User[];
 }
 
 const UserProfile = (props: UserProfileProps) => {
 
     let params = useParams();
+
+    // Best way of getting all the ad cards of the user?
+
+
+    const currentUser = (props.data.filter(user => user.userId === params.userId))[0];   // Getting the correct user based on id from the url
+
     return (
         <div>
-            {params.userId}
+            <Avatar size={64} src={currentUser.avatar} />
+            <h2>{currentUser.name}</h2>
         </div>
     )
 }

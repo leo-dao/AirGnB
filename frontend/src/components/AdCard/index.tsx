@@ -5,23 +5,24 @@ import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 
-interface User {
+export interface User {     // should i create the user interface in the userProfile component? Does it matter?
+    userId: string,
+    name: string,
     avatar: string,
-    id: string,
 }
 
 export interface AdCardProps {
+    adId: string;
     adImage: string;
     title: string;
     description: string;
     user: User;
 };
 
-// Casting type to AdCard as it is a component
 const AdCard = (props: AdCardProps) => {
 
     const avatarLink = (
-        <Link to={`/profile/${props.user.id}`}><Avatar src={props.user.avatar} /></Link>
+        <Link to={`/profile/${props.user.userId}`}><Avatar src={props.user.avatar} /></Link>
     )
     return (
         <Card

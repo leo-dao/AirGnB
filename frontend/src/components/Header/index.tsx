@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageHeader, Button, } from 'antd';
+import { Routes, Route, Link } from "react-router-dom";
 
 interface Props {
 
@@ -25,9 +26,7 @@ const Header: React.FunctionComponent<Props> = (props) => {
                 [
                     <Button key="3">Operation</Button>,
                     <Button key="2">Operation</Button>,
-                    <Button onClick={logIn} key="1" type="primary">
-                        Log In
-                    </Button>
+                    <Button > <Link to="/login">Log In</Link></Button>
                 ]
             }
         ></PageHeader>
