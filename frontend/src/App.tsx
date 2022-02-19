@@ -8,6 +8,7 @@ import UserProfile from './components/UserProfile';
 import { userData, adData } from "./fakeData"
 import LogIn from './components/Buttons/LogIn';
 import SignUp from './components/Buttons/SignUp';
+import Error from './components/Error';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/catalog/:adId" element={<AdProfile data={adData} />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<Error msg="" />} />
       </Routes>
     </div >
   );

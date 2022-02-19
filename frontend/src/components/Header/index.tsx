@@ -1,16 +1,11 @@
 import React from 'react';
 import { PageHeader, Button, } from 'antd';
-import { Routes, Route, Link } from "react-router-dom";
 
 interface Props {
 
 }
 
 const Header: React.FunctionComponent<Props> = (props) => {
-
-    const logIn = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-        console.log(e);
-    };
 
     return (
         <PageHeader
@@ -24,9 +19,10 @@ const Header: React.FunctionComponent<Props> = (props) => {
 
             extra={
                 [
-                    <Button key="3">Operation</Button>,
-                    <Button key="2">Operation</Button>,
-                    <Button > <Link to="/login">Log In</Link></Button>
+                    <Button key="2" href='/login'>Login</Button>,
+                    <Button key="1" href='/signup'>Sign Up</Button>,
+
+                    <Button type="primary" href='/home'>Home</Button>
                 ]
             }
         ></PageHeader>
