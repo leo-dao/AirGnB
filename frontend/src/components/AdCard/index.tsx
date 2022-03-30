@@ -27,24 +27,40 @@ const AdCard = (props: AdCardProps) => {
     return (
         <Card
             cover={
-                <img
-                    alt="Advert Image"
-                    src={props.adImage}
-                    style={{ height: 300 }}
-                />
+                < div >
+                    <img
+                        alt="Advert Image"
+                        src={props.adImage}
+                        // place the image in the center of the card
+                        style={{
+                            display: 'block',
+                            marginLeft: 'auto',
+                            marginRight: 'auto',
+                            //width: '100%',
+                            //height: '100%',
+                            width: 'auto',
+                            height: 'auto',
+                            maxWidth: '200px',
+                            maxHeight: '300px',
+                        }}
+                    />
+                </div >
             }
-            actions={[
-                <SettingOutlined key="setting" />,
-                <EditOutlined key="edit" />,
-                <EllipsisOutlined key="ellipsis" />,
-            ]}
+
+            actions={
+                [
+                    <SettingOutlined key="setting" />,
+                    <EditOutlined key="edit" />,
+                    <EllipsisOutlined key="ellipsis" />,
+                ]}
         >
+
             <Meta
                 avatar={avatarLink}
                 title={props.title}
                 description={props.description}
             />
-        </Card>
+        </Card >
     )
 };
 

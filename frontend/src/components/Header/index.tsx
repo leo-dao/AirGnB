@@ -1,11 +1,7 @@
 import React from 'react';
 import { PageHeader, Button, } from 'antd';
 
-interface Props {
-
-}
-
-const Header: React.FunctionComponent<Props> = (props) => {
+const Header = () => {
 
     return (
         <PageHeader
@@ -13,7 +9,7 @@ const Header: React.FunctionComponent<Props> = (props) => {
                 border: '1px solid rgb(235, 237, 240)',
             }}
             className="site-page-header"
-            onBack={() => null}
+            //onBack={() => null}
             title="AirGnB"
             subTitle="Like AirBnB but not really"
 

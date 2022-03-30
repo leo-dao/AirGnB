@@ -44,6 +44,14 @@ const adData = [
     title: 'Sticks',
     description: 'Fresh drum sticks, a bit fragile but perform fine for any style',
     user: userData[2]
+  },
+  // create more ads
+  {
+    adId: "rdmAd5",
+    adImage: 'https://www.pourlesmusiciens.com/medias/400/evh-5150iii-50w-head-el34-black-large-136531.jpg',
+    title: 'EVH amp head',
+    description: 'EVH 5150III 50W EL34 Head',
+    user: userData[0]
   }
 ];
 
