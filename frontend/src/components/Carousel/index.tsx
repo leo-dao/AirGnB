@@ -21,7 +21,7 @@ const items = [
 
 const CarouselComponent = () => {
     return (
-        <Carousel autoplay autoplaySpeed={5000} effect={'scrollx'} speed={5000} >
+        <Carousel autoplay autoplaySpeed={6000} effect={'scrollx'} speed={5000} >
 
             {items.map((item, index) => (
                 <div key={index}>

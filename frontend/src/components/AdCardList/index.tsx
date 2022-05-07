@@ -18,7 +18,6 @@ const AdCardList: React.FunctionComponent<Props> = (props) => {
                 lg: 4,
                 xl: 6,
             }}
-
             dataSource={props.data}
             renderItem={item => (
                 <List.Item>

@@ -22,45 +22,70 @@ export interface AdCardProps {
 const AdCard = (props: AdCardProps) => {
 
     const avatarLink = (
-        <Link to={`/profile/${props.user.userId}`}><Avatar src={props.user.avatar} /></Link>
+        <Link to={`/profile/${props.user.userId}`} target="_blank">
+            <Avatar src={props.user.avatar} />
+        </Link>
     )
+
     return (
-        <Card
-            cover={
-                < div >
-                    <img
-                        alt="Advert Image"
-                        src={props.adImage}
-                        // place the image in the center of the card
-                        style={{
-                            display: 'block',
-                            marginLeft: 'auto',
-                            marginRight: 'auto',
-                            //width: '100%',
-                            //height: '100%',
-                            width: 'auto',
-                            height: 'auto',
-                            maxWidth: '200px',
-                            maxHeight: '300px',
-                        }}
-                    />
-                </div >
-            }
+        <Link to={`/catalog/${props.adId}`} target="_blank">
+            <Card
+                cover={
+                    <div style={{
+                        color: 'white',
+                        height: '300px',
+                        width: '200px',
+                    }}
+                    >
+                        <img
+                            alt="Advert Image"
+                            src={props.adImage}
+                            style={{
+                                position: 'absolute',
+                                top: '-30%',
+                                left: '0',
+                                right: '0',
+                                bottom: '0',
+                                margin: 'auto',
+                                width: '100%',
+                                height: '100%',
+                                maxHeight: '300px',
+                                maxWidth: '200px',
+                                objectFit: 'contain',
+                            }}
+                        />
+                    </div>
+                }
 
-            actions={
-                [
-                    <SettingOutlined key="setting" />,
-                    <EditOutlined key="edit" />,
-                    <EllipsisOutlined key="ellipsis" />,
-                ]}
-        >
+                /*     actions={
+                        [
+                            <SettingOutlined key="setting" />,
+                            <EditOutlined key="edit" />,
+                            <EllipsisOutlined key="ellipsis" />,
+                        ]} */
 
-            <Meta
-                avatar={avatarLink}
-                title={props.title}
-                description={props.description}
-            />
-        </Card >
+                bodyStyle={{
+                    height: '150px',    // Check the max length of the description that would work
+                    overflow: 'hidden', // ??? Ok solution for now i guess
+                }}
+
+                hoverable={true}
+            >
+
+                <Meta
+                    avatar={avatarLink}
+                    title={props.title}
+                    description={props.description}
+                    style={{
+                        textAlign: 'center',
+                        borderTop: '2px solid #e8e8e8',
+                        paddingTop: '10px',
+                        fontSize: '1em',
+
+                    }}
+                />
+            </Card >
+        </Link>
     )
 };
 

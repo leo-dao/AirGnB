@@ -6,23 +6,41 @@ const Header = () => {
     return (
         <PageHeader
             style={{
-                border: '1px solid rgb(235, 237, 240)',
+                backgroundColor: 'white',
+                boxShadow: '0px 0px 15px #ccc',
+                height: '60px',
             }}
+
             className="site-page-header"
-            //onBack={() => null}
-            title="AirGnB"
-            subTitle="Like AirBnB but not really"
+
+            title={<div
+                style={{
+                    position: "absolute",
+                    left: "250px",
+                    top: "20px",
+                    fontSize: "30px"
+                }}>
+                AirGnB </div>}
+
+            subTitle={< div
+                style={{
+                    position: "absolute",
+                    left: "360px",
+                    top: "25px",
+                    fontSize: "15px"
+                }} >
+                Music rental made easy </div>}
 
             extra={
-                [
-                    <Button key="2" href='/login'>Login</Button>,
-                    <Button key="1" href='/signup'>Sign Up</Button>,
+                <div style={{
 
+                }}>
+                    <Button key="2" href='/login'>Login</Button>
+                    <Button key="1" href='/signup'>Sign Up</Button>
                     <Button type="primary" href='/home'>Home</Button>
-                ]
+                </div>
             }
-        ></PageHeader>
+        ></PageHeader >
     )
 }
-
 export default Header;
