@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageHeader, Button, } from 'antd';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -9,38 +10,41 @@ const Header = () => {
                 backgroundColor: 'white',
                 boxShadow: '0px 0px 15px #ccc',
                 height: '60px',
+                marginBottom: '30px',
             }}
 
-            className="site-page-header"
+            title={
+                <div
+                    style={{
+                        position: "absolute",
+                        left: "250px",
+                        top: "15px",
+                        fontSize: "30px",
+                    }}
+                >
+                    <Link to="/home"> AirGnB </Link> </ div>}
 
-            title={<div
-                style={{
-                    position: "absolute",
-                    left: "250px",
-                    top: "20px",
-                    fontSize: "30px"
-                }}>
-                AirGnB </div>}
 
             subTitle={< div
                 style={{
                     position: "absolute",
                     left: "360px",
-                    top: "25px",
+                    top: "20px",
                     fontSize: "15px"
                 }} >
                 Music rental made easy </div>}
 
             extra={
                 <div style={{
-
+                    position: "absolute",
+                    right: "200px",
+                    top: "15px"
                 }}>
-                    <Button key="2" href='/login'>Login</Button>
-                    <Button key="1" href='/signup'>Sign Up</Button>
-                    <Button type="primary" href='/home'>Home</Button>
+                    <Button type="text" href='/signin'>Sign in</Button>
+                    <Button type="text" href='/register'>Register</Button>
                 </div>
             }
-        ></PageHeader >
+        />
     )
 }
 export default Header;
