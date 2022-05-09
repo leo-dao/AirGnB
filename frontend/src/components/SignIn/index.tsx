@@ -1,31 +1,21 @@
 import React from "react";
 import { Input, Button } from 'antd';
 
-const Register = () => {
-    return (
 
+const SignIn = () => {
+    return (
         <div style={{
             margin: "auto",
             backgroundColor: 'white',
             boxShadow: '0px 0px 15px #ccc',
-            height: '450px',
-            width: '600px',
+            height: '330px',
+            width: '500px',
         }}>
-
             <div style={{
                 marginLeft: '20px',
                 padding: '20px',
-
             }}>
-                <h2>Register</h2>
-            </div>
-
-            <div style={{
-                width: '80%',
-                padding: '10px',
-                margin: 'auto',
-            }}>
-                <Input size="large" placeholder="Name" />
+                <h2>Sign in</h2>
             </div>
 
             <div style={{
@@ -49,28 +39,16 @@ const Register = () => {
             <div style={{
                 width: '80%',
                 padding: '10px',
-                margin: 'auto',
+                marginLeft: '50px',
+                marginTop: '30px',
             }}>
-
-                <Input.Password size="large" placeholder="Confim password" />
-
-            </div>
-
-            <div style={{
-
-                padding: '30px',
-                margin: 'auto',
-                justifyContent: 'center',
-                display: 'flex',
-            }}>
-                <Button size="large" type="primary" >
-                    Create account
+                <Button size="large" type="primary" style={{ width: "100%" }}>
+                    Sign in
                 </Button>
             </div>
-        </div >
-
+        </div>
 
     );
 };
 
-export default Register;
+export default SignIn;

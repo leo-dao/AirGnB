@@ -6,8 +6,8 @@ import AdProfile from './components/AdProfile';
 import { Routes, Route, Link } from "react-router-dom";
 import UserProfile from './components/UserProfile';
 import { userData, adData } from "./fakeData"
-import SignIn from './components/Buttons/SignIn';
-import Register from './components/Buttons/Register';
+import SignIn from './components/SignIn';
+import Register from './components/Register';
 import Error from './components/Error';
 
 function App() {

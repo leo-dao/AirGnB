@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBox from "../Search";
 import CarouselComponent from "../Carousel";
+import JumpCatalog from "../JumpCatalog";
 
 const Home = () => {
     return (
@@ -34,6 +35,13 @@ const Home = () => {
                 </div>
             </div>
 
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+            }}>
+                <JumpCatalog />
+
+            </div>
             {/* <CarouselComponent /> */}
         </div >
     )
