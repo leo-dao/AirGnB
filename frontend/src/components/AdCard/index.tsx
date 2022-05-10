@@ -40,6 +40,7 @@ const AdCard = (props: AdCardProps) => {
                         <img
                             alt="Advert Image"
                             src={props.adImage}
+
                             style={{
                                 position: 'absolute',
                                 top: '-30%',
@@ -47,26 +48,17 @@ const AdCard = (props: AdCardProps) => {
                                 right: '0',
                                 bottom: '0',
                                 margin: 'auto',
-                                width: '100%',
-                                height: '100%',
-                                maxHeight: '300px',
+                                maxHeight: '250px',
                                 maxWidth: '200px',
-                                objectFit: 'contain',
+
                             }}
                         />
                     </div>
                 }
 
-                /*     actions={
-                        [
-                            <SettingOutlined key="setting" />,
-                            <EditOutlined key="edit" />,
-                            <EllipsisOutlined key="ellipsis" />,
-                        ]} */
-
                 bodyStyle={{
                     height: '150px',    // Check the max length of the description that would work
-                    overflow: 'hidden', // ??? Ok solution for now i guess
+                    overflow: 'hidden', // ??? Ok solution for now
                 }}
 
                 hoverable={true}
