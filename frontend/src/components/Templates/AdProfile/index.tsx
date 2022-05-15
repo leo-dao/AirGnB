@@ -1,10 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { AdCardProps } from "../AdCard";
-import Error from "../Error/index";
-import AdCard from "../AdCard";
-
-// I'm guessing I shouldn't put the actual AdCard here?
+import { AdCardProps } from "../../Molecules/AdCard";
+import Error from "../../Molecules/Error/index";
+import AdCard from "../../Molecules/AdCard";
 
 interface Props {
     data: AdCardProps[]

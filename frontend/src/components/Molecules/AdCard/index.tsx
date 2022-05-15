@@ -1,11 +1,10 @@
 import React from 'react';
 import { Card, Avatar } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 
-export interface User {     // should i create the user interface in the userProfile component? Does it matter?
+export interface User {
     userId: string,
     name: string,
     avatar: string,

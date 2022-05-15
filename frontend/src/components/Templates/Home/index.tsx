@@ -1,12 +1,11 @@
 import React from "react";
-import SearchBox from "../Search";
-import CarouselComponent from "../Carousel";
-import JumpCatalog from "../JumpCatalog";
+import SearchBox from "../../Molecules/Search";
+import CarouselComponent from "../../Molecules/Carousel";
+import JumpCatalog from "../../Molecules/JumpCatalog";
 
 const Home = () => {
     return (
         <div>
-
             <div style={{
                 marginTop: "50px",
                 marginBottom: "50px",
@@ -46,7 +45,5 @@ const Home = () => {
         </div >
     )
 };
-
-
 
 export default Home;

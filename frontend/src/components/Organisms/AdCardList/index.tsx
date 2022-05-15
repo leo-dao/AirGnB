@@ -1,5 +1,5 @@
 import React from "react";
-import AdCard, { AdCardProps } from "../AdCard";
+import AdCard, { AdCardProps } from "../../Molecules/AdCard";
 import { List } from 'antd';
 
 interface Props {

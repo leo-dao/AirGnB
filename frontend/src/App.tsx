@@ -1,14 +1,14 @@
 import React from 'react';
-import Home from './components/Home';
-import AdCardList from './components/AdCardList';
-import Header from './components/Header';
-import AdProfile from './components/AdProfile';
+import Home from './components/Templates/Home';
+import AdCardList from './components/Organisms/AdCardList';
+import Header from './components/Organisms/Header';
+import AdProfile from './components/Templates/AdProfile';
 import { Routes, Route, Link } from "react-router-dom";
-import UserProfile from './components/UserProfile';
+import UserProfile from './components/Templates/UserProfile';
 import { userData, adData } from "./fakeData"
-import SignIn from './components/SignIn';
-import Register from './components/Register';
-import Error from './components/Error';
+import SignIn from './components/Molecules/SignIn';
+import Register from './components/Molecules/Register';
+import Error from './components/Molecules/Error';
 
 function App() {
   return (

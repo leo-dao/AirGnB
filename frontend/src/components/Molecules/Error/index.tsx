@@ -6,11 +6,8 @@ interface ErrorProps {
     msg: string;
 }
 
-
-
 const Error = (props: ErrorProps) => {
 
-    // define a default error message
     const defaultMsg = "Sorry, this page does not exist";
 
     return (
