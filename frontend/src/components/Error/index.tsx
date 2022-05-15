@@ -19,7 +19,7 @@ const Error = (props: ErrorProps) => {
                 status="404"
                 title="404"
                 subTitle={props.msg || defaultMsg}
-                extra={<Button type="primary" href="/home">Back Home</Button>}
+                extra={<Button type="primary" href="/">Back Home</Button>}
             />,
         </div>
     )

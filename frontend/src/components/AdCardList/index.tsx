@@ -27,7 +27,7 @@ const AdCardList: React.FunctionComponent<Props> = (props) => {
                     <List.Item>
                         <AdCard
                             adId={item.adId}
-                            adImage={item.adImage}
+                            adImages={item.adImages}
                             title={item.title}
                             description={item.description}
                             user={item.user}

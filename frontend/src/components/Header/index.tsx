@@ -10,8 +10,11 @@ const Header = () => {
                 backgroundColor: 'white',
                 boxShadow: '0px 0px 15px #ccc',
                 height: '60px',
-                marginBottom: '30px',
                 padding: '10px',
+                marginBottom: "30px",
+                position: "sticky",
+                top: "0",
+                zIndex: "1",
             }}
 
             title={
@@ -21,7 +24,7 @@ const Header = () => {
                     fontSize: "35px",
                     fontWeight: "bold",
                 }}>
-                    <Link to="/home"> AirGnB </Link>
+                    <Link to="/"> AirGnB </Link>
                 </ div>
             }
 

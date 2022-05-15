@@ -13,7 +13,7 @@ export interface User {     // should i create the user interface in the userPro
 
 export interface AdCardProps {
     adId: string;
-    adImage: string;
+    adImages: string[];
     title: string;
     description: string;
     user: User;
@@ -27,6 +27,9 @@ const AdCard = (props: AdCardProps) => {
         </Link>
     )
 
+    const descLength = props.description.length;
+    const description = descLength > 85 ? props.description.substring(0, 85) + '...' : props.description;
+
     return (
         <Link to={`/catalog/${props.adId}`} target="_blank">
             <Card
@@ -39,7 +42,7 @@ const AdCard = (props: AdCardProps) => {
                     >
                         <img
                             alt="Advert Image"
-                            src={props.adImage}
+                            src={props.adImages[0]} // using the first image in the array
 
                             style={{
                                 position: 'absolute',
@@ -50,30 +53,26 @@ const AdCard = (props: AdCardProps) => {
                                 margin: 'auto',
                                 maxHeight: '250px',
                                 maxWidth: '200px',
-
                             }}
                         />
                     </div>
                 }
-
                 bodyStyle={{
-                    height: '150px',    // Check the max length of the description that would work
-                    overflow: 'hidden', // ??? Ok solution for now
+                    height: '150px',
+                    overflow: 'hidden',
                 }}
 
                 hoverable={true}
             >
-
                 <Meta
                     avatar={avatarLink}
                     title={props.title}
-                    description={props.description}
+                    description={description}
                     style={{
                         textAlign: 'center',
                         borderTop: '2px solid #e8e8e8',
                         paddingTop: '10px',
                         fontSize: '1em',
-
                     }}
                 />
             </Card >
