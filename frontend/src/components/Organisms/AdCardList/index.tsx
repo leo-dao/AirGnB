@@ -1,13 +1,13 @@
 import React from "react";
-import AdCard, { AdCardProps } from "../../Molecules/AdCard";
+import AdCard from "../../Molecules/AdCard";
+import AdCardProps from "../../Molecules/AdCard/interfaces";
 import { List } from 'antd';
 
 interface Props {
     data: AdCardProps[],
 }
 
-
-const AdCardList: React.FunctionComponent<Props> = (props) => {
+const AdCardList = (props: Props) => {
     return (
         <div style={{
             margin: "20px 40px 0px 40px",

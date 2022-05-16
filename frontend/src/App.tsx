@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<AdCardList data={adData} />} />
-        <Route path="/profile/:userId" element={<UserProfile data={userData} />} />
+        <Route path="/profile/:userId" element={<UserProfile data={userData} ads={adData} />} />
         <Route path="/catalog/:adId" element={<AdProfile data={adData} />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/register" element={<Register />} />

@@ -2,22 +2,26 @@ const userData = [
   {
     userId: 'rdmUser1',
     name: 'Eddie',
-    avatar: 'https://media.npr.org/assets/img/2020/10/14/gettyimages-593327767_wide-4cd62ef34dcd35fe1f87bcbc0cbf3553a76e260f.jpg?s=1400'
+    avatar: 'https://media.npr.org/assets/img/2020/10/14/gettyimages-593327767_wide-4cd62ef34dcd35fe1f87bcbc0cbf3553a76e260f.jpg?s=1400',
+    numAds: 3,
   },
   {
     userId: 'rdmUser2',
     name: 'Default',
-    avatar: 'https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png'   // default avatar (?)
+    avatar: 'https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png',   // default avatar (?)
+    numAds: 2,
   },
   {
     userId: 'rdmUser3',
     name: 'Guy',
-    avatar: 'https://thumbs.dreamstime.com/b/baker-19036306.jpg'
+    avatar: 'https://thumbs.dreamstime.com/b/baker-19036306.jpg',
+    numAds: 1,
   },
   {
     userId: 'rdmUser4',
     name: 'Stevie',
-    avatar: 'https://townsquare.media/site/295/files/2018/12/SRV-Annamaria-DiSanto-Getty-Im.jpg'
+    avatar: 'https://townsquare.media/site/295/files/2018/12/SRV-Annamaria-DiSanto-Getty-Im.jpg',
+    numAds: 1,
   }
 ];
 

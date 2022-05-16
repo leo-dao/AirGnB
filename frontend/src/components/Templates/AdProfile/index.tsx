@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { AdCardProps } from "../../Molecules/AdCard";
+import AdCardProps from "../../Molecules/AdCard/interfaces";
 import Error from "../../Molecules/Error/index";
 import AdCard from "../../Molecules/AdCard";
 

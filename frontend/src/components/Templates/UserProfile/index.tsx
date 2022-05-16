@@ -1,12 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { User } from "../../Molecules/AdCard"
-import { Avatar } from 'antd';
+import User from "../../Molecules/UserInfo/Interfaces";
+import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
+import AdCardList from "../../Organisms/AdCardList/index";
+import AdCardProps from "../../Molecules/AdCard/interfaces";
 
 interface UserProfileProps {
     data: User[];
+    ads: AdCardProps[];
 }
+
 
 const UserProfile = (props: UserProfileProps) => {
 
@@ -20,8 +24,14 @@ const UserProfile = (props: UserProfileProps) => {
 
     return (
         <div>
-            <Avatar size={64} src={currentUser.avatar} />
-            <h2>{currentUser.name}</h2>
+            <UserInfo
+                name={currentUser.name}
+                avatar={currentUser.avatar}
+                numAds={currentUser.numAds}
+                userId={currentUser.userId} />
+
+            <AdCardList data={props.ads} />
+
         </div>
     )
 }

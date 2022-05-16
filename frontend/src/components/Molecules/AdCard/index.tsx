@@ -1,22 +1,9 @@
 import React from 'react';
 import { Card, Avatar } from 'antd';
 import { Link } from "react-router-dom";
+import AdCardProps from './interfaces';
 
 const { Meta } = Card;
-
-export interface User {
-    userId: string,
-    name: string,
-    avatar: string,
-}
-
-export interface AdCardProps {
-    adId: string;
-    adImages: string[];
-    title: string;
-    description: string;
-    user: User;
-};
 
 const AdCard = (props: AdCardProps) => {
 
@@ -60,7 +47,6 @@ const AdCard = (props: AdCardProps) => {
                     height: '150px',
                     overflow: 'hidden',
                 }}
-
                 hoverable={true}
             >
                 <Meta

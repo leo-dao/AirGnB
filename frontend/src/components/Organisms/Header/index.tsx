@@ -11,7 +11,7 @@ const Header = () => {
                 boxShadow: '0px 0px 15px #ccc',
                 height: '60px',
                 padding: '10px',
-                marginBottom: "30px",
+                marginBottom: "50px",
                 position: "sticky",
                 top: "0",
                 zIndex: "1",
