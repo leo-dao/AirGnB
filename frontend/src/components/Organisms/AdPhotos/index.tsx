@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import AdCardProps from "../../Molecules/AdCard/interfaces";
 
 
 const AdPhotos = (props: AdCardProps) => {
+
+
+    const [image, setImage] = useState(props.adImages[0].img);  // first image is the default
+
     return (
         <div style={{
             marginTop: '30px',
@@ -23,7 +27,7 @@ const AdPhotos = (props: AdCardProps) => {
                 justifyContent: 'center',
                 border: '0.5px solid black',
             }}>
-                {<img src={props.adImages[0]} alt={props.adId} style={{
+                {<img src={image} style={{
                     maxWidth: '699px',  // less than 700px to allow the border to be seen
                     maxHeight: '399px',
                     objectFit: 'cover',
@@ -42,15 +46,14 @@ const AdPhotos = (props: AdCardProps) => {
                 marginTop: '30px',
             }}>
                 {props.adImages.map(image => {
-                    return <img src={image} alt={props.adId} style={{
+                    return <img src={image.img} style={{
                         maxWidth: '50px',
                         maxHeight: '50px',
                         objectFit: 'cover',
                         cursor: 'pointer',
                     }}
-                    />
-                }
-                )}
+                        onClick={() => { setImage(image.img); }} />
+                })}
             </div>
         </div>
 

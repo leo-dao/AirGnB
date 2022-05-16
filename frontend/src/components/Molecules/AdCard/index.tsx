@@ -28,7 +28,7 @@ const AdCard = (props: AdCardProps) => {
                     >
                         <img
                             alt="Advert Image"
-                            src={props.adImages[0]} // using the first image in the array
+                            src={props.adImages[0].img} // using the first image in the array
 
                             style={{
                                 position: 'absolute',
