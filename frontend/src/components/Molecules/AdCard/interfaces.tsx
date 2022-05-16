@@ -1,4 +1,5 @@
-import UserProps from '../../Molecules/UserInfo/Interfaces';
+// import user props
+import UserProps from "../../Molecules/UserInfo/interfaces";
 
 interface AdCardProps {
     adId: string;

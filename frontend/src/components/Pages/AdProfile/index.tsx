@@ -2,10 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import AdCardProps from "../../Molecules/AdCard/interfaces";
 import Error from "../../Molecules/Error/index";
-import AdCard from "../../Molecules/AdCard";
+import AdPhotos from "../../Organisms/AdPhotos";
+import UserInfo from "../../Molecules/UserInfo/index";
 
 interface Props {
-    data: AdCardProps[]
+    data: AdCardProps[],
+
 }
 
 const AdProfile = (props: Props) => {
@@ -19,8 +21,17 @@ const AdProfile = (props: Props) => {
     }
 
     return (
-        <div>
-            {currentAd.adId}
+        <div style={{
+
+        }}>
+            <AdPhotos
+                adId={currentAd.adId}
+                user={currentAd.user}
+                adImages={currentAd.adImages}
+                title={currentAd.title}
+                description={currentAd.description}
+            />
+
         </div>
 
 

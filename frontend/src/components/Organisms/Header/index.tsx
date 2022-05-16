@@ -2,6 +2,7 @@ import React from 'react';
 import { PageHeader, Button, } from 'antd';
 import { Link } from 'react-router-dom';
 
+
 const Header = () => {
 
     return (
@@ -53,6 +54,7 @@ const Header = () => {
                     }}>
                         Register
                     </Button>
+
                 </div>
             }
         />

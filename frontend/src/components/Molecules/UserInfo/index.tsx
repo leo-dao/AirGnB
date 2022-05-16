@@ -1,5 +1,5 @@
 import React from "react";
-import UserProps from "./Interfaces";
+import UserProps from "./interfaces";
 import { Avatar } from "antd";
 
 

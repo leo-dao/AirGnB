@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import User from "../../Molecules/UserInfo/Interfaces";
+import User from "../../Molecules/UserInfo/interfaces";
 import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
@@ -11,6 +11,7 @@ interface UserProfileProps {
     ads: AdCardProps[];
 }
 
+// WORK ON MORE, DEFINE BETTER, MAKE AD LIST LOOK BETTER
 
 const UserProfile = (props: UserProfileProps) => {
 
@@ -23,16 +24,20 @@ const UserProfile = (props: UserProfileProps) => {
     }
 
     return (
-        <div>
+        <div style={{
+
+        }}>
             <UserInfo
                 name={currentUser.name}
                 avatar={currentUser.avatar}
                 numAds={currentUser.numAds}
                 userId={currentUser.userId} />
-
-            <AdCardList data={props.ads} />
-
+            <div style={{
+            }}>
+                <AdCardList data={props.ads.filter(ad => ad.user.userId === currentUser.userId)} />
+            </div>
         </div>
+
     )
 }
 

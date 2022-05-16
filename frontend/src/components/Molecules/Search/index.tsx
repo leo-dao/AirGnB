@@ -4,8 +4,6 @@ import { Input } from 'antd';
 
 const { Search } = Input;
 
-
-
 const SearchBox = () => {
 
     const onSearch = (value: string) => {

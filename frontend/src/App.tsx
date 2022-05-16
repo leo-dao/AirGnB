@@ -1,10 +1,10 @@
 import React from 'react';
-import Home from './components/Templates/Home';
+import Home from './components/Pages/Home';
 import AdCardList from './components/Organisms/AdCardList';
 import Header from './components/Organisms/Header';
-import AdProfile from './components/Templates/AdProfile';
+import AdProfile from './components/Pages/AdProfile';
 import { Routes, Route, Link } from "react-router-dom";
-import UserProfile from './components/Templates/UserProfile';
+import UserProfile from './components/Pages/UserProfile';
 import { userData, adData } from "./fakeData"
 import SignIn from './components/Molecules/SignIn';
 import Register from './components/Molecules/Register';

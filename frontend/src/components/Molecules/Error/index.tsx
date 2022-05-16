@@ -1,10 +1,8 @@
 import React from "react";
 import { Result, Button } from 'antd';
 import { Routes, Route, Link } from "react-router-dom";
+import ErrorProps from "./interfaces";
 
-interface ErrorProps {
-    msg: string;
-}
 
 const Error = (props: ErrorProps) => {
 
