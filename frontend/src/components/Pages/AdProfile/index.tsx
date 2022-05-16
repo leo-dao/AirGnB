@@ -7,7 +7,6 @@ import UserInfo from "../../Molecules/UserInfo/index";
 
 interface Props {
     data: AdCardProps[],
-
 }
 
 const AdProfile = (props: Props) => {
@@ -22,7 +21,9 @@ const AdProfile = (props: Props) => {
 
     return (
         <div style={{
-
+            display: 'flex',
+            flexDirection: 'row',
+            margin: "auto"
         }}>
             <AdPhotos
                 adId={currentAd.adId}
@@ -32,9 +33,14 @@ const AdProfile = (props: Props) => {
                 description={currentAd.description}
             />
 
+            <UserInfo
+                userId={currentAd.user.userId}
+                avatar={currentAd.user.avatar}
+                name={currentAd.user.name}
+                numAds={currentAd.user.numAds}
+                clickAble={true}
+            />
         </div>
-
-
     )
 };
 

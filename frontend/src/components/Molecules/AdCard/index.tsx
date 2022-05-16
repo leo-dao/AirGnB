@@ -2,16 +2,13 @@ import React from 'react';
 import { Card, Avatar } from 'antd';
 import { Link } from "react-router-dom";
 import AdCardProps from './interfaces';
+import AvatarLink from '../../Atoms/AvatarLink';
 
 const { Meta } = Card;
 
 const AdCard = (props: AdCardProps) => {
 
-    const avatarLink = (
-        <Link to={`/profile/${props.user.userId}`} target="_blank">
-            <Avatar src={props.user.avatar} />
-        </Link>
-    )
+
 
     const descLength = props.description.length;
     const description = descLength > 85 ? props.description.substring(0, 85) + '...' : props.description;
@@ -50,7 +47,7 @@ const AdCard = (props: AdCardProps) => {
                 hoverable={true}
             >
                 <Meta
-                    avatar={avatarLink}
+                    avatar={<AvatarLink userId={props.user.userId} avatar={props.user.avatar} />}
                     title={props.title}
                     description={description}
                     style={{

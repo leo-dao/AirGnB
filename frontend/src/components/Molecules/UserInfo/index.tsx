@@ -1,7 +1,7 @@
 import React from "react";
 import UserProps from "./interfaces";
 import { Avatar } from "antd";
-
+import AvatarLink from "../../Atoms/AvatarLink";
 
 const UserInfo = (props: UserProps) => {
 
@@ -14,7 +14,11 @@ const UserInfo = (props: UserProps) => {
             width: "400px",
             boxShadow: '0px 0px 10px #ccc',
         }}>
-            <Avatar size={100} src={props.avatar} />
+            {props.clickAble
+                ? <AvatarLink userId={props.userId} avatar={props.avatar} />
+                : <Avatar size={60} src={props.avatar} />
+            }
+
             <div style={{
                 display: "flex",
                 flexDirection: "column",
