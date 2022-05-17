@@ -8,8 +8,6 @@ const { Meta } = Card;
 
 const AdCard = (props: AdCardProps) => {
 
-
-
     const descLength = props.description.length;
     const description = descLength > 85 ? props.description.substring(0, 85) + '...' : props.description;
 

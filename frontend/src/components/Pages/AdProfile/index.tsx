@@ -4,6 +4,8 @@ import AdCardProps from "../../Molecules/AdCard/interfaces";
 import Error from "../../Molecules/Error/index";
 import AdPhotos from "../../Organisms/AdPhotos";
 import UserInfo from "../../Molecules/UserInfo/index";
+import UserContact from "../../Organisms/UserContact/index";
+import { Button } from "antd";
 
 interface Props {
     data: AdCardProps[],
@@ -23,7 +25,7 @@ const AdProfile = (props: Props) => {
         <div style={{
             display: 'flex',
             flexDirection: 'row',
-            margin: "auto"
+            justifyContent: 'center',
         }}>
             <AdPhotos
                 adId={currentAd.adId}
@@ -32,15 +34,29 @@ const AdProfile = (props: Props) => {
                 title={currentAd.title}
                 description={currentAd.description}
             />
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                marginLeft: '30px',
+                marginTop: '118px',
+                height: '400px',
+                border: '0.5px solid black',
+                backgroundColor: 'white',
+                // place the buttons in the middle of the page
+                justifyContent: 'center',
 
-            <UserInfo
-                userId={currentAd.user.userId}
-                avatar={currentAd.user.avatar}
-                name={currentAd.user.name}
-                numAds={currentAd.user.numAds}
-                clickAble={true}
-            />
-        </div>
+            }}>
+                <UserInfo
+                    userId={currentAd.user.userId}
+                    avatar={currentAd.user.avatar}
+                    name={currentAd.user.name}
+                    numAds={currentAd.user.numAds}
+                    clickAble={true}
+                />
+                <UserContact />
+            </div>
+        </div >
+
     )
 };
 

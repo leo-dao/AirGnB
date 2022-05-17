@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 interface Props {
     userId: string,
     avatar: string,
+    size?: number,
 }
 
 const AvatarLink = (props: Props) => {
+
+    const size = props.size ? props.size : 40;
+
     return (
         <Link to={`/profile/${props.userId}`}>
-            <Avatar size={60} src={props.avatar} />
+            <Avatar size={props.size} src={props.avatar} />
         </Link>
     )
 }

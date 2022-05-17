@@ -11,8 +11,6 @@ interface UserProfileProps {
     ads: AdCardProps[];
 }
 
-// WORK ON MORE, DEFINE BETTER, MAKE AD LIST LOOK BETTER
-
 const UserProfile = (props: UserProfileProps) => {
 
     let params = useParams();
