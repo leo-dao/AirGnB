@@ -8,15 +8,16 @@ const UserContact = () => {
             justifyContent: "center",
             marginTop: "50px",
         }}>
-            <Button type="primary" style={{
+            <Button style={{
                 marginTop: '30px',
                 width: '150px',
                 height: '50px',
                 border: '0.5px solid black',
                 borderRadius: '10px',
                 boxShadow: '0px 0px 1px black',
+                backgroundColor: "#0A6EDD",
                 color: 'white',
-            }}> Inquire </Button>
+            }}> Rent </Button>
 
             <Button style={{
                 marginTop: '30px',

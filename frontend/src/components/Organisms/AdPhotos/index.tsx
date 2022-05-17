@@ -1,28 +1,21 @@
 import React, { useState } from "react";
 import AdCardProps from "../../Molecules/AdCard/interfaces";
 
-
 const AdPhotos = (props: AdCardProps) => {
-
 
     const [image, setImage] = useState(props.adImages[0].img);  // first image is the default
 
     return (
         <div style={{
-            marginTop: '30px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
         }}>
-            <h1>{props.title}</h1>
-
             <div style={{
-                marginTop: '30px',
                 backgroundColor: 'white',
                 width: '700px',
                 height: '400px',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
                 border: '0.5px solid black',
@@ -31,6 +24,7 @@ const AdPhotos = (props: AdCardProps) => {
                     maxWidth: '699px',  // less than 700px to allow the border to be seen
                     maxHeight: '399px',
                     objectFit: 'cover',
+                    borderRadius: '5px',
                 }} />}
             </div>
             <div style={{
@@ -56,7 +50,6 @@ const AdPhotos = (props: AdCardProps) => {
                 })}
             </div>
         </div>
-
     )
 }
 export default AdPhotos;
