@@ -42,9 +42,7 @@ const AdProfile = (props: Props) => {
                 height: '400px',
                 border: '0.5px solid black',
                 backgroundColor: 'white',
-                // place the buttons in the middle of the page
                 justifyContent: 'center',
-
             }}>
                 <UserInfo
                     userId={currentAd.user.userId}

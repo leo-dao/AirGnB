@@ -24,14 +24,16 @@ const AdCardList = (props: Props) => {
                 }}
                 dataSource={props.data}
                 renderItem={item => (
-                    <List.Item>
-                        <AdCard
-                            adId={item.adId}
-                            adImages={item.adImages}
-                            title={item.title}
-                            description={item.description}
-                            user={item.user}
-                        />
+                    <List.Item >
+                        <div>
+                            <AdCard
+                                adId={item.adId}
+                                adImages={item.adImages}
+                                title={item.title}
+                                description={item.description}
+                                user={item.user}
+                            />
+                        </div>
                     </List.Item>
                 )}
             />

@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './components/Pages/Home';
-import AdCardList from './components/Organisms/AdCardList';
+import Catalog from './components/Pages/Catalog';
 import Header from './components/Organisms/Header';
 import AdProfile from './components/Pages/AdProfile';
 import { Routes, Route, Link } from "react-router-dom";
@@ -12,13 +12,11 @@ import Error from './components/Molecules/Error';
 
 function App() {
   return (
-    <div className="App" style={{
-
-    }}>
+    <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/catalog" element={<AdCardList data={adData} />} />
+        <Route path="/catalog" element={<Catalog data={adData} />} />
         <Route path="/profile/:userId" element={<UserProfile data={userData} ads={adData} />} />
         <Route path="/catalog/:adId" element={<AdProfile data={adData} />} />
         <Route path="/signin" element={<SignIn />} />

@@ -5,6 +5,7 @@ import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
 import AdCardProps from "../../Molecules/AdCard/interfaces";
+import { addSyntheticLeadingComment } from "typescript";
 
 interface UserProfileProps {
     data: User[];
@@ -21,20 +22,43 @@ const UserProfile = (props: UserProfileProps) => {
         return <Error msg="Sorry, this user does not exist" />
     }
 
+    const userAds = props.ads.filter(ad => ad.user.userId === currentUser.userId); // Getting the ads of the user
+
     return (
         <div style={{
-
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
         }}>
-            <UserInfo
-                name={currentUser.name}
-                avatar={currentUser.avatar}
-                numAds={currentUser.numAds}
-                userId={currentUser.userId} />
             <div style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "70%",
+                borderRadius: "10px",
+                boxShadow: "0px 0px 1px black",
+                backgroundColor: "white"
             }}>
-                <AdCardList data={props.ads.filter(ad => ad.user.userId === currentUser.userId)} />
+                <UserInfo
+                    name={currentUser.name}
+                    avatar={currentUser.avatar}
+                    numAds={currentUser.numAds}
+                    userId={currentUser.userId} />
             </div>
-        </div>
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginTop: "50px",
+            }}>
+                <h1>Available ads</h1>
+            </div>
+            <div style={{
+                width: "100%",
+                marginTop: "30px",
+            }}>
+                <AdCardList data={userAds} />
+            </div>
+        </div >
 
     )
 }
