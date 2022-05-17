@@ -32,6 +32,7 @@ const AdCardList = (props: Props) => {
                                 title={item.title}
                                 description={item.description}
                                 user={item.user}
+                                price={item.price}
                             />
                         </div>
                     </List.Item>

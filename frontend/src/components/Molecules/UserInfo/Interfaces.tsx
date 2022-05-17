@@ -2,7 +2,9 @@ interface UserProps {
     userId: string;
     avatar: string;
     name: string;
-    numAds: number;
+    location: string;
+    rating: number;
+    numRatings: number;
     clickAble?: boolean;
 }
 

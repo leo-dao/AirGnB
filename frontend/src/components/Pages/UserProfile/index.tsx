@@ -5,7 +5,6 @@ import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
 import AdCardProps from "../../Molecules/AdCard/interfaces";
-import { addSyntheticLeadingComment } from "typescript";
 
 interface UserProfileProps {
     data: User[];
@@ -22,7 +21,9 @@ const UserProfile = (props: UserProfileProps) => {
         return <Error msg="Sorry, this user does not exist" />
     }
 
-    const userAds = props.ads.filter(ad => ad.user.userId === currentUser.userId); // Getting the ads of the user
+    const userAds = props.ads.filter(ad => ad.user.userId === currentUser.userId);
+    const numAds = userAds.length;
+    const ad = numAds === 1 ? "ad" : "ads";
 
     return (
         <div style={{
@@ -41,8 +42,11 @@ const UserProfile = (props: UserProfileProps) => {
                 <UserInfo
                     name={currentUser.name}
                     avatar={currentUser.avatar}
-                    numAds={currentUser.numAds}
-                    userId={currentUser.userId} />
+                    userId={currentUser.userId}
+                    location={currentUser.location}
+                    rating={currentUser.rating}
+                    numRatings={currentUser.numRatings}
+                />
             </div>
             <div style={{
                 display: "flex",
@@ -50,7 +54,7 @@ const UserProfile = (props: UserProfileProps) => {
                 alignItems: "center",
                 marginTop: "50px",
             }}>
-                <h1>Available ads</h1>
+                <h1> {numAds} available {ad}</h1>
             </div>
             <div style={{
                 width: "100%",

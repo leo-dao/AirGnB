@@ -38,6 +38,7 @@ const AdProfile = (props: Props) => {
                     adImages={currentAd.adImages}
                     title={currentAd.title}
                     description={currentAd.description}
+                    price={currentAd.price}
                 />
                 <div style={{
                     display: 'flex',
@@ -75,7 +76,9 @@ const AdProfile = (props: Props) => {
                                 userId={currentAd.user.userId}
                                 avatar={currentAd.user.avatar}
                                 name={currentAd.user.name}
-                                numAds={currentAd.user.numAds}
+                                rating={currentAd.user.rating}
+                                numRatings={currentAd.user.numRatings}
+                                location={currentAd.user.location}
                                 clickAble={true}
                             />
                             <UserContact />

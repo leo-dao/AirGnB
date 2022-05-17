@@ -3,25 +3,25 @@ const userData = [
     userId: 'rdmUser1',
     name: 'Eddie',
     avatar: 'https://media.npr.org/assets/img/2020/10/14/gettyimages-593327767_wide-4cd62ef34dcd35fe1f87bcbc0cbf3553a76e260f.jpg?s=1400',
-    numAds: 3,
+    rating: 5,
+    numRatings: 5150,
+    location: "LA",
   },
   {
     userId: 'rdmUser2',
     name: 'Default',
-    avatar: 'https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png',   // default avatar (?)
-    numAds: 2,
-  },
-  {
-    userId: 'rdmUser3',
-    name: 'Guy',
-    avatar: 'https://thumbs.dreamstime.com/b/baker-19036306.jpg',
-    numAds: 1,
+    avatar: 'https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png',
+    rating: 2.5,
+    numRatings: 1,
+    location: 'Paris',
   },
   {
     userId: 'rdmUser4',
     name: 'Stevie',
     avatar: 'https://townsquare.media/site/295/files/2018/12/SRV-Annamaria-DiSanto-Getty-Im.jpg',
-    numAds: 1,
+    rating: 4.5,
+    numRatings: 89,
+    location: 'Texas'
   }
 ];
 
@@ -36,6 +36,7 @@ const adData = [
     ],
     title: 'Kramer',
     description: '80s Kramer',
+    price: '100',
     user: userData[0]
   },
   {
@@ -48,6 +49,7 @@ const adData = [
     ],
     title: 'EVH amp head',
     description: 'EVH 5150III 50W EL34 Head',
+    price: '100',
     user: userData[0]
   },
   {
@@ -63,32 +65,9 @@ const adData = [
       },
     ],
     title: 'Distortion pedal',
-    description: 'Ibanez tube screamer, barely used',
+    description: 'Ibanez tube screamer, can be used as overdrive or distortion',
+    price: '20',
     user: userData[1],
-  },
-  {
-    adId: "rdmAd4",
-    adImages: [
-      {
-        img: 'https://thumbs.dreamstime.com/b/french-baguette-human-hand-17973182.jpg',
-        imgId: 'rdmImg5'
-      },
-    ],
-    title: 'Sticks',
-    description: 'Fresh drum sticks, a bit fragile but perform fine for any style',
-    user: userData[2]
-  },
-  {
-    adId: "rdmAd5",
-    adImages: [
-      {
-        img: 'https://www.pourlesmusiciens.com/medias/400/evh-5150iii-50w-head-el34-black-large-136531.jpg',
-        imgId: 'rdmImg6'
-      },
-    ],
-    title: 'EVH amp head',
-    description: 'EVH 5150III 50W EL34 Head',
-    user: userData[0]
   },
   {
     adId: "rdmAd6",
@@ -100,6 +79,7 @@ const adData = [
     ],
     title: 'DX7',
     description: 'Vintage DX7 digitial synthesiser',
+    price: '50',
     user: userData[1],
   },
   {
@@ -119,8 +99,9 @@ const adData = [
       },
     ],
     title: 'SRV Fender Stratocaster',
-    description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo.',
-    user: userData[3],
+    description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo',
+    price: '250',
+    user: userData[2],
   }
 ];
 

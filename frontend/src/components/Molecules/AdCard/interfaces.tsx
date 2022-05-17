@@ -1,5 +1,4 @@
-// import user props
-import UserProps from "../../Molecules/UserInfo/interfaces";
+import UserProps from "../UserInfo/interfaces";
 
 interface imageProps {
     img: string,
@@ -12,6 +11,7 @@ interface AdCardProps {
     title: string;
     description: string;
     user: UserProps;
+    price: string;
 };
 
 export default AdCardProps;
