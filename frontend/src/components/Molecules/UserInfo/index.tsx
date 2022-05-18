@@ -11,8 +11,8 @@ interface Props extends UserProps {
 
 const UserInfo = (props: Props) => {
 
-    const fontSize = props.fontSize ? props.fontSize : 10;
-    const avatarSize = props.avatarSize ? props.avatarSize : 40;
+    const fontSize = props.fontSize ? props.fontSize : 8;
+    const avatarSize = props.avatarSize ? props.avatarSize : 30;
 
     const ratings = <h2>{props.numRatings} {props.numRatings === 1 ? "rating" : "ratings"}</h2>
 
@@ -36,7 +36,6 @@ const UserInfo = (props: Props) => {
                     display: "flex",
                     flexDirection: "column",
                     marginLeft: "30px",
-                    marginTop: "20px",
                     alignItems: "center",
                     fontSize: `${fontSize}px`,
                 }}>

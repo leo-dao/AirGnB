@@ -6,7 +6,7 @@ const UserContact = () => {
         <div style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "50px",
+
         }}>
             <Button style={{
                 marginTop: '30px',

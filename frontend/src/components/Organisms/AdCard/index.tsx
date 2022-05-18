@@ -33,9 +33,11 @@ const AdCard = (props: AdCardProps) => {
                         color: '#333',
                         fontSize: '20px',
                         fontWeight: 'bold',
-                        margin: '20px 10px 20px 10px',
-                        textAlign: 'left',
+                        margin: '10px 10px 15px 10px',
+                        justifyContent: 'center',
+                        textAlign: 'center',
                         height: '50px',
+                        width: '200px',
                     }}>
                         {title}
                     </div>
@@ -44,6 +46,7 @@ const AdCard = (props: AdCardProps) => {
                         display: 'flex',
                         flexDirection: 'row',
                         justifyContent: 'center',
+                        marginTop: '10px',
                     }}>
                         <UserInfo
                             userId={props.user.userId}

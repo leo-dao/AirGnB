@@ -54,10 +54,10 @@ const AdProfile = (props: Props) => {
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        marginTop: '30px',
+                        marginTop: '10px',
                         marginLeft: '20px',
                         marginRight: '20px',
-                        height: '100px',
+                        height: '120px',
                     }}>
                         <h1>{currentAd.title}</h1>
                         <p>{currentAd.description}</p>
@@ -69,22 +69,20 @@ const AdProfile = (props: Props) => {
                         borderTop: '1px dotted black',
                         justifyContent: 'center',
                     }}>
-                        <div style={{
-                            marginTop: '20px',
-                        }}>
-                            <UserInfo
-                                userId={currentAd.user.userId}
-                                avatar={currentAd.user.avatar}
-                                name={currentAd.user.name}
-                                rating={currentAd.user.rating}
-                                numRatings={currentAd.user.numRatings}
-                                location={currentAd.user.location}
-                                clickAble={true}
-                                fontSize={20}
-                                avatarSize={80}
-                            />
-                            <UserContact />
-                        </div>
+
+                        <UserInfo
+                            userId={currentAd.user.userId}
+                            avatar={currentAd.user.avatar}
+                            name={currentAd.user.name}
+                            rating={currentAd.user.rating}
+                            numRatings={currentAd.user.numRatings}
+                            location={currentAd.user.location}
+                            clickAble={true}
+                            fontSize={20}
+                            avatarSize={80}
+                        />
+                        <UserContact />
+
                     </div>
                 </div>
             </div>

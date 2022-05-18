@@ -9,8 +9,14 @@ interface Props {
 const Catalog = (props: Props) => {
     return (
         <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
         }}>
-            <AdCardList data={props.data} />
+            <h1>Rent from local musicians</h1>
+            <div>
+                <AdCardList data={props.data} />
+            </div>
         </div>
     )
 }

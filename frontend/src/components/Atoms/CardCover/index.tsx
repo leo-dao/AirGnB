@@ -10,9 +10,8 @@ const CardCover = (props: Props) => {
         <img src={props.image} style={{
             borderTopLeftRadius: '10px',
             borderTopRightRadius: '10px',
-            boxShadow: '0px 0px 10px rgba(0,0,0,0.5)',
             objectFit: 'cover',
-            height: "150px",
+            height: "180px",
             width: "250px",
         }}></img>
     )
