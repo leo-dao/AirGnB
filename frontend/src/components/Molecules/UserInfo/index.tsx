@@ -19,8 +19,8 @@ const UserInfo = (props: UserProps) => {
                 width: "400px",
             }}>
                 {props.clickAble
-                    ? <AvatarLink userId={props.userId} avatar={props.avatar} size={130} />
-                    : <Avatar size={150} src={props.avatar} />
+                    ? <AvatarLink userId={props.userId} avatar={props.avatar} size={60} />
+                    : <Avatar size={100} src={props.avatar} />
                 }
                 <div style={{
                     display: "flex",
@@ -29,12 +29,12 @@ const UserInfo = (props: UserProps) => {
                     marginTop: "20px",
                     alignItems: "center",
                 }}>
-                    <h1>{props.name}</h1>
-                    <h2>{props.location}</h2>
+                    <h2>{props.name}</h2>
+                    <h3>{props.location}</h3>
                 </div>
             </div>
-            <Rate defaultValue={props.rating} allowHalf />
-            <h2>{props.numRatings} {props.numRatings === 1 ? "rating" : "ratings"}</h2>
+            <Rate defaultValue={props.rating} allowHalf disabled />
+            <h2>{props.numRatings}</h2>
         </div >
     )
 

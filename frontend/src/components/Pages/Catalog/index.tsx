@@ -10,7 +10,6 @@ const Catalog = (props: Props) => {
     return (
         <div style={{
         }}>
-
             <AdCardList data={props.data} />
         </div>
     )

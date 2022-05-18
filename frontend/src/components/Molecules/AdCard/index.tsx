@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, Avatar } from 'antd';
+import { Avatar } from 'antd';
 import { Link } from "react-router-dom";
 import AdCardProps from './interfaces';
 import AvatarLink from '../../Atoms/AvatarLink';
-
-const { Meta } = Card;
+import UserInfo from '../UserInfo';
+import { SmallDashOutlined } from '@ant-design/icons';
 
 const AdCard = (props: AdCardProps) => {
 
@@ -13,50 +13,56 @@ const AdCard = (props: AdCardProps) => {
 
     return (
         <Link to={`/catalog/${props.adId}`} target="_blank">
-            <Card
-                cover={
-                    <div style={{
-                        color: 'white',
-                        height: '300px',
-                        width: '200px',
-                    }}
-                    >
-                        <img
-                            alt="Advert Image"
-                            src={props.adImages[0].img} // using the first image in the array
+            <div style={{
+                backgroundColor: 'white',
+                borderRadius: '10px',
+                height: '350px',
+                width: '250px',
+                boxShadow: '0px 0px 10px rgba(0,0,0,0.5)',
+            }}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
 
-                            style={{
-                                position: 'absolute',
-                                top: '-30%',
-                                left: '0',
-                                right: '0',
-                                bottom: '0',
-                                margin: 'auto',
-                                maxHeight: '250px',
-                                maxWidth: '200px',
-                            }}
-                        />
+                    <img src={props.adImages[0].img} alt="ad" style={{
+                        borderTopLeftRadius: '10px',
+                        borderTopRightRadius: '10px',
+                        objectFit: 'cover',
+                        height: "150px",
+                        width: "250px",
+                        marginBottom: '20px',
+                    }}></img>
+
+                    <div style={{
+                        display: 'flex',
+                        color: '#333',
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        marginBottom: '20px',
+                    }}>
+                        {props.title}
                     </div>
-                }
-                bodyStyle={{
-                    height: '150px',
-                    overflow: 'hidden',
-                }}
-                hoverable={true}
-            >
-                <Meta
-                    avatar={<AvatarLink userId={props.user.userId} avatar={props.user.avatar} />}
-                    title={props.title}
-                    description={description}
-                    style={{
-                        textAlign: 'center',
-                        borderTop: '2px solid #e8e8e8',
-                        paddingTop: '10px',
-                        fontSize: '1em',
-                    }}
-                />
-            </Card >
-        </Link>
+
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                    }}>
+                        <UserInfo
+                            userId={props.user.userId}
+                            name={props.user.name}
+                            avatar={props.user.avatar}
+                            rating={props.user.rating}
+                            clickAble={true}
+                        />
+
+                    </div>
+                </div>
+            </div>
+        </Link >
     )
 };
 
