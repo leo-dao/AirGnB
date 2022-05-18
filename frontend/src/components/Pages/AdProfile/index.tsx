@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import AdCardProps from "../../Molecules/AdCard/interfaces";
+import AdCardProps from "../../Organisms/AdCard/interfaces";
 import Error from "../../Molecules/Error/index";
 import AdPhotos from "../../Organisms/AdPhotos";
 import UserInfo from "../../Molecules/UserInfo/index";
@@ -80,6 +80,8 @@ const AdProfile = (props: Props) => {
                                 numRatings={currentAd.user.numRatings}
                                 location={currentAd.user.location}
                                 clickAble={true}
+                                fontSize={20}
+                                avatarSize={80}
                             />
                             <UserContact />
                         </div>

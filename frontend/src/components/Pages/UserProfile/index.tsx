@@ -4,7 +4,7 @@ import User from "../../Molecules/UserInfo/interfaces";
 import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
-import AdCardProps from "../../Molecules/AdCard/interfaces";
+import AdCardProps from "../../Organisms/AdCard/interfaces";
 
 interface UserProfileProps {
     data: User[];
@@ -46,6 +46,8 @@ const UserProfile = (props: UserProfileProps) => {
                     location={currentUser.location}
                     rating={currentUser.rating}
                     numRatings={currentUser.numRatings}
+                    fontSize={20}
+                    avatarSize={100}
                 />
             </div>
             <div style={{

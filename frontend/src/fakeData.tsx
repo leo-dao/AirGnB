@@ -34,9 +34,9 @@ const adData = [
         imgId: 'rdmImg1'
       },
     ],
-    title: 'Kramer',
-    description: '80s Kramer',
-    price: '100',
+    title: 'Kramer with floyd rose',
+    description: '80s Kramer, played by Alex Van Halen',
+    price: 100,
     user: userData[0]
   },
   {
@@ -49,7 +49,7 @@ const adData = [
     ],
     title: 'EVH amp head',
     description: 'EVH 5150III 50W EL34 Head',
-    price: '100',
+    price: 100,
     user: userData[0]
   },
   {
@@ -64,9 +64,9 @@ const adData = [
         imgId: 'rdmImg4'
       },
     ],
-    title: 'Distortion pedal',
+    title: 'Ibanez tube screamer',
     description: 'Ibanez tube screamer, can be used as overdrive or distortion',
-    price: '20',
+    price: 20,
     user: userData[1],
   },
   {
@@ -77,9 +77,9 @@ const adData = [
         imgId: 'rdmImg7'
       },
     ],
-    title: 'DX7',
+    title: 'Vintage DX7 digitial synthesiser',
     description: 'Vintage DX7 digitial synthesiser',
-    price: '50',
+    price: 50,
     user: userData[1],
   },
   {
@@ -98,9 +98,9 @@ const adData = [
         imgId: 'rdmImg10'
       },
     ],
-    title: 'SRV Fender Stratocaster',
+    title: 'SRV Fender Stratocaster Texas edition',
     description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo',
-    price: '250',
+    price: 250,
     user: userData[2],
   }
 ];

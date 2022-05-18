@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdCardProps from "../../Molecules/AdCard/interfaces";
+import AdCardProps from "../../Organisms/AdCard/interfaces";
 
 const AdPhotos = (props: AdCardProps) => {
 

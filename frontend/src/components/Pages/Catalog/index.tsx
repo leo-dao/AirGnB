@@ -1,6 +1,6 @@
 import React from "react";
 import AdCardList from "../../Organisms/AdCardList";
-import AdCardProps from "../../Molecules/AdCard/interfaces";
+import AdCardProps from "../../Organisms/AdCard/interfaces";
 
 interface Props {
     data: AdCardProps[],
