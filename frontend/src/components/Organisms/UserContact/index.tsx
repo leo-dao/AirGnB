@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "antd";
+import { MessageOutlined } from "@ant-design/icons";
 
 const UserContact = () => {
     return (
@@ -9,7 +10,6 @@ const UserContact = () => {
 
         }}>
             <Button style={{
-                marginTop: '30px',
                 width: '150px',
                 height: '50px',
                 border: '0.5px solid black',
@@ -20,7 +20,6 @@ const UserContact = () => {
             }}> Rent </Button>
 
             <Button style={{
-                marginTop: '30px',
                 marginLeft: '30px',
                 width: '150px',
                 height: '50px',
@@ -29,8 +28,11 @@ const UserContact = () => {
                 boxShadow: '0px 0px 1px black',
                 font: 'bold',
                 color: '#0A6EDD',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
-            > Message </Button>
+            > Message <MessageOutlined style={{ fontSize: "30px" }} /> </Button>
         </div>
     )
 }

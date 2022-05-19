@@ -28,14 +28,14 @@ const AdPhotos = (props: AdCardProps) => {
 
             <AdPhotoBg left={goLeft} right={goRight} image=
                 {<img src={image} style={{
-                    maxWidth: '700px',
-                    maxHeight: '400px',
+                    maxWidth: '800px',
+                    maxHeight: '500px',
                     objectFit: 'cover',
                     borderRadius: '10px',
                 }} />} />
             <div style={{
-                width: '700px',
-                height: '50px',
+                width: '800px',
+                height: '120px',
                 backgroundColor: 'white',
                 borderRadius: '10px',
                 boxShadow: '0px 0px 1px black',
@@ -47,10 +47,11 @@ const AdPhotos = (props: AdCardProps) => {
             }}>
                 {props.adImages.map(image => {
                     return <img src={image.img} style={{
-                        maxWidth: '50px',
-                        maxHeight: '50px',
+                        width: '120px',
+                        height: '120px',
                         objectFit: 'cover',
                         cursor: 'pointer',
+                        borderRadius: '10px',
                     }}
                         onClick={() => { setImage(image.img); }} />
                 })}

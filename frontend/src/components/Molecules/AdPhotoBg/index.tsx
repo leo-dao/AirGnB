@@ -19,8 +19,8 @@ const AdPhotoBg = (props: Props) => {
 
     return (
         <div style={{
-            width: '700px',
-            height: '400px',
+            width: '800px',
+            height: '500px',
             backgroundColor: 'white',
             borderRadius: '10px',
             boxShadow: '0px 0px 1px black',

@@ -2,6 +2,7 @@ import React from "react";
 
 interface Props {
     price: number;
+    width?: number;
 }
 
 const Price = (props: Props) => {
@@ -13,6 +14,7 @@ const Price = (props: Props) => {
             borderRadius: "5px",
             color: "white",
             padding: "5px",
+            width: `${props.width}px`,
         }}>
             {props.price} $ a week
         </div>

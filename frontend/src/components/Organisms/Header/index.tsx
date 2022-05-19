@@ -45,12 +45,14 @@ const Header = () => {
                 }}>
                     <Button type="primary" href='/signin' style={{
                         fontSize: "15px",
-                        marginRight: "10px"
+                        marginRight: "10px",
+                        borderRadius: "10px",
                     }}>
                         Sign in
                     </Button>
                     <Button type="primary" href='/register' style={{
                         fontSize: "15px",
+                        borderRadius: "10px",
                     }}>
                         Register
                     </Button>

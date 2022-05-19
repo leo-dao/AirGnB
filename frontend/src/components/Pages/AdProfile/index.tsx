@@ -5,8 +5,7 @@ import Error from "../../Molecules/Error/index";
 import AdPhotos from "../../Organisms/AdPhotos";
 import UserInfo from "../../Molecules/UserInfo/index";
 import UserContact from "../../Organisms/UserContact/index";
-import { Button } from "antd";
-import { DribbbleCircleFilled } from "@ant-design/icons";
+import Price from "../../Atoms/Price/index";
 
 interface Props {
     data: AdCardProps[],
@@ -45,6 +44,7 @@ const AdProfile = (props: Props) => {
                     flexDirection: 'column',
                     marginLeft: '30px',
                     border: '0.5px solid black',
+                    borderRadius: '10px',
                     backgroundColor: 'white',
                     width: '400px',
                     alignItems: 'center',
@@ -52,22 +52,26 @@ const AdProfile = (props: Props) => {
                     <div style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'space-between',
                         alignItems: 'center',
+                        textAlign: 'center',
                         marginTop: '10px',
                         marginLeft: '20px',
                         marginRight: '20px',
-                        height: '120px',
                     }}>
                         <h1>{currentAd.title}</h1>
                         <p>{currentAd.description}</p>
+                        <Price price={currentAd.price} width={200} />
                     </div>
+
                     <div style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        marginTop: '50px',
-                        borderTop: '1px dotted black',
+                        height: '100%',
                         justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: '30px',
+                        borderTop: '1px dotted black',
+
                     }}>
 
                         <UserInfo
@@ -81,8 +85,9 @@ const AdProfile = (props: Props) => {
                             fontSize={20}
                             avatarSize={80}
                         />
-                        <UserContact />
-
+                        <div style={{ marginTop: "20px" }}>
+                            <UserContact />
+                        </div>
                     </div>
                 </div>
             </div>
