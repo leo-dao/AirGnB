@@ -1,38 +1,26 @@
 import React from "react";
-import { Button } from "antd";
-import { MessageOutlined } from "@ant-design/icons";
+import Button from "../../Atoms/Button";
+import ChatButton from "../../Atoms/ChatButton";
 
 const UserContact = () => {
+
+    const contactUser = () => {
+        console.log("Contact user");
+    }
+
     return (
         <div style={{
             display: "flex",
             justifyContent: "center",
-
         }}>
-            <Button style={{
-                width: '150px',
-                height: '50px',
-                border: '0.5px solid black',
-                borderRadius: '10px',
-                boxShadow: '0px 0px 1px black',
-                backgroundColor: "#0A6EDD",
-                color: 'white',
-            }}> Rent </Button>
-
-            <Button style={{
+            <Button text="Rent" goTo="/rent" width={150} height={50} />
+            <div style={{
                 marginLeft: '30px',
                 width: '150px',
                 height: '50px',
-                border: '0.5px solid black',
-                borderRadius: '10px',
-                boxShadow: '0px 0px 1px black',
-                font: 'bold',
-                color: '#0A6EDD',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}
-            > Message <MessageOutlined style={{ fontSize: "30px" }} /> </Button>
+            }}>
+                <ChatButton text="Message user" onClick={contactUser} />
+            </div>
         </div>
     )
 }

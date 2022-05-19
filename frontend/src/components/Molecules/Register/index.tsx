@@ -1,5 +1,6 @@
 import React from "react";
-import { Input, Button } from 'antd';
+import { Input } from 'antd';
+import Button from "../../Atoms/Button";
 
 const Register = () => {
     return (
@@ -56,14 +57,11 @@ const Register = () => {
             </div>
 
             <div style={{
-                width: '80%',
-                padding: '10px',
-                marginLeft: '50px',
+                display: 'flex',
+                justifyContent: 'center',
                 marginTop: '30px',
             }}>
-                <Button size="large" type="primary" style={{ width: "100%" }}>
-                    Create account
-                </Button>
+                <Button text="Create account" width={400} height={50} />
             </div>
         </div >
 

@@ -9,6 +9,7 @@ import { userData, adData } from "./fakeData"
 import SignIn from './components/Molecules/SignIn';
 import Register from './components/Molecules/Register';
 import Error from './components/Molecules/Error';
+import LoginPage from './components/Pages/LoginPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/catalog" element={<Catalog data={adData} />} />
         <Route path="/profile/:userId" element={<UserProfile data={userData} ads={adData} />} />
         <Route path="/catalog/:adId" element={<AdProfile data={adData} />} />
+        <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error msg="" />} />
