@@ -11,16 +11,23 @@ const UserContact = () => {
     return (
         <div style={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-evenly",
         }}>
-            <Button text="Rent" goTo="/rent" width={150} height={50} />
-            <div style={{
-                marginLeft: '30px',
-                width: '150px',
-                height: '50px',
-            }}>
-                <ChatButton text="Message user" onClick={contactUser} />
-            </div>
+            <Button
+                text="Rent"
+                goTo="/rent"
+                width={40}
+                height={40}
+                fontSize={20}
+            />
+            <ChatButton
+                text="Message user"
+                width={40}
+                height={40}
+                fontSize={20}
+                onClick={contactUser} />
         </div>
     )
 }

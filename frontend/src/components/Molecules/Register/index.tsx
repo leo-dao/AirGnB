@@ -61,7 +61,12 @@ const Register = () => {
                 justifyContent: 'center',
                 marginTop: '30px',
             }}>
-                <Button text="Create account" width={400} height={50} />
+                <Button
+                    text="Create account"
+                    width={80}
+                    height={40}
+                    fontSize={20}
+                />
             </div>
         </div >
 

@@ -9,19 +9,30 @@ const LoginPage = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            fontSize: "1.5rem",
+            fontSize: "200%",
         }}>
             <h1>Welcome to AirGnB</h1>
             <div style={{
                 display: "flex",
                 flexDirection: "row",
-                // add spacing between buttons
                 justifyContent: "space-between",
-                width: "30%",
+                width: "55%",
             }}>
                 Please
-                <Button text="log into your account" height={35} width={170} goTo="/signIn" />
-                or <Button text={"create a new one"} height={35} width={160} goTo="/register" backgroundColor="white" color="#0A6EDD" /> to continue
+                <Button
+                    text="log into your account"
+                    width={33}
+                    height={40}
+                    goTo="/signIn" />
+                or
+                <Button
+                    text={"create a new one"}
+                    goTo="/register"
+                    width={27}
+                    height={40}
+                    backgroundColor="white"
+                    color="#0A6EDD" />
+                to continue
             </div>
         </div>
     )

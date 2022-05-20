@@ -85,7 +85,7 @@ const AdProfile = (props: Props) => {
                             fontSize={20}
                             avatarSize={80}
                         />
-                        <div style={{ marginTop: "20px" }}>
+                        <div style={{ marginTop: "20px", width: "100%" }}>
                             <UserContact />
                         </div>
                     </div>

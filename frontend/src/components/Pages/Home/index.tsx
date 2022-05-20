@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBox from "../../Molecules/Search";
 import CarouselComponent from "../../Molecules/Carousel";
-import JumpCatalog from "../../Molecules/JumpCatalog";
+import Button from "../../Atoms/Button";
 
 const Home = () => {
     return (
@@ -37,11 +37,17 @@ const Home = () => {
             <div style={{
                 display: "flex",
                 justifyContent: "center",
+                marginTop: "50px",
+                marginBottom: "50px",
             }}>
-                <JumpCatalog />
-
+                <Button
+                    width={20}
+                    height={50}
+                    fontSize={30}
+                    text='Jump to catalog'
+                    goTo='/catalog'
+                />
             </div>
-            {/* <CarouselComponent /> */}
         </div >
     )
 };

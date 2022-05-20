@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 interface Props {
     text?: string,
@@ -15,26 +14,31 @@ interface Props {
 
 const Button = (props: Props) => {
 
-    let button =
-        <div style={{
-            borderRadius: "10px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            boxShadow: "0px 0px 1px black",
-            cursor: "pointer",
-            fontSize: props.fontSize ? props.fontSize : "15px",
-            width: props.width ? props.width : '100px',
-            height: props.height ? props.height : '30px',
-            backgroundColor: props.backgroundColor ? props.backgroundColor : '#0A6EDD',
-            color: props.color ? props.color : 'white',
-        }} onClick={props.onClick}>
-            {props.text} {props.component}
-        </div>
-
-    if (props.goTo) {   // add link to a page if goTo is provided
-        button = <Link to={props.goTo}>{button}</Link>;
+    const style = {
+        borderRadius: "10px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        boxShadow: "0px 0px 1px black",
+        cursor: "pointer",
+        width: `${props.width}%` || "100%",
+        height: props.height || "100%",
+        fontSize: props.fontSize,
+        backgroundColor: props.backgroundColor ? props.backgroundColor : '#0A6EDD',
+        color: props.color ? props.color : 'white',
     }
+
+    let button;
+
+    if (props.goTo) {
+        button = (
+            <a href={`${props.goTo}`} style={style}>{props.text} {props.component}</a>
+        )
+    }
+    else {
+        button = <div style={style} onClick={props.onClick}> {props.text} {props.component}</div>
+    }
+
 
     return (button);
 }

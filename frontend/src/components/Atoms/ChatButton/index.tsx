@@ -6,6 +6,7 @@ interface Props {
     text?: string,
     width?: number,
     height?: number,
+    fontSize?: number,
     onClick: () => void,
 }
 
@@ -17,8 +18,9 @@ const ChatButton = (props: Props) => {
             color="#0A6EDD"
             width={props.width}
             height={props.height}
-            component={<MessageOutlined style={{ fontSize: "30px" }} />} />
-
+            component={< MessageOutlined style={{ fontSize: props.fontSize }
+            } />}
+        />
     )
 }
 

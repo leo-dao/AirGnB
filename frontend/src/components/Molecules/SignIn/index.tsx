@@ -41,7 +41,11 @@ const SignIn = () => {
                 justifyContent: 'center',
                 marginTop: '30px',
             }}>
-                <Button text={"Sign In"} width={400} height={50} fontSize={25} />
+                <Button text={"Sign In"}
+                    width={80}
+                    height={40}
+                    fontSize={20}
+                />
             </div>
         </div>
 
