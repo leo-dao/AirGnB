@@ -21,7 +21,13 @@ const Error = (props: Props) => {
                 status="404"
                 title="404"
                 subTitle={props.msg || defaultMsg} />
-            <Button goTo="/" text="Back Home" />
+            <Button
+                goTo="/"
+                text="Back Home"
+                width={20}
+                height={60}
+                fontSize={35}
+            />
         </div>
     )
 }

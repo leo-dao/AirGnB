@@ -54,10 +54,9 @@ const Header = () => {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                width: '40%',
+                width: '30%',
                 justifyContent: 'space-evenly',
-                marginRight: 'auto',
-                marginLeft: 'auto',
+                marginLeft: '20%',
             }}>
 
                 <Button

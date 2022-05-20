@@ -2,6 +2,7 @@ import React from "react";
 import SearchBox from "../../Molecules/Search";
 import CarouselComponent from "../../Molecules/Carousel";
 import Button from "../../Atoms/Button";
+import Search from "../../Molecules/Search";
 
 const Home = () => {
     return (
@@ -21,15 +22,16 @@ const Home = () => {
                 height: "150px",
                 margin: "auto",
                 boxShadow: '0px 0px 10px #ccc',
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-evenly",
             }}>
                 <div style={{
-                    width: "250px",
-                    position: "relative",
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)'
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
                 }}>
-                    <SearchBox />
+                    <Search />
 
                 </div>
             </div>
@@ -41,9 +43,9 @@ const Home = () => {
                 marginBottom: "50px",
             }}>
                 <Button
-                    width={20}
+                    width={18}
                     height={50}
-                    fontSize={30}
+                    fontSize={33}
                     text='Jump to catalog'
                     goTo='/catalog'
                 />

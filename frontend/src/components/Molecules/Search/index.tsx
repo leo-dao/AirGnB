@@ -1,22 +1,29 @@
 import React from "react";
 import { Input } from 'antd';
+import SortCategories from "../SortCategories";
+import SearchBox from "../SearchBox";
+import { SearchOutlined } from "@ant-design/icons";
 
+const Search = () => {
 
-const { Search } = Input;
-
-const SearchBox = () => {
-
-    const onSearch = (value: string) => {
-        console.log(value);
+    const OnClick = () => {
+        console.log('Searching...');
     }
 
     return (
-        <div>
-            <Search
-                placeholder="What are you looking for?"
-                onSearch={onSearch}
-                enterButton />
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+        }}>
+            <SortCategories />
+            {/* <div style={{ marginLeft: "10%" }} /> */}
+            <SearchBox
+                text='What are you searching for?'
+                type="text"
+                icon={<SearchOutlined />}
+                onClick={OnClick}
+            />
         </div>
     )
 }
-export default SearchBox;
+export default Search;
