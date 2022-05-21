@@ -18,7 +18,7 @@ const Home = () => {
 
             <div style={{
                 backgroundColor: "white",
-                width: "50%",
+                width: "60%",
                 height: "150px",
                 margin: "auto",
                 boxShadow: '0px 0px 10px #ccc',
@@ -28,11 +28,10 @@ const Home = () => {
             }}>
                 <div style={{
                     display: "flex",
-                    flexDirection: "column",
                     justifyContent: "center",
+                    alignItems: "center",
                 }}>
                     <Search />
-
                 </div>
             </div>
 

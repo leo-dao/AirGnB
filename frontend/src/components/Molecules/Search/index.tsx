@@ -2,12 +2,11 @@ import React from "react";
 import { Input } from 'antd';
 import SortCategories from "../SortCategories";
 import SearchBox from "../SearchBox";
-import { SearchOutlined } from "@ant-design/icons";
 
 const Search = () => {
 
-    const OnClick = () => {
-        console.log('Searching...');
+    const onChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log(e.target);
     }
 
     return (
@@ -17,12 +16,7 @@ const Search = () => {
         }}>
             <SortCategories />
             {/* <div style={{ marginLeft: "10%" }} /> */}
-            <SearchBox
-                text='What are you searching for?'
-                type="text"
-                icon={<SearchOutlined />}
-                onClick={OnClick}
-            />
+            <SearchBox />
         </div>
     )
 }

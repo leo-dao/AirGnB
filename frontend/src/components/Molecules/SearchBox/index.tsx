@@ -1,38 +1,53 @@
 import React from "react";
+import { SearchOutlined } from "@ant-design/icons";
 
-interface Props {
-    text: string;
-    type: string;
-    icon: React.ReactElement;
-    onClick?: () => void;
-}
 
-const SearchBox = (props: Props) => {
+const SearchBox = () => {
+    const [Result, setSearchBox] = React.useState("");
+
+    const Search = () => {
+        console.log(Result);
+    }
+
     return (
         <div style={{
             display: "flex",
-            flexDirection: "row",
             alignItems: "center",
-            justifyContent: "space-evenly",
-            width: "100%",
+            justifyContent: "center",
             backgroundColor: "#FAFAFA",
             border: "1px solid #ccc",
             borderRadius: "5px",
-            fontSize: "15px",
             cursor: "pointer",
+            width: "300px"
         }}>
             <input
-                type={props.type}
-                value={props.text}
-                style={{ border: 'none', backgroundColor: "#FAFAFA", cursor: "pointer", }}>
+                type="text"
+                placeholder="What are you searching for?"
+                onChange={(e) => setSearchBox(e.target.value)}
+                onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                        Search();
+                    }
+                }}
+                style={{
+                    border: "none",
+                    outline: "none",
+                    backgroundColor: "transparent",
+                    textAlign: "center",
+                    fontSize: "18px",
+                    color: "#8D8D8D",
+                    width: "100%",
+                }}>
             </input>
 
             <div style={{
-                fontSize: '120%',
-                marginLeft: '10px',
-                marginRight: '10px',
-
-            }} onClick={props.onClick}>  {props.icon}</div>
+                borderLeft: "1px solid #ccc",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+                fontSize: "22px",
+            }} >
+                <SearchOutlined onClick={Search} />
+            </div>
         </div >
     )
 }
