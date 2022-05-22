@@ -1,13 +1,14 @@
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 
+interface Props {
+    onSearch: (value: string) => void;
+}
 
-const SearchBox = () => {
+const SearchBox = (props: Props) => {
     const [Result, setSearchBox] = React.useState("");
 
-    const Search = () => {
-        console.log(Result);
-    }
+
 
     return (
         <div style={{
@@ -26,7 +27,7 @@ const SearchBox = () => {
                 onChange={(e) => setSearchBox(e.target.value)}
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                        Search();
+                        props.onSearch(Result);
                     }
                 }}
                 style={{
@@ -52,7 +53,7 @@ const SearchBox = () => {
                 color: "#0A6EDD",
                 width: "40%",
             }} >
-                <SearchOutlined onClick={Search} />
+                <SearchOutlined />
                 search
             </div>
         </div >

@@ -3,22 +3,24 @@ import { AutoComplete } from "antd";
 import axios from "axios";
 
 
-const LocationFilter = () => {
+interface Props {
+    data: any[];
+    onSelect: (value: string) => void;
+}
 
-    const [data, setData] = React.useState<any[]>([]);
+const LocationFilter = (props: Props) => {
 
-    React.useEffect(() => {
-        axios.get('https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json')
-            .then(res => {
-                setData(res.data);
-            })
-    }, [])
-
-    const locationData = data.map(item => {
+    const locationData = props.data.map(item => {
         return {
             value: item.name + ", " + item.subcountry + ", " + item.country,
         }
     });
+
+    const onEnter = (e: any) => {
+        if (e.keyCode === 13) {
+            // autofill the first item available in the dropdown menu
+        }
+    }
 
     return (
         <div
@@ -34,27 +36,29 @@ const LocationFilter = () => {
                 cursor: "pointer",
                 width: "400px"
             }}>
-            <div style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "10px",
-                marginRight: "10px",
-                cursor: "pointer",
-                textAlign: "center",
-                fontSize: "18px",
-                color: "#8D8D8D",
-                height: "2.5em",
-                width: "100%",
-            }}>
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "10px",
+                    marginRight: "10px",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    fontSize: "18px",
+                    height: "2.5em",
+                    width: "100%",
+                }}>
                 <AutoComplete
                     style={{
-                        width: "90%",
-                        textAlign: "center",
+                        width: "100%",
                         fontSize: "18px",
+                        color: "black",
                     }}
+                    bordered={false}
                     options={locationData}
                     placeholder="Select your city"
+                    onKeyDown={onEnter}
                     filterOption={(inputValue, option) =>
                         option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                     }
@@ -63,8 +67,8 @@ const LocationFilter = () => {
                         boxShadow: "0px 0px 10px #8D8D8D",
                         borderRadius: "10px",
                         width: "100%",
-                        backgroundColor: "#FAFAFA",
                     }}
+                    onSelect={props.onSelect}
                 />
             </div>
 

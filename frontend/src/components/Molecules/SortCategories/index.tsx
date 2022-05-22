@@ -3,13 +3,13 @@ import { MenuFoldOutlined, PropertySafetyFilled } from "@ant-design/icons";
 import DropdownMenu from "../DropdownMenu";
 import Categories from "./Categories";
 
-const SortCategories = () => {
+interface Props {
+    onClick: (value: string) => void;
+    category: string;
+    color: string;
+}
 
-    const [category, SetCategory] = React.useState<string>("");
-
-    const onClick = (e: any) => {
-        SetCategory(e.key);
-    }
+const SortCategories = (props: Props) => {
 
     const sortButton = (
         <div style={{
@@ -32,10 +32,10 @@ const SortCategories = () => {
                 cursor: "pointer",
                 textAlign: "center",
                 fontSize: "18px",
-                color: "#8D8D8D",
+                color: props.color,
                 height: "2.5em",
             }}>
-                {category === "" ? "Sort by" : category}
+                {props.category === "" ? "Sort by" : props.category}
             </div>
 
             <div style={{
@@ -56,8 +56,7 @@ const SortCategories = () => {
     return (
         <DropdownMenu
             button={sortButton}
-            menu={<Categories onClick={onClick} />}
-
+            menu={<Categories onClick={props.onClick} />}
         />
     )
 }
