@@ -1,23 +1,28 @@
 import React from "react";
-import { MenuFoldOutlined } from "@ant-design/icons";
+import { MenuFoldOutlined, PropertySafetyFilled } from "@ant-design/icons";
 import DropdownMenu from "../DropdownMenu";
-import categories from "./categories";
+import Categories from "./Categories";
 
 const SortCategories = () => {
 
+    const [category, SetCategory] = React.useState<string>("");
+
+    const onClick = (e: any) => {
+        SetCategory(e.key);
+    }
+
     const sortButton = (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#FAFAFA",
-                border: "1px solid #ccc",
-                borderRadius: "15px",
-                fontSize: "15px",
-                cursor: "pointer",
-            }}>
+        <div style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#FAFAFA",
+            border: "1px solid #ccc",
+            borderRadius: "15px",
+            fontSize: "15px",
+            cursor: "pointer",
+        }}>
             <div style={{
                 display: "flex",
                 alignItems: "center",
@@ -30,7 +35,7 @@ const SortCategories = () => {
                 color: "#8D8D8D",
                 height: "2.5em",
             }}>
-                Sort by
+                {category === "" ? "Sort by" : category}
             </div>
 
             <div style={{
@@ -51,7 +56,8 @@ const SortCategories = () => {
     return (
         <DropdownMenu
             button={sortButton}
-            menu={categories}
+            menu={<Categories onClick={onClick} />}
+
         />
     )
 }
