@@ -16,7 +16,7 @@ const LoginPage = () => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                width: "55%",
+                width: "60%",
             }}>
                 Please
                 <Button

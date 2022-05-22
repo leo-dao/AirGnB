@@ -14,7 +14,7 @@ const Catalog = (props: Props) => {
             alignItems: "center",
         }}>
             <h1>Rent from local musicians</h1>
-            <div>
+            <div >
                 <AdCardList data={props.data} />
             </div>
         </div>

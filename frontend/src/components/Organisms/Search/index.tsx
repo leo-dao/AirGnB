@@ -1,7 +1,9 @@
 import React from "react";
 import { Input } from 'antd';
-import SortCategories from "../SortCategories";
-import SearchBox from "../SearchBox";
+import SortCategories from "../../Molecules/SortCategories";
+import SearchBox from "../../Molecules/SearchBox";
+import LocationFilter from "../../Molecules/LocationFilter";
+import DropdownMenu from "../../Molecules/DropdownMenu";
 
 const Search = () => {
 
@@ -15,6 +17,7 @@ const Search = () => {
             flexDirection: "row",
         }}>
             <SortCategories />
+            <LocationFilter />
             {/* <div style={{ marginLeft: "10%" }} /> */}
             <SearchBox />
         </div>

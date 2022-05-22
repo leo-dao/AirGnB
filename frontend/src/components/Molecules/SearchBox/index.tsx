@@ -16,9 +16,9 @@ const SearchBox = () => {
             justifyContent: "center",
             backgroundColor: "#FAFAFA",
             border: "1px solid #ccc",
-            borderRadius: "5px",
+            borderRadius: "15px",
             cursor: "pointer",
-            width: "300px"
+            width: "400px"
         }}>
             <input
                 type="text"
@@ -41,12 +41,19 @@ const SearchBox = () => {
             </input>
 
             <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
                 borderLeft: "1px solid #ccc",
                 paddingLeft: "10px",
                 paddingRight: "10px",
-                fontSize: "22px",
+                fontSize: "20px",
+                fontWeight: "bold",
+                color: "#0A6EDD",
+                width: "40%",
             }} >
                 <SearchOutlined onClick={Search} />
+                search
             </div>
         </div >
     )

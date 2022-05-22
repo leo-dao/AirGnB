@@ -1,12 +1,13 @@
 import React from "react";
-import { MenuFoldOutlined } from "@ant-design/icons";
-import DropdownMenu from "../DropdownMenu";
-import categories from "./categories";
 
-const SortCategories = () => {
+const LocationFilter = () => {
 
-    const sortButton = (
-        <div
+    const openLocationMenu = () => {
+        console.log("open location menu");
+    }
+
+    return (
+        <div onClick={openLocationMenu}
             style={{
                 display: "flex",
                 flexDirection: "row",
@@ -30,7 +31,7 @@ const SortCategories = () => {
                 color: "#8D8D8D",
                 height: "2.5em",
             }}>
-                Sort by
+                Choose a location
             </div>
 
             <div style={{
@@ -41,18 +42,14 @@ const SortCategories = () => {
                 paddingLeft: "10px",
                 paddingRight: "10px",
                 fontSize: "22px",
-                color: "black"
             }}>
-                <MenuFoldOutlined />
+                <img src="http://cdn.onlinewebfonts.com/svg/img_527461.png"
+                    width={23}
+                    height={30}
+                >
+                </img>
             </div>
-        </div >
-    )
-
-    return (
-        <DropdownMenu
-            button={sortButton}
-            menu={categories}
-        />
+        </div>
     )
 }
-export default SortCategories;
+export default LocationFilter;
