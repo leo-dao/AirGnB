@@ -1,9 +1,7 @@
 import React from "react";
-import { Input } from 'antd';
 import SortCategories from "../../Molecules/SortCategories";
 import SearchBox from "../../Molecules/SearchBox";
 import LocationFilter from "../../Molecules/LocationFilter";
-import DropdownMenu from "../../Molecules/DropdownMenu";
 
 const Search = () => {
 
