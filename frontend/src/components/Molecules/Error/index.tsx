@@ -16,18 +16,21 @@ const Error = (props: Props) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
         }}>
             <Result
                 status="404"
                 title="404"
                 subTitle={props.msg || defaultMsg} />
-            <Button
-                goTo="/"
-                text="Back Home"
-                width={20}
-                height={60}
-                fontSize={35}
-            />
+            <div >
+                <Button
+                    goTo="/"
+                    text="Back Home"
+                    width={100}
+                    height={60}
+                    fontSize={35}
+                />
+            </div>
         </div>
     )
 }
