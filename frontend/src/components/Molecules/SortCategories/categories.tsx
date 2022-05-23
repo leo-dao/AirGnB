@@ -35,6 +35,22 @@ const Categories = (props: Props) => {
             <Menu.Item key="Effects">
                 Effects
             </Menu.Item>
+            <Menu.Item key="Microphones">
+                Microphones
+            </Menu.Item>
+            <Menu.Item key="Wind Instruments">
+                Wind Instruments
+            </Menu.Item>
+            <Menu.Item key="Brass">
+                Brass
+            </Menu.Item>
+            <Menu.Item key="Speakers">
+                Speakers
+            </Menu.Item>
+            <Menu.Item key="Others">
+                Others
+            </Menu.Item>
+
         </Menu>
     )
 };

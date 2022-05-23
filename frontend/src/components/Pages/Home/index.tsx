@@ -17,6 +17,7 @@ const Home = () => {
             <div style={{
                 marginTop: "10%",
                 marginBottom: "10%",
+                height: "100%",
             }}>
                 <Search />
             </div>

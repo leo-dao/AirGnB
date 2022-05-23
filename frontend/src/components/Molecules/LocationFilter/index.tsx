@@ -9,14 +9,15 @@ interface Props {
 
 const LocationFilter = (props: Props) => {
 
-    const locationData = props.data.map(item => {
+    const location = props.data.map(item => {
         return {
-            value: item.name + ", " + item.subcountry + ", " + item.country,
+            value: item.name + ", " + item.country,     // No subcountry for now
         }
     });
 
     return (
-        <div
+        <div //activate the button onClick
+            onClick={() => console.log("hi")}
             style={{
                 display: "flex",
                 flexDirection: "row",
@@ -39,7 +40,8 @@ const LocationFilter = (props: Props) => {
                     cursor: "pointer",
                     fontSize: "18px",
                     height: "2.5em",
-                    width: "100%",
+                    width: "80%",
+
                 }}>
                 <Select
                     style={{
@@ -50,7 +52,7 @@ const LocationFilter = (props: Props) => {
                     }}
                     showSearch
                     bordered={false}
-                    options={locationData}
+                    options={location}
                     allowClear={true}
                     placeholder="Select your city"
                     filterOption={(inputValue, option) =>

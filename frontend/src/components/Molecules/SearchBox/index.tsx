@@ -9,7 +9,6 @@ const SearchBox = (props: Props) => {
     const [Result, setSearchBox] = React.useState("");
 
 
-
     return (
         <div style={{
             display: "flex",
@@ -41,18 +40,19 @@ const SearchBox = (props: Props) => {
                 }}>
             </input>
 
-            <div style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                borderLeft: "1px solid #ccc",
-                paddingLeft: "10px",
-                paddingRight: "10px",
-                fontSize: "20px",
-                fontWeight: "bold",
-                color: "#0A6EDD",
-                width: "40%",
-            }} >
+            <div onClick={() => props.onSearch(Result)}
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderLeft: "1px solid #ccc",
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    color: "#0A6EDD",
+                    width: "40%",
+                }} >
                 <SearchOutlined />
                 search
             </div>

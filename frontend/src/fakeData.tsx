@@ -5,7 +5,7 @@ const userData = [
     avatar: 'https://media.npr.org/assets/img/2020/10/14/gettyimages-593327767_wide-4cd62ef34dcd35fe1f87bcbc0cbf3553a76e260f.jpg?s=1400',
     rating: 5,
     numRatings: 5150,
-    location: "LA",
+    location: "Los Angeles, United States",
   },
   {
     userId: 'rdmUser2',
@@ -13,7 +13,7 @@ const userData = [
     avatar: 'https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png',
     rating: 2.5,
     numRatings: 1,
-    location: 'Paris',
+    location: 'Paris, France',
   },
   {
     userId: 'rdmUser4',
@@ -21,7 +21,7 @@ const userData = [
     avatar: 'https://townsquare.media/site/295/files/2018/12/SRV-Annamaria-DiSanto-Getty-Im.jpg',
     rating: 4.5,
     numRatings: 89,
-    location: 'Texas'
+    location: 'Albuquerque, Texas'
   }
 ];
 
@@ -36,6 +36,7 @@ const adData = [
     ],
     title: 'Kramer with floyd rose',
     description: '80s Kramer, played by Alex Van Halen',
+    category: 'Guitars',
     price: 100,
     user: userData[0]
   },
@@ -49,6 +50,7 @@ const adData = [
     ],
     title: 'EVH amp head',
     description: 'EVH 5150III 50W EL34 Head',
+    category: 'Amplifiers',
     price: 100,
     user: userData[0]
   },
@@ -66,6 +68,7 @@ const adData = [
     ],
     title: 'Ibanez tube screamer',
     description: 'Ibanez tube screamer, can be used as overdrive or distortion',
+    category: 'Effects',
     price: 20,
     user: userData[1],
   },
@@ -79,6 +82,7 @@ const adData = [
     ],
     title: 'Vintage DX7 digitial synthesiser',
     description: 'Vintage DX7 digitial synthesiser',
+    category: 'Keyboards',
     price: 50,
     user: userData[1],
   },
@@ -100,6 +104,7 @@ const adData = [
     ],
     title: 'SRV Fender Stratocaster Texas edition',
     description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo',
+    category: 'Guitars',
     price: 250,
     user: userData[2],
   },
@@ -121,6 +126,7 @@ const adData = [
     ],
     title: 'SRV Fender Stratocaster Texas edition',
     description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo',
+    category: 'Guitars',
     price: 250,
     user: userData[2],
   }
