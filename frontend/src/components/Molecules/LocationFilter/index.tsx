@@ -16,8 +16,7 @@ const LocationFilter = (props: Props) => {
     });
 
     return (
-        <div //activate the button onClick
-            onClick={() => console.log("hi")}
+        <div
             style={{
                 display: "flex",
                 flexDirection: "row",

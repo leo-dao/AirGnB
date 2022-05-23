@@ -2,6 +2,7 @@ import React from "react";
 import SortCategories from "../../Molecules/SortCategories";
 import SearchBox from "../../Molecules/SearchBox";
 import LocationFilter from "../../Molecules/LocationFilter";
+import AdCardList from "../AdCardList";
 import { userData, adData } from "../../../fakeData";
 import axios from "axios";
 
@@ -29,19 +30,7 @@ const Search = () => {
     }
 
     const onSearch = (value: string) => {
-
-        var ads = adData;
-        // Get ads of the same category if a category is selected
-        if (category !== "") {
-            ads = adData.filter(ad => ad.category === category);
-        }
-
-        const filteredLocation = userData.filter(user => user.location === location);
-        // Get ads of the same location
-        const filteredAdsLocation = ads.filter(ad => filteredLocation.some(user => user.location === ad.user.location));
-
-        // TODO: Use REGEX for value?
-        console.log(filteredAdsLocation);
+        window.location.href = "/catalog?category=" + category + "&location=" + location + "&search=" + value;
     }
 
     return (
