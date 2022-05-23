@@ -1,6 +1,5 @@
 import React from "react";
-import { AutoComplete } from "antd";
-import axios from "axios";
+import { Select } from 'antd';
 
 
 interface Props {
@@ -15,12 +14,6 @@ const LocationFilter = (props: Props) => {
             value: item.name + ", " + item.subcountry + ", " + item.country,
         }
     });
-
-    const onEnter = (e: any) => {
-        if (e.keyCode === 13) {
-            // autofill the first item available in the dropdown menu
-        }
-    }
 
     return (
         <div
@@ -44,21 +37,22 @@ const LocationFilter = (props: Props) => {
                     marginLeft: "10px",
                     marginRight: "10px",
                     cursor: "pointer",
-                    textAlign: "center",
                     fontSize: "18px",
                     height: "2.5em",
                     width: "100%",
                 }}>
-                <AutoComplete
+                <Select
                     style={{
                         width: "100%",
                         fontSize: "18px",
                         color: "black",
+                        textAlign: "center",
                     }}
+                    showSearch
                     bordered={false}
                     options={locationData}
+                    allowClear={true}
                     placeholder="Select your city"
-                    onKeyDown={onEnter}
                     filterOption={(inputValue, option) =>
                         option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                     }
