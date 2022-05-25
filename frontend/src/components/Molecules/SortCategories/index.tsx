@@ -5,6 +5,7 @@ import Categories from "./Categories";
 
 interface Props {
     onClick: (value: string) => void;
+    disabled?: boolean;
     category: string;
     color: string;
 }
@@ -21,7 +22,7 @@ const SortCategories = (props: Props) => {
             border: "1px solid #ccc",
             borderRadius: "15px",
             fontSize: "15px",
-            cursor: "pointer",
+            cursor: props.disabled ? "not-allowed" : "pointer",
         }}>
             <div style={{
                 display: "flex",
@@ -29,13 +30,13 @@ const SortCategories = (props: Props) => {
                 justifyContent: "center",
                 marginLeft: "10px",
                 marginRight: "10px",
-                cursor: "pointer",
+                cursor: props.disabled ? "not-allowed" : "pointer",
                 textAlign: "center",
                 fontSize: "18px",
                 color: props.color,
                 height: "2.5em",
             }}>
-                {props.category === "" ? "Sort by" : props.category}
+                {props.category === "" ? "Select category" : props.category}
             </div>
 
             <div style={{
@@ -55,6 +56,7 @@ const SortCategories = (props: Props) => {
 
     return (
         <DropdownMenu
+            disabled={props.disabled}
             button={sortButton}
             menu={<Categories onClick={props.onClick} />}
         />

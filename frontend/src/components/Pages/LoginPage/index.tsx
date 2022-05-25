@@ -21,9 +21,9 @@ const LoginPage = () => {
                 Please
                 <Button
                     text="log into your account"
-                    width={33}
+                    width={35}
                     height={40}
-                    goTo="/signIn" />
+                    goTo="/sign-in" />
                 or
                 <Button
                     text={"create a new one"}

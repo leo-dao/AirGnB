@@ -11,8 +11,9 @@ const Header = () => {
 
     // fetch userId 
     let userId;
-    var account = connected ? `/user/${userId}` : "/loginPage";
+    var account = connected ? `/user/${userId}` : "/login-page";
 
+    var post = connected ? "/post-ad" : "/login-page";
 
     const openChat = () => {
         console.log("Open chat");
@@ -61,7 +62,7 @@ const Header = () => {
 
                 <Button
                     text="Post ad"
-                    goTo='/postAd'
+                    goTo={post}
                     width={100}
                     height={35}
                     fontSize={20}
