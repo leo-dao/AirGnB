@@ -19,14 +19,14 @@ const UserContact = () => {
                 text="Rent"
                 goTo="/rent"
                 width={40}
-                height={40}
+                height={100}
                 fontSize={20}
             />
             <ChatButton
                 text="Message user"
                 width={40}
                 height={40}
-                fontSize={20}
+                fontSize={30}
                 onClick={contactUser} />
         </div>
     )

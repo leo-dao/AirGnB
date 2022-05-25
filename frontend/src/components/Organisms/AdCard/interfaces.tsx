@@ -1,17 +1,15 @@
 import UserProps from "../../Molecules/UserInfo/interfaces";
 
-interface imageProps {
+export interface ImageProps {
     img: string,
     imgId: string,
 }
 
-interface AdCardProps {
+export default interface AdCardProps {
     adId: string;
-    adImages: imageProps[];
+    adImages: ImageProps[];
     title: string;
     description: string;
     user: UserProps;
     price: number;
 };
-
-export default AdCardProps;

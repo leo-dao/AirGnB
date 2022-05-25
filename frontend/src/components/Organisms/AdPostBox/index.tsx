@@ -2,12 +2,12 @@ import React from "react";
 import Button from "../../Atoms/Button";
 
 interface Props {
-    width?: number;
-    height?: number;
-    opacity?: number;
     continue?: () => void;
-    disabled?: boolean;
+    next?: string;
+    prev?: string;
     back?: () => void;
+    disabled?: boolean;
+    opacity?: number;
     title: string;
     selection: React.ReactNode;
 }
@@ -22,17 +22,15 @@ const AdPostBox = (props: Props) => {
             borderRadius: "5px",
             boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.1)",
             alignItems: "center",
-            marginBottom: "3%",
-            width: props.width ? props.width : "60%",
-            height: props.height ? props.height : "100%",
+            width: "60%",
             opacity: props.opacity,
             cursor: props.disabled ? "not-allowed" : "auto",
             transition: "opacity 0.8s ease-in-out"
         }}>
             <div style={{
                 display: "flex",
-                marginTop: "1%",
-                marginBottom: "1%",
+                marginTop: "3%",
+                marginBottom: "3%",
                 fontSize: "1.2rem",
             }}>
                 {props.title}
