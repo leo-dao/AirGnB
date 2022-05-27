@@ -2,21 +2,18 @@ import React from "react";
 import StyledButton from "./Styled";
 
 
-interface Props {
+export interface ButtonProps {
     text?: string,
     component?: React.ReactNode,
-    width?: number,
-    height?: number,
-    fontSize?: number,
     backgroundColor?: string,
     disabled?: boolean,
-    color?: string,
     borderRadius?: number,
     onClick?: () => void,
     goTo?: string,
+    secondary?: boolean,
 }
 
-const Button = (props: Props) => {
+const Button = (props: ButtonProps) => {
 
     var onClick = props.onClick
 
@@ -28,8 +25,8 @@ const Button = (props: Props) => {
 
     if (props.goTo) {
         button = (
-            <StyledButton>
-                <a href={`${props.goTo}`}>
+            <StyledButton secondary={props.secondary}>
+                <a href={`${props.goTo}`} style={{ color: "inherit" }}>
                     {props.text}
                     {props.component}
                 </a>
@@ -37,7 +34,10 @@ const Button = (props: Props) => {
         )
     }
     else {
-        button = <StyledButton onClick={onClick}> {props.text} {props.component}</StyledButton>
+        button =
+            <StyledButton onClick={onClick} secondary={props.secondary}>
+                {props.text} {props.component}
+            </StyledButton>
     }
 
 

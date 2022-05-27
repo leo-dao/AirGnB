@@ -26,9 +26,6 @@ const Error = (props: Props) => {
                 <Button
                     goTo="/"
                     text="Back Home"
-                    width={100}
-                    height={60}
-                    fontSize={35}
                 />
             </div>
         </div>

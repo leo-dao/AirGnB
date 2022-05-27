@@ -42,9 +42,6 @@ const SignIn = () => {
                 marginTop: '30px',
             }}>
                 <Button text={"Sign In"}
-                    width={80}
-                    height={40}
-                    fontSize={20}
                 />
             </div>
         </div>

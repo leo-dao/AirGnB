@@ -63,9 +63,6 @@ const Register = () => {
             }}>
                 <Button
                     text="Create account"
-                    width={80}
-                    height={40}
-                    fontSize={20}
                 />
             </div>
         </div >

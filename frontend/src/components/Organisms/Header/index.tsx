@@ -63,22 +63,14 @@ const Header = () => {
                 <Button
                     text="Post ad"
                     goTo={post}
-                    width={100}
-                    height={35}
-                    fontSize={20}
                 />
                 <div style={{ width: '100px' }} />
                 <ChatButton
                     onClick={openChat}
-                    width={100}
-                    height={35}
-                    fontSize={30}
                 />
                 <div style={{ width: '100px' }} />
                 <UserButton
                     goTo={account}
-                    width={100}
-                    height={35}
                 />
             </div >
         </div >

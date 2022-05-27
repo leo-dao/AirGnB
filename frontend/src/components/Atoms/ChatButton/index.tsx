@@ -4,22 +4,17 @@ import { MessageOutlined } from "@ant-design/icons";
 
 interface Props {
     text?: string,
-    width?: number,
-    height?: number,
-    fontSize?: number,
     onClick: () => void,
 }
 
 const ChatButton = (props: Props) => {
     return (
         <Button
+            secondary
             onClick={props.onClick}
-            backgroundColor="white"
-            color="#0A6EDD"
-            width={props.width}
-            height={props.height}
-            component={< MessageOutlined style={{ fontSize: props.fontSize }
-            } />}
+            component={
+                <MessageOutlined style={{ fontSize: "1.7em" }} />
+            }
         />
     )
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import StyledCardCover from "./Styled";
 
 interface Props {
     image: string
@@ -7,13 +8,7 @@ interface Props {
 const CardCover = (props: Props) => {
 
     return (
-        <img src={props.image} style={{
-            borderTopLeftRadius: '10px',
-            borderTopRightRadius: '10px',
-            objectFit: 'cover',
-            height: "180px",
-            width: "250px",
-        }}></img>
+        <StyledCardCover src={props.image} />
     )
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import StyledPrice from "./Styled";
 
 interface Props {
     price: number;
@@ -7,17 +8,9 @@ interface Props {
 
 const Price = (props: Props) => {
     return (
-        <div style={{
-            backgroundColor: "#9729A8",
-            fontSize: "14px",
-            fontWeight: "bold",
-            borderRadius: "5px",
-            color: "white",
-            padding: "5px",
-            width: `${props.width}px`,
-        }}>
-            {props.price} $ a week
-        </div>
+        <StyledPrice >
+            <b>{props.price}$</b>/week
+        </StyledPrice>
     )
 }
 export default Price;

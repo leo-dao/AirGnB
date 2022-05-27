@@ -50,15 +50,12 @@ const AdPostBox = (props: Props) => {
                 <Button
                     text="Back"
                     disabled={props.disabled}
-                    fontSize={20}
                     backgroundColor="white"
-                    color="#0A6EDD"
                     onClick={props.back}
                 />
                 <Button
                     text="Continue"
                     disabled={props.disabled}
-                    fontSize={20}
                     onClick={props.continue}
                 />
             </div>
