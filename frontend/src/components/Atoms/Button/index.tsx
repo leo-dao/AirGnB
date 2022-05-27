@@ -1,4 +1,6 @@
 import React from "react";
+import StyledButton from "./Styled";
+
 
 interface Props {
     text?: string,
@@ -22,34 +24,26 @@ const Button = (props: Props) => {
         onClick = () => { }
     }
 
-    const style = {
-        borderRadius: props.borderRadius ? props.borderRadius : "10px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        boxShadow: "0px 0px 1px black",
-        cursor: props.disabled ? "not-allowed" : "pointer",
-        width: props.width ? `${props.width}%` : "5em",
-        height: props.height ? `${props.width}%` : "1.7em",
-        fontSize: props.fontSize,
-        border: "0.8px solid #0A6EDD",
-        backgroundColor: props.backgroundColor ? props.backgroundColor : '#0A6EDD',
-        color: props.color ? props.color : 'white',
-    }
-
     let button;
 
     if (props.goTo) {
         button = (
-            <a href={`${props.goTo}`} style={style}>{props.text} {props.component}</a>
+            <StyledButton>
+                <a href={`${props.goTo}`}>
+                    {props.text}
+                    {props.component}
+                </a>
+            </StyledButton>
         )
     }
     else {
-        button = <div style={style} onClick={onClick}> {props.text} {props.component}</div>
+        button = <StyledButton onClick={onClick}> {props.text} {props.component}</StyledButton>
     }
 
 
-    return (button);
+    return (
+        button
+    )
 }
 
 export default Button;

@@ -10,11 +10,11 @@ interface Props {
 
 const AvatarLink = (props: Props) => {
 
-    const size = props.size ? props.size : 40;
+    const size = props.size ? props.size : 50;
 
     return (
         <Link to={`/profile/${props.userId}`}>
-            <Avatar size={props.size} src={props.avatar} />
+            <Avatar size={size} src={props.avatar} />
         </Link>
     )
 }
