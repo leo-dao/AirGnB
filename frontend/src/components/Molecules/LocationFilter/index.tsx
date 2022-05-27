@@ -1,5 +1,6 @@
 import React from "react";
 import { Select } from 'antd';
+import { Container, SelectContainer, LocationLogoContainer } from './Styled';
 
 
 interface Props {
@@ -16,32 +17,8 @@ const LocationFilter = (props: Props) => {
     });
 
     return (
-        <div
-            style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#FAFAFA",
-                border: "1px solid #ccc",
-                borderRadius: "15px",
-                fontSize: "15px",
-                cursor: "pointer",
-                width: "400px"
-            }}>
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginLeft: "10px",
-                    marginRight: "10px",
-                    cursor: "pointer",
-                    fontSize: "18px",
-                    height: "2.5em",
-                    width: "80%",
-
-                }}>
+        <Container >
+            <SelectContainer>
                 <Select
                     style={{
                         width: "100%",
@@ -61,28 +38,15 @@ const LocationFilter = (props: Props) => {
                         border: "none",
                         boxShadow: "0px 0px 10px #8D8D8D",
                         borderRadius: "10px",
-                        width: "100%",
                     }}
                     onSelect={props.onSelect}
                 />
-            </div>
+            </SelectContainer>
 
-            <div style={{
-                borderLeft: "1px solid #ccc",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "22px",
-                paddingLeft: "10px",
-                paddingRight: "10px",
-            }}>
-                <img src="http://cdn.onlinewebfonts.com/svg/img_527461.png"
-                    width={23}
-                    height={30}
-                >
-                </img>
-            </div>
-        </div>
+            <LocationLogoContainer>
+                <img src="http://cdn.onlinewebfonts.com/svg/img_527461.png" />
+            </LocationLogoContainer>
+        </Container>
     )
 }
 export default LocationFilter;

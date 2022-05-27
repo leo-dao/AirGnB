@@ -12,15 +12,14 @@ const StyledButton = styled.button`
     min-width: 6em;
     height: 2.5em;
     border-radius: 5px;
-    padding: 5px 10px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
     border: 1px solid #0A6EDD;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-        transform: translateY(-3px) scale(1.05);
+        transform: translateY(-1px) scale(1.03);
     }
 
     &:disabled {

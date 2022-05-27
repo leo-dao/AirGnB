@@ -1,6 +1,5 @@
 import React from "react";
 import { Result } from 'antd';
-import { Routes, Route, Link } from "react-router-dom";
 import Button from "../../Atoms/Button";
 
 interface Props {

@@ -25,12 +25,12 @@ const Button = (props: ButtonProps) => {
 
     if (props.goTo) {
         button = (
-            <StyledButton secondary={props.secondary}>
-                <a href={`${props.goTo}`} style={{ color: "inherit" }}>
+            <a href={`${props.goTo}`}>
+                <StyledButton secondary={props.secondary}>
                     {props.text}
                     {props.component}
-                </a>
-            </StyledButton>
+                </StyledButton>
+            </a>
         )
     }
     else {

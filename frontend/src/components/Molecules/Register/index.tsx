@@ -1,6 +1,6 @@
 import React from "react";
-import { Input } from 'antd';
 import Button from "../../Atoms/Button";
+import Input from "../../Atoms/Input";
 
 const Register = () => {
     return (
@@ -25,7 +25,7 @@ const Register = () => {
                 padding: '10px',
                 margin: 'auto',
             }}>
-                <Input size="large" placeholder="Name" />
+                <Input placeholder="Name" />
             </div>
 
             <div style={{
@@ -33,17 +33,7 @@ const Register = () => {
                 padding: '10px',
                 margin: 'auto',
             }}>
-                <Input size="large" placeholder="Email" />
-            </div>
-
-            <div style={{
-                width: '80%',
-                padding: '10px',
-                margin: 'auto',
-            }}>
-
-                <Input.Password size="large" placeholder="Password" />
-
+                <Input placeholder="Email" />
             </div>
 
             <div style={{
@@ -52,7 +42,17 @@ const Register = () => {
                 margin: 'auto',
             }}>
 
-                <Input.Password size="large" placeholder="Confim password" />
+                <Input placeholder="Password" />
+
+            </div>
+
+            <div style={{
+                width: '80%',
+                padding: '10px',
+                margin: 'auto',
+            }}>
+
+                <Input placeholder="Confim password" />
 
             </div>
 
