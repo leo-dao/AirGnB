@@ -14,10 +14,3 @@ export const TopContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
-export const NameLocationStyled = styled.div.attrs((props: UserInfoProps) => props)`
-    margin-left: 1em;
-    text-align: center;
-    // if type is card, then the font size is smaller
-    font-size: ${(props: UserInfoProps) => props.type === 'card' ? '0.7em' : '1em'};
-`;

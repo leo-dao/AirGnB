@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import User from "../../Molecules/UserInfoCard/interfaces";
-import UserInfo from "../../Molecules/UserInfoCard"
+import User from "../../Molecules/UserInfo/interfaces";
+import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
@@ -46,8 +46,6 @@ const UserProfile = (props: UserProfileProps) => {
                     location={currentUser.location}
                     rating={currentUser.rating}
                     numRatings={currentUser.numRatings}
-                    fontSize={20}
-                    avatarSize={100}
                 />
             </div>
             <div style={{
