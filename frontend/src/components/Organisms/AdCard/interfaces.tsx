@@ -1,4 +1,4 @@
-import UserProps from "../../Molecules/UserInfo/interfaces";
+import UserProps from "../../Molecules/UserInfoCard/interfaces";
 
 export interface ImageProps {
     img: string,

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
 import Error from "../../Molecules/Error/index";
 import AdPhotos from "../../Organisms/AdPhotos";
-import UserInfo from "../../Molecules/UserInfo/index";
+import UserInfo from "../../Molecules/UserInfoCard/index";
 import UserContact from "../../Organisms/UserContact/index";
 import Price from "../../Atoms/Price/index";
 

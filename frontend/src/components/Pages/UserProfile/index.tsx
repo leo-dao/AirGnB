@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import User from "../../Molecules/UserInfo/interfaces";
-import UserInfo from "../../Molecules/UserInfo"
+import User from "../../Molecules/UserInfoCard/interfaces";
+import UserInfo from "../../Molecules/UserInfoCard"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
