@@ -1,14 +1,15 @@
 import React from "react";
 import StyledPrice from "./Styled";
 
-interface Props {
-    price: number;
+export interface PriceProps {
+    price?: number;
     width?: number;
+    type?: string;
 }
 
-const Price = (props: Props) => {
+const Price = (props: PriceProps) => {
     return (
-        <StyledPrice >
+        <StyledPrice type={props.type}>
             <b>{props.price}$</b>/week
         </StyledPrice>
     )

@@ -41,7 +41,7 @@ const AdCard = (props: AdCardProps) => {
                     }}>
                         {title}
                     </div>
-                    <Price price={props.price} />
+                    <Price price={props.price} type={"card"} />
                     <div style={{
                         display: 'flex',
                         flexDirection: 'row',

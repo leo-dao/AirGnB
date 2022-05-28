@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { PriceProps } from ".";
 
-export const StyledPrice = styled.span`
-    font-size: 1em;
+export const StyledPrice = styled.div`
     color: white;
     background-color: #7609F2;
     border-radius: 5px;
-    padding: 5px 10px;
     width: 35%;
     text-align: center;
+    padding: ${(props: PriceProps) => (props.type === "card" ? "5px" : "10px")};
+    font-size: ${(props: PriceProps) => props.type === "card" ? "13px" : "20px"};
 `;
 
 export default StyledPrice;
