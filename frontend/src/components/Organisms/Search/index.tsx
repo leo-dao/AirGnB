@@ -45,7 +45,6 @@ const Search = () => {
             <LocationFilter
                 data={data}
                 onSelect={onSelect} />
-            {/* <div style={{ marginLeft: "10%" }} /> */}
             <SearchBox onSearch={onSearch} />
         </div>
     )

@@ -1,7 +1,6 @@
 import React from "react";
 import { Select } from 'antd';
-import { Container, SelectContainer, LocationLogoContainer } from './Styled';
-
+import FilterInput from "../../Atoms/FilterInput/index";
 
 interface Props {
     data: any[];
@@ -17,8 +16,9 @@ const LocationFilter = (props: Props) => {
     });
 
     return (
-        <Container >
-            <SelectContainer>
+
+        <FilterInput
+            content={
                 <Select
                     style={{
                         width: "100%",
@@ -41,12 +41,47 @@ const LocationFilter = (props: Props) => {
                     }}
                     onSelect={props.onSelect}
                 />
-            </SelectContainer>
-
-            <LocationLogoContainer>
-                <img src="http://cdn.onlinewebfonts.com/svg/img_527461.png" />
-            </LocationLogoContainer>
-        </Container>
+            }
+            logo={
+                <img
+                    src="http://cdn.onlinewebfonts.com/svg/img_527461.png"
+                    width={23}
+                    height={30}
+                />
+            }
+        />
     )
+
+
+    /*        <Container >
+               <SelectContainer>
+                   <Select
+                       style={{
+                           width: "100%",
+                           fontSize: "18px",
+                           color: "black",
+                           textAlign: "center",
+                       }}
+                       showSearch
+                       bordered={false}
+                       options={location}
+                       allowClear={true}
+                       placeholder="Select your city"
+                       filterOption={(inputValue, option) =>
+                           option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                       }
+                       dropdownStyle={{
+                           border: "none",
+                           boxShadow: "0px 0px 10px #8D8D8D",
+                           borderRadius: "10px",
+                       }}
+                       onSelect={props.onSelect}
+                   />
+               </SelectContainer>
+   
+               <LocationLogoContainer>
+                   <img src="http://cdn.onlinewebfonts.com/svg/img_527461.png" />
+               </LocationLogoContainer>
+           </Container> */
 }
 export default LocationFilter;
