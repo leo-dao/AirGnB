@@ -1,79 +1,55 @@
 import React from 'react';
-import { PageHeader, } from 'antd';
 import { Link } from 'react-router-dom';
-import ChatButton from '../../Atoms/ChatButton';
-import UserButton from '../../Atoms/UserButton';
-import Button from '../../Atoms/Button';
+import HeaderButtons from '../../Molecules/HeaderButtons';
+import styled from 'styled-components';
+
+const StyledHeader = styled.div`
+    background-color: #fff;
+    margin-bottom: 5%;
+    z-index: 1;
+    position: sticky;
+    display: flex;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5em;
+    width: 100%;
+`
+
+const TitleStyled = styled.div`
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 10%;
+`
+
+const SubtitleStyled = styled.div`
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: 1rem;
+    `
+
+const ButtonStyled = styled.div`
+    position: absolute;
+    right: 10%;
+`
 
 const Header = () => {
 
-    var connected = false;
-
-    // fetch userId 
-    let userId;
-    var account = connected ? `/user/${userId}` : "/login-page";
-
-    var post = connected ? "/post-ad" : "/login-page";
-
-    const openChat = () => {
-        console.log("Open chat");
-    }
-
     return (
-        <div style={{
-            backgroundColor: '#fff',
-            marginBottom: '5%',
-            height: '20%',
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            position: "sticky",
-            top: "0",
-            zIndex: "1",
-            boxShadow: "0px 0px 9px 5px rgba(0,0,0,0.2)",
-        }}>
-
-            <div style={{
-                fontSize: "45px",
-                fontWeight: "bold",
-                marginLeft: "15%",
-
-            }}>
+        <StyledHeader>
+            <TitleStyled>
                 <Link to="/"> AirGnB </Link>
-            </div>
+            </TitleStyled>
 
-            <div
-                style={{
-                    fontSize: "17px",
-                    marginLeft: "2%",
-                    fontStyle: "italic",
-                }} >
+            <SubtitleStyled>
                 Music rental made easy
-            </div>
+            </SubtitleStyled>
 
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                width: '30%',
-                justifyContent: 'space-evenly',
-                marginLeft: '20%',
-            }}>
-
-                <Button
-                    text="Post ad"
-                    goTo={post}
-                />
-                <div style={{ width: '100px' }} />
-                <ChatButton
-                    onClick={openChat}
-                />
-                <div style={{ width: '100px' }} />
-                <UserButton
-                    goTo={account}
-                />
-            </div >
-        </div >
+            <ButtonStyled>
+                <HeaderButtons />
+            </ButtonStyled>
+        </StyledHeader >
     )
 }
 export default Header;
