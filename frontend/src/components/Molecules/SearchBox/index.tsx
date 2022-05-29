@@ -1,18 +1,38 @@
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import FilterInput from "../../Atoms/FilterInput/index";
+import styled from "styled-components";
 
-interface Props {
+const StyledInput = styled.input`
+    border: none;
+    outline: none;
+    background-color: transparent;
+    :: placeholder {
+        color: grey;
+    }
+    `;
+
+const SearchStyle = styled.div`
+    color: black;
+    font-size: 28px;
+    transition: all 0.2s ease-in-out;
+    :hover {
+        color: #1890ff;
+    }
+`
+
+export interface SearchBoxProps {
     onSearch: (value: string) => void;
 }
 
-const SearchBox = (props: Props) => {
+const SearchBox = (props: SearchBoxProps) => {
     const [Result, setSearchBox] = React.useState("");
 
     return (
         <FilterInput
+            width="500px"
             content={
-                <input
+                <StyledInput
                     type="text"
                     placeholder="What are you searching for?"
                     onChange={(e) => setSearchBox(e.target.value)}
@@ -21,23 +41,13 @@ const SearchBox = (props: Props) => {
                             props.onSearch(Result);
                         }
                     }}
-                    style={{
-                        border: "none",
-                        outline: "none",
-                        backgroundColor: "transparent",
-                        textAlign: "center",
-                        fontSize: "18px",
-                        color: "#8D8D8D",
-                        width: "100%",
-                    }}>
-                </input>
+                >
+                </StyledInput>
             }
             logo={
-                <div onClick={() => props.onSearch(Result)}>
+                <SearchStyle onClick={() => props.onSearch(Result)}>
                     <SearchOutlined />
-                    &nbsp;
-                    Search
-                </div>
+                </SearchStyle>
             }
         />
     )

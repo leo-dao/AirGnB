@@ -14,7 +14,7 @@ const Search = () => {
         SetCategory(e.key);
     }
     let color;
-    category === "" ? (color = "#8D8D8D") : (color = "black");
+    category === "" ? (color = "grey") : (color = "black");
 
     // LOCATION DATA
     const [data, setData] = React.useState<any[]>([]);

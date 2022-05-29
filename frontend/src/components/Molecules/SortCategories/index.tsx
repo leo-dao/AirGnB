@@ -1,65 +1,57 @@
 import React from "react";
-import { MenuFoldOutlined, PropertySafetyFilled } from "@ant-design/icons";
+import { MenuFoldOutlined } from "@ant-design/icons";
 import DropdownMenu from "../DropdownMenu";
 import Categories from "./Categories";
+import FilterInput from "../../Atoms/FilterInput";
+import styled from "styled-components";
 
-interface Props {
+export const StyledSortButton = styled.div`
+    background-color: transparent;
+`;
+
+export const StyledCategory = styled.div.attrs((props: SortCategoriesProps) => props)`
+    justify-content: center;
+    color: ${(props) => props.color};
+`;
+
+export const MenuFoldOutlinedStyled = styled.div`
+    font-size: 28px;
+    color: black;
+`;
+
+interface SortCategoriesProps {
     onClick: (value: string) => void;
     disabled?: boolean;
     category: string;
     color: string;
 }
 
-const SortCategories = (props: Props) => {
+const SortCategories = (props: SortCategoriesProps) => {
 
     const sortButton = (
-        <div style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#FAFAFA",
-            border: "1px solid #ccc",
-            borderRadius: "15px",
-            fontSize: "15px",
-            cursor: props.disabled ? "not-allowed" : "pointer",
-        }}>
-            <div style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "10px",
-                marginRight: "10px",
-                cursor: props.disabled ? "not-allowed" : "pointer",
-                textAlign: "center",
-                fontSize: "18px",
-                color: props.color,
-                height: "2.5em",
-            }}>
-                {props.category === "" ? "Select category" : props.category}
-            </div>
-
-            <div style={{
-                borderLeft: "1px solid #ccc",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                paddingLeft: "10px",
-                paddingRight: "10px",
-                fontSize: "22px",
-                color: "black"
-            }}>
-                <MenuFoldOutlined />
-            </div>
-        </div >
-    )
+        <FilterInput
+            width="280px"
+            content={
+                <StyledCategory>
+                    {props.category === "" ? "Select category" : props.category}
+                </StyledCategory>
+            }
+            logo={
+                <MenuFoldOutlinedStyled >
+                    <MenuFoldOutlined />
+                </MenuFoldOutlinedStyled>
+            }
+        />
+    );
 
     return (
-        <DropdownMenu
-            disabled={props.disabled}
-            button={sortButton}
-            menu={<Categories onClick={props.onClick} />}
-        />
+        <StyledSortButton>
+            <DropdownMenu
+                disabled={props.disabled}
+                button={sortButton}
+                menu={<Categories onClick={props.onClick} />}
+            />
+        </StyledSortButton>
     )
 }
 export default SortCategories;
