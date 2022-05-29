@@ -2,9 +2,23 @@ import React from "react";
 import UserProps from "../UserInfo/interfaces";
 import AvatarLink from "../../Atoms/AvatarLink";
 import UserInfo from "../UserInfo";
-import { Container, TopContainer } from "./Styled";
+import styled from 'styled-components';
 
-export interface UserInfoProps extends UserProps {
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const TopContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+interface UserInfoProps extends UserProps {
     fontSize?: number;
     avatarSize?: number;
     type?: string;

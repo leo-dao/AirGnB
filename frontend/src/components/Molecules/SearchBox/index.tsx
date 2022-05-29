@@ -21,7 +21,7 @@ const SearchStyle = styled.div`
     }
 `
 
-export interface SearchBoxProps {
+interface SearchBoxProps {
     onSearch: (value: string) => void;
 }
 
