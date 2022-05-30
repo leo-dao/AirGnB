@@ -57,8 +57,8 @@ const UserProfile = (props: UserProfileProps) => {
                 <h1> {numAds} available {ad}</h1>
             </div>
             <div style={{
-                width: "80%",
                 marginTop: "30px",
+                display: 'flex',
             }}>
                 <AdCardList
                     inputType="user"

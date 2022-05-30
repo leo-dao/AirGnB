@@ -71,7 +71,6 @@ const AdProfile = (props: Props) => {
                         alignItems: 'center',
                         marginTop: '30px',
                         borderTop: '1px dotted black',
-
                     }}>
 
                         <UserInfo

@@ -3,6 +3,29 @@ import AdCard from "../../Organisms/AdCard";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
 import { userData, adData } from "../../../fakeData";
 import { List } from 'antd';
+import styled from "styled-components";
+
+const SearchResultStyled = styled.h1`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+`;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+`
+
+const StyledList = styled(List)`
+    width: 100%;
+    .ant-list-item {
+        transition: all 0.3s ease-in-out;
+        :hover {
+            // raise
+            transform: translateY(-5px);
+    }
+`;
 
 interface Props {
     data: AdCardProps[],
@@ -41,13 +64,9 @@ const AdCardList = (props: Props) => {
 
     if (ads.length === 0 && props.inputType !== "user") {
         return (
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-            }}>
-                <h1> Your search for: {searchResult} came back unsuccessful </h1>
-            </div>
+            <SearchResultStyled>
+                Your search for: {searchResult} came back unsuccessful
+            </SearchResultStyled>
         )
     }
 
@@ -64,42 +83,31 @@ const AdCardList = (props: Props) => {
     }
 
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-        }}>
-            <h1>{searchResult}</h1>
-            <div style={{
-                margin: "auto",
-            }}>
-                <List
-                    grid={{
-                        gutter: 20,
-                        xs: 1,
-                        sm: 2,
-                        md: 3,
-                        lg: 4,
-                        xl: 5,
-                        xxl: 6,
-                    }}
-                    dataSource={ads}
-                    renderItem={(item =>
-                        <List.Item >
-                            <div>
-                                <AdCard
-                                    adId={item.adId}
-                                    adImages={item.adImages}
-                                    title={item.title}
-                                    description={item.description}
-                                    user={item.user}
-                                    price={item.price}
-                                />
-                            </div>
-                        </List.Item>)}
-                />
-            </div>
-        </div>
+        <Container>
+            <SearchResultStyled>{searchResult}</SearchResultStyled>
+            <StyledList
+                grid={{
+                    xs: 1,
+                    sm: 2,
+                    md: 3,
+                    lg: 4,
+                    xl: 5,
+                    xxl: 6,
+                }}
+                dataSource={ads}
+                renderItem={((item: any) =>
+                    <List.Item >
+                        <AdCard
+                            adId={item.adId}
+                            adImages={item.adImages}
+                            title={item.title}
+                            description={item.description}
+                            user={item.user}
+                            price={item.price}
+                        />
+                    </List.Item>)}
+            />
+        </Container>
     )
 }
 
