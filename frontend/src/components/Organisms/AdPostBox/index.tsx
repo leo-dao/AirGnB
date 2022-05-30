@@ -1,7 +1,36 @@
 import React from "react";
 import Button from "../../Atoms/Button";
+import styled from "styled-components";
 
-interface Props {
+const Container = styled.div.attrs((props: PostAdProps) => (props))`
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1);
+    align-items: center;
+    width: 60%;
+    opacity: ${(props) => props.opacity};
+    cursor: ${(props) => props.disabled ? "not-allowed" : "auto"};
+    transition: opacity 0.8s ease-in-out;
+`
+
+const TitleStyled = styled.div`
+    font-size: 1.2rem;
+    margin-top: 3%;
+    margin-bottom: 3%;
+`
+
+const ButtonContainer = styled.div`
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+`
+
+interface PostAdProps {
     continue?: () => void;
     next?: string;
     prev?: string;
@@ -12,41 +41,17 @@ interface Props {
     selection: React.ReactNode;
 }
 
-const AdPostBox = (props: Props) => {
+const AdPostBox = (props: PostAdProps) => {
 
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "white",
-            borderRadius: "5px",
-            boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.1)",
-            alignItems: "center",
-            width: "60%",
-            opacity: props.opacity,
-            cursor: props.disabled ? "not-allowed" : "auto",
-            transition: "opacity 0.8s ease-in-out"
-        }}>
-            <div style={{
-                display: "flex",
-                marginTop: "3%",
-                marginBottom: "3%",
-                fontSize: "1.2rem",
-            }}>
+        <Container opacity={props.opacity} disabled={props.disabled}>
+            <TitleStyled>
                 {props.title}
-            </div>
-            <div style={{
-            }}>
+            </TitleStyled>
+            <div>
                 {props.selection}
             </div>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-                width: "100%",
-                marginTop: "2%",
-                marginBottom: "2%",
-            }}>
+            <ButtonContainer>
                 <Button
                     text="Back"
                     disabled={props.disabled}
@@ -58,9 +63,8 @@ const AdPostBox = (props: Props) => {
                     disabled={props.disabled}
                     onClick={props.continue}
                 />
-            </div>
-
-        </div>
+            </ButtonContainer>
+        </Container>
     )
 }
 

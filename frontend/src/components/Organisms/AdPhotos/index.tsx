@@ -1,6 +1,41 @@
 import React, { useState } from "react";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
 import AdPhotoBg from "../../Molecules/AdPhotoBg";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const MainPhotoStyled = styled.img`
+    max-width: 800px;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+`;
+
+const SubImagesStyled = styled.div`
+    display: flex;
+    width: 800px;
+    height: 120px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px 0px black;
+`;
+
+const SubImageStyled = styled.img`
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+`;
 
 const AdPhotos = (props: AdCardProps) => {
 
@@ -20,43 +55,16 @@ const AdPhotos = (props: AdCardProps) => {
     }
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-        }}>
-
+        <Container>
             <AdPhotoBg left={goLeft} right={goRight} image=
-                {<img src={image} style={{
-                    maxWidth: '800px',
-                    maxHeight: '500px',
-                    objectFit: 'cover',
-                    borderRadius: '10px',
-                }} />} />
-            <div style={{
-                width: '800px',
-                height: '120px',
-                backgroundColor: 'white',
-                borderRadius: '10px',
-                boxShadow: '0px 0px 1px black',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                marginTop: '30px',
-            }}>
+                {<MainPhotoStyled src={image} />} />
+            <SubImagesStyled>
                 {props.adImages.map(image => {
-                    return <img src={image.img} style={{
-                        width: '120px',
-                        height: '120px',
-                        objectFit: 'cover',
-                        cursor: 'pointer',
-                        borderRadius: '10px',
-                    }}
+                    return <SubImageStyled src={image.img}
                         onClick={() => { setImage(image.img); }} />
                 })}
-            </div>
-        </div>
+            </SubImagesStyled>
+        </Container>
     )
 }
 export default AdPhotos;

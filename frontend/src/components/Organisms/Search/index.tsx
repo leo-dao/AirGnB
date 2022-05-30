@@ -5,6 +5,17 @@ import LocationFilter from "../../Molecules/LocationFilter";
 import AdCardList from "../AdCardList";
 import { userData, adData } from "../../../fakeData";
 import axios from "axios";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1000px) {
+        flex-direction: column;
+    }
+`
 
 const Search = () => {
 
@@ -34,10 +45,7 @@ const Search = () => {
     }
 
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "row",
-        }}>
+        <Container>
             <SortCategories
                 onClick={onClick}
                 color={color}
@@ -46,7 +54,7 @@ const Search = () => {
                 data={data}
                 onSelect={onSelect} />
             <SearchBox onSearch={onSearch} />
-        </div>
+        </Container>
     )
 }
 export default Search;

@@ -32,7 +32,7 @@ const SearchBox = (props: SearchBoxProps) => {
 
     return (
         <FilterInput
-            width="500px"
+            width="400px"
             content={
                 <StyledInput
                     type="text"

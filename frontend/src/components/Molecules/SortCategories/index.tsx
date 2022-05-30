@@ -30,7 +30,7 @@ const SortCategories = (props: SortCategoriesProps) => {
 
     const sortButton = (
         <FilterInput
-            width="280px"
+            width="210px"
             content={
                 <StyledCategory>
                     {props.category === "" ? "Select category" : props.category}

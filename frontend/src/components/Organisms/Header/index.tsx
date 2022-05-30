@@ -27,11 +27,17 @@ const SubtitleStyled = styled.div`
     font-style: italic;
     font-size: 1rem;
     margin-left: 1rem;
+    @media (max-width: 1000px) {
+        display: none;
+    }
     `
 
 const ButtonStyled = styled.div`
     position: absolute;
     right: 10%;
+    @media (max-width: 750px) {
+        display: none;
+    }
 `
 
 const Header = () => {
