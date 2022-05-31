@@ -7,9 +7,9 @@ import { Row } from "antd";
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
     margin-top: 3%;
+    width: 80%;
     `;
 
 
@@ -26,7 +26,6 @@ const UserContact = () => {
                 goTo="/rent"
             />
             <ChatButton
-                text="Message user"
                 onClick={contactUser} />
         </Container>
     )

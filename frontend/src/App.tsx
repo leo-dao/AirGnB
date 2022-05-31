@@ -18,9 +18,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/catalog" element={<Catalog data={adData} />} />
+        <Route path="/listings" element={<Catalog data={adData} />} />
         <Route path="/profile/:userId" element={<UserProfile data={userData} ads={adData} />} />
-        <Route path="/catalog/:adId" element={<AdProfile data={adData} />} />
+        <Route path="/listings/:adId" element={<AdProfile data={adData} />} />
         <Route path="/post-ad" element={<PostAd />} />
         <Route path="/login-page" element={<LoginPage />} />
         <Route path="/sign-in" element={<SignIn />} />

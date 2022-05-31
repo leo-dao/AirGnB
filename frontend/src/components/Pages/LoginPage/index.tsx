@@ -1,35 +1,21 @@
 import React from "react";
 import Button from "../../Atoms/Button";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
 
 const LoginPage = () => {
 
-
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            fontSize: "200%",
-        }}>
+        <Container>
             <h1>Welcome to AirGnB</h1>
-            <div style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: "60%",
-            }}>
-                Please
-                <Button
-                    text="log into your account"
-                    goTo="/sign-in" />
-                or
-                <Button
-                    text={"create a new one"}
-                    goTo="/register"
-                />
-                to continue
-            </div>
-        </div>
+
+        </Container>
     )
 }
 

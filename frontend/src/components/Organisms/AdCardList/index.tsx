@@ -24,8 +24,9 @@ const StyledList = styled(List)`
         :hover {
             // raise
             transform: translateY(-5px);
+        }
     }
-`;
+`
 
 interface Props {
     data: AdCardProps[],

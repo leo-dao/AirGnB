@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.div`
     background-color: #fff;
-    margin-bottom: 5%;
     z-index: 1;
     position: sticky;
     display: flex;
@@ -15,6 +14,7 @@ const StyledHeader = styled.div`
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 0.5em;
     width: 100%;
+
 `
 
 const TitleStyled = styled.div`

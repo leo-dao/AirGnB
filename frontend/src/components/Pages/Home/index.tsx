@@ -1,27 +1,21 @@
 import React from "react";
-import CarouselComponent from "../../Molecules/Carousel";
 import Search from "../../Organisms/Search";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    `;
 
 const Home = () => {
     return (
-        <div style={{
-            marginTop: "50px",
-            marginBottom: "50px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-between",
-            fontSize: "20px",
-        }}>
+        <Container>
             <h1>Lend or borrow musical instruments</h1>
-            <div style={{
-                marginTop: "10%",
-                marginBottom: "10%",
-                height: "100%",
-            }}>
-                <Search />
-            </div>
-        </div >
+            <Search />
+        </Container >
     )
 };
 

@@ -2,6 +2,13 @@ import React from "react";
 import AdCardList from "../../Organisms/AdCardList";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
 import Search from "../../Organisms/Search";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    `;
 
 interface Props {
     data: AdCardProps[],
@@ -10,24 +17,12 @@ interface Props {
 const Catalog = (props: Props) => {
 
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-        }}>
-            <h1>Rent from local musicians</h1>
-            <div style={{
-                marginTop: "3%",
-                marginBottom: "6%"
-            }}>
-                <Search />
-            </div>
-            <div >
-                <AdCardList
-                    inputType="search"
-                    data={props.data} />
-            </div>
-        </div>
+        <Container>
+            <Search />
+            <AdCardList
+                inputType="search"
+                data={props.data} />
+        </Container>
     )
 }
 

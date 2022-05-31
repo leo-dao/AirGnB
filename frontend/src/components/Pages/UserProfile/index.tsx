@@ -5,6 +5,24 @@ import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    `
+
+const InfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px black;
+    background-color: white;
+`
 
 interface UserProfileProps {
     data: User[];
@@ -26,19 +44,8 @@ const UserProfile = (props: UserProfileProps) => {
     const ad = numAds === 1 ? "ad" : "ads";
 
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-        }}>
-            <div style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "70%",
-                borderRadius: "10px",
-                boxShadow: "0px 0px 1px black",
-                backgroundColor: "white"
-            }}>
+        <Container>
+            <InfoContainer>
                 <UserInfo
                     name={currentUser.name}
                     avatar={currentUser.avatar}
@@ -47,24 +54,12 @@ const UserProfile = (props: UserProfileProps) => {
                     rating={currentUser.rating}
                     numRatings={currentUser.numRatings}
                 />
-            </div>
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginTop: "50px",
-            }}>
-                <h1> {numAds} available {ad}</h1>
-            </div>
-            <div style={{
-                marginTop: "30px",
-                display: 'flex',
-            }}>
-                <AdCardList
-                    inputType="user"
-                    data={userAds} />
-            </div>
-        </div >
+            </InfoContainer>
+            <h1> {numAds} available {ad}</h1>
+            <AdCardList
+                inputType="user"
+                data={userAds} />
+        </Container >
 
     )
 }

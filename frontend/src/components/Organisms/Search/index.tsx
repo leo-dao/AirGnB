@@ -41,7 +41,7 @@ const Search = () => {
     }
 
     const onSearch = (value: string) => {
-        window.location.href = "/catalog?category=" + category + "&location=" + location + "&search=" + value;
+        window.location.href = "/listings?category=" + category + "&location=" + location + "&search=" + value;
     }
 
     return (

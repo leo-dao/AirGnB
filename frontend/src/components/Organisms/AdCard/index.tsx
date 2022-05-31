@@ -38,7 +38,7 @@ const AdCard = (props: AdCardProps) => {
     const title = titleLen > 30 ? props.title.substring(0, 30) + '...' : props.title;
 
     return (
-        <Link to={`/catalog/${props.adId}`} target="_blank">
+        <Link to={`/listings/${props.adId}`} target="_blank">
             <CardWrapper>
                 <CardCover image={props.adImages[0].img} />
                 <CardTitle>
