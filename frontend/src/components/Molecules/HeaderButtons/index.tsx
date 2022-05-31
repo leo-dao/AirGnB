@@ -19,9 +19,9 @@ const HeaderButtons = () => {
 
     // fetch userId 
     let userId;
-    var account = connected ? `/user/${userId}` : "/login-page";
+    var account = connected ? `/user/${userId}` : "/sign-in";
 
-    var post = connected ? "/post-ad" : "/login-page";
+    var post = connected ? "/post-ad" : "/sign-in";
 
     const openChat = () => {
         console.log("Open chat");

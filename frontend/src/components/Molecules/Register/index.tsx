@@ -2,8 +2,10 @@ import React from "react";
 import Input from "../../Atoms/Input";
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
+import Login from "../Login";
+import { useNavigate } from "react-router-dom";
 
-const Container = styled.div`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,21 +23,32 @@ const ButtonContainer = styled.div`
 
 const Register = () => {
 
-    const createAccount = () => {
+    const navigate = useNavigate();
+
+    const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
         console.log("Account created");
+        e.preventDefault();
+        navigate('/')
     }
 
-    return (
-        <Container>
+    const register = (
+        <Form onSubmit={createAccount}>
             <Input placeholder={"Email"} type={"email"} required />
             <Input placeholder={"Username"} type={"text"} required />
             <Input placeholder={"Password"} type={"password"} required />
             <Input placeholder={"Confirm password"} type={"password"} required />
             <ButtonContainer>
-                <Button text={"Create profile"} width={'170px'} onClick={createAccount} />
+                <Button
+                    text={"Create profile"}
+                    width={'170px'}
+                    type={'submit'}
+                />
             </ButtonContainer>
-        </Container>
+        </Form>
+    )
 
+    return (
+        <Login form={register} />
     );
 };
 

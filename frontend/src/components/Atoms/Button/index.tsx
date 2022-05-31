@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     background-color: #0A6EDD;
     color: white;
     display: flex;
@@ -49,6 +49,7 @@ interface ButtonProps {
     onClick?: () => void,
     goTo?: string,
     secondary?: boolean,
+    type?: string,
 }
 
 const Button = (props: ButtonProps) => {
@@ -59,12 +60,18 @@ const Button = (props: ButtonProps) => {
         onClick = () => { }
     }
 
+    const type = props.type ? props.type : 'button'
+
     let button;
 
     if (props.goTo) {
         button = (
             <a href={`${props.goTo}`}>
-                <StyledButton secondary={props.secondary} width={props.width}>
+                <StyledButton
+                    secondary={props.secondary}
+                    width={props.width}
+                    type={type}
+                >
                     {props.text}
                     {props.component}
                 </StyledButton>

@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "../../Atoms/Button";
-import SignIn from "../../Molecules/SignIn";
-import Register from "../../Molecules/Register";
+import SignIn from "../SignIn";
+import Register from "../Register";
 import styled from "styled-components";
+import { PropertySafetyFilled } from "@ant-design/icons";
 
 const Container = styled.div`
     display: flex;
@@ -12,20 +13,18 @@ const Container = styled.div`
     gap: 20px;
 `
 
-const LoginPage = () => {
+interface LoginProps {
+    form: React.ReactNode;
+}
 
-    const [isSignIn, setIsSignIn] = React.useState(true);
-
-    const changeView = () => {
-        setIsSignIn(!isSignIn);
-    }
+const Login = (props: LoginProps) => {
 
     return (
         <Container>
             <h1>Welcome to AirGnB</h1>
-            {isSignIn ? <SignIn changeView={changeView} /> : <Register />}
+            {props.form}
         </Container>
     )
 }
 
-export default LoginPage;
+export default Login;

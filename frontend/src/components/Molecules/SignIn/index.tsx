@@ -2,9 +2,10 @@ import React from "react";
 import Input from "../../Atoms/Input";
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
-import { PropertySafetyFilled } from "@ant-design/icons";
+import Login from "../Login";
+import { useNavigate } from "react-router-dom";
 
-const Container = styled.div`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,27 +21,39 @@ const ButtonContainer = styled.div`
     margin-top: 5%;
 `;
 
-export interface SignInProps {
-    changeView: () => void;
-}
+const SignIn = () => {
 
-const SignIn = (props: SignInProps) => {
+    const navigate = useNavigate();
 
-    const signIn = () => {
-        console.log("Sign in");
+    const signIn = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log("Signed in");
+        navigate('/')
     }
 
-    return (
-        <Container>
+    const sign = (
+        <Form onSubmit={signIn}>
             <Input placeholder={"Email"} type={"email"} required />
             <Input placeholder={"Password"} type={"password"} required />
             <ButtonContainer>
-                <Button text={"Sign in"} width={'170px'} secondary onClick={signIn} />
-                <Button text={"Create profile"} width={'170px'} onClick={props.changeView} />
+                <Button
+                    text={"Sign in"}
+                    width={'170px'}
+                    secondary
+                    type={"submit"}
+                />
+                <Button
+                    text={"Create profile"}
+                    width={'170px'}
+                    goTo={"/register"}
+                />
             </ButtonContainer>
-        </Container>
-
+        </Form>
     );
+
+    return (
+        <Login form={sign} />
+    )
 };
 
 export default SignIn;

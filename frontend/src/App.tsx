@@ -9,7 +9,6 @@ import { userData, adData } from "./fakeData"
 import SignIn from './components/Molecules/SignIn';
 import Register from './components/Molecules/Register';
 import Error from './components/Molecules/Error';
-import LoginPage from './components/Pages/LoginPage';
 import PostAd from './components/Pages/PostAd';
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
         <Route path="/profile/:userId" element={<UserProfile data={userData} ads={adData} />} />
         <Route path="/listings/:adId" element={<AdProfile data={adData} />} />
         <Route path="/post-ad" element={<PostAd />} />
-        <Route path="/login-page" element={<LoginPage />} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error msg="" />} />
       </Routes>
