@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../../Atoms/Button";
+import SignIn from "../../Molecules/SignIn";
+import Register from "../../Molecules/Register";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -11,10 +13,16 @@ const Container = styled.div`
 
 const LoginPage = () => {
 
+    const [isSignIn, setIsSignIn] = React.useState(true);
+
+    const changeView = () => {
+        setIsSignIn(!isSignIn);
+    }
+
     return (
         <Container>
             <h1>Welcome to AirGnB</h1>
-
+            {isSignIn ? <SignIn changeView={changeView} /> : <Register />}
         </Container>
     )
 }
