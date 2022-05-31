@@ -13,8 +13,9 @@ const StyledHeader = styled.div`
     align-items: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 0.5em;
+    margin-bottom: 5%;
     width: 100%;
-
+    height: 70px;
 `
 
 const TitleStyled = styled.div`

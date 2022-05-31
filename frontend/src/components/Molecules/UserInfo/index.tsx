@@ -11,7 +11,7 @@ const Container = styled.div.attrs((props: UserInfoProps) => props)`
     align-items: center;
     text-align: center;
     h1 {
-        font-size: ${(props: UserInfoProps) => props.titleSize ? props.titleSize : "2em"};
+        font-size: ${(props: UserInfoProps) => props.titleSize ? props.titleSize : "20px"};
     }
     h2 {
         margin-top: -5%;

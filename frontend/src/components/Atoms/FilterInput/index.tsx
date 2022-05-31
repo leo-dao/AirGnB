@@ -10,14 +10,14 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     text-align: center;
     cursor: pointer;
     width: ${(props) => props.width};
-    height: 70px;
+    height: 50px;
 `;
 
 const StyledContent = styled.div`
     margin-left: 10px;
     margin-right: 10px;
     width: 100%;
-    font-size: 23px;
+    font-size: 18px;
     overflow: hidden;
     color: black;
 `;

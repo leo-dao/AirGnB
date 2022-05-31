@@ -24,8 +24,8 @@ const CardTitle = styled.div`
     color: #333;
     font-size: 18px;
     font-weight: bold;
-    margin-top: 1vh;
-    height: 9vh;
+    margin-top: 10px;
+    height: 70px;
 `;
 
 const UserInfoWrapper = styled.div`

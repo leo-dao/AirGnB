@@ -36,6 +36,7 @@ const TopInfoContainer = styled.div`
     align-items: center;
     text-align: center;
     justify-content: center;
+    height: 100%;
     width: 100%;
 `
 const UserInfoContainer = styled.div`

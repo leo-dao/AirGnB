@@ -15,7 +15,7 @@ export const StyledCategory = styled.div.attrs((props: SortCategoriesProps) => p
 `;
 
 export const MenuFoldOutlinedStyled = styled.div`
-    font-size: 28px;
+    font-size: 20px;
     color: black;
 `;
 

@@ -9,14 +9,14 @@ const StyledInput = styled.input`
     width: 100%;
     text-align: center;
     background-color: transparent;
-    :: placeholder {
+    ::placeholder {
         color: grey;
     }
     `;
 
 const SearchStyle = styled.div`
     color: black;
-    font-size: 28px;
+    font-size: 20px;
     transition: all 0.2s ease-in-out;
     :hover {
         color: #1890ff;

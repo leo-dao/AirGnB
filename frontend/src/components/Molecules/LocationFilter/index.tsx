@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const StyledSelect = styled(Select)`
     width: 100%;
-    font-size: 23px;
+    font-size: 18px;
     color: black;
     text-align: center;
     .ant-select-selection-placeholder {
