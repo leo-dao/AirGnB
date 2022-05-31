@@ -23,7 +23,6 @@ function App() {
         <Route path="/listings/:adId" element={<AdProfile data={adData} />} />
         <Route path="/post-ad" element={<PostAd />} />
         <Route path="/login-page" element={<LoginPage />} />
-        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error msg="" />} />
       </Routes>

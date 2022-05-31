@@ -4,29 +4,26 @@ import styled, { css } from 'styled-components';
 const StyledButton = styled.button`
     background-color: #0A6EDD;
     color: white;
-    text-align: center;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0px 0px 1px black;
     font-size: 1.4em;
-    width: 6em;
-    min-width: 6em;
-    height: 2.5em;
-    border-radius: 5px;
-    font-weight: bold;
+    width: ${props => props.width ? props.width : '6em'};
+    height: 2.8em;
+    border-radius: 20px;
     cursor: pointer;
     outline: none;
-    border: 1px solid #0A6EDD;
+    border: 0.5px solid #0A6EDD;
     transition: all 0.3s ease-in-out;
-
     &:hover {
-        transform: translateY(-1px) scale(1.03);
+        transform: translateY(-0.5px) scale(1.03);
+        background-color: ${props => props.secondary ? '#fafafa' : '#085bba'};
     }
-
     &:disabled {
         background-color: #ccc;
         cursor: not-allowed;
     }
-
     & > * {
         color: white;
     }
@@ -35,6 +32,7 @@ const StyledButton = styled.button`
         props.secondary &&
         css`
         background: white;
+        color: #0A6EDD;
         & > * {
             color: #0A6EDD;
         }
@@ -43,6 +41,7 @@ const StyledButton = styled.button`
 
 interface ButtonProps {
     text?: string,
+    width?: string,
     component?: React.ReactNode,
     backgroundColor?: string,
     disabled?: boolean,
@@ -65,7 +64,7 @@ const Button = (props: ButtonProps) => {
     if (props.goTo) {
         button = (
             <a href={`${props.goTo}`}>
-                <StyledButton secondary={props.secondary}>
+                <StyledButton secondary={props.secondary} width={props.width}>
                     {props.text}
                     {props.component}
                 </StyledButton>
@@ -74,7 +73,7 @@ const Button = (props: ButtonProps) => {
     }
     else {
         button =
-            <StyledButton onClick={onClick} secondary={props.secondary}>
+            <StyledButton onClick={onClick} secondary={props.secondary} width={props.width}>
                 {props.text} {props.component}
             </StyledButton>
     }

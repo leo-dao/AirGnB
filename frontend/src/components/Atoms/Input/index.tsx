@@ -3,20 +3,21 @@ import styled from "styled-components";
 
 const StyledInput = styled.input`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    width: 80%;
+    background-color: transparent;
+    width: 100%;
+    height: 3em;
     padding: 10px;
     margin: 10px;
     border: none;
     outline: none;
     border-bottom: 1px solid #ccc;
     &:focus {
-        border-bottom: 1px solid #000;
         ::placeholder {
             transition: all 0.3s ease-in-out;
             color: #ccc;
+            transform: translateY(-1.5em);
+            font-size: 0.8em;
         }
     }
 `
@@ -24,11 +25,12 @@ const StyledInput = styled.input`
 interface InputProps {
     type?: string,
     placeholder?: string,
+    required?: boolean
 }
 
 const Input = (props: InputProps) => {
     return (
-        <StyledInput type={props.type} placeholder={props.placeholder} />
+        <StyledInput type={props.type} placeholder={props.placeholder} required={props.required} />
     )
 }
 
