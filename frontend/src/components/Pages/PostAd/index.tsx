@@ -52,6 +52,12 @@ const PostAd = () => {
         setPrice(e.target.value);
     }
 
+    const imagesSubmit = (e: any) => {
+        // generate random id
+        const id = Math.random().toString();
+        setImages(prev => [...prev, { img: e.target.value, imgId: id }]);
+    }
+
     const createAd = (e: any) => {
         e.preventDefault();
         console.log(title, category, description, price, images);
@@ -61,9 +67,14 @@ const PostAd = () => {
         <Container>
             <AdPostForm
                 setTitle={titleSubmit}
+                titleDisabled={title.length < 3}
                 setDescription={descriptionSubmit}
+                descriptionDisabled={description.length < 10}
                 setPrice={priceSubmit}
+                priceDisabled={price < 5}
                 setCategory={categorySubmit}
+                setImages={imagesSubmit}
+                imagesDisabled={images.length < 10}
                 category={category}
                 createAd={createAd}
             />

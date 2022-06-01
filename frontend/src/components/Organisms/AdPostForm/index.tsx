@@ -4,6 +4,7 @@ import Button from "../../Atoms/Button";
 import AdPostBox from "../../Organisms/AdPostBox";
 import SortCategories from "../../Molecules/SortCategories";
 import styled from "styled-components";
+import { title } from "process";
 
 const Form = styled.form`
     display: flex;
@@ -13,7 +14,6 @@ const Form = styled.form`
     gap: 20px;
 `
 
-// modify input element ant deisng
 const StyledInput = styled(Input)`
     height: 40px;
     width: 200px;
@@ -22,9 +22,14 @@ const StyledInput = styled(Input)`
 
 interface PostAdProps {
     setTitle: (e: any) => void;
+    titleDisabled: boolean;
     setCategory: (e: any) => void;
     setDescription: (e: any) => void;
+    descriptionDisabled: boolean;
     setPrice: (e: any) => void;
+    priceDisabled: boolean;
+    setImages: (e: any) => void;
+    imagesDisabled: boolean;
     createAd: (e: any) => void;
     category: string;
 }
@@ -48,6 +53,8 @@ const AdPostForm = (props: PostAdProps) => {
         <Form onSubmit={props.createAd}>
             <AdPostBox title="What's the title of your listing?"
                 continue={cont}
+                buttonDisabled={props.titleDisabled}
+                // if no title, disable continue button
                 selection={
                     <StyledInput
                         placeholder={"Title"}
@@ -58,6 +65,7 @@ const AdPostForm = (props: PostAdProps) => {
             <AdPostBox title="Which category best describes your ad?"
                 continue={cont}
                 disabled={status[0]}
+                buttonDisabled={props.category === ""}
                 selection={
                     <SortCategories
                         onClick={props.setCategory}
@@ -68,6 +76,7 @@ const AdPostForm = (props: PostAdProps) => {
             <AdPostBox title="How would you describe your ad?"
                 continue={cont}
                 disabled={status[1]}
+                buttonDisabled={props.descriptionDisabled}
                 selection={
                     <Input.TextArea
                         placeholder="Description"
@@ -80,6 +89,7 @@ const AdPostForm = (props: PostAdProps) => {
             <AdPostBox title="What's the price of your ad?"
                 continue={cont}
                 disabled={status[2]}
+                buttonDisabled={props.priceDisabled}
                 selection={
                     <StyledInput
                         placeholder={"Price"}
@@ -91,11 +101,13 @@ const AdPostForm = (props: PostAdProps) => {
             <AdPostBox title="Add images to your ad"
                 continue={cont}
                 disabled={status[3]}
+                buttonDisabled={props.imagesDisabled}
                 selection={
                     <StyledInput
                         placeholder={"Image URL"}
                         type={"text"}
                         disabled={status[3]}
+                        onKeyUp={props.setImages}
                         required
                     />
                 } />
@@ -103,6 +115,7 @@ const AdPostForm = (props: PostAdProps) => {
                 type={'submit'}
                 text={"Post Ad"}
                 width={'200px'}
+                height={'100px'}
                 disabled={status[4]}
             />
         </Form >

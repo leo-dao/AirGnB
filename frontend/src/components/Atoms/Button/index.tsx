@@ -8,9 +8,9 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     align-items: center;
     justify-content: center;
     box-shadow: 0px 0px 1px black;
-    font-size: 1.4em;
-    width: ${props => props.width ? props.width : '6em'};
-    height: 40px;
+    font-size: 20px;
+    width: ${props => props.width ? props.width : '120px'};
+    height: ${props => props.height ? props.height : '40px'};
     border-radius: 20px;
     cursor: pointer;
     outline: none;
@@ -21,11 +21,12 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
         background-color: ${props => props.secondary ? '#fafafa' : '#085bba'};
     }
     &:disabled {
-        background-color: #ccc;
+        background-color: #d4d1d1;
+        border: none;
         cursor: not-allowed;
         color: black;
         transform: none;
-        opacity: 0;
+        opacity: 0.5;
     }
     & > * {
         color: white;
@@ -45,6 +46,7 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
 interface ButtonProps {
     text?: string,
     width?: string,
+    height?: string,
     component?: React.ReactNode,
     backgroundColor?: string,
     disabled?: boolean,

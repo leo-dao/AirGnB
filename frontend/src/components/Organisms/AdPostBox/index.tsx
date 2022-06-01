@@ -36,6 +36,7 @@ interface PostAdProps {
     prev?: string;
     back?: () => void;
     disabled?: boolean,
+    buttonDisabled?: boolean,
     title: string;
     selection: React.ReactNode;
 }
@@ -54,7 +55,7 @@ const AdPostBox = (props: PostAdProps) => {
 
                 <Button
                     text="Continue"
-                    disabled={props.disabled}
+                    disabled={props.buttonDisabled}
                     onClick={props.continue}
                     secondary
                 />
