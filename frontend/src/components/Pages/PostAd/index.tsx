@@ -24,19 +24,6 @@ const CardStyled = styled.div`
 
 const PostAd = () => {
 
-    const [opacity, setOpacity] = React.useState<number>(0.2);
-
-    const [disabled, setDisabled] = React.useState<boolean>(false);
-
-    const Continue = () => {
-        setDisabled(false);
-        setOpacity(1);
-    }
-
-    const Back = () => {
-        setDisabled(true);
-        setOpacity(0.2);
-    }
 
     const [title, setTitle] = React.useState<string>("");
     const [category, setCategory] = React.useState<string>("");
@@ -51,22 +38,18 @@ const PostAd = () => {
 
     const titleSubmit = (e: any) => {
         setTitle(e.target.value);
-        Continue();
     }
 
     const categorySubmit = (e: any) => {
         setCategory(e.key);
-        Continue();
     }
 
     const descriptionSubmit = (e: any) => {
         setDescription(e.target.value);
-        Continue();
     }
 
     const priceSubmit = (e: any) => {
         setPrice(e.target.value);
-        Continue();
     }
 
     const createAd = (e: any) => {

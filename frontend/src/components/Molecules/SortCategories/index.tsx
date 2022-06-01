@@ -29,6 +29,7 @@ const SortCategories = (props: SortCategoriesProps) => {
 
     const sortButton = (
         <FilterInput
+            disabled={props.disabled}
             width="210px"
             content={
                 <StyledCategory category={props.category}>
@@ -44,7 +45,7 @@ const SortCategories = (props: SortCategoriesProps) => {
     );
 
     return (
-        <StyledSortButton>
+        <StyledSortButton >
             <DropdownMenu
                 disabled={props.disabled}
                 button={sortButton}

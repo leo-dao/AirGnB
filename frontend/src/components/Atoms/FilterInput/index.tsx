@@ -8,7 +8,7 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     display: flex;
     align-items: center;
     text-align: center;
-    cursor: pointer;
+    cursor: ${props => props.disabled ? "not-allowed" : "auto"};
     width: ${(props) => props.width};
     height: 50px;
 `;
@@ -32,12 +32,15 @@ export interface FilterInputProps {
     content?: React.ReactNode;
     logo?: React.ReactNode;
     width?: string;
-
+    disabled?: boolean;
 }
 
 const FilterInput = (props: FilterInputProps) => {
     return (
-        <FilterContainer width={props.width}>
+        <FilterContainer
+            width={props.width}
+            disabled={props.disabled}
+        >
             <StyledContent>
                 {props.content}
             </StyledContent>

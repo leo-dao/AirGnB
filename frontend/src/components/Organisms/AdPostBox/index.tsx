@@ -10,7 +10,7 @@ const Container = styled.div.attrs((props: PostAdProps) => (props))`
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1);
     align-items: center;
     width: 100%;
-    opacity: ${(props) => props.opacity};
+    opacity: ${(props) => props.disabled ? 0.2 : 1};
     cursor: ${(props) => props.disabled ? "not-allowed" : "auto"};
     transition: opacity 0.8s ease-in-out;
 `
@@ -21,7 +21,7 @@ const TitleStyled = styled.div`
     margin-bottom: 3%;
 `
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div.attrs((props: PostAdProps) => (props))`
     display: flex; 
     flex-direction: row;
     justify-content: space-around;
@@ -35,8 +35,7 @@ interface PostAdProps {
     next?: string;
     prev?: string;
     back?: () => void;
-    disabled?: boolean;
-    opacity?: number;
+    disabled?: boolean,
     title: string;
     selection: React.ReactNode;
 }
@@ -44,7 +43,7 @@ interface PostAdProps {
 const AdPostBox = (props: PostAdProps) => {
 
     return (
-        <Container opacity={props.opacity} disabled={props.disabled}>
+        <Container disabled={props.disabled}>
             <TitleStyled>
                 {props.title}
             </TitleStyled>
@@ -52,17 +51,12 @@ const AdPostBox = (props: PostAdProps) => {
                 {props.selection}
             </div>
             <ButtonContainer>
-                <Button
-                    text="Back"
-                    secondary
-                    disabled={props.disabled}
-                    backgroundColor="white"
-                    onClick={props.back}
-                />
+
                 <Button
                     text="Continue"
                     disabled={props.disabled}
                     onClick={props.continue}
+                    secondary
                 />
             </ButtonContainer>
         </Container>

@@ -23,6 +23,9 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     &:disabled {
         background-color: #ccc;
         cursor: not-allowed;
+        color: black;
+        transform: none;
+        opacity: 0;
     }
     & > * {
         color: white;
@@ -71,6 +74,7 @@ const Button = (props: ButtonProps) => {
                     secondary={props.secondary}
                     width={props.width}
                     type={type}
+                    disabled={props.disabled}
                 >
                     {props.text}
                     {props.component}
@@ -80,7 +84,12 @@ const Button = (props: ButtonProps) => {
     }
     else {
         button =
-            <StyledButton onClick={onClick} secondary={props.secondary} width={props.width}>
+            <StyledButton
+                onClick={onClick}
+                secondary={props.secondary}
+                width={props.width}
+                disabled={props.disabled}
+            >
                 {props.text} {props.component}
             </StyledButton>
     }
