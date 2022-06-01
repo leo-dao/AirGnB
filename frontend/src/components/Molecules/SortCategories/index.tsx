@@ -11,7 +11,7 @@ export const StyledSortButton = styled.div`
 
 export const StyledCategory = styled.div.attrs((props: SortCategoriesProps) => props)`
     justify-content: center;
-    color: ${(props) => props.color};
+    color: ${props => props.category === "" ? "grey" : "black"};
 `;
 
 export const MenuFoldOutlinedStyled = styled.div`
@@ -23,7 +23,6 @@ interface SortCategoriesProps {
     onClick: (value: string) => void;
     disabled?: boolean;
     category: string;
-    color: string;
 }
 
 const SortCategories = (props: SortCategoriesProps) => {
@@ -32,7 +31,7 @@ const SortCategories = (props: SortCategoriesProps) => {
         <FilterInput
             width="210px"
             content={
-                <StyledCategory>
+                <StyledCategory category={props.category}>
                     {props.category === "" ? "Select category" : props.category}
                 </StyledCategory>
             }

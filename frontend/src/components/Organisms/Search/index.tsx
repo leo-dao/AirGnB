@@ -21,11 +21,10 @@ const Search = () => {
 
     // CATEGORY DATA
     const [category, SetCategory] = React.useState<string>("");
-    const onClick = (e: any) => {
+
+    const Select = (e: any) => {
         SetCategory(e.key);
     }
-    let color;
-    category === "" ? (color = "grey") : (color = "black");
 
     // LOCATION DATA
     const [data, setData] = React.useState<any[]>([]);
@@ -46,10 +45,7 @@ const Search = () => {
 
     return (
         <Container>
-            <SortCategories
-                onClick={onClick}
-                color={color}
-                category={category} />
+            <SortCategories onClick={Select} category={category} />
             <LocationFilter
                 data={data}
                 onSelect={onSelect} />
