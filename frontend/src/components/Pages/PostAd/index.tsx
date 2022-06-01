@@ -1,19 +1,28 @@
 import React from "react";
-import AdPostBox from "../../Organisms/AdPostBox";
 import { Input } from 'antd';
-import SortCategories from "../../Molecules/SortCategories";
 import AdCard from "../../Organisms/AdCard";
 import { userData } from "../../../fakeData";
-import AdCardProps from "../../Organisms/AdCard/interfaces";
 import { ImageProps } from "../../Organisms/AdCard/interfaces";
+import AdPostForm from "../../Organisms/AdPostForm";
+import styled from "styled-components";
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: 200px;
+    gap: 80px;
+`
+const CardStyled = styled.div`
+    position: sticky;
+    top: 0;
+    margin-top: 200px;
+    height: 100%;
+`
+
+
 
 const PostAd = () => {
-
-    const [category, SetCategory] = React.useState<string>("");
-
-    const Select = (e: any) => {
-        SetCategory(e.key);
-    }
 
     const [opacity, setOpacity] = React.useState<number>(0.2);
 
@@ -30,6 +39,7 @@ const PostAd = () => {
     }
 
     const [title, setTitle] = React.useState<string>("");
+    const [category, setCategory] = React.useState<string>("");
     const [description, setDescription] = React.useState<string>("");
     const [price, setPrice] = React.useState<number>(0);
     const [images, setImages] = React.useState<ImageProps[]>([
@@ -44,6 +54,11 @@ const PostAd = () => {
         Continue();
     }
 
+    const categorySubmit = (e: any) => {
+        setCategory(e.key);
+        Continue();
+    }
+
     const descriptionSubmit = (e: any) => {
         setDescription(e.target.value);
         Continue();
@@ -54,95 +69,22 @@ const PostAd = () => {
         Continue();
     }
 
-    return (
-        <div style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: "10%",
-            marginRight: "10%",
-        }}>
-            <div style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
+    const createAd = (e: any) => {
+        e.preventDefault();
+        console.log(title, category, description, price, images);
+    }
 
-            }}>
-                <div id="title" style={{
-                    marginTop: "1%",
-                    marginBottom: "3%",
-                }}>
-                    <AdPostBox
-                        title="What's the title of your ad?"
-                        opacity={1}
-                        continue={Continue}
-                        back={Back}
-                        selection={
-                            <Input
-                                placeholder="Title"
-                                showCount={true}
-                                maxLength={40}
-                                onPressEnter={titleSubmit}
-                                style={{ width: "100%" }} />} />
-                </div>
-                <div id="category" style={{
-                    marginTop: "1%",
-                    marginBottom: "3%",
-                }}>
-                    <AdPostBox
-                        title="Which category best describes your ad?"
-                        opacity={opacity}
-                        continue={Continue}
-                        disabled={disabled}
-                        back={Back}
-                        selection={
-                            <SortCategories
-                                onClick={Select}
-                                disabled={disabled}
-                                category={category}
-                                color="black" />} />
-                </div>
-                <div id="description" style={{
-                    marginTop: "1%",
-                    marginBottom: "3%",
-                }}>
-                    <AdPostBox
-                        title="How would you describe your ad?"
-                        opacity={opacity}
-                        continue={Continue}
-                        disabled={disabled}
-                        back={Back}
-                        selection={
-                            <Input.TextArea
-                                placeholder="Description"
-                                disabled={disabled}
-                                showCount={true}
-                                maxLength={100}
-                                onPressEnter={descriptionSubmit}
-                                size="large"
-                                style={{ width: "100%", }} />} />
-                </div>
-                <div id="price" style={{
-                    marginTop: "1%",
-                    marginBottom: "3%",
-                    width: "100%"
-                }}>
-                    <AdPostBox
-                        title="What's the price of your ad?"
-                        opacity={opacity}
-                        continue={Continue}
-                        disabled={disabled}
-                        back={Back}
-                        selection={
-                            <Input
-                                placeholder="Price"
-                                disabled={disabled}
-                                onPressEnter={priceSubmit}
-                                type="number"
-                                style={{ width: "100%" }} />} />
-                </div>
-            </div>
-            <div style={{
-            }}>
+    return (
+        <Container>
+            <AdPostForm
+                setTitle={titleSubmit}
+                setDescription={descriptionSubmit}
+                setPrice={priceSubmit}
+                setCategory={categorySubmit}
+                category={category}
+                createAd={createAd}
+            />
+            <CardStyled>
                 <AdCard
                     title={title}
                     description={description}
@@ -151,16 +93,9 @@ const PostAd = () => {
                     user={userData[0]}
                     adImages={images}
                 />
-            </div>
-        </div>
+            </CardStyled>
+        </Container>
     )
 }
-
-{/* provide ad title first
-provide category out of choices
-provide description
-provide price
-provide photos */}
-
 
 export default PostAd;

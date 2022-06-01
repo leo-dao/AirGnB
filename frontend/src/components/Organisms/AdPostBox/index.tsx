@@ -9,7 +9,7 @@ const Container = styled.div.attrs((props: PostAdProps) => (props))`
     border-radius: 5px;
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.1);
     align-items: center;
-    width: 60%;
+    width: 100%;
     opacity: ${(props) => props.opacity};
     cursor: ${(props) => props.disabled ? "not-allowed" : "auto"};
     transition: opacity 0.8s ease-in-out;
@@ -54,6 +54,7 @@ const AdPostBox = (props: PostAdProps) => {
             <ButtonContainer>
                 <Button
                     text="Back"
+                    secondary
                     disabled={props.disabled}
                     backgroundColor="white"
                     onClick={props.back}
