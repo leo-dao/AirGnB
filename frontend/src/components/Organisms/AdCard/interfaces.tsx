@@ -12,4 +12,5 @@ export default interface AdCardProps {
     description: string;
     user: UserProps;
     price: number;
+    clickable?: boolean;
 };
