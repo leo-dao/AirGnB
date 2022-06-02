@@ -3,14 +3,18 @@ import styled from "styled-components";
 
 const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     border-radius: 15px;
-    background-color: #FAFAFA;
+    background-color: white;
     border: 1px solid #ccc;
     display: flex;
     align-items: center;
     text-align: center;
-    cursor: ${props => props.disabled ? "not-allowed" : "auto"};
+    cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
     width: ${(props) => props.width};
     height: 50px;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        border-color:  #1eb5f0;
+    }
 `;
 
 const StyledContent = styled.div`
