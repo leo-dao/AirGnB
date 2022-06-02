@@ -20,21 +20,20 @@ const CardStyled = styled.div`
     height: 100%;
 `
 
-
-
 const PostAd = () => {
-
 
     const [title, setTitle] = React.useState<string>("");
     const [category, setCategory] = React.useState<string>("");
     const [description, setDescription] = React.useState<string>("");
     const [price, setPrice] = React.useState<number>(0);
-    const [images, setImages] = React.useState<ImageProps[]>([
+    const [images, setImages] = React.useState<File[]>();
+
+    const displayImage = [
         {
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Grey_background.jpg/1200px-Grey_background.jpg",
-            imgId: "1"
-        }
-    ]);
+            imgId: "none",
+            img: images ? images[0].name :
+                "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg",
+        }];
 
     const titleSubmit = (e: any) => {
         setTitle(e.target.value);
@@ -53,15 +52,16 @@ const PostAd = () => {
     }
 
     const imagesSubmit = (e: any) => {
-        // generate random id
-        const id = Math.random().toString();
-        setImages(prev => [...prev, { img: e.target.value, imgId: id }]);
+        setImages(e.target.files);
     }
 
     const createAd = (e: any) => {
         e.preventDefault();
         console.log(title, category, description, price, images);
+        // go home
     }
+
+    var fileNames: String[] = images ? Array.from(images).map(file => file.name) : [];
 
     return (
         <Container>
@@ -74,18 +74,20 @@ const PostAd = () => {
                 priceDisabled={price < 5}
                 setCategory={categorySubmit}
                 setImages={imagesSubmit}
-                imagesDisabled={images.length < 10}
+                fileNames={fileNames}
+                imagesDisabled={images === undefined}
                 category={category}
                 createAd={createAd}
             />
             <CardStyled>
                 <AdCard
+                    disabled={true}
                     title={title}
                     description={description}
                     price={price}
                     adId={'0'}
                     user={userData[0]}
-                    adImages={images}
+                    adImages={displayImage}
                 />
             </CardStyled>
         </Container>

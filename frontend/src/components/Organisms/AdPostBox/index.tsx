@@ -16,9 +16,19 @@ const Container = styled.div.attrs((props: PostAdProps) => (props))`
 `
 
 const TitleStyled = styled.div`
-    font-size: 1.2rem;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+`
+
+const SelectionStyled = styled.div`
+    margin-top: 10px;
+`
+
+const SubtitleStyled = styled.div`
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-size: 14px;
 `
 
 const ButtonContainer = styled.div.attrs((props: PostAdProps) => (props))`
@@ -38,21 +48,24 @@ interface PostAdProps {
     disabled?: boolean,
     buttonDisabled?: boolean,
     title: string;
+    subtitle?: string;
     selection: React.ReactNode;
 }
 
 const AdPostBox = (props: PostAdProps) => {
+
+    var subtitle = props.subtitle ? <SubtitleStyled>{props.subtitle}</SubtitleStyled> : null;
 
     return (
         <Container disabled={props.disabled}>
             <TitleStyled>
                 {props.title}
             </TitleStyled>
-            <div>
+            {subtitle}
+            <SelectionStyled>
                 {props.selection}
-            </div>
+            </SelectionStyled>
             <ButtonContainer>
-
                 <Button
                     text="Continue"
                     disabled={props.buttonDisabled}

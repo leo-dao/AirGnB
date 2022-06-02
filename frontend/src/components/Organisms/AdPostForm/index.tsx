@@ -4,7 +4,7 @@ import Button from "../../Atoms/Button";
 import AdPostBox from "../../Organisms/AdPostBox";
 import SortCategories from "../../Molecules/SortCategories";
 import styled from "styled-components";
-import { title } from "process";
+import FileSubmit from "../../Molecules/FileSubmit";
 
 const Form = styled.form`
     display: flex;
@@ -32,6 +32,7 @@ interface PostAdProps {
     imagesDisabled: boolean;
     createAd: (e: any) => void;
     category: string;
+    fileNames: String[];
 }
 
 const AdPostForm = (props: PostAdProps) => {
@@ -54,7 +55,6 @@ const AdPostForm = (props: PostAdProps) => {
             <AdPostBox title="What's the title of your listing?"
                 continue={cont}
                 buttonDisabled={props.titleDisabled}
-                // if no title, disable continue button
                 selection={
                     <StyledInput
                         placeholder={"Title"}
@@ -99,16 +99,15 @@ const AdPostForm = (props: PostAdProps) => {
                         onKeyUp={props.setPrice} />
                 } />
             <AdPostBox title="Add images to your ad"
+                subtitle="You can add up to 6 images, the first will be the cover!"
                 continue={cont}
                 disabled={status[3]}
                 buttonDisabled={props.imagesDisabled}
                 selection={
-                    <StyledInput
-                        placeholder={"Image URL"}
-                        type={"text"}
+                    <FileSubmit
                         disabled={status[3]}
-                        onKeyUp={props.setImages}
-                        required
+                        onChange={props.setImages}
+                        fileNames={props.fileNames}
                     />
                 } />
             <Button
