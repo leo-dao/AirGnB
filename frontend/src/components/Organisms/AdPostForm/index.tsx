@@ -37,7 +37,7 @@ interface PostAdProps {
 
 const AdPostForm = (props: PostAdProps) => {
 
-    const [status, setEnable] = React.useState<boolean[]>([true, true, true, true, true]);
+    const [status, setEnable] = React.useState<boolean[]>([true, true, true, true]);
 
     const [index, setIndex] = React.useState<number>(0);
 
@@ -103,6 +103,7 @@ const AdPostForm = (props: PostAdProps) => {
                 continue={cont}
                 disabled={status[3]}
                 buttonDisabled={props.imagesDisabled}
+                noButton={true}
                 selection={
                     <FileSubmit
                         disabled={status[3]}
@@ -115,7 +116,7 @@ const AdPostForm = (props: PostAdProps) => {
                 text={"Post Ad"}
                 width={'200px'}
                 height={'100px'}
-                disabled={status[4]}
+                disabled={props.imagesDisabled}
             />
         </Form >
     )

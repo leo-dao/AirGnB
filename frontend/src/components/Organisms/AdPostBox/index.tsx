@@ -42,6 +42,7 @@ const ButtonContainer = styled.div.attrs((props: PostAdProps) => (props))`
 
 interface PostAdProps {
     continue?: () => void;
+    noButton?: boolean;
     next?: string;
     prev?: string;
     back?: () => void;
@@ -56,6 +57,19 @@ const AdPostBox = (props: PostAdProps) => {
 
     var subtitle = props.subtitle ? <SubtitleStyled>{props.subtitle}</SubtitleStyled> : null;
 
+    const button =
+        props.noButton ? null :
+            (
+                <ButtonContainer>
+                    <Button
+                        text="Continue"
+                        disabled={props.buttonDisabled}
+                        onClick={props.continue}
+                        secondary
+                    />
+                </ButtonContainer>
+            );
+
     return (
         <Container disabled={props.disabled}>
             <TitleStyled>
@@ -65,14 +79,7 @@ const AdPostBox = (props: PostAdProps) => {
             <SelectionStyled>
                 {props.selection}
             </SelectionStyled>
-            <ButtonContainer>
-                <Button
-                    text="Continue"
-                    disabled={props.buttonDisabled}
-                    onClick={props.continue}
-                    secondary
-                />
-            </ButtonContainer>
+            {button}
         </Container>
     )
 }
