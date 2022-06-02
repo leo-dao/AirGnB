@@ -101,23 +101,9 @@ const adData = [
         img: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Fendersrvstratfront.jpg',
         imgId: 'rdmImg10'
       },
-    ],
-    title: 'SRV Fender Stratocaster Texas edition',
-    description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo',
-    category: 'Guitars',
-    price: 250,
-    user: userData[2],
-  },
-  {
-    adId: "rdmAd7",
-    adImages: [
       {
-        img: 'https://www.fmicassets.com/Damroot/ZoomJpg/10002/0109200800_gtr_frt_001_rr.jpg',
-        imgId: 'rdmImg8'
-      },
-      {
-        img: 'https://cdn.shopify.com/s/files/1/0956/3980/products/0109200800_gtr_frtbdydtl_001_nr_2400x2058.png?v=1515599594',
-        imgId: 'rdmImg9'
+        img: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Fendersrvstratfront.jpg',
+        imgId: 'rdmImg10'
       },
       {
         img: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Fendersrvstratfront.jpg',
@@ -129,7 +115,7 @@ const adData = [
     category: 'Guitars',
     price: 250,
     user: userData[2],
-  }
+  },
 ];
 
 export { userData, adData };

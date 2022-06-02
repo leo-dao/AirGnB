@@ -57,18 +57,17 @@ const AdCard = (props: AdCardProps) => {
         </CardWrapper >
     );
 
-    if (props.clickable) {
+    if (props.disabled) {
         return (
-            <Link to={`/listings/${props.adId}`} target="_blank">
+            <div>
                 {Card}
-            </Link >
+            </div>
         );
     }
-
     return (
-        <div>
+        <Link to={`/listings/${props.adId}`} target="_blank">
             {Card}
-        </div>
+        </Link >
     )
 };
 
