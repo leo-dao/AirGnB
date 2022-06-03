@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
-    background-color: #0A6EDD;
+    background-color: ${(props: ButtonProps) => props.backgroundColor ? props.backgroundColor : '#506bcd'};
     color: white;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     transition: all 0.3s ease-in-out;
     &:hover {
         transform: translateY(-0.5px) scale(1.03);
-        background-color: ${props => props.secondary ? '#fafafa' : '#085bba'};
+        background-color: ${props => props.secondary ? 'whitesmoke' : '#085bba'};
     }
     &:disabled {
         background-color: #d4d1d1;
@@ -35,10 +35,28 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     ${(props: ButtonProps) =>
         props.secondary &&
         css`
-        background: white;
+        background-color: white;
         color: #0A6EDD;
         & > * {
             color: #0A6EDD;
+        }
+        `}
+
+        ${(props: ButtonProps) =>
+        props.tertiary &&
+        css`
+        font-size: 15px;
+        width: 50px;
+        height: 30px;
+        background-color: white;
+        border: 1px solid black;
+        color: black;
+        border-radius: 3px;
+        // no transform on hover
+        &:hover {
+            transform: none;
+            background-color: whitesmoke;
+            color: black;
         }
         `}
 `;
@@ -54,6 +72,7 @@ interface ButtonProps {
     onClick?: () => void,
     goTo?: string,
     secondary?: boolean,
+    tertiary?: boolean,
     type?: string,
 }
 
@@ -74,6 +93,7 @@ const Button = (props: ButtonProps) => {
             <a href={`${props.goTo}`}>
                 <StyledButton
                     secondary={props.secondary}
+                    tertiary={props.tertiary}
                     width={props.width}
                     type={type}
                     disabled={props.disabled}
@@ -89,6 +109,7 @@ const Button = (props: ButtonProps) => {
             <StyledButton
                 onClick={onClick}
                 secondary={props.secondary}
+                tertiary={props.tertiary}
                 width={props.width}
                 disabled={props.disabled}
             >

@@ -51,7 +51,7 @@ const adData = [
     title: 'EVH amp head',
     description: 'EVH 5150III 50W EL34 Head',
     category: 'Amplifiers',
-    price: 100,
+    price: 25,
     user: userData[0]
   },
   {
@@ -67,7 +67,7 @@ const adData = [
       },
     ],
     title: 'Ibanez tube screamer',
-    description: 'Ibanez tube screamer, can be used as overdrive or distortion',
+    description: "Ibanez tube screamer, can be used as overdrive or distortion\nFeatures a lot of other cool stuff\nLike a lot\nHas 3 knobs as you can see which I think is really cool\nAnd the green is pretty slick in my opinion",
     category: 'Effects',
     price: 20,
     user: userData[1],
@@ -83,7 +83,7 @@ const adData = [
     title: 'Vintage DX7 digitial synthesiser',
     description: 'Vintage DX7 digitial synthesiser',
     category: 'Keyboards',
-    price: 50,
+    price: 15,
     user: userData[1],
   },
   {
@@ -113,7 +113,7 @@ const adData = [
     title: 'SRV Fender Stratocaster Texas edition',
     description: '3 single coil guitar with 21 jumbro frets, maple neck, and rosewood fretboard. Gold plated hardware featuring a left-handed tremolo',
     category: 'Guitars',
-    price: 250,
+    price: 30,
     user: userData[2],
   },
 ];
