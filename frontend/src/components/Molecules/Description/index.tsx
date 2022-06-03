@@ -22,14 +22,17 @@ interface DescriptionProps {
 
 const Description = (props: DescriptionProps) => {
 
-    const defaultHeight = "180px"
+    const defaultHeight = "100%"
+    const defaultMaxHeight = "180px"
 
     const [showMore, setShowMore] = React.useState(false);
     const [height, setHeight] = React.useState(defaultHeight);
+    const [maxHeight, setMaxHeight] = React.useState(defaultMaxHeight);
 
     const handleShowMore = () => {
         setShowMore(!showMore);
         setHeight(showMore ? defaultHeight : "90%");
+        setMaxHeight(showMore ? defaultMaxHeight : "100%");
     }
 
     const description = props.description.split("\n").map((item, index) => {
@@ -41,19 +44,25 @@ const Description = (props: DescriptionProps) => {
         description[3] = <span key={3}>...<br /></span>
     }
 
+    // check for long sentences without newline characters 
+    // count them as more than one line 
+
     return (
         <div>
             <Container showMore={props.showMore} style={{
-                height: height
+                height: height,
+                maxHeight: maxHeight,
             }}>
                 <StyledTitle>Description</StyledTitle>
                 {description}
             </Container>
-            <Button
-                onClick={handleShowMore}
-                text={showMore ? "Less" : "More"}
-                tertiary
-            />
+            {numLines > 4 &&
+                <Button
+                    tertiary
+                    onClick={handleShowMore}
+                    text={showMore ? "Less" : "More"} />
+            }
+
         </div>
     )
 };
