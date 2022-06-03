@@ -2,12 +2,13 @@ import React from "react";
 import Button from "../../Atoms/Button";
 import { MessageOutlined } from "@ant-design/icons";
 
-interface Props {
+interface ChatProps {
     text?: string,
     onClick: () => void,
+    width?: string,
 }
 
-const ChatButton = (props: Props) => {
+const ChatButton = (props: ChatProps) => {
     return (
         <Button
             secondary
@@ -15,6 +16,7 @@ const ChatButton = (props: Props) => {
             component={
                 <MessageOutlined style={{ fontSize: "1.7em" }} />
             }
+            width={props.width}
         />
     )
 }

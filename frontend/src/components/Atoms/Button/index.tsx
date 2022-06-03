@@ -52,7 +52,6 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
         border: 1px solid black;
         color: black;
         border-radius: 3px;
-        // no transform on hover
         &:hover {
             transform: none;
             background-color: whitesmoke;
@@ -90,7 +89,11 @@ const Button = (props: ButtonProps) => {
 
     if (props.goTo) {
         button = (
-            <a href={`${props.goTo}`}>
+            <a href={`${props.goTo}`} style={{
+                width: props.width,
+                justifyContent: 'center',
+                display: 'flex',
+            }}>
                 <StyledButton
                     secondary={props.secondary}
                     tertiary={props.tertiary}
