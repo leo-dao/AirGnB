@@ -40,9 +40,6 @@ const Description = (props: DescriptionProps) => {
     })
 
     const numLines = props.description.split("\n").length;
-    if (numLines > 4 && !showMore) {
-        description[3] = <span key={3}>...<br /></span>
-    }
 
     // check for long sentences without newline characters 
     // count them as more than one line 

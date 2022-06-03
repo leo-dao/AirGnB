@@ -40,6 +40,12 @@ interface AvailabilityProps {
 
 const Availability = (props: AvailabilityProps) => {
 
+    const checkEndDate = (date: Date) => {
+        date.getTime() > props.startDate.getTime()
+            ? props.setEndDate(date)
+            : props.setEndDate(props.startDate)
+    }
+
     return (
         <Container>
             <DateContainer>
@@ -53,7 +59,7 @@ const Availability = (props: AvailabilityProps) => {
                 End Date
                 <StyledDatePicker
                     selected={props.endDate}
-                    onChange={(date: Date) => props.setEndDate(date)}
+                    onChange={(date: Date) => checkEndDate(date)}
                 />
             </DateContainer>
         </Container>
