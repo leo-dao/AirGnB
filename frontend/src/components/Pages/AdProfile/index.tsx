@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import AdCardProps from "../../Organisms/AdCard/interfaces";
 import Error from "../../Molecules/Error/index";
 import AdPhotos from "../../Organisms/AdPhotos";
 import UserInfo from "../../Molecules/UserInfoCard/index";
-import UserContact from "../../Organisms/UserContact/index";
+import Availability from "../../Molecules/Availability";
+import Description from "../../Molecules/Description";
+import Button from "../../Atoms/Button";
 import Price from "../../Atoms/Price/index";
 import styled from "styled-components";
+import ChatButton from "../../Atoms/ChatButton";
 
 const CenterContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     `;
+
+const Title = styled.h1`
+    font-size: 35px;
+`
 
 const Container = styled.div`
     display: flex;
@@ -30,24 +38,46 @@ const InfoContainer = styled.div`
     width: 400px;
 `
 
-const TopInfoContainer = styled.div`
+const PriceContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+    gap: 20px;
 `
-const UserInfoContainer = styled.div`
+
+const TotalPrice = styled.b`
+    font-size: 20px;
+`
+
+const AdInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    justify-content: space-evenly;
     margin-top: 30px;
     border-top: 0.5px solid black;
     height: 100%;
+`
+
+const StyledHeader = styled.h1`
+    font-size: 28px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+`
+
+const Info = styled.div`
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+`
+
+const UserContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 `
 
 interface Props {
@@ -60,12 +90,25 @@ const AdProfile = (props: Props) => {
 
     const currentAd = (props.data.filter(ad => ad.adId === params.adId))[0];
 
+    const [startDate, setStartDate] = useState(new Date());
+
+    const [endDate, setEndDate] = useState(new Date());
+
     if (!currentAd) {
         return <Error msg="Sorry, this ad does not exist" />
     }
 
+    var numDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24));
+    var totalPrice = currentAd.price * numDays;
+    var price = "TOTAL: " + totalPrice.toString() + " $";
+
+    const messageUser = () => {
+        console.log("message user");
+    }
+
     return (
         <CenterContainer>
+            <Title>{currentAd.title}</Title>
             <Container>
                 <AdPhotos
                     adId={currentAd.adId}
@@ -76,27 +119,43 @@ const AdProfile = (props: Props) => {
                     price={currentAd.price}
                 />
                 <InfoContainer>
-                    <TopInfoContainer>
-                        <h1>{currentAd.title}</h1>
-                        <p>{currentAd.description}</p>
-                        <Price price={currentAd.price} width={200} />
-                    </TopInfoContainer>
-
-                    <UserInfoContainer>
-                        <UserInfo
-                            userId={currentAd.user.userId}
-                            avatar={currentAd.user.avatar}
-                            name={currentAd.user.name}
-                            rating={currentAd.user.rating}
-                            numRatings={currentAd.user.numRatings}
-                            location={currentAd.user.location}
-                            clickAble={true}
-                            fontSize={20}
-                            avatarSize={80}
+                    <PriceContainer>
+                        <TotalPrice>{price}</TotalPrice>
+                        <Availability
+                            startDate={startDate}
+                            endDate={endDate}
+                            setStartDate={setStartDate}
+                            setEndDate={setEndDate}
                         />
-                        <UserContact />
-
-                    </UserInfoContainer>
+                        <Button
+                            disabled={endDate.getTime() === startDate.getTime()}
+                            text="Continue"
+                            width="90%"
+                            goTo="/booking"
+                        />
+                    </PriceContainer>
+                    <AdInfoContainer>
+                        <StyledHeader>Information: </StyledHeader>
+                        <Info>
+                            <Description description={currentAd.description} />
+                            <UserContainer>
+                                <UserInfo
+                                    userId={currentAd.user.userId}
+                                    avatar={currentAd.user.avatar}
+                                    name={currentAd.user.name}
+                                    rating={currentAd.user.rating}
+                                    numRatings={currentAd.user.numRatings}
+                                    location={currentAd.user.location}
+                                    clickAble={true}
+                                    fontSize={18}
+                                    avatarSize={60}
+                                />
+                                <ChatButton
+                                    width="40px"
+                                    onClick={messageUser} />
+                            </UserContainer>
+                        </Info>
+                    </AdInfoContainer>
                 </InfoContainer>
             </Container>
         </CenterContainer >
@@ -104,3 +163,8 @@ const AdProfile = (props: Props) => {
 };
 
 export default AdProfile;
+
+// check which div can be removed
+
+// top box: price total, start date, end date, then add rent (continue) button + add to favorites button
+// bottom box: Info: Price/day, Description, Smaller user contact
