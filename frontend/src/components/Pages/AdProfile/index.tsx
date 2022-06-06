@@ -131,7 +131,7 @@ const AdProfile = (props: Props) => {
                             disabled={endDate.getTime() === startDate.getTime()}
                             text="Continue"
                             width="90%"
-                            goTo="/booking"
+                            goTo={"/booking/" + currentAd.adId + "+" + startDate.toISOString() + "+" + endDate.toISOString()}
                         />
                     </PriceContainer>
                     <AdInfoContainer>
