@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from 'antd';
 import AdCard from "../../Organisms/AdCard";
 import { userData } from "../../../fakeData";
-import { ImageProps } from "../../Organisms/AdCard/interfaces";
+import { ImageProps } from "../../Organisms/AdCard/index";
 import AdPostForm from "../../Organisms/AdPostForm";
 import styled from "styled-components";
 

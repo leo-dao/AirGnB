@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdCardProps from "../../Organisms/AdCard/interfaces";
+import type { AdCardProps } from "../../Organisms/AdCard/index";
 import AdPhotoBg from "../../Molecules/AdPhotoBg";
 import styled from "styled-components";
 

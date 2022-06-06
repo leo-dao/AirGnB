@@ -1,7 +1,6 @@
 import React from 'react';
-import { Avatar } from 'antd';
 import { Link } from "react-router-dom";
-import AdCardProps from './interfaces';
+import UserProps from "../../Molecules/UserInfo/interfaces";
 import UserInfo from '../../Molecules/UserInfoCard';
 import CardCover from '../../Atoms/CardCover';
 import Price from '../../Atoms/Price';
@@ -31,6 +30,21 @@ const CardTitle = styled.div`
 const UserInfoWrapper = styled.div`
     margin-top: 5%;
 `;
+
+export interface ImageProps {
+    img: string,
+    imgId: string,
+}
+
+export interface AdCardProps {
+    adId: string;
+    adImages: ImageProps[];
+    title: string;
+    description: string;
+    user: UserProps;
+    price: number;
+    disabled?: boolean;
+};
 
 const AdCard = (props: AdCardProps) => {
 

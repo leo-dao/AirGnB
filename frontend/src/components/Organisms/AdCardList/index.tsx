@@ -1,6 +1,6 @@
 import React from "react";
 import AdCard from "../../Organisms/AdCard";
-import AdCardProps from "../../Organisms/AdCard/interfaces";
+import type { AdCardProps } from "../../Organisms/AdCard/index";
 import { userData, adData } from "../../../fakeData";
 import { List } from 'antd';
 import styled from "styled-components";

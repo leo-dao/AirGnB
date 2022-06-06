@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import AdCardProps from "../../Organisms/AdCard/interfaces";
+import type { AdCardProps } from "../../Organisms/AdCard/index";
 import Error from "../../Molecules/Error/index";
 import AdPhotos from "../../Organisms/AdPhotos";
 import UserInfo from "../../Molecules/UserInfoCard/index";
@@ -79,9 +79,8 @@ const UserContainer = styled.div`
     align-items: center;
     gap: 20px;
 `
-
 interface Props {
-    data: AdCardProps[],
+    data: AdCardProps[];
 }
 
 const AdProfile = (props: Props) => {
@@ -131,7 +130,7 @@ const AdProfile = (props: Props) => {
                             disabled={endDate.getTime() === startDate.getTime()}
                             text="Continue"
                             width="90%"
-                            goTo={"/booking/" + currentAd.adId + "+" + startDate.toISOString() + "+" + endDate.toISOString()}
+                            goTo={"/booking/" + currentAd.adId + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10)}
                         />
                     </PriceContainer>
                     <AdInfoContainer>

@@ -4,7 +4,7 @@ import User from "../../Molecules/UserInfo/interfaces";
 import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
-import AdCardProps from "../../Organisms/AdCard/interfaces";
+import type { AdCardProps } from "../../Organisms/AdCard/index";
 import styled from "styled-components";
 
 const Container = styled.div`
