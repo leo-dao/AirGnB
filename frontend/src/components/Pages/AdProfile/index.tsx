@@ -87,6 +87,7 @@ const AdProfile = (props: Props) => {
 
     let params = useParams();
 
+
     const currentAd = (props.data.filter(ad => ad.adId === params.adId))[0];
 
     const [startDate, setStartDate] = useState(new Date());

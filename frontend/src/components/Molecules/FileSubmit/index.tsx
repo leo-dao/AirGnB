@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// pass props
 const FileInputWrapper = styled.div.attrs((props: FileInputProps) => (props))`
     width: 250px;
     text-align: center;
@@ -28,14 +27,10 @@ const StyledLabel = styled.label.attrs((props: FileInputProps) => (props))`
 `
 
 const FileList = styled.div.attrs((props: FileInputProps) => (props))`
-display: flex;
-flex-direction: column;
-font-size: 12px;
-font-style: italic;
-justify-content: center;
-align-items: center;
-margin-top: 20px;
-`
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 20px;
+    `
 
 interface FileInputProps {
     disabled: boolean;
