@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     background-color: ${(props: ButtonProps) => props.backgroundColor ? props.backgroundColor : '#506bcd'};
@@ -70,6 +71,7 @@ interface ButtonProps {
     borderRadius?: number,
     onClick?: () => void,
     goTo?: string,
+    state?: any,
     secondary?: boolean,
     tertiary?: boolean,
     type?: string,
@@ -89,11 +91,14 @@ const Button = (props: ButtonProps) => {
 
     if (props.goTo) {
         button = (
-            <a href={`${props.goTo}`} style={{
-                width: props.width,
-                justifyContent: 'center',
-                display: 'flex',
-            }}>
+            <Link
+                to={`${props.goTo}`}
+                state={props.state}
+                style={{
+                    width: props.width,
+                    justifyContent: 'center',
+                    display: 'flex',
+                }}>
                 <StyledButton
                     secondary={props.secondary}
                     tertiary={props.tertiary}
@@ -104,7 +109,7 @@ const Button = (props: ButtonProps) => {
                     {props.text}
                     {props.component}
                 </StyledButton>
-            </a>
+            </Link>
         )
     }
     else {

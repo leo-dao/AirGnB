@@ -7,7 +7,7 @@ import UserInfo from "../../Molecules/UserInfoCard/index";
 import Availability from "../../Molecules/Availability";
 import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
-import Price from "../../Atoms/Price/index";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ChatButton from "../../Atoms/ChatButton";
 
@@ -132,6 +132,9 @@ const AdProfile = (props: Props) => {
                             text="Continue"
                             width="90%"
                             goTo={"/booking/" + currentAd.adId + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10)}
+                            state={{
+                                totalPrice: totalPrice,
+                            }}
                         />
                     </PriceContainer>
                     <AdInfoContainer>

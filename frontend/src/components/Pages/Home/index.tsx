@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
+import { useLocation } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -11,6 +12,7 @@ const Container = styled.div`
     `;
 
 const Home = () => {
+
     return (
         <Container>
             <h1>Lend or borrow musical instruments</h1>
