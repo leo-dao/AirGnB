@@ -134,6 +134,7 @@ const AdProfile = (props: Props) => {
                             goTo={"/booking/" + currentAd.adId + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10)}
                             state={{
                                 totalPrice: totalPrice,
+                                numDays: numDays,
                             }}
                         />
                     </PriceContainer>

@@ -96,6 +96,7 @@ const Button = (props: ButtonProps) => {
                 state={props.state}
                 style={{
                     width: props.width,
+                    height: props.height,
                     justifyContent: 'center',
                     display: 'flex',
                 }}>
@@ -119,6 +120,7 @@ const Button = (props: ButtonProps) => {
                 secondary={props.secondary}
                 tertiary={props.tertiary}
                 width={props.width}
+                height={props.height}
                 disabled={props.disabled}
             >
                 {props.text} {props.component}

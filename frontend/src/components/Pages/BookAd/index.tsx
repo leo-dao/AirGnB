@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "../../Atoms/Button";
 import { useParams } from "react-router-dom";
 import { LineOutlined } from "@ant-design/icons";
 import { adData } from "../../../fakeData";
@@ -56,8 +57,16 @@ const DateStyled = styled.div`
     width: 95px;
 `
 
+const ButtonContainer = styled.div`
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+`
+
 interface State {
     totalPrice: number;
+    numDays: number;
 }
 
 const BookAd = () => {
@@ -71,6 +80,7 @@ const BookAd = () => {
     const location = useLocation();
     const state = location.state as State;
     const { totalPrice } = state;
+    const { numDays } = state;
 
 
     const ad = adData.find(ad => ad.adId === adId);
@@ -80,19 +90,25 @@ const BookAd = () => {
             <h1>Overview:</h1>
             <Divider>
                 <AdInfo>
-                    {ad?.title}
+                    <h2>{ad?.title}</h2>
                     <Image src={ad?.adImages[0].img} />
+                </AdInfo>
+                <Price>
                     <Dates>
                         <DateStyled>{startDate}</DateStyled>
                         <LineOutlined style={{ fontSize: "25px" }} />
                         <DateStyled>{endDate}</DateStyled>
                     </Dates>
-                </AdInfo>
-                <Price>
-                    {ad?.price}
-                    {totalPrice}
+                    <h3>{numDays} days * {ad?.price}$ = {totalPrice}$</h3>
                 </Price>
             </Divider>
+            <ButtonContainer>
+                <Button
+                    text="Pay"
+                    width="180px"
+                    height="60px"
+                />
+            </ButtonContainer>
         </Container>
     )
 };

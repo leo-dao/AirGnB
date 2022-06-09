@@ -1,7 +1,6 @@
 import React from "react";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
-import { useLocation } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
