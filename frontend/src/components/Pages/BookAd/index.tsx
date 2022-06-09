@@ -107,6 +107,8 @@ const BookAd = () => {
                     text="Pay"
                     width="180px"
                     height="60px"
+                    fontSize="30px"
+                    borderRadius="10px"
                 />
             </ButtonContainer>
         </Container>

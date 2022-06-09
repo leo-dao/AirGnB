@@ -9,10 +9,10 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     align-items: center;
     justify-content: center;
     box-shadow: 0px 0px 1px black;
-    font-size: 20px;
+    font-size: ${props => props.fontSize ? props.fontSize : '20px'};
     width: ${props => props.width ? props.width : '120px'};
     height: ${props => props.height ? props.height : '40px'};
-    border-radius: 20px;
+    border-radius: ${props => props.borderRadius ? props.borderRadius : '20px'};
     cursor: pointer;
     outline: none;
     border: 0.5px solid #0A6EDD;
@@ -65,10 +65,11 @@ interface ButtonProps {
     text?: string,
     width?: string,
     height?: string,
+    fontSize?: string,
     component?: React.ReactNode,
     backgroundColor?: string,
     disabled?: boolean,
-    borderRadius?: number,
+    borderRadius?: string,
     onClick?: () => void,
     goTo?: string,
     state?: any,
@@ -94,18 +95,16 @@ const Button = (props: ButtonProps) => {
             <Link
                 to={`${props.goTo}`}
                 state={props.state}
-                style={{
-                    width: props.width,
-                    height: props.height,
-                    justifyContent: 'center',
-                    display: 'flex',
-                }}>
+            >
                 <StyledButton
+                    onClick={onClick}
                     secondary={props.secondary}
                     tertiary={props.tertiary}
                     width={props.width}
-                    type={type}
+                    height={props.height}
                     disabled={props.disabled}
+                    fontSize={props.fontSize}
+                    borderRadius={props.borderRadius}
                 >
                     {props.text}
                     {props.component}
@@ -122,6 +121,8 @@ const Button = (props: ButtonProps) => {
                 width={props.width}
                 height={props.height}
                 disabled={props.disabled}
+                fontSize={props.fontSize}
+                borderRadius={props.borderRadius}
             >
                 {props.text} {props.component}
             </StyledButton>
