@@ -3,7 +3,8 @@ import Input from "../../Atoms/Input";
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+const axios = require('axios').default;
 
 const Form = styled.form`
     display: flex;
@@ -23,19 +24,31 @@ const ButtonContainer = styled.div`
 
 const Register = () => {
 
-    const navigate = useNavigate();
+    const initialState = {
+        email: "",
+        username: "",
+        password: "",
+    }
+
+    const [formData, updateFormData] = React.useState(initialState);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        updateFormData({
+            ...formData,
+            [e.target.placeholder.toLowerCase()]: e.target.value
+        })
+    }
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
-        console.log("Account created");
         e.preventDefault();
-        navigate('/')
+        axios.post('/register', formData);
     }
 
     const register = (
         <Form onSubmit={createAccount}>
-            <Input placeholder={"Email"} type={"email"} required />
-            <Input placeholder={"Username"} type={"text"} required />
-            <Input placeholder={"Password"} type={"password"} required />
+            <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
+            <Input placeholder={"Username"} type={"text"} onChange={handleChange} required />
+            <Input placeholder={"Password"} type={"password"} onChange={handleChange} required />
             <Input placeholder={"Confirm password"} type={"password"} required />
             <ButtonContainer>
                 <Button

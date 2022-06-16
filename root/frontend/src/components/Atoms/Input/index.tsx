@@ -25,12 +25,18 @@ const StyledInput = styled.input`
 interface InputProps {
     type?: string,
     placeholder?: string,
-    required?: boolean
+    required?: boolean,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = (props: InputProps) => {
     return (
-        <StyledInput type={props.type} placeholder={props.placeholder} required={props.required} />
+        <StyledInput
+            type={props.type}
+            placeholder={props.placeholder}
+            required={props.required}
+            onChange={props.onChange}
+        />
     )
 }
 
