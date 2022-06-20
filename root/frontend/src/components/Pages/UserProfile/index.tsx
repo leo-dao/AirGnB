@@ -33,13 +33,13 @@ const UserProfile = (props: UserProfileProps) => {
 
     let params = useParams();
 
-    const currentUser = (props.data.filter(user => user.userId === params.userId))[0];   // Getting the correct user based on id from the url
+    const currentUser = (props.data.filter(user => user.id === params.userId))[0];   // Getting the correct user based on id from the url
 
     if (!currentUser) {
         return <Error msg="Sorry, this user does not exist" />
     }
 
-    const userAds = props.ads.filter(ad => ad.user.userId === currentUser.userId);
+    const userAds = props.ads.filter(ad => ad.user.id === currentUser.id);
     const numAds = userAds.length;
     const ad = numAds === 1 ? "ad" : "ads";
 
@@ -49,7 +49,7 @@ const UserProfile = (props: UserProfileProps) => {
                 <UserInfo
                     name={currentUser.name}
                     avatar={currentUser.avatar}
-                    userId={currentUser.userId}
+                    id={currentUser.id}
                     location={currentUser.location}
                     rating={currentUser.rating}
                     numRatings={currentUser.numRatings}

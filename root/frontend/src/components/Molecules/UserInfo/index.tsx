@@ -1,5 +1,5 @@
 import React from "react";
-import UserProps from "./interfaces";
+import { User } from "../../../interfaces";
 import Avatar from "antd/lib/avatar/avatar";
 import { Rate } from 'antd';
 import styled from 'styled-components';
@@ -21,7 +21,7 @@ const Container = styled.div.attrs((props: UserInfoProps) => props)`
     }
     `;
 
-interface UserInfoProps extends UserProps {
+interface UserInfoProps extends User {
     type?: string;
     titleSize?: number;
 }

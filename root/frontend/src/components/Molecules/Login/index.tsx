@@ -3,7 +3,6 @@ import Button from "../../Atoms/Button";
 import SignIn from "../SignIn";
 import Register from "../Register";
 import styled from "styled-components";
-import { PropertySafetyFilled } from "@ant-design/icons";
 
 const Container = styled.div`
     display: flex;

@@ -29,12 +29,10 @@ const PostAd = () => {
     const [price, setPrice] = React.useState<number>(0);
     const [images, setImages] = React.useState<File[]>([]);
 
-    const displayImage = [
-        {
-            imgId: "none",
-            img: images ? images[0].name :
-                "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg",
-        }];
+    const displayImage = [{
+        imgId: "test",
+        img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+    }];
 
     const titleSubmit = (e: any) => {
         setTitle(e.target.value);
@@ -64,7 +62,7 @@ const PostAd = () => {
         for (let i = 0; i < images.length; i++) {
             const adImage: AdImage = {
                 id: uuid(),
-                image: images[i],
+                image: images[i].name,
             }
             adImages.push(adImage);
         }

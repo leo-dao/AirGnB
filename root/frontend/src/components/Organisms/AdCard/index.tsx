@@ -60,7 +60,7 @@ const AdCard = (props: AdCardProps) => {
             <Price price={props.price} type={"card"} />
             <UserInfoWrapper>
                 <UserInfo
-                    userId={props.user.userId}
+                    id={props.user.id}
                     name={props.user.name}
                     avatar={props.user.avatar}
                     rating={props.user.rating}

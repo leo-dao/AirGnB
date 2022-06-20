@@ -1,6 +1,6 @@
 const userData = [
   {
-    userId: 'rdmUser1',
+    id: 'rdmUser1',
     name: 'Eddie',
     avatar: 'https://media.npr.org/assets/img/2020/10/14/gettyimages-593327767_wide-4cd62ef34dcd35fe1f87bcbc0cbf3553a76e260f.jpg?s=1400',
     rating: 5,
@@ -8,7 +8,7 @@ const userData = [
     location: "Los Angeles, United States",
   },
   {
-    userId: 'rdmUser2',
+    id: 'rdmUser2',
     name: 'Default',
     avatar: 'https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png',
     rating: 2.5,
@@ -16,7 +16,7 @@ const userData = [
     location: 'Paris, France',
   },
   {
-    userId: 'rdmUser4',
+    id: 'rdmUser4',
     name: 'Stevie',
     avatar: 'https://townsquare.media/site/295/files/2018/12/SRV-Annamaria-DiSanto-Getty-Im.jpg',
     rating: 4.5,

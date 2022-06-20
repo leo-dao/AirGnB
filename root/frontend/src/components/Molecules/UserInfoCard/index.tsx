@@ -31,14 +31,14 @@ const UserInfoCard = (props: UserInfoProps) => {
     return (
         <Container>
             <TopContainer>
-                <AvatarLink userId={props.userId} avatar={props.avatar} size={avatarSize} />
+                <AvatarLink id={props.id} avatar={props.avatar} size={avatarSize} />
                 <UserInfo
                     type={"card"}
                     name={props.name}
                     location={props.location}
                     rating={props.rating}
                     numRatings={props.numRatings}
-                    userId={props.userId}
+                    id={props.id}
                     avatar={props.avatar}
                 />
             </TopContainer>
