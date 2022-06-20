@@ -1,10 +1,11 @@
 import React from "react";
-import { Input } from 'antd';
 import AdCard from "../../Organisms/AdCard";
 import { userData } from "../../../fakeData";
-import { ImageProps } from "../../Organisms/AdCard/index";
+import { Ad, AdImage } from "../../../interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
 import styled from "styled-components";
+import { v4 as uuid } from 'uuid';
+import axios from "axios";
 
 const Container = styled.div`
     display: flex;
@@ -26,7 +27,7 @@ const PostAd = () => {
     const [category, setCategory] = React.useState<string>("");
     const [description, setDescription] = React.useState<string>("");
     const [price, setPrice] = React.useState<number>(0);
-    const [images, setImages] = React.useState<File[]>();
+    const [images, setImages] = React.useState<File[]>([]);
 
     const displayImage = [
         {
@@ -57,8 +58,28 @@ const PostAd = () => {
 
     const createAd = (e: any) => {
         e.preventDefault();
-        console.log(title, category, description, price, images);
-        // go home
+
+        // Creating unique ids for all images
+        const adImages: AdImage[] = [];
+        for (let i = 0; i < images.length; i++) {
+            const adImage: AdImage = {
+                id: uuid(),
+                image: images[i],
+            }
+            adImages.push(adImage);
+        }
+
+        // Creating ad object 
+        // TODO: Add user
+        const ad: Ad = {
+            title: title,
+            id: uuid(),
+            category: category,
+            description: description,
+            price: price,
+            images: adImages,
+        }
+        axios.post("/postAd", ad);
     }
 
     var fileNames: String[] = images ? Array.from(images).map(file => file.name) : [];
