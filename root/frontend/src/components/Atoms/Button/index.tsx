@@ -86,9 +86,19 @@ const Button = (props: ButtonProps) => {
         onClick = () => { }
     }
 
-    const type = props.type ? props.type : 'button'
-
-    let button;
+    let button =
+        <StyledButton
+            onClick={onClick}
+            secondary={props.secondary}
+            tertiary={props.tertiary}
+            width={props.width}
+            height={props.height}
+            disabled={props.disabled}
+            fontSize={props.fontSize}
+            borderRadius={props.borderRadius}
+        >
+            {props.text} {props.component}
+        </StyledButton>;
 
     if (props.goTo) {
         button = (
@@ -96,42 +106,11 @@ const Button = (props: ButtonProps) => {
                 to={`${props.goTo}`}
                 state={props.state}
             >
-                <StyledButton
-                    onClick={onClick}
-                    secondary={props.secondary}
-                    tertiary={props.tertiary}
-                    width={props.width}
-                    height={props.height}
-                    disabled={props.disabled}
-                    fontSize={props.fontSize}
-                    borderRadius={props.borderRadius}
-                >
-                    {props.text}
-                    {props.component}
-                </StyledButton>
+                {button}
             </Link>
         )
     }
-    else {
-        button =
-            <StyledButton
-                onClick={onClick}
-                secondary={props.secondary}
-                tertiary={props.tertiary}
-                width={props.width}
-                height={props.height}
-                disabled={props.disabled}
-                fontSize={props.fontSize}
-                borderRadius={props.borderRadius}
-            >
-                {props.text} {props.component}
-            </StyledButton>
-    }
-
-
-    return (
-        button
-    )
+    return (button)
 }
 
 export default Button;

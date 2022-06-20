@@ -1,16 +1,18 @@
 const express = require('express');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const app = express();
 const bp = require('body-parser');
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
-
+// ROUTE IMPORTS
 const registerRoute = require('./routes/register');
+const postAdRoute = require('./routes/postAd');
 
 app.use('/register', registerRoute);
+app.use('/postAd', postAdRoute);
 
 app.listen(port, () => {
-    console.log('Server is running on port ${port}');
+    console.log('Server is running on port ' + port);
 }
 );
