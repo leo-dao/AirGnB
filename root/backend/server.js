@@ -3,6 +3,8 @@ const port = process.env.PORT || 4000;
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+var cors = require('cors')
+app.use(cors())
 const bp = require('body-parser');
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
