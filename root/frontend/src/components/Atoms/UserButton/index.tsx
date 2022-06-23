@@ -3,14 +3,14 @@ import Button from "../Button";
 import { UserOutlined } from "@ant-design/icons";
 
 interface Props {
-    goTo?: string,
+    onClick?: () => void,
 }
 
 const UserButton = (props: Props) => {
     return (
         <Button
             component={<UserOutlined style={{ fontSize: "1.7em" }} />}
-            goTo={props.goTo} />
+            onClick={props.onClick} />
     )
 }
 

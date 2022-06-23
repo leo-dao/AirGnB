@@ -45,7 +45,7 @@ const SignIn = () => {
                 <Button
                     text={"Create profile"}
                     width={'170px'}
-                    goTo={"/register"}
+                    onClick={() => window.location.href = '/register'}
                 />
             </ButtonContainer>
         </Form>

@@ -102,6 +102,8 @@ const AdProfile = (props: Props) => {
     var totalPrice = currentAd.price * numDays;
     var price = "TOTAL: " + totalPrice.toString() + " $";
 
+    var bookingURL = "/booking/" + currentAd.adId + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10);
+
     const messageUser = () => {
         console.log("message user");
     }
@@ -131,7 +133,7 @@ const AdProfile = (props: Props) => {
                             disabled={endDate.getTime() === startDate.getTime()}
                             text="Continue"
                             width="90%"
-                            goTo={"/booking/" + currentAd.adId + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10)}
+                            goTo={bookingURL}
                             state={{
                                 totalPrice: totalPrice,
                                 numDays: numDays,

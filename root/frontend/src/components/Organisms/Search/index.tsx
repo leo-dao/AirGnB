@@ -2,8 +2,6 @@ import React from "react";
 import SortCategories from "../../Molecules/SortCategories";
 import SearchBox from "../../Molecules/SearchBox";
 import LocationFilter from "../../Molecules/LocationFilter";
-import AdCardList from "../AdCardList";
-import { userData, adData } from "../../../fakeData";
 import axios from "axios";
 import styled from "styled-components";
 

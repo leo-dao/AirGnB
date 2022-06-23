@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
-import ChatButton from "../../Atoms/ChatButton";
 import styled from "styled-components";
 
 const StyledHeaderButtons = styled.div`
@@ -31,15 +30,12 @@ const HeaderButtons = () => {
         <StyledHeaderButtons>
             <Button
                 text="Post ad"
-                goTo={post}
+                onClick={() => window.location.href = post}
             />
             <Space />
-            <ChatButton
-                onClick={openChat}
-            />
             <Space />
             <UserButton
-                goTo={account}
+                onClick={() => window.location.href = account}
             />
         </StyledHeaderButtons>
     )

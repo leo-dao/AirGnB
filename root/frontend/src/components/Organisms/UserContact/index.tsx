@@ -23,7 +23,7 @@ const UserContact = () => {
         <Container>
             <Button
                 text="Rent"
-                goTo="/rent"
+                onClick={() => window.location.href = '/rent'}
             />
             <ChatButton
                 onClick={contactUser} />
