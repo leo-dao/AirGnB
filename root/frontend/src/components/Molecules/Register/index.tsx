@@ -3,7 +3,7 @@ import Input from "../../Atoms/Input";
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
-import { useState } from "react";
+import { v4 as uuid } from 'uuid';
 const axios = require('axios').default;
 
 const Form = styled.form`
@@ -25,9 +25,11 @@ const ButtonContainer = styled.div`
 const Register = () => {
 
     const initialState = {
-        email: "",
-        username: "",
-        password: "",
+        name: '',
+        email: '',
+        location: '',
+        password: '',
+        id: uuid(),
     }
 
     const [formData, updateFormData] = React.useState(initialState);
@@ -47,7 +49,7 @@ const Register = () => {
     const register = (
         <Form onSubmit={createAccount}>
             <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
-            <Input placeholder={"Username"} type={"text"} onChange={handleChange} required />
+            <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
             <Input placeholder={"Password"} type={"password"} onChange={handleChange} required />
             <Input placeholder={"Confirm password"} type={"password"} required />
             <ButtonContainer>

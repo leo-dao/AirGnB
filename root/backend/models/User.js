@@ -29,6 +29,10 @@ const UserSchema = new mongooose.Schema({
     avatarUrl: {
         type: String,
     },
+    _id: {
+        type: String,
+        required: true
+    },
     createdAt: {
         type: Date,
         required: true,
