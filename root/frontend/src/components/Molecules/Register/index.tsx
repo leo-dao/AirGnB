@@ -74,7 +74,7 @@ const Register = () => {
         email: '',
         location: '',
         password: '',
-        avatar: null,
+        avatar: '',
         id: uuid(),
     }
 
@@ -89,11 +89,17 @@ const Register = () => {
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Pass file object as a file?
+        // Not accessible in server route
+        console.log(formData.avatar);
         axios.post('/register', formData);
     }
 
     const register = (
-        <Form onSubmit={createAccount}>
+        <Form
+            onSubmit={createAccount}
+            encType="multipart/form-data"
+        >
             <Container>
                 <h2>Enter your information</h2>
                 <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />

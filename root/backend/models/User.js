@@ -22,8 +22,6 @@ const UserSchema = new mongooose.Schema({
         default: '',
     },
     avatar: {
-        data: Buffer,
-        contentType: String,
     },
     numAds: {
         type: Number,
