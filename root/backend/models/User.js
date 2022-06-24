@@ -16,6 +16,15 @@ const UserSchema = new mongooose.Schema({
         required: true,
         default: '',
     },
+    location: {
+        type: String,
+        required: true,
+        default: '',
+    },
+    avatar: {
+        data: Buffer,
+        contentType: String,
+    },
     numAds: {
         type: Number,
         required: true,
@@ -25,9 +34,6 @@ const UserSchema = new mongooose.Schema({
         type: Number,
         required: true,
         default: -1,
-    },
-    avatarUrl: {
-        type: String,
     },
     _id: {
         type: String,
