@@ -23,7 +23,7 @@ const Error = (props: Props) => {
                 subTitle={props.msg || defaultMsg} />
             <div >
                 <Button
-                    goTo="/"
+                    onClick={() => window.location.href = '/'}
                     text="Back Home"
                 />
             </div>

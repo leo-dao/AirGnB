@@ -1,7 +1,4 @@
 import React from "react";
-import Button from "../../Atoms/Button";
-import SignIn from "../SignIn";
-import Register from "../Register";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -12,6 +9,11 @@ const Container = styled.div`
     gap: 20px;
 `
 
+const StyledHeader = styled.h1`
+    font-size: 4em;
+`
+
+
 interface LoginProps {
     form: React.ReactNode;
 }
@@ -20,7 +22,7 @@ const Login = (props: LoginProps) => {
 
     return (
         <Container>
-            <h1>Welcome to AirGnB</h1>
+            <StyledHeader>Welcome to AirGnB</StyledHeader>
             {props.form}
         </Container>
     )

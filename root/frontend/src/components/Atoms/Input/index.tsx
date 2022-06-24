@@ -12,6 +12,10 @@ const StyledInput = styled.input`
     border: none;
     outline: none;
     border-bottom: 1px solid #ccc;
+    &:hover{
+        transition: all 0.3s ease-in-out;
+        border-color: #1eb5f0;
+    }
     &:focus {
         ::placeholder {
             transition: all 0.3s ease-in-out;

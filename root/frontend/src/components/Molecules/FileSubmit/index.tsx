@@ -33,7 +33,7 @@ const FileList = styled.div.attrs((props: FileInputProps) => (props))`
     `
 
 interface FileInputProps {
-    disabled: boolean;
+    disabled?: boolean;
     fileNames: String[];
     onChange: (e: any) => void;
 }
