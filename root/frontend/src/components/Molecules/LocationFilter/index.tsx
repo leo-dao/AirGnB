@@ -1,17 +1,6 @@
 import React from "react";
-import Select from 'antd/lib/select';
+import { Select } from 'antd';
 import FilterInput from "../../Atoms/FilterInput/index";
-import styled from "styled-components";
-
-const StyledSelect = styled(Select)`
-    width: 100%;
-    font-size: 18px;
-    color: black;
-    text-align: center;
-    .ant-select-selection-placeholder {
-        color: grey;
-    }
-`;
 
 interface Props {
     data: any[];
@@ -31,7 +20,13 @@ const LocationFilter = (props: Props) => {
         <FilterInput
             width="350px"
             content={
-                <StyledSelect
+                <Select
+                    style={{
+                        width: "100%",
+                        fontSize: "18px",
+                        color: "black",
+                        textAlign: "center",
+                    }}
                     showSearch
                     bordered={false}
                     options={location}
@@ -45,6 +40,7 @@ const LocationFilter = (props: Props) => {
                         boxShadow: "0px 0px 10px #8D8D8D",
                         borderRadius: "10px",
                     }}
+                    onSelect={props.onSelect}
                 />
             }
             logo={
