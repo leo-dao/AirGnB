@@ -1,9 +1,10 @@
 import React from 'react';
+import { Routes, Route, Link } from "react-router-dom";
+import './App.css';
 import Home from './components/Pages/Home';
 import Catalog from './components/Pages/Catalog';
 import Header from './components/Organisms/Header';
 import AdProfile from './components/Pages/AdProfile';
-import { Routes, Route, Link } from "react-router-dom";
 import UserProfile from './components/Pages/UserProfile';
 import { userData, adData } from "./fakeData"
 import SignIn from './components/Molecules/SignIn';
