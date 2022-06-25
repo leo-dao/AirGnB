@@ -22,6 +22,7 @@ const UserSchema = new mongooose.Schema({
         default: '',
     },
     avatar: {
+        type: String
     },
     numAds: {
         type: Number,
