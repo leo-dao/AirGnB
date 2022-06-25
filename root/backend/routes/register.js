@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const UserSchema = require('../models/User')
+const UserSchema = require('../models/User');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: 'uploads/' });
 
-router.post('/', upload.single('avatarj'), (req, res) => {
+router.post('/', upload.single('avatar'), (req, res) => {
 
-    console.log(req.body);
-
-    console.log(req.file, "hello");
+    console.log(req.file);
 
     const newUser = new UserSchema({
         name: req.body.name,

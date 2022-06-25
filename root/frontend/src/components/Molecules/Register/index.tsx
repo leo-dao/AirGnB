@@ -74,7 +74,7 @@ const Register = () => {
         email: '',
         location: '',
         password: '',
-        avatar: '',
+        avatar: null,
         id: uuid(),
     }
 
@@ -89,10 +89,11 @@ const Register = () => {
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Pass file object as a file?
-        // Not accessible in server route
-        console.log(formData.avatar);
-        axios.post('/register', formData);
+        axios.post('/register', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
     }
 
     const register = (
