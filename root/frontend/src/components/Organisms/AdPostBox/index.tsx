@@ -66,6 +66,7 @@ const AdPostBox = (props: PostAdProps) => {
                         disabled={props.buttonDisabled}
                         onClick={props.continue}
                         secondary
+                        type="button"
                     />
                 </ButtonContainer>
             );

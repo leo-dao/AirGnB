@@ -51,7 +51,10 @@ const AdPostForm = (props: PostAdProps) => {
     }
 
     return (
-        <Form onSubmit={props.createAd}>
+        <Form
+            onSubmit={props.createAd}
+            encType="multipart/form-data"
+        >
             <AdPostBox title="What's the title of your listing?"
                 continue={cont}
                 buttonDisabled={props.titleDisabled}
@@ -112,10 +115,11 @@ const AdPostForm = (props: PostAdProps) => {
                     />
                 } />
             <Button
-                type={'submit'}
-                text={"Post Ad"}
-                width={'200px'}
-                height={'100px'}
+                type='submit'
+                text='Post Ad'
+                width='200px'
+                height='70px'
+                fontSize="30px"
                 disabled={props.imagesDisabled}
             />
         </Form >

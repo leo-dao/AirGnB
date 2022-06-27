@@ -96,6 +96,7 @@ const Button = (props: ButtonProps) => {
             disabled={props.disabled}
             fontSize={props.fontSize}
             borderRadius={props.borderRadius}
+            type={props.type}
         >
             {props.text} {props.component}
         </StyledButton>;
