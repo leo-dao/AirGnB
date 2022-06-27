@@ -22,13 +22,20 @@ const CardStyled = styled.div`
 
 const PostAd = () => {
 
+
+    const displayImage = [{
+        imgId: "test",
+        img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+    }];
+
+
     const initialState = {
         title: '',
         id: uuid(),
         category: '',
         description: '',
         price: '0',
-        images: null,
+        images: [],
     }
 
     const [formData, updateFormData] = React.useState(initialState);
@@ -40,13 +47,6 @@ const PostAd = () => {
         })
     }
 
-    const [images, setImages] = React.useState<File[]>([]);
-
-    const displayImage = [{
-        imgId: "test",
-        img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-    }];
-
     const handleCategory = (e: any) => {
         updateFormData({
             ...formData,
@@ -54,8 +54,11 @@ const PostAd = () => {
         })
     }
 
-    const imagesSubmit = (e: any) => {
-        setImages(e.target.files);
+    const handleFiles = (e: any) => {
+        updateFormData({
+            ...formData,
+            images: e.target.files
+        })
     }
 
     const createAd = (e: any) => {
@@ -71,8 +74,6 @@ const PostAd = () => {
             adImages.push(adImage);
         } */
 
-        console.log()
-
         axios.post("/postAd", formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -80,7 +81,7 @@ const PostAd = () => {
         });
     }
 
-    var fileNames: String[] = images ? Array.from(images).map(file => file.name) : [];
+    var fileNames: String[] = Array.from(formData.images).map((file: File) => file.name);
 
     return (
         <Container>
@@ -92,9 +93,9 @@ const PostAd = () => {
                 setPrice={handleChange}
                 priceDisabled={parseInt(formData.price) < 10}
                 setCategory={handleCategory}
-                setImages={imagesSubmit}
+                setImages={handleFiles}
                 fileNames={fileNames}
-                imagesDisabled={images === undefined}
+                imagesDisabled={formData.images === undefined}
                 category={formData.category}
                 createAd={createAd}
             />

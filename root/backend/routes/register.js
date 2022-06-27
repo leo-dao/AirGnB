@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const UserSchema = require('../models/User');
 const multer = require('multer');
+const UserSchema = require('../models/User');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, './uploads/'),
@@ -11,8 +11,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage, limits: { fileSize: (1024 ** 2) * 5 } });
 
 router.post('/', upload.single('avatar'), (req, res) => {
-
-    console.log(req.file);
 
     const newUser = new UserSchema({
         name: req.body.name,
