@@ -8,6 +8,7 @@ app.use(cors());
 const bp = require('body-parser');
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
+const errorHandler = require('./middleware/error');
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL);
@@ -21,7 +22,13 @@ app.use('/register', registerRoute);
 app.use('/postAd', postAdRoute);
 app.use('/signIn', signInRoute);
 
+app.use(errorHandler);
+
 app.listen(port, () => {
     console.log('Server is running on port ' + port);
 }
 );
+
+process.on('unhandledRejection', (err, promise) => {
+    console.log('Encountered error: ' + err);
+})
