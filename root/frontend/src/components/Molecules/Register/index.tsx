@@ -61,6 +61,7 @@ const Register = () => {
     }
 
     const [file, setFile] = React.useState<File>();
+
     const onSetFile = (e: any) => {
         setFile(e.target.files[0]);
         updateFormData({

@@ -4,6 +4,7 @@ import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Form = styled.form`
     display: flex;
@@ -23,18 +24,33 @@ const ButtonContainer = styled.div`
 
 const SignIn = () => {
 
+    const initialState = {
+        email: '',
+        password: ''
+    }
+
+    const [formData, updateFormData] = React.useState(initialState);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        updateFormData({
+            ...formData,
+            [e.target.placeholder.toLowerCase()]: e.target.value
+        })
+    }
+
     const navigate = useNavigate();
 
     const signIn = (e: React.FormEvent<HTMLFormElement>) => {
+
         e.preventDefault();
-        console.log("Signed in");
-        navigate('/')
+        axios.post('/signIn', formData);
+        //navigate('/');
     }
 
     const sign = (
         <Form onSubmit={signIn}>
-            <Input placeholder={"Email"} type={"email"} required />
-            <Input placeholder={"Password"} type={"password"} required />
+            <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
+            <Input placeholder={"Password"} type={"password"} onChange={handleChange} required />
             <ButtonContainer>
                 <Button
                     text={"Sign in"}

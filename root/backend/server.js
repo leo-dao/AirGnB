@@ -15,9 +15,11 @@ mongoose.connect(process.env.MONGO_URL);
 // ROUTE IMPORTS
 const registerRoute = require('./routes/register');
 const postAdRoute = require('./routes/postAd');
+const signInRoute = require('./routes/signIn')
 
 app.use('/register', registerRoute);
 app.use('/postAd', postAdRoute);
+app.use('/signIn', signInRoute);
 
 app.listen(port, () => {
     console.log('Server is running on port ' + port);
