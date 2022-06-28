@@ -43,8 +43,14 @@ const SignIn = () => {
     const signIn = (e: React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
-        axios.post('/signIn', formData);
-        //navigate('/');
+        axios.post('/signIn', formData)
+            .then(res => {
+                localStorage.setItem('user', JSON.stringify(res.data));
+                navigate('/');
+            })
+            .catch(err => {
+                console.log(err)
+            });
     }
 
     const sign = (
