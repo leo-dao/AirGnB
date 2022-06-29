@@ -1,4 +1,5 @@
 const mongooose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongooose.Schema({
     name: {
@@ -49,5 +50,13 @@ const UserSchema = new mongooose.Schema({
         default: false,
     }
 });
+
+UserSchema.methods.matchPassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+};
+
+UserSchema.methods.getSignedToken = function () {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET)
+}
 
 module.exports = mongooose.model('User', UserSchema);

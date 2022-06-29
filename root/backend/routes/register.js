@@ -19,7 +19,6 @@ router.post('/', upload.single('avatar'), async (req, res) => {
     const emailExist = await User.findOne({ email: req.body.email });
     if (emailExist) return res.status(400).send('Email is already being used')
 
-
     // Hashing password
     const salt = await bcrypt.genSalt(10);
     const securePassword = await bcrypt.hash(req.body.password, salt)
@@ -32,8 +31,9 @@ router.post('/', upload.single('avatar'), async (req, res) => {
         avatar: req.file.path,
         _id: req.body.id,
     });
+
     newUser.save()
-        .then(item => {
+        .try(item => {
             res.send("item saved to database");
         })
         .catch(err => {
