@@ -132,7 +132,6 @@ const AdProfile = (props: Props) => {
                         <Button
                             disabled={endDate.getTime() === startDate.getTime()}
                             text="Continue"
-                            width="90%"
                             goTo={bookingURL}
                             state={{
                                 totalPrice: totalPrice,

@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../../Atoms/Input";
+import Password from '../../Atoms/Password';
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
@@ -23,6 +24,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
 `
 
@@ -95,6 +97,9 @@ const Register = () => {
 
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
+
+
+
         e.preventDefault();
         axios.post('/register', formData, {
             headers: {
@@ -104,7 +109,6 @@ const Register = () => {
             localStorage.setItem('authToken', JSON.stringify(res.data));
             //navigate('/');
         }).catch((err: any) => {
-            console.log(err)
             updateErrMsg(err.response.data.error);
             updateErr(true);
         });;
@@ -119,8 +123,8 @@ const Register = () => {
                 <h2>Enter your information</h2>
                 <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
                 <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
-                <Input placeholder={"Password"} type={"password"} onChange={handleChange} required />
-                <Input placeholder={"Confirm password"} type={"password"} required />
+                <Password placeholder={"Password"} onChange={handleChange} />
+                <Password placeholder={"Confirm password"} onChange={handleChange} />
             </Container>
             <ContainerLocation>
                 <h2>Where are you located?</h2>

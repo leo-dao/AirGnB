@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Text = styled.p.attrs((props: Props) => props)`
     font-size: 18px;
+    text-align: center;
     font-weight: bold;
     color: red;
     display: ${props => props.on ? 'initial' : 'none'};

@@ -31,6 +31,7 @@ interface InputProps {
     placeholder?: string,
     required?: boolean,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    min?: number;
 }
 
 const Input = (props: InputProps) => {
@@ -40,6 +41,7 @@ const Input = (props: InputProps) => {
             placeholder={props.placeholder}
             required={props.required}
             onChange={props.onChange}
+            minLength={props.min}
         />
     )
 }
