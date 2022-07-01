@@ -3,6 +3,7 @@ import Input from "../../Atoms/Input";
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
+import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -43,6 +44,11 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
+
+    const [errMsg, updateErrMsg] = React.useState('');
+    const [errOn, updateErr] = React.useState(false);
+
+
     const signIn = (e: React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
@@ -52,7 +58,8 @@ const SignIn = () => {
                 //navigate('/');
             })
             .catch(err => {
-                console.log(err)
+                updateErrMsg(err.response.data.error);
+                updateErr(true);
             });
     }
 
@@ -73,6 +80,7 @@ const SignIn = () => {
                     onClick={() => window.location.href = '/register'}
                 />
             </ButtonContainer>
+            <ErrorMessage msg={errMsg} on={errOn} />
         </Form>
     );
 

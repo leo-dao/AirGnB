@@ -4,8 +4,10 @@ import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
 import LocationFilter from "../LocationFilter";
+import ErrorMessage from "../../Atoms/ErrorMessage";
 import { v4 as uuid } from 'uuid';
 import FileSubmit from "../FileSubmit"
+import { AxiosResponse } from "axios";
 const axios = require('axios').default;
 
 const Form = styled.form`
@@ -88,13 +90,24 @@ const Register = () => {
         })
     }
 
+    const [errMsg, updateErrMsg] = React.useState('');
+    const [errOn, updateErr] = React.useState(false);
+
+
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         axios.post('/register', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        });
+        }).then((res: AxiosResponse<any, any>) => {
+            localStorage.setItem('authToken', JSON.stringify(res.data));
+            //navigate('/');
+        }).catch((err: any) => {
+            console.log(err)
+            updateErrMsg(err.response.data.error);
+            updateErr(true);
+        });;
     }
 
     const register = (
@@ -130,6 +143,7 @@ const Register = () => {
                 fontSize="25px"
                 type='submit'
             />
+            <ErrorMessage msg={errMsg} on={errOn} />
         </Form>
     )
 
