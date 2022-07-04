@@ -1,19 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const UserSchema = require('../models/User');
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const UserSchema = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) =>
-        cb(null, './uploads/'),
-    filename: (req, file, cb) =>
-        cb(null, new Date().toISOString() + file.originalname)
-})
-
-const upload = multer({ storage, limits: { fileSize: (1024 ** 2) * 5 } });
+const upload = require('../middleware/upload')
 
 router.post('/', upload.single('avatar'), async (req, res, next) => {
 
