@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../../Atoms/Input";
+import Password from '../../Atoms/Password'
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
@@ -66,7 +67,7 @@ const SignIn = () => {
     const sign = (
         <Form onSubmit={signIn}>
             <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
-            <Input placeholder={"Password"} type={"password"} onChange={handleChange} required />
+            <Password placeholder={"Password"} onChange={handleChange} />
             <ButtonContainer>
                 <Button
                     text={"Sign in"}

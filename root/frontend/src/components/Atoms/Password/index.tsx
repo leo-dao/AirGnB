@@ -4,12 +4,12 @@ import Input from '../Input';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content:  center;
     align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
 `
 
 interface Props {
@@ -35,10 +35,16 @@ const Password = (props: Props) => {
         setVisible('initial');
     }
 
-
     return (
         <Container>
-            <Input placeholder={props.placeholder} type={type} required min={5} onChange={props.onChange} />
+            <Input
+                placeholder={props.placeholder}
+                type={type}
+                required
+                min={5}
+                onChange={props.onChange}
+                isPassword
+            />
             <EyeOutlined
                 onClick={makeVisible}
                 style={{ display: visibleDisplay }}

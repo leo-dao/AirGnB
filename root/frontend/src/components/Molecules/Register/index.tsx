@@ -92,15 +92,17 @@ const Register = () => {
         })
     }
 
-    const [errMsg, updateErrMsg] = React.useState('');
-    const [errOn, updateErr] = React.useState(false);
-
+    const [error, updateError] = React.useState(
+        {
+            msg: '',
+            display: false,
+        }
+    )
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
 
-
-
         e.preventDefault();
+
         axios.post('/register', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -108,9 +110,11 @@ const Register = () => {
         }).then((res: AxiosResponse<any, any>) => {
             localStorage.setItem('authToken', JSON.stringify(res.data));
             //navigate('/');
+
         }).catch((err: any) => {
-            updateErrMsg(err.response.data.error);
-            updateErr(true);
+            updateError(
+                { msg: err.response.data.error, display: true }
+            )
         });;
     }
 
@@ -147,7 +151,7 @@ const Register = () => {
                 fontSize="25px"
                 type='submit'
             />
-            <ErrorMessage msg={errMsg} on={errOn} />
+            <ErrorMessage msg={error.msg} on={error.display} />
         </Form>
     )
 

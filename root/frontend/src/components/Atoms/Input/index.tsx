@@ -1,5 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { EyeOutlined } from '@ant-design/icons';
+
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+`
 
 const StyledInput = styled.input`
     display: flex;
@@ -7,8 +18,6 @@ const StyledInput = styled.input`
     background-color: transparent;
     width: 100%;
     height: 3em;
-    padding: 10px;
-    margin: 10px;
     border: none;
     outline: none;
     border-bottom: 1px solid #ccc;
@@ -32,10 +41,12 @@ interface InputProps {
     required?: boolean,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     min?: number;
+    isPassword?: boolean;
 }
 
 const Input = (props: InputProps) => {
-    return (
+
+    const input = (
         <StyledInput
             type={props.type}
             placeholder={props.placeholder}
@@ -43,6 +54,18 @@ const Input = (props: InputProps) => {
             onChange={props.onChange}
             minLength={props.min}
         />
+    )
+
+    if (props.isPassword) {
+        return input;
+    }
+
+    return (
+        <Container>
+            {input}
+            {/* Hidden to have the input and password input be the same length */}
+            <EyeOutlined style={{ visibility: 'hidden' }} />
+        </Container>
     )
 }
 
