@@ -22,7 +22,6 @@ const CardStyled = styled.div`
 
 const PostAd = () => {
 
-
     const displayImage = [{
         imgId: "test",
         img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
@@ -35,10 +34,10 @@ const PostAd = () => {
         category: '',
         description: '',
         price: '0',
-        images: [],
     }
 
     const [formData, updateFormData] = React.useState(initialState);
+    const [files, updateFiles] = React.useState<File[]>([]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateFormData({
@@ -55,11 +54,10 @@ const PostAd = () => {
     }
 
     const handleFiles = (e: any) => {
-        updateFormData({
-            ...formData,
-            images: e.target.files
-        })
+        updateFiles(e.target.files);
     }
+
+    var fileNames: string[] = Array.from(files).map((file: File) => file.name);
 
     const createAd = (e: any) => {
         e.preventDefault();
@@ -74,14 +72,28 @@ const PostAd = () => {
             adImages.push(adImage);
         } */
 
-        axios.post("/postAd", formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-    }
+        const data = new FormData();
 
-    var fileNames: String[] = Array.from(formData.images).map((file: File) => file.name);
+        for (const [key, value] of Object.entries(formData)) {
+            data.append(key, value);
+        }
+
+        Array.from(files).forEach(file => {
+            data.append('images', file, file.name);
+        });
+
+        axios({
+            method: 'post',
+            url: '/postAd',
+            data: data,
+            headers: { "Content-Type": "multipart/form-data" }
+        }).then(function (res) {
+            console.log(res);
+        })
+            .catch(function (res) {
+                console.log(res);
+            });
+    }
 
     return (
         <Container>
@@ -95,7 +107,7 @@ const PostAd = () => {
                 setCategory={handleCategory}
                 setImages={handleFiles}
                 fileNames={fileNames}
-                imagesDisabled={formData.images === undefined}
+                imagesDisabled={files === undefined}
                 category={formData.category}
                 createAd={createAd}
             />

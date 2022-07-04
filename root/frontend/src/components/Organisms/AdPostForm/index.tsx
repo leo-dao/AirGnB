@@ -32,7 +32,7 @@ interface PostAdProps {
     imagesDisabled: boolean;
     createAd: (e: any) => void;
     category: string;
-    fileNames: String[];
+    fileNames: string[];
 }
 
 const AdPostForm = (props: PostAdProps) => {
@@ -53,7 +53,8 @@ const AdPostForm = (props: PostAdProps) => {
     return (
         <Form
             onSubmit={props.createAd}
-            encType="multipart/form-data"
+            encType='multipart/form-data'
+            id='form'
         >
             <AdPostBox title="What's the title of your listing?"
                 continue={cont}

@@ -20,6 +20,10 @@ const AdSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    images: {
+        type: [String],
+        require: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

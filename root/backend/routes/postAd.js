@@ -4,34 +4,40 @@ const multer = require('multer');
 const AdSchema = require('../models/Ad');
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, './uploads/'),
-    filename: (req, file, cb) => cb(null, new Date().toISOString() + file.originalname)
+    destination: (req, file, cb) =>
+        cb(null, './uploads/'),
+    filename: (req, file, cb) =>
+        cb(null, new Date().toISOString() + file.originalname)
 })
 
 const upload = multer({ storage, limits: { fileSize: (1024 ** 2) * 5 } });
 
+router.post('/', upload.array('images', 6), async (req, res, next) => {
 
-router.post('/', upload.array('images', 3), (req, res) => {
+    const {
+        title,
+        id,
+        category,
+        description,
+        price
+    } = req.body;
 
-    console.log(req.files);
 
-    // req.body.images is a string?? it's '[object FileList]'
-    // req.files is an empty array
+    try {
 
-    const newAd = new AdSchema({
-        title: req.body.title,
-        _id: req.body.id,
-        category: req.body.category,
-        description: req.body.description,
-        price: req.body.price,
-    })
-    newAd.save()
-        .then(item => {
-            res.send("item saved to database");
+        const newAd = new AdSchema({
+            title: title,
+            _id: id,
+            category: category,
+            description: description,
+            price: price,
         })
-        .catch(err => {
-            res.status(400).send("unable to save to database");
-        });
+
+        await newAd.save()
+    }
+    catch (err) {
+        next(err)
+    }
 });
 
 module.exports = router;

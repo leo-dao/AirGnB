@@ -3,23 +3,33 @@ const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const ErrorResponse = require('../utils/errorResponse');
 
 router.post("/", async (req, res, next) => {
 
-    // Checking if user already exists
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).json({ successs: false, error: 'Email not found' });
+    const { email, password } = req.body;
 
-    // Checking if password is correct
-    const validPass = user.compare(req.body.password);
-    if (!validPass) return res.status(400).json({ successs: false, error: 'Incorrect password' });
+    try {
+        // Finding user
+        const user = await User.findOne({ email: email });
 
-    sendToken(user, 201, res);
-})
+        if (!user) {
+            return next(new ErrorResponse("Email not found", 401));
+        }
 
-const sendToken = (user, statusCode, res) => {
-    const token = user.getSignedToken();
-    res.status(statusCode).json({ success: true, token })
-}
+        // Checking password
+        const validPass = await user.matchPassword(password);
+        if (!validPass) {
+            return next(new ErrorResponse("Incorrect password", 401))
+        }
+
+        // Sending jwt
+        const token = user.getSignedToken();
+        res.status(202).json({ success: true, token })
+
+    } catch (err) {
+        next(err)
+    };
+});
 
 module.exports = router;

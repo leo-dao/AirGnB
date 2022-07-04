@@ -16,8 +16,6 @@ const signInRoute = require('./routes/signIn')
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL);
 
-
-
 // Middleware
 app.use(cors());
 app.use(bp.json());
