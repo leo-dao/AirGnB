@@ -7,9 +7,7 @@ import UserInfo from "../../Molecules/UserInfoCard/index";
 import Availability from "../../Molecules/Availability";
 import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ChatButton from "../../Atoms/ChatButton";
 
 const CenterContainer = styled.div`
     display: flex;
@@ -155,9 +153,6 @@ const AdProfile = (props: Props) => {
                                     fontSize={18}
                                     avatarSize={60}
                                 />
-                                <ChatButton
-                                    width="40px"
-                                    onClick={messageUser} />
                             </UserContainer>
                         </Info>
                     </AdInfoContainer>

@@ -60,17 +60,8 @@ const PostAd = () => {
     var fileNames: string[] = Array.from(files).map((file: File) => file.name);
 
     const createAd = (e: any) => {
-        e.preventDefault();
 
-        // Creating unique ids for all images
-        /* const adImages = [];
-        for (let i = 0; i < images.length; i++) {
-            const adImage = {
-                id: uuid(),
-                image: images[i],
-            }
-            adImages.push(adImage);
-        } */
+        e.preventDefault();
 
         const data = new FormData();
 
@@ -88,7 +79,6 @@ const PostAd = () => {
             data: data,
             headers: { "Content-Type": "multipart/form-data" }
         }).then(function (res) {
-            console.log(res);
         })
             .catch(function (res) {
                 console.log(res);

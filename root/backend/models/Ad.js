@@ -21,7 +21,10 @@ const AdSchema = new mongoose.Schema({
         required: true,
     },
     images: {
-        type: [String],
+        type: [{
+            img: String,
+            _id: String,
+        }],
         require: true,
     },
     createdAt: {

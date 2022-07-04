@@ -14,13 +14,14 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
         id
     } = req.body;
 
-
     try {
         // Checking if user already exists
         const emailExist = await User.findOne({ email: email });
         if (emailExist) {
             return next(new ErrorResponse('Email is already being used'), 401)
         }
+
+        const path = req.file.name;
 
         // Hashing password
         const salt = await bcrypt.genSalt(10);
