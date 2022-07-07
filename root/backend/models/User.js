@@ -34,7 +34,7 @@ const UserSchema = new mongooose.Schema({
     rating: {
         type: Number,
         required: true,
-        default: -1,
+        default: 5,
     },
     _id: {
         type: String,

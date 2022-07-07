@@ -57,7 +57,7 @@ const Register = () => {
             })
     }, [])
 
-    const onSelect = (value: string) => {
+    const locationSelect = (value: string) => {
         updateFormData({
             ...formData,
             location: value
@@ -89,33 +89,62 @@ const Register = () => {
         updateFormData({
             ...formData,
             [e.target.placeholder.toLowerCase()]: e.target.value
-        })
+        });
     }
 
-    const [error, updateError] = React.useState(
-        {
-            msg: '',
-            display: false,
+    const noError = {
+        msg: '',
+        display: false,
+    }
+
+    const [error, updateError] = React.useState(noError)
+
+    const passwordMatch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.value !== formData.password) {
+            updateError(
+                {
+                    msg: "Passwords don't match",
+                    display: true
+                })
         }
-    )
+        else {
+            updateError(noError)
+        }
+    }
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
 
-        e.preventDefault();
+        let formMissing = false;
 
-        axios.post('/register', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
+        Object.entries(formData).forEach(element => {
+            if (element[1] === '' || element[1] === null) {
+                formMissing = true;
+                updateError({
+                    msg: `Missing ${element[0]}`,
+                    display: true
+                })
             }
-        }).then((res: AxiosResponse<any, any>) => {
-            localStorage.setItem('authToken', JSON.stringify(res.data));
-            //navigate('/');
+        })
 
-        }).catch((err: any) => {
-            updateError(
-                { msg: err.response.data.error, display: true }
-            )
-        });;
+        if (!formMissing) {
+            e.preventDefault();
+
+            axios.post('/register', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then((res: AxiosResponse<any, any>) => {
+                localStorage.setItem('authToken', JSON.stringify(res.data));
+                //navigate('/');
+
+            }).catch((err: any) => {
+                updateError(
+                    { msg: err.response.data.error, display: true }
+                )
+            });;
+        }
+
+        e.preventDefault();
     }
 
     const register = (
@@ -128,13 +157,13 @@ const Register = () => {
                 <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
                 <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
                 <Password placeholder={"Password"} onChange={handleChange} />
-                <Password placeholder={"Confirm password"} onChange={handleChange} />
+                <Password placeholder={"Confirm password"} onChange={passwordMatch} />
             </Container>
             <ContainerLocation>
                 <h2>Where are you located?</h2>
                 <LocationFilter
                     data={data}
-                    onSelect={onSelect}
+                    onSelect={locationSelect}
                 />
             </ContainerLocation>
             <ContainerAvatar>
