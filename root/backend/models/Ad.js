@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 
 const AdSchema = new mongoose.Schema({
     title: {
@@ -19,6 +20,7 @@ const AdSchema = new mongoose.Schema({
     _id: {
         type: String,
         required: true,
+        default: uuidv4(),
     },
     images: {
         type: [{

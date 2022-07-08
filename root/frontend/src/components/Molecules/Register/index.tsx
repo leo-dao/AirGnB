@@ -6,7 +6,6 @@ import styled from "styled-components";
 import Login from "../Login";
 import LocationFilter from "../LocationFilter";
 import ErrorMessage from "../../Atoms/ErrorMessage";
-import { v4 as uuid } from 'uuid';
 import FileSubmit from "../FileSubmit"
 import { AxiosResponse } from "axios";
 const axios = require('axios').default;
@@ -80,7 +79,6 @@ const Register = () => {
         location: '',
         password: '',
         avatar: null,
-        id: uuid(),
     }
 
     const [formData, updateFormData] = React.useState(initialState);

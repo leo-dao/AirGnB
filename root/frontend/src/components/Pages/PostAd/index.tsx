@@ -4,7 +4,6 @@ import { userData } from "../../../fakeData";
 import { Ad, AdImage } from "../../../interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
 import styled from "styled-components";
-import { v4 as uuid } from 'uuid';
 import axios from "axios";
 
 const Container = styled.div`
@@ -30,7 +29,6 @@ const PostAd = () => {
 
     const initialState = {
         title: '',
-        id: uuid(),
         category: '',
         description: '',
         price: '0',

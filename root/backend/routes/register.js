@@ -24,7 +24,6 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
             name,
             email,
             location,
-            id
         } = req.body;
 
         // Checking if user already exists
@@ -45,7 +44,6 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
             password: securePassword,
             location: location,
             avatar: path,
-            _id: id,
         });
 
         await newUser.save()

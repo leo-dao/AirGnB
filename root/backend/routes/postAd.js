@@ -28,7 +28,6 @@ router.post('/', upload.array('images', 6), async (req, res, next) => {
     try {
         const newAd = new AdSchema({
             title: title,
-            _id: id,
             category: category,
             description: description,
             price: price,

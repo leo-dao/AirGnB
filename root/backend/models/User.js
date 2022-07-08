@@ -1,6 +1,7 @@
 const mongooose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 
 const UserSchema = new mongooose.Schema({
     name: {
@@ -38,7 +39,8 @@ const UserSchema = new mongooose.Schema({
     },
     _id: {
         type: String,
-        required: true
+        required: true,
+        default: uuidv4(),
     },
     createdAt: {
         type: Date,
