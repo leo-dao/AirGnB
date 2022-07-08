@@ -20,7 +20,7 @@ router.post('/', upload.array('images', 6), async (req, res, next) => {
     req.files.forEach((file) => {
         let image = {
             img: file.filename,
-            id: uuidv4()
+            _id: uuidv4()
         }
         images.push(image)
     })

@@ -13,7 +13,7 @@ const CenterContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    `;
+`
 
 const Title = styled.h1`
     font-size: 35px;
@@ -84,7 +84,6 @@ interface Props {
 const AdProfile = (props: Props) => {
 
     let params = useParams();
-
 
     const currentAd = (props.data.filter(ad => ad.adId === params.adId))[0];
 

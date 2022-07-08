@@ -4,6 +4,7 @@ import type { AdCardProps } from "../../Organisms/AdCard/index";
 import { userData, adData } from "../../../fakeData";
 import { List } from 'antd';
 import styled from "styled-components";
+import axios from "axios";
 
 const SearchResultStyled = styled.h1`
     display: flex;
@@ -22,7 +23,6 @@ const StyledList = styled(List)`
     .ant-list-item {
         transition: all 0.3s ease-in-out;
         :hover {
-            // raise
             transform: translateY(-5px);
         }
     }
@@ -37,11 +37,19 @@ const AdCardList = (props: Props) => {
 
     var ads = props.data;
 
+
+    axios.get('/getAds')
+        .then(function (res) {
+            let ads: AdCardProps = res.data
+            console.log(ads)
+        })
+
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
     var adText = "Ads"
     if (params.category !== "") {
+
         ads = adData.filter(ad => ad.category === params.category);
         adText = params.category
     }

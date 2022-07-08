@@ -10,7 +10,8 @@ const errorHandler = require('./middleware/error');
 // ROUTE IMPORTS
 const registerRoute = require('./routes/register');
 const postAdRoute = require('./routes/postAd');
-const signInRoute = require('./routes/signIn')
+const signInRoute = require('./routes/signIn');
+const getAdsRoute = require('./routes/getAds');
 
 // Connecting to mongoDB
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use('/register', registerRoute);
 app.use('/postAd', postAdRoute);
 app.use('/signIn', signInRoute);
+app.use('/getAds', getAdsRoute);
 
 app.use(errorHandler);
 
