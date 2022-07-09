@@ -43,7 +43,7 @@ const AdCardList = (props: Props) => {
             .then(function (res) {
                 setAds(res.data);
             })
-    })
+    }, [])
 
 
     const urlSearchParams = new URLSearchParams(window.location.search);
