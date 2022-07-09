@@ -105,9 +105,9 @@ const PostAd = () => {
                     title={formData.title}
                     description={formData.description}
                     price={parseInt(formData.price)}
-                    adId={'0'}
+                    _id={'0'}
                     user={userData[0]}
-                    adImages={displayImage}
+                    images={displayImage}
                 />
             </CardStyled>
         </Container>

@@ -39,19 +39,19 @@ const SubImageStyled = styled.img`
 
 const AdPhotos = (props: AdCardProps) => {
 
-    const [image, setImage] = useState(props.adImages[0].img);  // first image is the default
-    let index = props.adImages.findIndex(img => img.img === image);
+    const [image, setImage] = useState(props.images[0].img);  // first image is the default
+    let index = props.images.findIndex(img => img.img === image);
 
     const goLeft = () => {
         index--;
-        index = index < 0 ? props.adImages.length - 1 : index;
-        setImage(props.adImages[index].img);
+        index = index < 0 ? props.images.length - 1 : index;
+        setImage(props.images[index].img);
     }
 
     const goRight = () => {
         index++
-        index = index > props.adImages.length - 1 ? 0 : index;
-        setImage(props.adImages[index].img);
+        index = index > props.images.length - 1 ? 0 : index;
+        setImage(props.images[index].img);
     }
 
     return (
@@ -59,7 +59,7 @@ const AdPhotos = (props: AdCardProps) => {
             <AdPhotoBg left={goLeft} right={goRight} image=
                 {<MainPhotoStyled src={image} />} />
             <SubImagesStyled>
-                {props.adImages.map(image => {
+                {props.images.map(image => {
                     return <SubImageStyled src={image.img}
                         onClick={() => { setImage(image.img); }} />
                 })}

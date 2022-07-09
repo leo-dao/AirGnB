@@ -85,7 +85,7 @@ const AdProfile = (props: Props) => {
 
     let params = useParams();
 
-    const currentAd = (props.data.filter(ad => ad.adId === params.adId))[0];
+    const currentAd = (props.data.filter(ad => ad._id === params._id))[0];
 
     const [startDate, setStartDate] = useState(new Date());
 
@@ -99,7 +99,7 @@ const AdProfile = (props: Props) => {
     var totalPrice = currentAd.price * numDays;
     var price = "TOTAL: " + totalPrice.toString() + " $";
 
-    var bookingURL = "/booking/" + currentAd.adId + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10);
+    var bookingURL = "/booking/" + currentAd._id + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10);
 
     const messageUser = () => {
         console.log("message user");
@@ -110,9 +110,9 @@ const AdProfile = (props: Props) => {
             <Title>{currentAd.title}</Title>
             <Container>
                 <AdPhotos
-                    adId={currentAd.adId}
+                    _id={currentAd._id}
                     user={currentAd.user}
-                    adImages={currentAd.adImages}
+                    images={currentAd.images}
                     title={currentAd.title}
                     description={currentAd.description}
                     price={currentAd.price}

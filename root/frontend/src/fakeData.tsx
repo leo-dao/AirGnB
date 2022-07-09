@@ -27,8 +27,8 @@ const userData = [
 
 const adData = [
   {
-    adId: "rdmAd1",
-    adImages: [
+    _id: "rdmAd1",
+    images: [
       {
         img: 'https://4.bp.blogspot.com/-J-SmOB1Uies/VkTOrGC85_I/AAAAAAAALzM/JbX1QviXISk/s1600/7751573280_972e14439d_o.jpg',
         imgId: 'rdmImg1'
@@ -41,8 +41,8 @@ const adData = [
     user: userData[0]
   },
   {
-    adId: "rdmAd2",
-    adImages: [
+    _id: "rdmAd2",
+    images: [
       {
         img: 'https://www.pourlesmusiciens.com/medias/400/evh-5150iii-50w-head-el34-black-large-136531.jpg',
         imgId: 'rdmImg2'
@@ -55,8 +55,8 @@ const adData = [
     user: userData[0]
   },
   {
-    adId: "rdmAd3",
-    adImages: [
+    _id: "rdmAd3",
+    images: [
       {
         img: 'https://media.sweetwater.com/api/i/q-82__ha-a5b2f4b2a4a1bdee__hmac-f87fba3adfb3fc12edf68121c043caaf34e0fee6/images/items/750/TS9-large.jpg',
         imgId: 'rdmImg3'
@@ -73,8 +73,8 @@ const adData = [
     user: userData[1],
   },
   {
-    adId: "rdmAd6",
-    adImages: [
+    _id: "rdmAd6",
+    images: [
       {
         img: 'https://i.ytimg.com/vi/S3ge0Yp132M/maxresdefault.jpg',
         imgId: 'rdmImg7'
@@ -87,8 +87,8 @@ const adData = [
     user: userData[1],
   },
   {
-    adId: "rdmAd7",
-    adImages: [
+    _id: "rdmAd7",
+    images: [
       {
         img: 'https://www.fmicassets.com/Damroot/ZoomJpg/10002/0109200800_gtr_frt_001_rr.jpg',
         imgId: 'rdmImg8'

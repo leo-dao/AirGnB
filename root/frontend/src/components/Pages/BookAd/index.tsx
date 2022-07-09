@@ -73,7 +73,7 @@ const BookAd = () => {
 
     let params = useParams();
 
-    let adId = params.adId;
+    let _id = params._id;
     let startDate = params.startDate!;
     let endDate = params.endDate!;
 
@@ -83,7 +83,7 @@ const BookAd = () => {
     const { numDays } = state;
 
 
-    const ad = adData.find(ad => ad.adId === adId);
+    const ad = adData.find(ad => ad._id === _id);
 
     return (
         <Container>
@@ -91,7 +91,7 @@ const BookAd = () => {
             <Divider>
                 <AdInfo>
                     <h2>{ad?.title}</h2>
-                    <Image src={ad?.adImages[0].img} />
+                    <Image src={ad?.images[0].img} />
                 </AdInfo>
                 <Price>
                     <Dates>

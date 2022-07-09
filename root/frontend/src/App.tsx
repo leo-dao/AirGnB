@@ -21,9 +21,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/listings" element={<Catalog data={adData} />} />
         <Route path="/profile/:userId" element={<UserProfile data={userData} ads={adData} />} />
-        <Route path="/listings/:adId" element={<AdProfile data={adData} />} />
+        <Route path="/listings/:_id" element={<AdProfile data={adData} />} />
         <Route path="/post-ad" element={<PostAd />} />
-        <Route path="/booking/:adId+:startDate+:endDate" element={<BookAd />} />
+        <Route path="/booking/:_id+:startDate+:endDate" element={<BookAd />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error msg="" />} />

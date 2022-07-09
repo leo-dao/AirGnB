@@ -37,8 +37,8 @@ export interface ImageProps {
 }
 
 export interface AdCardProps {
-    adId: string;
-    adImages: ImageProps[];
+    _id: string;
+    images: ImageProps[];
     title: string;
     description: string;
     user: UserProps;
@@ -53,7 +53,7 @@ const AdCard = (props: AdCardProps) => {
 
     const Card = (
         <CardWrapper>
-            <CardCover image={props.adImages[0].img} />
+            <CardCover image={props.images[0].img} />
             <CardTitle>
                 {title}
             </CardTitle>
@@ -79,7 +79,7 @@ const AdCard = (props: AdCardProps) => {
         );
     }
     return (
-        <Link to={`/listings/${props.adId}`} target="_blank">
+        <Link to={`/listings/${props._id}`} target="_blank">
             {Card}
         </Link >
     )

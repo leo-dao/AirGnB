@@ -37,18 +37,22 @@ const AdCardList = (props: Props) => {
 
     var ads = props.data;
 
+    const [ad, setAds] = React.useState<any[]>([]);
+    React.useEffect(() => {
+        axios.get('/getAds')
+            .then(function (res) {
+                setAds(res.data);
+            })
+    })
 
-    axios.get('/getAds')
-        .then(function (res) {
-            let ads: AdCardProps = res.data
-            console.log(ads)
-        })
 
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
     var adText = "Ads"
     if (params.category !== "") {
+
+
 
         ads = adData.filter(ad => ad.category === params.category);
         adText = params.category
@@ -107,8 +111,8 @@ const AdCardList = (props: Props) => {
                 renderItem={((item: any) =>
                     <List.Item >
                         <AdCard
-                            adId={item.adId}
-                            adImages={item.adImages}
+                            _id={item._id}
+                            images={item.images}
                             title={item.title}
                             description={item.description}
                             user={item.user}
