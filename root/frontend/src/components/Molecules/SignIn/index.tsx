@@ -9,8 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// create a user variable and pass it as a prop?
-
 const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -56,6 +54,7 @@ const SignIn = () => {
         axios.post('/signIn', formData)
             .then(res => {
                 localStorage.setItem('authToken', JSON.stringify(res.data));
+
                 //navigate('/');
             })
             .catch(err => {

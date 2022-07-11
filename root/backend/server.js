@@ -12,6 +12,7 @@ const registerRoute = require('./routes/register');
 const postAdRoute = require('./routes/postAd');
 const signInRoute = require('./routes/signIn');
 const getAdsRoute = require('./routes/getAds');
+const checkUserRoute = require('./routes/checkUser')
 
 // Connecting to mongoDB
 dotenv.config();
@@ -19,12 +20,14 @@ mongoose.connect(process.env.MONGO_URL);
 
 // Middleware
 app.use(cors());
+app.use(express.json());
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 app.use('/register', registerRoute);
 app.use('/postAd', postAdRoute);
 app.use('/signIn', signInRoute);
 app.use('/getAds', getAdsRoute);
+app.use('/checkUser', checkUserRoute);
 
 app.use(errorHandler);
 
