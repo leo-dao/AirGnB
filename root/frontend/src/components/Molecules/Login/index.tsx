@@ -13,7 +13,6 @@ const StyledHeader = styled.h1`
     font-size: 4em;
 `
 
-
 interface LoginProps {
     form: React.ReactNode;
 }

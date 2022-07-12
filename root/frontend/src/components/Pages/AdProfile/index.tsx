@@ -7,6 +7,7 @@ import UserInfo from "../../Molecules/UserInfoCard/index";
 import Availability from "../../Molecules/Availability";
 import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
+import useFindUser from "../../../hooks/useFindUser";
 import styled from "styled-components";
 
 const CenterContainer = styled.div`
@@ -83,6 +84,8 @@ interface Props {
 
 const AdProfile = (props: Props) => {
 
+    let user = useFindUser();
+
     let params = useParams();
 
     const currentAd = (props.data.filter(ad => ad._id === params._id))[0];
@@ -99,11 +102,10 @@ const AdProfile = (props: Props) => {
     var totalPrice = currentAd.price * numDays;
     var price = "TOTAL: " + totalPrice.toString() + " $";
 
-    var bookingURL = "/booking/" + currentAd._id + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10);
+    var booking = "/booking/" + currentAd._id + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10);
+    var signIn = '/sign-in';
 
-    const messageUser = () => {
-        console.log("message user");
-    }
+    var url = user ? booking : signIn;
 
     return (
         <CenterContainer>
@@ -129,7 +131,7 @@ const AdProfile = (props: Props) => {
                         <Button
                             disabled={endDate.getTime() === startDate.getTime()}
                             text="Continue"
-                            goTo={bookingURL}
+                            goTo={url}
                             state={{
                                 totalPrice: totalPrice,
                                 numDays: numDays,

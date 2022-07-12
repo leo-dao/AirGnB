@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
+import useFindUser from "../../../hooks/useFindUser";
 import styled from "styled-components";
 
 const StyledHeaderButtons = styled.div`
@@ -14,17 +15,11 @@ const Space = styled.div`
 
 const HeaderButtons = () => {
 
-    var connected = false;
+    let user: any = useFindUser();
 
-    // fetch userId 
-    let userId;
-    var account = connected ? `/user/${userId}` : "/sign-in";
+    var account = user ? `/profile/${user._id}` : "/sign-in";
 
-    var post = connected ? "/post-ad" : "/sign-in";
-
-    const openChat = () => {
-        console.log("Open chat");
-    }
+    var post = user ? "/post-ad" : "/sign-in";
 
     return (
         <StyledHeaderButtons>

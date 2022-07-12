@@ -9,6 +9,8 @@ function useFindUser() {
 
     const [user, setUser] = React.useState();
 
+
+    // Sending the token to the server and getting the user
     useEffect(() => {
         axios.get('/checkUser', {
             headers: {
@@ -18,6 +20,8 @@ function useFindUser() {
             setUser(res.data);
         })
     })
+
+    // Either returning user or undefined
     return user;
 }
 

@@ -3,6 +3,8 @@ import AdCard from "../../Organisms/AdCard";
 import { userData } from "../../../fakeData";
 import { Ad, AdImage } from "../../../interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
+import Error from "../../Molecules/Error";
+import useFindUser from "../../../hooks/useFindUser";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -21,8 +23,10 @@ const CardStyled = styled.div`
 
 const PostAd = () => {
 
+    let user = useFindUser();
+
     const displayImage = [{
-        imgId: "test",
+        imgId: "",
         img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
     }];
 
@@ -83,6 +87,10 @@ const PostAd = () => {
             });
     }
 
+    if (!user) {
+        return <Error msg='Sign in to post an ad' />
+    }
+
     return (
         <Container>
             <AdPostForm
@@ -106,7 +114,7 @@ const PostAd = () => {
                     description={formData.description}
                     price={parseInt(formData.price)}
                     _id={'0'}
-                    user={userData[0]}
+                    user={user}
                     images={displayImage}
                 />
             </CardStyled>
