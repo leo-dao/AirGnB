@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../Atoms/Button";
+import useFindUser from "../../../hooks/useFindUser";
+import Error from "../../Molecules/Error";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import { LineOutlined } from "@ant-design/icons";
 import { adData } from "../../../fakeData";
@@ -71,6 +74,7 @@ interface State {
 
 const BookAd = () => {
 
+    let user = useFindUser();
     let params = useParams();
 
     let _id = params._id;
@@ -82,8 +86,19 @@ const BookAd = () => {
     const { totalPrice } = state;
     const { numDays } = state;
 
-
     const ad = adData.find(ad => ad._id === _id);
+
+
+
+    if (!user) {
+        return <Error msg='You must be logged in to book an ad' />
+    }
+
+    const bookAd = () => {
+        axios.delete('/bookAd',
+            { data: { adId: _id } })
+    }
+
 
     return (
         <Container>
@@ -109,6 +124,7 @@ const BookAd = () => {
                     height="60px"
                     fontSize="30px"
                     borderRadius="10px"
+                    onClick={bookAd}
                 />
             </ButtonContainer>
         </Container>

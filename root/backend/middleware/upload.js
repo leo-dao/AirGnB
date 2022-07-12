@@ -9,5 +9,7 @@ const storage = multer.diskStorage({
 
 module.exports = multer(
     {
-        storage, limits: { fileSize: (1024 ** 2) * 5 }
-    });
+        storage,
+        limits: { fileSize: (1024 ** 2) * 5 }
+    }
+);

@@ -13,6 +13,7 @@ const postAdRoute = require('./routes/postAd');
 const signInRoute = require('./routes/signIn');
 const getAdsRoute = require('./routes/getAds');
 const checkUserRoute = require('./routes/checkUser')
+const bookAdRoute = require('./routes/bookAd');
 
 // Connecting to mongoDB
 dotenv.config();
@@ -28,6 +29,7 @@ app.use('/postAd', postAdRoute);
 app.use('/signIn', signInRoute);
 app.use('/getAds', getAdsRoute);
 app.use('/checkUser', checkUserRoute);
+app.use('/bookAd', bookAdRoute);
 
 app.use(errorHandler);
 

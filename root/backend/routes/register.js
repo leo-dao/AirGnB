@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const UserSchema = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
-const upload = require('../middleware/upload')
+const upload = require('../middleware/upload');
 
 router.post('/', upload.single('avatar'), async (req, res, next) => {
 
@@ -47,6 +47,10 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
         });
 
         await newUser.save()
+
+        // Sending jwt
+        const token = newUser.getSignedToken();
+        res.status(202).json({ success: true, token })
 
     } catch (err) {
         next(err)
