@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-function useFindUser() {
+const useFindUser = () => {
 
     let token = (JSON.parse(localStorage.getItem('authToken') || '{}')).token;
 

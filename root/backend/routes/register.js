@@ -32,7 +32,7 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
             return next(new ErrorResponse('Email is already being used'), 401)
         }
 
-        const path = req.file.name;
+        const img = req.file.filename;
 
         // Hashing password
         const salt = await bcrypt.genSalt(10);
@@ -43,7 +43,7 @@ router.post('/', upload.single('avatar'), async (req, res, next) => {
             email: email,
             password: securePassword,
             location: location,
-            avatar: path,
+            avatar: img,
         });
 
         await newUser.save()
