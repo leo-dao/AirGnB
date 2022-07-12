@@ -13,6 +13,7 @@ const postAdRoute = require('./routes/postAd');
 const signInRoute = require('./routes/signIn');
 const getAdsRoute = require('./routes/getAds');
 const checkUserRoute = require('./routes/checkUser')
+const getImagesRoute = require('./routes/getImages');
 const bookAdRoute = require('./routes/bookAd');
 
 // Connecting to mongoDB
@@ -29,6 +30,7 @@ app.use('/postAd', postAdRoute);
 app.use('/signIn', signInRoute);
 app.use('/getAds', getAdsRoute);
 app.use('/checkUser', checkUserRoute);
+app.use('/getImages', getImagesRoute);
 app.use('/bookAd', bookAdRoute);
 
 app.use(errorHandler);

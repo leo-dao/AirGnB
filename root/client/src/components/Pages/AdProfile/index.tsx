@@ -8,6 +8,7 @@ import Availability from "../../Molecules/Availability";
 import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
 import useFindUser from "../../../hooks/useFindUser";
+import useFindImages from "../../../hooks/useFindImages";
 import styled from "styled-components";
 
 const CenterContainer = styled.div`
@@ -84,7 +85,7 @@ interface Props {
 
 const AdProfile = (props: Props) => {
 
-    let user = useFindUser();
+    let user: any = useFindUser();
 
     let params = useParams();
 
