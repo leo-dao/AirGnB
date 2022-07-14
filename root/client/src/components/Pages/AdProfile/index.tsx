@@ -145,7 +145,7 @@ const AdProfile = (props: Props) => {
                             <Description description={currentAd.description} />
                             <UserContainer>
                                 <UserInfo
-                                    id={currentAd.user.id}
+                                    _id={currentAd.user._id}
                                     avatar={currentAd.user.avatar}
                                     name={currentAd.user.name}
                                     rating={currentAd.user.rating}

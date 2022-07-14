@@ -1,5 +1,6 @@
 import React from "react";
 import AdCard from "../../Organisms/AdCard";
+import { Ad } from "../../../interfaces";
 import type { AdCardProps } from "../../Organisms/AdCard/index";
 import { userData, adData } from "../../../fakeData";
 import { List } from 'antd';
@@ -29,15 +30,15 @@ const StyledList = styled(List)`
 `
 
 interface Props {
-    data: AdCardProps[],
+    data: Ad[],
     inputType: string,
 }
 
 const AdCardList = (props: Props) => {
 
-    var ads = props.data;
+    //var ads = props.data;
 
-    const [ad, setAds] = React.useState<any[]>([]);
+    const [ads, setAds] = React.useState<Ad[]>([]);
     React.useEffect(() => {
         axios.get('/getAds')
             .then(function (res) {
@@ -52,15 +53,13 @@ const AdCardList = (props: Props) => {
     var adText = "Ads"
     if (params.category !== "") {
 
-
-
-        ads = adData.filter(ad => ad.category === params.category);
+        setAds(ads.filter(ad => ad.category === params.category));
         adText = params.category
     }
 
     var locationText = ""
     if (params.location !== "") {
-        ads = ads.filter(ad => ad.user.location === params.location);
+        setAds(ads.filter(ad => ad.user.location === params.location));
         locationText = " in " + params.location
     }
 
@@ -69,7 +68,7 @@ const AdCardList = (props: Props) => {
 
     var resultText = ""
     if (params.search !== "") {
-        ads = ads.filter(ad => ad.title.includes(params.search));
+        setAds(ads.filter(ad => ad.title.includes(params.search)));
         var resultText = " corresponding to " + params.search;
     }
 
@@ -91,7 +90,7 @@ const AdCardList = (props: Props) => {
     }
 
     if (props.inputType === "user") {
-        ads = props.data;       // If the adCards is used in a user profile, don't use params
+        setAds(adData)       // If the adCards is used in a user profile, don't use params
         searchResult = '';
     }
 

@@ -5,6 +5,7 @@ import UserInfo from '../../Molecules/UserInfoCard';
 import CardCover from '../../Atoms/CardCover';
 import Price from '../../Atoms/Price';
 import styled from 'styled-components';
+import { User, Ad, AdImage } from '../../../interfaces';
 
 const CardWrapper = styled.div`
     background-color: white;
@@ -33,15 +34,15 @@ const UserInfoWrapper = styled.div`
 
 export interface ImageProps {
     img: string,
-    imgId: string,
+    _id: string,
 }
 
 export interface AdCardProps {
     _id: string;
-    images: ImageProps[];
+    images: AdImage[];
     title: string;
     description: string;
-    user: UserProps;
+    user: User;
     price: number;
     disabled?: boolean;
 };
@@ -60,7 +61,7 @@ const AdCard = (props: AdCardProps) => {
             <Price price={props.price} type={"card"} />
             <UserInfoWrapper>
                 <UserInfo
-                    id={props.user.id}
+                    _id={props.user._id}
                     name={props.user.name}
                     avatar={props.user.avatar}
                     rating={props.user.rating}

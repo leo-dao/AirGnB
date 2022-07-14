@@ -1,5 +1,5 @@
 interface UserProps {
-    id: string;
+    _id: string;
     avatar: string;
     name: string;
     location?: string;

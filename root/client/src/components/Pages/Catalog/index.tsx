@@ -1,6 +1,6 @@
 import React from "react";
 import AdCardList from "../../Organisms/AdCardList";
-import type { AdCardProps } from "../../Organisms/AdCard/index";
+import { Ad } from "../../../interfaces";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
 
@@ -11,7 +11,7 @@ const Container = styled.div`
     `;
 
 interface Props {
-    data: AdCardProps[],
+    data: Ad[],
 }
 
 const Catalog = (props: Props) => {

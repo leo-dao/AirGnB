@@ -1,5 +1,5 @@
 export interface User {
-    id: string;
+    _id: string;
     name: string;
     email?: string;
     password?: string;
@@ -10,17 +10,17 @@ export interface User {
 }
 
 export interface AdImage {
-    id: string;
-    image: string;
+    _id: string;
+    img: string;
 }
 
 export interface Ad {
-    id: string;
+    _id: string;
     title: string;
     description: string;
     price: number;
     category: string;
-    user?: User;        // Optional for now until able to fetch user info 
+    user: User;
     images: AdImage[];
 }
 
