@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
+const { User } = require('../models/User');
 
 const AdSchema = new mongoose.Schema({
     title: {
@@ -28,6 +29,11 @@ const AdSchema = new mongoose.Schema({
             _id: String,
         }],
         require: true,
+    },
+    user: {
+        // type: any
+        type: mongoose.Schema.Types.Mixed,
+        required: true
     },
     createdAt: {
         type: Date,

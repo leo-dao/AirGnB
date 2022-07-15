@@ -2,18 +2,23 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
-const AdSchema = require('../models/Ad');
+const Ad = require('../models/Ad');
+const User = require('../models/User');
 const upload = require('../middleware/upload')
 
 router.post('/', upload.array('images', 6), async (req, res, next) => {
+
 
     const {
         title,
         id,
         category,
         description,
-        price
+        price,
+        user
     } = req.body;
+
+    const userParsed = JSON.parse(user);
 
     let images = [];
 
@@ -26,15 +31,16 @@ router.post('/', upload.array('images', 6), async (req, res, next) => {
     })
 
     try {
-        const newAd = new AdSchema({
+        const newAd = new Ad({
             title: title,
             category: category,
             description: description,
             price: price,
-            images: images
+            images: images,
+            user: userParsed
         })
-
-        await newAd.save();
+        console.log(newAd);
+        //await newAd.save();
     }
     catch (err) {
         next(err)
