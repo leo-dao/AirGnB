@@ -1,7 +1,6 @@
 import React from "react";
 import AdCard from "../../Organisms/AdCard";
-import { userData } from "../../../fakeData";
-import { Ad, AdImage } from "../../../interfaces";
+import { Ad, AdImage, User } from "../../../interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
 import Error from "../../Molecules/Error";
 import useFindUser from "../../../hooks/useFindUser";
@@ -23,23 +22,20 @@ const CardStyled = styled.div`
 
 const PostAd = () => {
 
-    let user = useFindUser();
-
-
-    const displayImage = [{
-        _id: 'dummy',
-        img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-    }];
-
+    // Getting the user object and stringifying it 
+    // to send it as formData to server
+    const user: User = useFindUser()!;
+    let userStr: string = JSON.stringify(user);
 
     const initialState = {
         title: '',
         category: '',
         description: '',
         price: '0',
+        user: '',
     }
 
-    const [formData, updateFormData] = React.useState(initialState);
+    const [formData, updateFormData] = React.useState<any>(initialState);
     const [files, updateFiles] = React.useState<File[]>([]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,6 +54,13 @@ const PostAd = () => {
 
     const handleFiles = (e: any) => {
         updateFiles(e.target.files);
+
+        // Appending user info as JSON here
+        // since leads to undefined outside of a function (?)
+        updateFormData({
+            ...formData,
+            user: userStr
+        })
     }
 
     var fileNames: string[] = Array.from(files).map((file: File) => file.name);
@@ -69,7 +72,10 @@ const PostAd = () => {
         const data = new FormData();
 
         for (const [key, value] of Object.entries(formData)) {
-            data.append(key, value);
+            // "Overriding" ts who sees value as unknown (?)
+            if (typeof value === 'string') {
+                data.append(key, value);
+            }
         }
 
         Array.from(files).forEach(file => {
@@ -87,6 +93,11 @@ const PostAd = () => {
                 console.log(res);
             });
     }
+
+    const displayImage = [{
+        _id: 'dummy',
+        img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+    }];
 
     if (!user) {
         return <Error msg='Sign in to post an ad' />

@@ -3,7 +3,6 @@ const router = express.Router();
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const Ad = require('../models/Ad');
-const User = require('../models/User');
 const upload = require('../middleware/upload')
 
 router.post('/', upload.array('images', 6), async (req, res, next) => {
@@ -11,7 +10,6 @@ router.post('/', upload.array('images', 6), async (req, res, next) => {
 
     const {
         title,
-        id,
         category,
         description,
         price,
@@ -39,8 +37,8 @@ router.post('/', upload.array('images', 6), async (req, res, next) => {
             images: images,
             user: userParsed
         })
-        console.log(newAd);
-        //await newAd.save();
+
+        await newAd.save();
     }
     catch (err) {
         next(err)
