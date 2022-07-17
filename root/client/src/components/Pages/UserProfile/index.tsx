@@ -6,6 +6,7 @@ import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
 import { Ad } from "../../../interfaces";
 import styled from "styled-components";
+import useFindUser from "../../../hooks/useFindUser";
 
 const Container = styled.div`
     display: flex;
@@ -25,7 +26,7 @@ const InfoContainer = styled.div`
 `
 
 interface UserProfileProps {
-    data: User[];
+    users: User[];
     ads: Ad[];
 }
 
@@ -33,7 +34,7 @@ const UserProfile = (props: UserProfileProps) => {
 
     let params = useParams();
 
-    const currentUser = (props.data.filter(user => user._id === params.userId))[0];   // Getting the correct user based on id from the url
+    const currentUser = (props.users.filter(user => user._id === params.userId))[0];   // Getting the correct user based on id from the url
 
     if (!currentUser) {
         return <Error msg="Sorry, this user does not exist" />
