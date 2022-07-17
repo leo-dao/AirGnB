@@ -13,6 +13,11 @@ const AdSchema = new mongoose.Schema({
         required: true,
         default: '',
     },
+    category: {
+        type: String,
+        required: true,
+        default: '',
+    },
     price: {
         type: Number,
         required: true,
