@@ -10,7 +10,7 @@ const StyledHeaderButtons = styled.div`
 `;
 
 const Space = styled.div`
-    margin-left: 2rem;
+    margin-left: 10px;
 `;
 
 const HeaderButtons = () => {
