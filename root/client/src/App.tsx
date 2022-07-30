@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Pages/Home';
 import Catalog from './components/Pages/Catalog';
 import Header from './components/Organisms/Header';
+import Footer from './components/Organisms/Footer';
 import AdProfile from './components/Pages/AdProfile';
 import UserProfile from './components/Pages/UserProfile';
 import { userData, adData } from "./fakeData"
@@ -43,6 +44,7 @@ function App() {
         <Route path="*"
           element={<Error msg="" />} />
       </Routes>
+      <Footer />
     </div >
   );
 }
