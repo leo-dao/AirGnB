@@ -11,13 +11,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     gap: 80px;
 `
 const CardStyled = styled.div`
-    position: sticky;
-    top: 0;
-    margin-top: 200px;
-    height: 100%;
 `
 
 const PostAd = () => {

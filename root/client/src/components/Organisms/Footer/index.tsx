@@ -4,13 +4,15 @@ import styled from "styled-components";
 const StyledFooter = styled.div`
     background-color: #212121;
     text-align: center;
-    padding: 20px;
-    position: fixed;
     left: 0;
     bottom: 0;
     height: 90px;
     width: 100%;
     color: white;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     & > * {
         color: white;

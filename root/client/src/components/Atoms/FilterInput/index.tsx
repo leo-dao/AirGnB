@@ -15,6 +15,9 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     &:hover {
         border-color:  #1eb5f0;
     }
+    .ant-select-selection-placeholder {
+        color: grey;
+    }
 `;
 
 const StyledContent = styled.div`
@@ -30,6 +33,7 @@ const StyledLogo = styled.div`
     border-left: 1px solid #ccc;
     padding-left: 1vw;
     padding-right: 1vw;
+    user-select: none;
 `;
 
 export interface FilterInputProps {
