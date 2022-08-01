@@ -1,7 +1,7 @@
 import React from "react";
-import AdCard from "../../Organisms/AdCard";
+import AdCard from "../AdCard";
 import { Ad } from "../../../interfaces";
-import type { AdCardProps } from "../../Organisms/AdCard/index";
+import type { AdCardProps } from "../AdCard/index";
 import { userData, adData } from "../../../fakeData";
 import { List } from 'antd';
 import styled from "styled-components";

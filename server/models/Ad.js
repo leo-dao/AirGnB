@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
-const { User } = require('../models/User');
+const { User } = require('./User');
 
 const AdSchema = new mongoose.Schema({
     title: {

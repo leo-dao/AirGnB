@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../Atoms/Button";
+import Button from "../Button";
 import { MessageOutlined } from "@ant-design/icons";
 
 interface ChatProps {

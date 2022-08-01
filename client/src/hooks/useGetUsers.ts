@@ -9,6 +9,10 @@ const useGetUsers = () => {
 
     useEffect(() => {
         axios.get('/getUsers').then((res) => {
+
+            // server sends correct users
+            // the useEffect is never run (console.log() prints nothing)
+
             setUsers(res.data);
         }).catch((err) => {
             console.log(err)

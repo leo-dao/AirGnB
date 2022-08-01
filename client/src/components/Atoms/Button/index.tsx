@@ -3,20 +3,23 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
-    background-color: ${(props: ButtonProps) => props.backgroundColor ? props.backgroundColor : '#506bcd'};
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 1px black;
-    font-size: ${props => props.fontSize ? props.fontSize : '20px'};
-    width: ${props => props.width ? props.width : '120px'};
-    height: ${props => props.height ? props.height : '40px'};
-    border-radius: ${props => props.borderRadius ? props.borderRadius : '20px'};
+    background: #0A6EDD;
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #FFFFFF;
     cursor: pointer;
-    outline: none;
-    border: 0.5px solid #0A6EDD;
-    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
     &:hover {
         transform: translateY(-0.5px) scale(1.03);
         background-color: ${props => props.secondary ? 'whitesmoke' : '#085bba'};
@@ -37,6 +40,7 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
         props.secondary &&
         css`
         background-color: white;
+        border-color: black;
         color: #0A6EDD;
         & > * {
             color: #0A6EDD;
