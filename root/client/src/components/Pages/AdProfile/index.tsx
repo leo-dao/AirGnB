@@ -9,6 +9,8 @@ import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
 import useFindUser from "../../../hooks/useFindUser";
 import useFindImages from "../../../hooks/useFindImages";
+import axios from "axios";
+import { Ad } from "../../../interfaces";
 import styled from "styled-components";
 
 const CenterContainer = styled.div`
@@ -79,17 +81,22 @@ const UserContainer = styled.div`
     align-items: center;
     gap: 20px;
 `
-interface Props {
-    data: AdCardProps[];
-}
 
-const AdProfile = (props: Props) => {
+const AdProfile = () => {
 
     let user: any = useFindUser();
 
     let params = useParams();
 
-    const currentAd = (props.data.filter(ad => ad._id === params._id))[0];
+    const [ads, setAds] = React.useState<Ad[]>([]);
+    React.useEffect(() => {
+        axios.get('/getAds')
+            .then(function (res) {
+                setAds(res.data);
+            })
+    }, [])
+
+    const currentAd = (ads.filter(ad => ad._id === params._id))[0];
 
     const [startDate, setStartDate] = useState(new Date());
 

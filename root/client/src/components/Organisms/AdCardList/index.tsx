@@ -30,7 +30,6 @@ const StyledList = styled(List)`
 `
 
 interface Props {
-    data: Ad[],
     inputType: string,
 }
 

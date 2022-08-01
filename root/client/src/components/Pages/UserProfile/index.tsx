@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import User from "../../Molecules/UserInfo/interfaces";
 import UserInfo from "../../Molecules/UserInfo"
@@ -7,6 +7,7 @@ import AdCardList from "../../Organisms/AdCardList/index";
 import { Ad } from "../../../interfaces";
 import styled from "styled-components";
 import useFindUser from "../../../hooks/useFindUser";
+import axios from "axios";
 
 const Container = styled.div`
     display: flex;
@@ -25,22 +26,45 @@ const InfoContainer = styled.div`
     background-color: white;
 `
 
-interface UserProfileProps {
-    users: User[];
-    ads: Ad[];
+
+const userProfileById = (userId: string) => {
+    return axios.get('/getUsers').then((res) => {
+        // @ts-ignore
+        return res.data.filter(user => user._id === userId)[0]
+    })
 }
 
-const UserProfile = (props: UserProfileProps) => {
+const UserProfile = () => {
 
     let params = useParams();
 
-    const currentUser = (props.users.filter(user => user._id === params.userId))[0];   // Getting the correct user based on id from the url
+    const [currentUser, setUser] = React.useState<any>();
+
+    useEffect(() => {
+        if (!params.userId) {
+            setUser(undefined);
+            return
+        }
+
+        userProfileById(params.userId)
+            .then((u) => setUser(u))
+            .catch((err) => { console.log(err); setUser(undefined) })
+    }, [params.userId])
+
+    const [ads, setAds] = React.useState<Ad[]>([]);
+    React.useEffect(() => {
+        axios.get('/getAds')
+            .then(function (res) {
+                setAds(res.data);
+            })
+    }, [])
 
     if (!currentUser) {
         return <Error msg="Sorry, this user does not exist" />
     }
 
-    const userAds = props.ads.filter(ad => ad.user._id === currentUser._id);
+
+    const userAds = ads.filter(ad => ad.user._id === currentUser._id);
     const numAds = userAds.length;
     const ad = numAds === 1 ? "ad" : "ads";
 
@@ -57,9 +81,9 @@ const UserProfile = (props: UserProfileProps) => {
                 />
             </InfoContainer>
             <h1> {numAds} available {ad}</h1>
-            <AdCardList
+            {/* <AdCardList
                 inputType="user"
-                data={userAds} />
+                data={userAds} /> */}
         </Container >
 
     )

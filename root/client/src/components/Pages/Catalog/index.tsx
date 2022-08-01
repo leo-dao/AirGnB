@@ -10,18 +10,15 @@ const Container = styled.div`
     align-items: center;
     `;
 
-interface Props {
-    data: Ad[],
-}
 
-const Catalog = (props: Props) => {
+const Catalog = () => {
 
     return (
         <Container>
             <Search />
             <AdCardList
                 inputType="search"
-                data={props.data} />
+            />
         </Container>
     )
 }

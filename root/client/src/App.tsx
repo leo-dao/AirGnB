@@ -14,12 +14,7 @@ import Error from './components/Molecules/Error';
 import PostAd from './components/Pages/PostAd';
 import BookAd from './components/Pages/BookAd';
 
-import { User } from './interfaces';
-import useGetUsers from './hooks/useGetUsers';
-
 function App() {
-
-  let users: User[] = useGetUsers();
 
   return (
     <div className="App">
@@ -28,11 +23,11 @@ function App() {
         <Route path="/"
           element={<Home />} />
         <Route path="/listings"
-          element={<Catalog data={adData} />} />
+          element={<Catalog />} />
         <Route path="/profile/:userId"
-          element={<UserProfile users={users} ads={adData} />} />
+          element={<UserProfile />} />
         <Route path="/listings/:_id"
-          element={<AdProfile data={adData} />} />
+          element={<AdProfile />} />
         <Route path="/post-ad"
           element={<PostAd />} />
         <Route path="/booking/:_id+:startDate+:endDate"
