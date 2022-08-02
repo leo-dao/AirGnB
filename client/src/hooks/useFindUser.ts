@@ -1,9 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import useFindImages from "./useFindImages";
 import { User } from '../interfaces';
 import axios from "axios";
-import { networkInterfaces } from "os";
 
 
 const useFindUser = () => {
@@ -21,10 +19,7 @@ const useFindUser = () => {
         }).then((res) => {
             setUser(res.data);
         })
-    })
-
-    //console.log(user?._id)
-    //let image = useFindImages('user', user._id)
+    }, [token])
 
     // Either returning user or undefined
     return user;
