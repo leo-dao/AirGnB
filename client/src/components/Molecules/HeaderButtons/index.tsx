@@ -26,11 +26,13 @@ const HeaderButtons = () => {
             <Button
                 text="Post ad"
                 onClick={() => window.location.href = post}
+                header
             />
             <Space />
             <Space />
             <UserButton
                 onClick={() => window.location.href = account}
+                header
             />
         </StyledHeaderButtons>
     )

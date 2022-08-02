@@ -37,11 +37,22 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     }
 
     ${(props: ButtonProps) =>
+        props.header &&
+        css`
+    background: none;
+    border-radius: 0px;
+    font-size: 18px;
+    &:hover {
+        background: none;
+        border-bottom: 1px solid #d4d1d1;
+    };
+    `}
+
+    ${(props: ButtonProps) =>
         props.secondary &&
         css`
-        background-color: white;
-        border-color: black;
-        color: #0A6EDD;
+        background-color: #e9e9e9;
+        color: black;
         & > * {
             color: #0A6EDD;
         }
@@ -67,19 +78,15 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
 
 interface ButtonProps {
     text?: string,
-    width?: string,
-    height?: string,
-    fontSize?: string,
     component?: React.ReactNode,
-    backgroundColor?: string,
     disabled?: boolean,
-    borderRadius?: string,
     onClick?: () => void,
     goTo?: string,
     state?: any,
     secondary?: boolean,
     tertiary?: boolean,
     type?: string,
+    header?: boolean
 }
 
 const Button = (props: ButtonProps) => {
@@ -95,12 +102,8 @@ const Button = (props: ButtonProps) => {
             onClick={onClick}
             secondary={props.secondary}
             tertiary={props.tertiary}
-            width={props.width}
-            height={props.height}
-            disabled={props.disabled}
-            fontSize={props.fontSize}
-            borderRadius={props.borderRadius}
             type={props.type}
+            header={props.header}
         >
             {props.text} {props.component}
         </StyledButton>;

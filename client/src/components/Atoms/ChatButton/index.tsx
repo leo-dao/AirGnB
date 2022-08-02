@@ -16,7 +16,6 @@ const ChatButton = (props: ChatProps) => {
             component={
                 <MessageOutlined style={{ fontSize: "1.7em" }} />
             }
-            width={props.width}
         />
     )
 }

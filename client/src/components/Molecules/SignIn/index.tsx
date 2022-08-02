@@ -70,15 +70,11 @@ const SignIn = () => {
             <ButtonContainer>
                 <Button
                     text={"Sign in"}
-                    width={'170px'}
-                    height={'55px'}
                     secondary
                     type={"submit"}
                 />
                 <Button
                     text={"Create profile"}
-                    width={'170px'}
-                    height={'55px'}
                     onClick={() => window.location.href = '/register'}
                 />
             </ButtonContainer>

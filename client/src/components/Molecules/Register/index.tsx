@@ -173,9 +173,6 @@ const Register = () => {
             </ContainerAvatar>
             <Button
                 text="Create profile"
-                width='200px'
-                height='45px'
-                fontSize="25px"
                 type='submit'
             />
             <ErrorMessage msg={error.msg} on={error.display} />

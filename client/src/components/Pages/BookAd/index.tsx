@@ -120,10 +120,6 @@ const BookAd = () => {
             <ButtonContainer>
                 <Button
                     text="Pay"
-                    width="180px"
-                    height="60px"
-                    fontSize="30px"
-                    borderRadius="10px"
                     onClick={bookAd}
                 />
             </ButtonContainer>
