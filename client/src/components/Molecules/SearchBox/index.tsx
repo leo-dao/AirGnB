@@ -32,11 +32,10 @@ const SearchBox = (props: SearchBoxProps) => {
 
     return (
         <FilterInput
-            width="400px"
             content={
                 <StyledInput
                     type="text"
-                    placeholder="What are you searching for?"
+                    placeholder="Search gear..."
                     onChange={(e) => setSearchBox(e.target.value)}
                     onKeyPress={(e) => {
                         if (e.key === 'Enter') {

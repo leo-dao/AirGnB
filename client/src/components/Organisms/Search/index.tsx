@@ -10,9 +10,10 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    @media (max-width: 1000px) {
+
+    @media (max-width: 900px) {
         flex-direction: column;
+
     }
 `
 const Search = () => {

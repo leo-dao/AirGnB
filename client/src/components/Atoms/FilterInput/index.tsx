@@ -9,7 +9,7 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     align-items: center;
     text-align: center;
     cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
-    width: ${(props) => props.width};
+    width: 20em;
     height: 50px;
     transition: all 0.2s ease-in-out;
     &:hover {
@@ -18,13 +18,17 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     .ant-select-selection-placeholder {
         color: grey;
     }
+    
+    @media (max-width: 900px) {
+        width: 100%;
+    }
 `;
 
 const StyledContent = styled.div`
     margin-left: 10px;
     margin-right: 10px;
     width: 100%;
-    font-size: 18px;
+    font-size: 20px;
     overflow: hidden;
     color: black;
 `;

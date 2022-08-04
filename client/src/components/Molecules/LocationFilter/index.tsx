@@ -19,12 +19,11 @@ const LocationFilter = (props: Props) => {
     return (
 
         <FilterInput
-            width="350px"
             content={
                 <Select
                     style={{
                         width: "100%",
-                        fontSize: "18px",
+                        fontSize: "20px",
                         color: "black",
                         textAlign: "center",
                     }}
