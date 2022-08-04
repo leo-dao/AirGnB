@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
-    background: #0A6EDD;
+    background: ${props => props.secondary ? '#e9e9e9' : '#0A6EDD'};
     border-radius: 40px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: ${props => props.secondary ? 'black' : '#FFFFFF'};
     cursor: pointer;
     font-size: 16px;
     font-weight: 700;
@@ -19,7 +19,8 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     touch-action: manipulation;
     width: fit-content;
     word-break: break-word;
-    border: 0;
+    border: ${props => props.secondary ? '10' : '0'};
+    transition: 0.2s;
     &:hover {
         transform: translateY(-0.5px) scale(1.03);
         background-color: ${props => props.secondary ? 'whitesmoke' : '#085bba'};
@@ -42,21 +43,12 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     background: none;
     border-radius: 0px;
     font-size: 18px;
+    transition: 0s;
     &:hover {
         background: none;
         border-bottom: 1px solid #d4d1d1;
     };
     `}
-
-    ${(props: ButtonProps) =>
-        props.secondary &&
-        css`
-        background-color: #e9e9e9;
-        color: black;
-        & > * {
-            color: #0A6EDD;
-        }
-        `}
 
         ${(props: ButtonProps) =>
         props.tertiary &&

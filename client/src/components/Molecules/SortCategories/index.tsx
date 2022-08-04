@@ -5,9 +5,6 @@ import Categories from "./Categories";
 import FilterInput from "../../Atoms/FilterInput";
 import styled from "styled-components";
 
-export const StyledSortButton = styled.div`
-    background-color: transparent;
-`;
 
 export const StyledCategory = styled.div.attrs((props: SortCategoriesProps) => props)`
     justify-content: center;
@@ -30,7 +27,6 @@ const SortCategories = (props: SortCategoriesProps) => {
     const sortButton = (
         <FilterInput
             disabled={props.disabled}
-            width="210px"
             content={
                 <StyledCategory category={props.category}>
                     {props.category === "" ? "Select category" : props.category}
@@ -45,13 +41,12 @@ const SortCategories = (props: SortCategoriesProps) => {
     );
 
     return (
-        <StyledSortButton >
-            <DropdownMenu
-                disabled={props.disabled}
-                button={sortButton}
-                menu={<Categories onClick={props.onClick} />}
-            />
-        </StyledSortButton>
-    )
+        <DropdownMenu
+            disabled={props.disabled}
+            button={sortButton}
+            menu={<Categories onClick={props.onClick} />}
+        />
+    );
+
 }
 export default SortCategories;
