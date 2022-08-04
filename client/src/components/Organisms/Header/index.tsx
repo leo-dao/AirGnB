@@ -22,7 +22,7 @@ const StyledHeader = styled.div`
 `
 
 const TitleStyled = styled.a`
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: bold;
     margin-left: 5%;
     color: #ebebeb;
@@ -31,10 +31,6 @@ const TitleStyled = styled.a`
         color: white;
         transform: scale(1.03);
     }
-   /*  @media (max-width: 750px) {
-        margin-left: auto;
-        margin-right: auto;
-    } */
 `
 
 const SubtitleStyled = styled.div`

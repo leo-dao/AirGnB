@@ -10,11 +10,30 @@ const Container = styled.div`
     height: 100%;
     `;
 
+const Title = styled.h1`
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: none;
+    max-width: 85%;
+    //background-image: url();
+    //background-repeat: no-repeat;
+    ;
+`
+
+const Subtitle = styled.h3`
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 40px;
+`
+
 const Home = () => {
 
     return (
         <Container>
-            <h1>Lend or borrow musical instruments</h1>
+            <Title>Lend or borrow musical instruments</Title>
+            <Subtitle>Connect with local musicians and trade gear </Subtitle>
             <Search />
         </Container >
     )
