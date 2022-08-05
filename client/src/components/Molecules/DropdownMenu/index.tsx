@@ -1,5 +1,14 @@
 import React from "react";
 import { Dropdown } from 'antd';
+import styled from 'styled-components';
+
+const DropdownStyled = styled(Dropdown)`
+    width: auto;
+    @media (max-width: 900px) {
+        width: 100%;
+    }
+        
+`
 
 interface DropdownProps {
     menu: React.ReactElement;
@@ -9,7 +18,7 @@ interface DropdownProps {
 
 const DropdownMenu = (props: DropdownProps) => {
     return (
-        <Dropdown
+        <DropdownStyled
             overlay={props.menu}
             trigger={['click']}
             placement="bottomCenter"
@@ -18,7 +27,7 @@ const DropdownMenu = (props: DropdownProps) => {
             <a onClick={e => e.preventDefault()}>
                 {props.button}
             </a>
-        </Dropdown>
+        </DropdownStyled>
     )
 }
 

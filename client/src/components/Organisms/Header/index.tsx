@@ -13,7 +13,6 @@ const StyledHeader = styled.div`
     flex-direction: row;
     align-items: center;
     padding: 0.5em;
-    margin-bottom: 5%;
     width: 100%;
     height: 70px;
     @media (max-width: 750px) {
