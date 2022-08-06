@@ -20,7 +20,13 @@ const StyledInput = styled.input`
     height: 3em;
     border: none;
     outline: none;
+    font-size: 14px;
     border-bottom: 1px solid #ccc;
+
+    ::placeholder {
+            color: #8e8e8e;
+        }
+
     &:hover{
         transition: all 0.3s ease-in-out;
         border-color: #1eb5f0;

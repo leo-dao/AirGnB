@@ -11,6 +11,7 @@ const Container = styled.div`
 
 const StyledHeader = styled.h1`
     font-size: 4em;
+    font-weight: bold;
 `
 
 interface LoginProps {

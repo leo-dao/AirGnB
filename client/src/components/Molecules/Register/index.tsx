@@ -4,10 +4,11 @@ import Password from '../../Atoms/Password';
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import Login from "../Login";
-import LocationFilter from "../LocationFilter";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import FileSubmit from "../FileSubmit"
 import { AxiosResponse } from "axios";
+import Location from "../../Atoms/Location";
+import { EyeOutlined } from "@ant-design/icons";
 const axios = require('axios').default;
 
 const Form = styled.form`
@@ -17,6 +18,10 @@ const Form = styled.form`
     justify-content: center;
     width: 30%;
     gap: 50px;
+    padding: 10px;
+    background-color: white;
+    background-image: linear-gradient(180deg, #ffffff , #f8fbff);
+
 `;
 
 const Container = styled.div`
@@ -26,13 +31,30 @@ const Container = styled.div`
     justify-content: center;
     width: 100%;
 `
+const ExtraLocationContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;  
+    padding: 10px;
+    margin: 10px;
+`
 
 const ContainerLocation = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 5px;
     width: 100%;
+ 
+    border-bottom: 1px solid #ccc;
+    &:hover{
+        transition: all 0.3s ease-in-out;
+        border-color: #1eb5f0;
+    }
+
+    .ant-select-selection-placeholder {
+        color: #8e8e8e;
+    }
 `
 
 const ContainerAvatar = styled.div`
@@ -48,11 +70,11 @@ const ContainerAvatar = styled.div`
 const Register = () => {
 
     // LOCATION DATA
-    const [data, setData] = React.useState<any[]>([]);
+    const [locationData, setLocationData] = React.useState<any[]>([]);
     React.useEffect(() => {
         axios.get('https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json')
             .then((res: { data: React.SetStateAction<any[]>; }) => {
-                setData(res.data);
+                setLocationData(res.data);
             })
     }, [])
 
@@ -145,6 +167,12 @@ const Register = () => {
         e.preventDefault();
     }
 
+    const locations = locationData.map(item => {
+        return {
+            value: item.name + ", " + item.country,     // No subcountry for now
+        }
+    });
+
     const register = (
         <Form
             onSubmit={createAccount}
@@ -156,14 +184,18 @@ const Register = () => {
                 <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
                 <Password placeholder={"Password"} onChange={handleChange} />
                 <Password placeholder={"Confirm password"} onChange={passwordMatch} />
+                <ExtraLocationContainer>
+                    <ContainerLocation>
+                        <Location
+                            onSelect={locationSelect}
+                            data={locations}
+                            register
+                        />
+                    </ContainerLocation>
+                    {/* Hidden to have the same width as other input*/}
+                    <EyeOutlined style={{ visibility: 'hidden' }} />
+                </ExtraLocationContainer>
             </Container>
-            <ContainerLocation>
-                <h2>Where are you located?</h2>
-                <LocationFilter
-                    data={data}
-                    onSelect={locationSelect}
-                />
-            </ContainerLocation>
             <ContainerAvatar>
                 <h2>Upload your profile picture</h2>
                 <FileSubmit
