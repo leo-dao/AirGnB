@@ -10,6 +10,7 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 0.5%;
 
     @media (max-width: 900px) {
         flex-direction: column;
@@ -39,7 +40,11 @@ const Search = () => {
     }
 
     const onSearch = (value: string) => {
-        window.location.href = "/listings?category=" + category + "&location=" + location + "&search=" + value;
+
+        if (category !== '' && location !== '') {
+            window.location.href = "/listings?category=" + category + "&location=" + location + "&search=" + value;
+        }
+        console.log('Fill in the search!')
     }
 
     return (

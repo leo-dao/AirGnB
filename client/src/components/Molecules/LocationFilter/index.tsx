@@ -23,7 +23,7 @@ const LocationFilter = (props: Props) => {
                 <Select
                     style={{
                         width: "100%",
-                        fontSize: "20px",
+                        fontSize: "18px",
                         color: "black",
                         textAlign: "center",
                     }}

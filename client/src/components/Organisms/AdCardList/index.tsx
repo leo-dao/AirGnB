@@ -11,6 +11,8 @@ const SearchResultStyled = styled.h1`
     display: flex;
     flex-direction: column;
     text-align: center;
+    font-weight: bold;
+    font-size: 30px;
 `;
 
 const Container = styled.div`
@@ -35,64 +37,49 @@ interface Props {
 
 const AdCardList = (props: Props) => {
 
-    const [ads, setAds] = React.useState<Ad[]>([]);
+    const [allAds, setAllAds] = React.useState<Ad[]>([]);
     React.useEffect(() => {
         axios.get('/getAds')
             .then(function (res) {
-                setAds(res.data);
+                setAllAds(res.data);
             })
-    }, [])
+    }, []);
 
 
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
-    var adText = "Ads"
-    if (params.category !== "") {
-        //setAds(ads.filter(ad => ad.category === params.category));
-        adText = params.category
-    }
-
-    var locationText = ""
-    if (params.location !== "") {
-        //setAds(ads.filter(ad => ad.user.location === params.location));
-        locationText = " in " + params.location
-    }
-
     // TODO: Use regex to search for the search term
     // Filter by price?
 
-    var resultText = ""
-    if (params.search !== "") {
-        //setAds(ads.filter(ad => ad.title.includes(params.search)));
-        var resultText = " corresponding to " + params.search;
-    }
+    const ads: Ad[] = [];
 
-    var searchResult = adText + resultText + locationText;
 
-    if (ads.length === 0 && props.inputType !== "user") {
-        return (
-            <SearchResultStyled>
-                Your search for: {searchResult} came back unsuccessful
-            </SearchResultStyled>
-        )
-    }
+
+    allAds.forEach((ad) => {
+        if (ad.category === params.category && ad.user.location === params.location) {
+            ads.push(ad);
+        }
+
+    })
+
+    /*   if (params.category !== "") {
+      }
+  
+      if (params.location !== "") {
+      } */
+
 
     const result = ads.length === 1 ? " result" : " results";
-    searchResult = "Your search for: " + searchResult + " came back with " + ads.length + result;
-
-    if (params.search === "" && params.location === "" && params.category === "") {
-        searchResult = "All ads";
-    }
 
     if (props.inputType === "user") {
-        setAds(adData)       // If the adCards is used in a user profile, don't use params
-        searchResult = '';
+        //setAllAds(adData);       
+        // If the adCards is used in a user profile, don't use params
     }
 
     return (
         <Container>
-            <SearchResultStyled>{searchResult}</SearchResultStyled>
+            <SearchResultStyled>{ads.length} {result}</SearchResultStyled>
             <StyledList
                 grid={{
                     xs: 1,

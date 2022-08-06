@@ -8,14 +8,27 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
     `;
+
+const SearchContainer = styled.div`
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 1px 6px -2px black;
+`;
 
 
 const Catalog = () => {
 
     return (
         <Container>
-            <Search />
+            <SearchContainer>
+                <Search />
+            </SearchContainer>
             <AdCardList
                 inputType="search"
             />
