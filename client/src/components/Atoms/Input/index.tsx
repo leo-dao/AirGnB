@@ -21,10 +21,10 @@ const StyledInput = styled.input`
     border: none;
     outline: none;
     font-size: 14px;
-    border-bottom: 1px solid #ccc;
-
+    border-bottom: 1px solid grey;
+    color: white;
     ::placeholder {
-            color: #8e8e8e;
+            color: white;
         }
 
     &:hover{

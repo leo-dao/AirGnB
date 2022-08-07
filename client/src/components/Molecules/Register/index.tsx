@@ -19,9 +19,6 @@ const Form = styled.form`
     width: 30%;
     gap: 50px;
     padding: 10px;
-    background-color: white;
-    background-image: linear-gradient(180deg, #ffffff , #f8fbff);
-
 `;
 
 const Container = styled.div`
@@ -39,6 +36,10 @@ const ExtraLocationContainer = styled.div`
     padding: 10px;
     margin: 10px;
 `
+
+const Guidelines = styled.h2`
+    color: white;
+    `
 
 const ContainerLocation = styled.div`
     display: flex;
@@ -179,7 +180,8 @@ const Register = () => {
             encType="multipart/form-data"
         >
             <Container>
-                <h2>Enter your information</h2>
+
+                <Guidelines>Enter your information</Guidelines>
                 <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
                 <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
                 <Password placeholder={"Password"} onChange={handleChange} />
@@ -197,7 +199,7 @@ const Register = () => {
                 </ExtraLocationContainer>
             </Container>
             <ContainerAvatar>
-                <h2>Upload your profile picture</h2>
+                <Guidelines >Upload your profile picture</Guidelines>
                 <FileSubmit
                     onChange={onSetFile}
                     fileNames={file?.name ? [file?.name] : []}
