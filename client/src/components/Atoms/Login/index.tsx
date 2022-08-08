@@ -7,7 +7,7 @@ const Container = styled.div`
     justify-content: center;
     gap: 20px;
     margin-top: 10%;
-    margin-bottom: 10%
+    margin-bottom: 10%;
     `
 
 interface LoginProps {

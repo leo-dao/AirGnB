@@ -3,10 +3,9 @@ import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password'
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
-import Login from "../Login";
+import Login from "../../Atoms/Login";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Form = styled.form`
@@ -14,7 +13,8 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 50%;
+    max-width: 500px;
 `;
 
 const ButtonContainer = styled.div`
@@ -22,7 +22,12 @@ const ButtonContainer = styled.div`
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-top: 5%;
+    @media (max-width: 800px) {
+        flex-direction: column;
+        gap: 5px;
+    }
 `;
 
 const SignIn = () => {

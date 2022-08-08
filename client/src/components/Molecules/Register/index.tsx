@@ -3,7 +3,7 @@ import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password';
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
-import Login from "../Login";
+import Login from "../../Atoms/Login";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import FileSubmit from "../FileSubmit"
 import { AxiosResponse } from "axios";
@@ -16,9 +16,9 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 50%;
     gap: 50px;
-    padding: 10px;
+    max-width: 500px;
 `;
 
 const Container = styled.div`
@@ -47,14 +47,14 @@ const ContainerLocation = styled.div`
     align-items: center;
     width: 100%;
  
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid grey;
     &:hover{
         transition: all 0.3s ease-in-out;
         border-color: #1eb5f0;
     }
 
     .ant-select-selection-placeholder {
-        color: #8e8e8e;
+        color: white;
     }
 `
 
