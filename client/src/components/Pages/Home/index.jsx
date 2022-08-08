@@ -11,18 +11,19 @@ const Container = styled.div`
     justify-content: space-around;
     `;
 
-const TopContainer = styled.div`
-    margin-bottom: 3%;
-`
-
 const Text = styled.div`
-    position: absolute;
+   /*  position: absolute;
     margin-top: 100px;
     top:0;
     left: 0;
     right: 0;
     text-align: center;
-    z-index: 0;
+    z-index: 0; */
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    user-select: none;
 `
 
 const Title = styled.h1`
@@ -42,8 +43,6 @@ const Home = () => {
 
     return (
         <Container>
-
-            <VideoLoop src={guitar} />
             <Text>
                 <Title>Lend or borrow musical instruments</Title>
                 <Subtitle>Connect with local musicians and trade gear </Subtitle>

@@ -15,7 +15,6 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     outline: 0 solid transparent;
     padding: 8px 18px;
     user-select: none;
-    -webkit-user-select: none;
     touch-action: manipulation;
     width: 140px;
     min-width: 80px;
@@ -45,6 +44,7 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     border-radius: 0px;
     font-size: 18px;
     transition: 0s;
+    width: 110px;
     &:hover {
         background: none;
         border-bottom: 1px solid #d4d1d1;
