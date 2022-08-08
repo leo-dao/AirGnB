@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import HeaderButtons from '../../Molecules/HeaderButtons';
 import styled from 'styled-components';
+import DropdownMenu from '../../Molecules/DropdownMenu';
+import Buttons from './Buttons';
+import { MenuFoldOutlined } from '@ant-design/icons';
 
 const StyledHeader = styled.div`
-    //background-color: #fff;
     background: transparent linear-gradient(87deg,#181923,#142637) 0 0;
     z-index: 1;
     position: sticky;
@@ -42,12 +43,22 @@ const SubtitleStyled = styled.div`
     color: #c7c7c7;
     `
 
-const ButtonStyled = styled.div`
+const ButtonContainer = styled.div`
     position: absolute;
     right: 5%;
-   /*  @media (max-width: 750px) {
+
+`
+
+const MenuFoldStyled = styled(MenuFoldOutlined)`
+    color: white;
+    font-size: 30px;
+    transition: 0.2s;
+    :hover {
+        font-size: 28px;
+    }
+    @media (min-width: 600px) {
         display: none;
-    } */
+    }
 `
 
 const Header = () => {
@@ -59,9 +70,16 @@ const Header = () => {
                 Music rental made easy
             </SubtitleStyled>
 
-            <ButtonStyled>
+            <ButtonContainer>
+
                 <HeaderButtons />
-            </ButtonStyled>
+                <DropdownMenu
+                    menu={<Buttons />}
+                    button={<MenuFoldStyled />}
+                />
+            </ButtonContainer>
+
+
         </StyledHeader >
     )
 }

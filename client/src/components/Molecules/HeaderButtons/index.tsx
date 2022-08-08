@@ -7,6 +7,9 @@ import styled from "styled-components";
 const StyledHeaderButtons = styled.div`
     display: flex;
     flex-direction: row;
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 const Space = styled.div`
