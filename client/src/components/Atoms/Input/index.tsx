@@ -25,6 +25,8 @@ const StyledInput = styled.input`
     color: white;
     ::placeholder {
             color: white;
+            position: relative;
+            left: 10px;
         }
 
     &:hover{

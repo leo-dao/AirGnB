@@ -17,7 +17,8 @@ const HideInput = styled.input`
 
 const StyledLabel = styled.label.attrs((props: FileInputProps) => (props))`
     font-size: 18px;
-    border: 1px solid #ccc;
+    border: 1px solid grey;
+    color: white;
     padding: 10px;
     cursor: ${(props) => props.disabled ? "not-allowed" : "pointer"};
     transition: "all 0.2s ease-in-out";
@@ -30,6 +31,7 @@ const FileList = styled.div.attrs((props: FileInputProps) => (props))`
     font-size: 12px;
     font-style: italic;
     margin-top: 20px;
+    color: white;
     `
 
 interface FileInputProps {

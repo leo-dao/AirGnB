@@ -47,11 +47,17 @@ const Password = (props: Props) => {
             />
             <EyeOutlined
                 onClick={makeVisible}
-                style={{ display: visibleDisplay }}
+                style={{
+                    display: visibleDisplay,
+                    color: 'white'
+                }}
             />
             <EyeInvisibleOutlined
                 onClick={makeInvisible}
-                style={{ display: invisibleDisplay }}
+                style={{
+                    display: invisibleDisplay,
+                    color: 'white'
+                }}
             />
         </Container>
     )

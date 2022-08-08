@@ -17,7 +17,8 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: fit-content;
+    width: 140px;
+    min-width: 80px;
     word-break: break-word;
     border: ${props => props.secondary ? '10' : '0'};
     transition: 0.2s;

@@ -1,3 +1,5 @@
 .App {
     font-family: Open Sans, sans-serif, Arial;
+    background-color: black;
+    background-image: linear-gradient(147deg, #000000 0%, #013354 74%);
 }

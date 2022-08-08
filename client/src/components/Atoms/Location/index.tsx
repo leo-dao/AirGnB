@@ -11,12 +11,11 @@ interface Props {
 const Location = (props: Props) => {
 
     return (
-
         <Select
             style={{
                 width: "100%",
                 fontSize: props.register ? '14px' : '18px',
-                color: "black",
+                color: props.register ? 'white' : 'black',
                 textAlign: props.register ? 'left' : 'center',
             }}
             showSearch
