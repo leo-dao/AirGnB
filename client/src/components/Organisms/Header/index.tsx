@@ -2,8 +2,13 @@ import React from 'react';
 import HeaderButtons from '../../Molecules/HeaderButtons';
 import styled from 'styled-components';
 import DropdownMenu from '../../Molecules/DropdownMenu';
-import Buttons from './Buttons';
-import { MenuFoldOutlined } from '@ant-design/icons';
+import Button from '../../Atoms/Button';
+import { MenuOutlined } from '@ant-design/icons';
+import ToggleNav from '../../Molecules/ToggleNav';
+
+const Container = styled.div`
+    width: 100%;
+`
 
 const StyledHeader = styled.div`
     background: transparent linear-gradient(87deg,#181923,#142637) 0 0;
@@ -13,7 +18,7 @@ const StyledHeader = styled.div`
     top: 0;
     flex-direction: row;
     align-items: center;
-    padding: 0.5em;
+    //padding: 0.5em;
     width: 100%;
     height: 70px;
     @media (max-width: 750px) {
@@ -46,15 +51,15 @@ const SubtitleStyled = styled.div`
 const ButtonContainer = styled.div`
     position: absolute;
     right: 5%;
-
 `
 
-const MenuFoldStyled = styled(MenuFoldOutlined)`
+const MenuStyled = styled(MenuOutlined)`
     color: white;
     font-size: 30px;
     transition: 0.2s;
+
     :hover {
-        font-size: 28px;
+        transform: scale(1.05);
     }
     @media (min-width: 600px) {
         display: none;
@@ -63,24 +68,31 @@ const MenuFoldStyled = styled(MenuFoldOutlined)`
 
 const Header = () => {
 
+    const [visibility, setVisibility] = React.useState(false);
+
+    const flip = () => {
+        setVisibility(!visibility);
+    }
+
+
     return (
-        <StyledHeader>
-            <TitleStyled href="/">AirGnB</TitleStyled>
-            <SubtitleStyled>
-                Music rental made easy
-            </SubtitleStyled>
+        <Container>
+            <StyledHeader>
+                <TitleStyled href="/">AirGnB</TitleStyled>
+                <SubtitleStyled>
+                    Music rental made easy
+                </SubtitleStyled>
 
-            <ButtonContainer>
+                <ButtonContainer>
 
-                <HeaderButtons />
-                <DropdownMenu
-                    menu={<Buttons />}
-                    button={<MenuFoldStyled />}
-                />
-            </ButtonContainer>
-
-
-        </StyledHeader >
+                    <HeaderButtons />
+                    <MenuStyled onClick={flip} />
+                </ButtonContainer>
+            </StyledHeader >
+            <ToggleNav
+                display={visibility}
+            />
+        </Container>
     )
 }
 export default Header;
