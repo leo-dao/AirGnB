@@ -11,7 +11,8 @@ const Container = styled.div`
 `
 
 const StyledHeader = styled.div`
-    background: transparent linear-gradient(87deg,#181923,#142637) 0 0;
+    background-image: linear-gradient(87deg,#181923,#17324c);
+    //background-color: #142637;
     z-index: 1;
     position: sticky;
     display: flex;
