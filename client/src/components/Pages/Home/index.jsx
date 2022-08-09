@@ -28,7 +28,7 @@ const Text = styled.div`
 
 const Title = styled.h1`
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 2rem;
     color: white;
     ;
 `

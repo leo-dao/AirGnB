@@ -7,10 +7,11 @@ const StyledInput = styled.input`
     border: none;
     outline: none;
     width: 100%;
-    text-align: center;
+    text-align: left;
     background-color: transparent;
     ::placeholder {
         color: grey;
+        text-align: center;
     }
     `;
 

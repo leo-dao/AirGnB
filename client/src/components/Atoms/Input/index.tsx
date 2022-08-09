@@ -28,7 +28,6 @@ const StyledInput = styled.input`
             position: relative;
             left: 10px;
         }
-
     &:hover{
         transition: all 0.3s ease-in-out;
         border-color: #1eb5f0;

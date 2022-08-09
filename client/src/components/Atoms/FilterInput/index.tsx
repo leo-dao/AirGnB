@@ -4,25 +4,24 @@ import styled from "styled-components";
 const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     border-radius: 20px;
     background-color: white;
-    border: 0.1px solid #142637;
+    border: 1px solid #142637;
     display: flex;
     align-items: center;
     text-align: center;
     cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
-    width: 20em;
+    width: 300px;
     height: 50px;
     transition: all 0.2s ease-in-out;
     &:hover {
-        //border-color:  #1eb5f0;
-        border: 1px solid #1eb5f0;
+        border-color: #1eb5f0;
     }
     .ant-select-selection-placeholder {
         color: grey;
     }
     
-    @media (max-width: 900px) {
-        width: 100%;
-    }
+    /* @media (max-width: 900px) {
+        width: 200px
+    } */
 `;
 
 const StyledContent = styled.div`

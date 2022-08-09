@@ -14,7 +14,6 @@ const Container = styled.div`
 
     @media (max-width: 900px) {
         flex-direction: column;
-        width: 40%;
     }
 `
 const Search = () => {

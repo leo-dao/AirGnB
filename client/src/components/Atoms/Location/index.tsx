@@ -22,6 +22,9 @@ const Location = (props: Props) => {
             bordered={false}
             options={props.data}
             allowClear={true}
+            clearIcon
+            suffixIcon
+            removeIcon
             placeholder="Select your city"
             filterOption={(inputValue, option) =>
                 option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
