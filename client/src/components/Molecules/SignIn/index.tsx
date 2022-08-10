@@ -59,8 +59,7 @@ const SignIn = () => {
         axios.post('/signIn', formData)
             .then(res => {
                 localStorage.setItem('authToken', JSON.stringify(res.data));
-
-                //navigate('/');
+                navigate('/');
             })
             .catch(err => {
                 updateErrMsg(err.response.data.error);

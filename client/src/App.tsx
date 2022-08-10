@@ -13,6 +13,7 @@ import Register from './components/Molecules/Register';
 import Error from './components/Molecules/Error';
 import PostAd from './components/Pages/PostAd';
 import BookAd from './components/Pages/BookAd';
+import UserAccount from './components/Pages/UserAccount';
 
 function App() {
 
@@ -26,6 +27,9 @@ function App() {
           element={<Catalog />} />
         <Route path="/profile/:userId"
           element={<UserProfile />} />
+        <Route path="/account"
+          element={<UserAccount />}
+        />
         <Route path="/listings/:_id"
           element={<AdProfile />} />
         <Route path="/post-ad"

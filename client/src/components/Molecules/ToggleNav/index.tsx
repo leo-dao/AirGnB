@@ -48,7 +48,7 @@ const StyledA = styled.a`
 const ToggleNav = (props: ToggleProps) => {
 
     let user: any = useFindUser();
-    var account = user ? `/profile/${user._id}` : "/sign-in";
+    var account = user ? `/account` : "/sign-in";
     var post = user ? "/post-ad" : "/sign-in";
 
     return (

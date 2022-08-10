@@ -19,9 +19,6 @@ const Space = styled.div`
 const HeaderButtons = () => {
 
     let user: any = useFindUser();
-
-    var account = user ? `/profile/${user._id}` : "/sign-in";
-
     var post = user ? "/post-ad" : "/sign-in";
 
     return (
@@ -34,7 +31,6 @@ const HeaderButtons = () => {
             <Space />
             <Space />
             <UserButton
-                onClick={() => window.location.href = account}
                 header
             />
         </StyledHeaderButtons>
