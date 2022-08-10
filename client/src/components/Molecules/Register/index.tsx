@@ -9,14 +9,21 @@ import FileSubmit from "../FileSubmit"
 import { AxiosResponse } from "axios";
 import Location from "../../Atoms/Location";
 import { EyeOutlined } from "@ant-design/icons";
+import SortCategories from "../SortCategories";
+import LongInput from '../../Atoms/LongInput';
 const axios = require('axios').default;
+
+interface RegisterProps {
+    reg2?: boolean;
+    reg3?: boolean;
+}
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     gap: 50px;
     max-width: 500px;
 `;
@@ -37,9 +44,24 @@ const ExtraLocationContainer = styled.div`
     margin: 10px;
 `
 
-const Guidelines = styled.h2`
+const Guideline = styled.h2`
     color: white;
-    `
+    `;
+
+const Reg1 = styled.div`
+    width: 100%;
+`
+
+const Reg2 = styled.div.attrs((props: RegisterProps) => props)`
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-bottom: -30px;
+    display: ${props => props.reg2 ? 'flex' : 'none'};
+`;
 
 const ContainerLocation = styled.div`
     display: flex;
@@ -58,17 +80,7 @@ const ContainerLocation = styled.div`
     }
 `
 
-const ContainerAvatar = styled.div`
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-    margin-bottom: -30px;
-`
-
-const Register = () => {
+const Register = (props: RegisterProps) => {
 
     // LOCATION DATA
     const [locationData, setLocationData] = React.useState<any[]>([]);
@@ -77,7 +89,7 @@ const Register = () => {
             .then((res: { data: React.SetStateAction<any[]>; }) => {
                 setLocationData(res.data);
             })
-    }, [])
+    }, []);
 
     const locationSelect = (value: string) => {
         updateFormData({
@@ -94,6 +106,12 @@ const Register = () => {
             ...formData,
             avatar: e.target.files[0],
         })
+    }
+
+    const [category, setCategory] = React.useState<string>('');
+
+    const onCategory = (e: any) => {
+        setCategory(e.key);
     }
 
     const initialState = {
@@ -180,36 +198,53 @@ const Register = () => {
             encType="multipart/form-data"
         >
             <Container>
-
-                <Guidelines>Enter your information</Guidelines>
-                <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
-                <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
-                <Password placeholder={"Password"} onChange={handleChange} />
-                <Password placeholder={"Confirm password"} onChange={passwordMatch} />
-                <ExtraLocationContainer>
-                    <ContainerLocation>
-                        <Location
-                            onSelect={locationSelect}
-                            data={locations}
-                            register
-                        />
-                    </ContainerLocation>
-                    {/* Hidden to have the same width as other input*/}
-                    <EyeOutlined style={{ visibility: 'hidden' }} />
-                </ExtraLocationContainer>
+                <Reg1>
+                    <Guideline>1. Enter your information</Guideline>
+                    <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
+                    <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
+                    <Password placeholder={"Password"} onChange={handleChange} />
+                    <Password placeholder={"Confirm password"} onChange={passwordMatch} />
+                    <ExtraLocationContainer>
+                        <ContainerLocation>
+                            <Location
+                                onSelect={locationSelect}
+                                data={locations}
+                                register
+                            />
+                        </ContainerLocation>
+                        {/* Hidden to have the same width as other input*/}
+                        <EyeOutlined style={{ visibility: 'hidden' }} />
+                    </ExtraLocationContainer>
+                </Reg1>
             </Container>
-            <ContainerAvatar>
-                <Guidelines >Upload your profile picture</Guidelines>
+            <Reg2
+                reg2={
+                    formData.name !== '' &&
+                    formData.email !== '' &&
+                    !error.display
+                }
+            >
+                <Guideline>2. Upload your profile picture</Guideline>
                 <FileSubmit
                     onChange={onSetFile}
                     fileNames={file?.name ? [file?.name] : []}
                 />
-            </ContainerAvatar>
+                <input type="text"
+                    placeholder="Enter a description about yourself" />
+            </Reg2>
+
+            <SortCategories
+                onClick={onCategory}
+                category={category}
+            />
+            <ErrorMessage msg={error.msg} on={error.display} />
+
+
+
             <Button
                 text="Create profile"
                 type='submit'
             />
-            <ErrorMessage msg={error.msg} on={error.display} />
         </Form>
     )
 

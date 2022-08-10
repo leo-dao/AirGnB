@@ -15,7 +15,7 @@ const Container = styled.div`
 const StyledInput = styled.input`
     display: flex;
     align-items: center;
-    background-color: transparent;
+    background: none;
     width: 100%;
     height: 3em;
     border: none;
@@ -28,6 +28,7 @@ const StyledInput = styled.input`
             position: relative;
             left: 10px;
         }
+
     &:hover{
         transition: all 0.3s ease-in-out;
         border-color: #1eb5f0;

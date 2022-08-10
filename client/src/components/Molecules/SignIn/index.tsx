@@ -13,7 +13,7 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     max-width: 500px;
 `;
 
