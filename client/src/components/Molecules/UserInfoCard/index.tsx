@@ -1,5 +1,5 @@
 import React from "react";
-import UserProps from "../UserInfo/interfaces";
+import User from "../UserInfo/interfaces";
 import AvatarLink from "../../Atoms/AvatarLink";
 import UserInfo from "../UserInfo";
 import styled from 'styled-components';
@@ -18,7 +18,8 @@ const TopContainer = styled.div`
     align-items: center;
 `;
 
-interface UserInfoProps extends UserProps {
+interface UserInfoProps {
+    user: User;
     fontSize?: number;
     avatarSize?: number;
     type?: string;
@@ -32,18 +33,12 @@ const UserInfoCard = (props: UserInfoProps) => {
         <Container>
             <TopContainer>
                 <AvatarLink
-                    _id={props._id}
-                    avatar={props.avatar}
+                    user={props.user}
                     size={avatarSize}
                 />
                 <UserInfo
                     type={"card"}
-                    name={props.name}
-                    location={props.location}
-                    rating={props.rating}
-                    numRatings={props.numRatings}
-                    _id={props._id}
-                    avatar={props.avatar}
+                    user={props.user}
                 />
             </TopContainer>
         </Container >

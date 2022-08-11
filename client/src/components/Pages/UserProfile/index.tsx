@@ -49,7 +49,7 @@ const UserProfile = () => {
         userProfileById(params.userId)
             .then((u) => setUser(u))
             .catch((err) => { console.log(err); setUser(undefined) })
-    }, [params.userId])
+    }, [params.userId]);
 
     const [ads, setAds] = React.useState<Ad[]>([]);
     React.useEffect(() => {
@@ -72,12 +72,7 @@ const UserProfile = () => {
         <Container>
             <InfoContainer>
                 <UserInfo
-                    name={currentUser.name}
-                    avatar={currentUser.avatar}
-                    _id={currentUser._id}
-                    location={currentUser.location}
-                    rating={currentUser.rating}
-                    numRatings={currentUser.numRatings}
+                    user={currentUser}
                 />
             </InfoContainer>
             <h1> {numAds} available {ad}</h1>

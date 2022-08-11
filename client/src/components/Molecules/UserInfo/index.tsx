@@ -21,31 +21,32 @@ const Container = styled.div.attrs((props: UserInfoProps) => props)`
     }
     `;
 
-interface UserInfoProps extends User {
+interface UserInfoProps {
+    user: User;
     type?: string;
     titleSize?: number;
 }
 
 const UserInfo = (props: UserInfoProps) => {
 
-    const ratings = <h3>{props.numRatings} {props.numRatings === 1 ? "rating" : "ratings"}</h3>
+    const ratings = <h3>{props.user.numRatings} {props.user.numRatings === 1 ? "rating" : "ratings"}</h3>
 
     if (props.type === "card") {
         return (
             <Container>
-                <h1>{props.name}</h1>
-                <Rate defaultValue={props.rating} allowHalf disabled />
+                <h1>{props.user.name}</h1>
+                <Rate defaultValue={props.user.rating} allowHalf disabled />
             </Container>
         )
     }
 
     return (
         <Container>
-            <Avatar src={props.avatar} size={100} />
-            <h1>{props.name}</h1>
-            <h2>{props.location}</h2>
-            <Rate defaultValue={props.rating} allowHalf disabled />
-            {props.numRatings ? ratings : null}
+            <Avatar src={props.user.avatar} size={100} />
+            <h1>{props.user.name}</h1>
+            <h2>{props.user.location}</h2>
+            <Rate defaultValue={props.user.rating} allowHalf disabled />
+            {props.user.numRatings ? ratings : null}
         </Container>
     )
 }
