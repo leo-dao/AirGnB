@@ -1,27 +1,24 @@
 import React from "react";
 import styled from 'styled-components';
+import guitar from '../../../assets/guitar.mp4';
 
 const Video = styled.video`
-
-    width: 100%;
-
-    z-index: -1;
+    max-width: 100%;
+    z-index: 1;
     margin-bottom: 3%;
 
-/*     @media  (max-width: 768px) {
-        display: block;
-} */
+@media  (max-width: 768px) {
+        display: none;
+} 
 
 `
 
-interface VideoProps {
-    src: string;
-}
+const VideoBg = () => {
 
-const VideoBg = (props: VideoProps) => {
+
     return (
         <Video autoPlay loop muted>
-            <source src={props.src} type='video/mp4' />
+            <source src={guitar} type='video/mp4' />
             Your browser does not support the video tag
             <div style={{
                 zIndex: '1'

@@ -1,8 +1,8 @@
 import React from "react";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
-import guitar from '../../../assets/guitar.mp4';
-import VideoLoop from "../../Organisms/VideoBg";
+import VideoBg from "../../Organisms/VideoBg";
+
 
 const Container = styled.div`
     display: flex;
@@ -12,13 +12,13 @@ const Container = styled.div`
     `;
 
 const Text = styled.div`
-   /*  position: absolute;
+    position: absolute;
     margin-top: 100px;
     top:0;
     left: 0;
     right: 0;
     text-align: center;
-    z-index: 0; */
+    z-index: 2; 
 
     display: flex;
     flex-direction: column;
@@ -43,11 +43,11 @@ const Home = () => {
 
     return (
         <Container>
+            <VideoBg />
             <Text>
                 <Title>Lend or borrow musical instruments</Title>
                 <Subtitle>Connect with local musicians and trade gear </Subtitle>
             </Text>
-
             <Search />
         </Container >
     )
