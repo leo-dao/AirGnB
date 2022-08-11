@@ -8,6 +8,7 @@ const upload = require('../middleware/upload')
 router.post('/', upload.array('images', 6), async (req, res, next) => {
 
 
+
     const {
         title,
         category,
@@ -30,6 +31,7 @@ router.post('/', upload.array('images', 6), async (req, res, next) => {
 
     try {
         const newAd = new Ad({
+            _id: uuidv4(),
             title: title,
             category: category,
             description: description,

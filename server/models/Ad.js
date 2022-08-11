@@ -26,7 +26,7 @@ const AdSchema = new mongoose.Schema({
     _id: {
         type: String,
         required: true,
-        default: uuidv4(),
+        default: '',
     },
     images: {
         type: [{

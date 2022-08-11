@@ -6,7 +6,7 @@ const ErrorResponse = require('../utils/errorResponse');
 router.get('/', async (req, res, next) => {
 
     // sending all ads
-    AdSchema.find().then(function (ads) {
+    await AdSchema.find().then(function (ads) {
         res.send(ads)
     })
 })
