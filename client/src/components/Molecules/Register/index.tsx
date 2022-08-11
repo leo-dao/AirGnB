@@ -180,7 +180,7 @@ const Register = (props: RegisterProps) => {
                 updateError(
                     { msg: err.response.data.error, display: true }
                 )
-            });;
+            });
         }
 
         e.preventDefault();

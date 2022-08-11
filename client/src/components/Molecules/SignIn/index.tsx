@@ -32,11 +32,15 @@ const ButtonContainer = styled.div`
 
 const SignIn = () => {
 
+    const navigate = useNavigate();
+
     const initialState = {
         email: '',
         password: ''
     }
 
+    const [errMsg, updateErrMsg] = React.useState('');
+    const [errOn, updateErr] = React.useState(false);
     const [formData, updateFormData] = React.useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,12 +49,6 @@ const SignIn = () => {
             [e.target.placeholder.toLowerCase()]: e.target.value
         })
     }
-
-    const navigate = useNavigate();
-
-
-    const [errMsg, updateErrMsg] = React.useState('');
-    const [errOn, updateErr] = React.useState(false);
 
 
     const signIn = (e: React.FormEvent<HTMLFormElement>) => {

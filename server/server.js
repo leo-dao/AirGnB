@@ -16,6 +16,7 @@ const getUsersRoute = require('./routes/getUsers');
 const checkUserRoute = require('./routes/checkUser')
 const getImagesRoute = require('./routes/getImages');
 const bookAdRoute = require('./routes/bookAd');
+const deleteUserRoute = require('./routes/deleteUser');
 
 // Connecting to mongoDB
 dotenv.config();
@@ -34,6 +35,7 @@ app.use('/getUsers', getUsersRoute)
 app.use('/checkUser', checkUserRoute);
 app.use('/getImages', getImagesRoute);
 app.use('/bookAd', bookAdRoute);
+app.use('/deleteUser', deleteUserRoute);
 
 app.use(errorHandler);
 
