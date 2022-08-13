@@ -4,9 +4,7 @@ import styled from 'styled-components';
 
 const DropdownStyled = styled(Dropdown)`
     width: auto;
-    @media (max-width: 900px) {
-        width: 100%;
-    }
+    
         
 `
 

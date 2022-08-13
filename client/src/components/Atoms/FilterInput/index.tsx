@@ -18,10 +18,6 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     .ant-select-selection-placeholder {
         color: grey;
     }
-    
-    /* @media (max-width: 900px) {
-        width: 200px
-    } */
 `;
 
 const StyledContent = styled.div`

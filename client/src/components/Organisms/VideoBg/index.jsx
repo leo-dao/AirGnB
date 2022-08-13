@@ -7,7 +7,6 @@ const Video = styled.video`
     max-width: 100%;
     z-index: 1;
     margin-bottom: 3%;
-    opacity: 0.8;
 
 @media  (max-width: 768px) {
 

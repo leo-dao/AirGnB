@@ -6,11 +6,14 @@ import Button from "../../Atoms/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AxiosResponse } from "axios";
+import UserInfo from "../../Molecules/UserInfo";
 
 const Container = styled.div`
   width: 90%;
   display: flex;
-  justify-content: center;  
+  flex-direction: column;
+  justify-content: center; 
+  background-color: white; 
 `;
 
 const Logout = styled.div`
@@ -38,7 +41,6 @@ const UserAccount = () => {
 
         axios.post('/deleteUser', user).then((res: AxiosResponse<any, any>) => {
             logOut();
-            navigate('/');
 
         }).catch((err: any) => {
             console.log(err)
@@ -47,12 +49,13 @@ const UserAccount = () => {
 
     return (
         <Container>
+
             <Logout onClick={logOut}>
                 <p>Logout</p>
                 <StyledLogo src={logout} />
             </Logout>
             <Button
-                text="Delete user"
+                text="Delete account"
                 onClick={deleteAccount}
             />
         </Container>

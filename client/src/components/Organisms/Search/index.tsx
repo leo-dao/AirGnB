@@ -10,7 +10,7 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 0.5%;
+    gap: 0.2%;
 
     @media (max-width: 900px) {
         flex-direction: column;

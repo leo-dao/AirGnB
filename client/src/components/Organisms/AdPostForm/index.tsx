@@ -15,8 +15,8 @@ const Form = styled.form`
 `
 
 const StyledInput = styled(Input)`
-    height: 40px;
-    width: 200px;
+    height: 100%;
+    width: 100%;
     font-size: 16px;
 `
 

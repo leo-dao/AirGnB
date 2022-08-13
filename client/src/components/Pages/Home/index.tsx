@@ -11,7 +11,7 @@ const Container = styled.div`
     justify-content: space-around;
     `;
 
-const Text = styled.div`
+const Main = styled.div`
     position: absolute;
     margin-top: 100px;
     top:0;
@@ -37,6 +37,14 @@ const Subtitle = styled.h3`
     font-size: 1.3rem;
     padding: 10px;
     color: white;
+    margin-bottom: 3%;
+`
+
+const Description = styled.p`
+    margin-top: 20%;
+    font-size: 20px;
+    text-align: center;
+    color: white;
 `
 
 const Home = () => {
@@ -44,11 +52,11 @@ const Home = () => {
     return (
         <Container>
             <VideoBg />
-            <Text>
+            <Main>
                 <Title>Lend or borrow musical instruments</Title>
                 <Subtitle>Connect with local musicians and trade gear </Subtitle>
-            </Text>
-            <Search />
+                <Search />
+            </Main>
         </Container >
     )
 };
