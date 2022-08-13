@@ -7,7 +7,6 @@ import styled from "styled-components";
 
 
 export const StyledCategory = styled.div.attrs((props: SortCategoriesProps) => props)`
-    justify-content: center;
     color: ${props => props.category === "" ? "grey" : "black"};
 `;
 

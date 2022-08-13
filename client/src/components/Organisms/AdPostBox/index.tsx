@@ -16,6 +16,7 @@ const Container = styled.div.attrs((props: PostAdProps) => (props))`
 `
 
 const TitleStyled = styled.div`
+    text-align: center;
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -26,6 +27,7 @@ const SelectionStyled = styled.div`
 `
 
 const SubtitleStyled = styled.div`
+    text-align: center;
     margin-top: -5px;
     margin-bottom: 15px;
     font-size: 14px;

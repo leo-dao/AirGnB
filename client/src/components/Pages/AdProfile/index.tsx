@@ -152,13 +152,7 @@ const AdProfile = () => {
                             <Description description={currentAd.description} />
                             <UserContainer>
                                 <UserInfo
-                                    _id={currentAd.user._id}
-                                    avatar={currentAd.user.avatar}
-                                    name={currentAd.user.name}
-                                    rating={currentAd.user.rating}
-                                    numRatings={currentAd.user.numRatings}
-                                    location={currentAd.user.location}
-                                    clickAble={true}
+                                    user={currentAd.user}
                                     fontSize={18}
                                     avatarSize={60}
                                 />

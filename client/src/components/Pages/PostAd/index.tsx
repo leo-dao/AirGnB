@@ -4,6 +4,7 @@ import { Ad, AdImage, User } from "../../../interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
 import Error from "../../Molecules/Error";
 import useFindUser from "../../../hooks/useFindUser";
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import axios from "axios";
 
@@ -13,11 +14,18 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 80px;
+
+    @media (max-width: 800px) {
+
+    }
 `
 const CardStyled = styled.div`
+display: none;
 `
 
 const PostAd = () => {
+
+    const navigate = useNavigate();
 
     // Getting the user object and stringifying it 
     // to send it as formData to server
@@ -89,6 +97,7 @@ const PostAd = () => {
             .catch(function (res) {
                 console.log(res);
             });
+        navigate('/');
     }
 
     const displayImage = [{

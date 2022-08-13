@@ -11,6 +11,7 @@ import Location from "../../Atoms/Location";
 import { EyeOutlined } from "@ant-design/icons";
 import SortCategories from "../SortCategories";
 import LongInput from '../../Atoms/LongInput';
+import { useNavigate } from "react-router-dom";
 const axios = require('axios').default;
 
 interface RegisterProps {
@@ -82,6 +83,9 @@ const ContainerLocation = styled.div`
 
 const Register = (props: RegisterProps) => {
 
+
+    const navigate = useNavigate();
+
     // LOCATION DATA
     const [locationData, setLocationData] = React.useState<any[]>([]);
     React.useEffect(() => {
@@ -120,14 +124,16 @@ const Register = (props: RegisterProps) => {
         location: '',
         password: '',
         avatar: null,
+        confirmpassword: '',
     }
+    // DO NORMAL HANDLE CHANGE AND THEN CHECK IF THEIR EQUAL
 
     const [formData, updateFormData] = React.useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateFormData({
             ...formData,
-            [e.target.placeholder.toLowerCase()]: e.target.value
+            [e.target.placeholder.toLowerCase().replace(/\s/g, '')]: e.target.value
         });
     }
 
@@ -136,10 +142,18 @@ const Register = (props: RegisterProps) => {
         display: false,
     }
 
-    const [error, updateError] = React.useState(noError)
+    const [error, updateError] = React.useState(noError);
 
-    const passwordMatch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.value !== formData.password) {
+    const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+        handleChange(e);
+        passwordMatch(); // not called the first time so delay??
+    }
+
+    const passwordMatch = () => {
+
+
+
+        if (formData.confirmpassword !== formData.password) {
             updateError(
                 {
                     msg: "Passwords don't match",
@@ -149,7 +163,7 @@ const Register = (props: RegisterProps) => {
         else {
             updateError(noError)
         }
-    }
+    };
 
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -174,7 +188,7 @@ const Register = (props: RegisterProps) => {
                 }
             }).then((res: AxiosResponse<any, any>) => {
                 localStorage.setItem('authToken', JSON.stringify(res.data));
-                //navigate('/');
+                navigate('/');
 
             }).catch((err: any) => {
                 updateError(
@@ -202,8 +216,8 @@ const Register = (props: RegisterProps) => {
                     <Guideline>1. Enter your information</Guideline>
                     <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
                     <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
-                    <Password placeholder={"Password"} onChange={handleChange} />
-                    <Password placeholder={"Confirm password"} onChange={passwordMatch} />
+                    <Password placeholder={"Password"} onChange={handlePassword} />
+                    <Password placeholder={"Confirm password"} onChange={handlePassword} />
                     <ExtraLocationContainer>
                         <ContainerLocation>
                             <Location
@@ -212,7 +226,6 @@ const Register = (props: RegisterProps) => {
                                 register
                             />
                         </ContainerLocation>
-                        {/* Hidden to have the same width as other input*/}
                         <EyeOutlined style={{ visibility: 'hidden' }} />
                     </ExtraLocationContainer>
                 </Reg1>
