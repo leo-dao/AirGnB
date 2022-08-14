@@ -48,6 +48,14 @@ const SocialMedia = styled.div`
         flex-direction: column;
         gap: 5px;
     }
+    * {
+    color: #9a9a9a;
+    font-size: 1.2em;
+    &:hover {
+        color: white;
+        cursor: pointer;
+    }
+    }
 `;
 
 const Link = styled.a`
@@ -80,15 +88,9 @@ const Footer = () => {
                     <Link href="/faq">FAQ</Link>
                 </Bottom>
                 <SocialMedia>
-                    <InstagramOutlined
-                        style={{ fontSize: '1.5em', color: '#9a9a9a' }}
-                    />
-                    <FacebookOutlined
-                        style={{ fontSize: '1.5em', color: '#9a9a9a' }}
-                    />
-                    <TwitterOutlined
-                        style={{ fontSize: '1.5em', color: '#9a9a9a' }}
-                    />
+                    <InstagramOutlined />
+                    <FacebookOutlined />
+                    <TwitterOutlined />
                 </SocialMedia>
             </Content>
         </StyledFooter>

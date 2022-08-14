@@ -1,27 +1,30 @@
 import React from 'react';
 import HeaderButtons from '../../Molecules/HeaderButtons';
 import styled from 'styled-components';
-import DropdownMenu from '../../Molecules/DropdownMenu';
-import Button from '../../Atoms/Button';
 import { MenuOutlined } from '@ant-design/icons';
 import ToggleNav from '../../Molecules/ToggleNav';
 
+
+interface HeaderProps {
+    background?: string;
+};
+
 const Container = styled.div`
     width: 100%;
+    height: 100%;
 `
 
-const StyledHeader = styled.div`
-    background-image: linear-gradient(87deg,#181923,#17324c);
-    //background-color: #142637;
-    z-index: 1;
-    position: sticky;
+const StyledHeader = styled.div.attrs((props: HeaderProps) => props)`
+    background-image: ${props => props.background};
+    z-index: 2;
+    position: fixed;
     display: flex;
     top: 0;
     flex-direction: row;
     align-items: center;
-    //padding: 0.5em;
     width: 100%;
     height: 70px;
+
     @media (max-width: 750px) {
         vertical-align: middle;
     }
@@ -58,7 +61,6 @@ const MenuStyled = styled(MenuOutlined)`
     color: white;
     font-size: 30px;
     transition: 0.2s;
-
     :hover {
         transform: scale(1.05);
     }
@@ -75,10 +77,26 @@ const Header = () => {
         setVisibility(!visibility);
     }
 
+    const home = (window.location.pathname === '/');
+
+    const [background, setBackground] = React.useState(home ? 'none' : 'linear-gradient(87deg,#181923,#17324c)');
+
+    const scroll = () => {
+        if (home) {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                setBackground('linear-gradient(87deg,#181923,#17324c)');
+            }
+            else {
+                setBackground('none');
+            }
+        }
+    }
+
+    window.onscroll = scroll;
 
     return (
         <Container>
-            <StyledHeader>
+            <StyledHeader background={background}>
                 <TitleStyled href="/">AirGnB</TitleStyled>
                 <SubtitleStyled>
                     Music rental made easy

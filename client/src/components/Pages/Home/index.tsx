@@ -18,8 +18,7 @@ const Main = styled.div`
     left: 0;
     right: 0;
     text-align: center;
-    z-index: 2; 
-
+    z-index: 1; 
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -28,16 +27,17 @@ const Main = styled.div`
 
 const Title = styled.h1`
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 3rem;
     color: white;
+    margin-bottom: 0.7rem;
     ;
 `
 
-const Subtitle = styled.h3`
-    font-size: 1.3rem;
+const Subtitle = styled.h2`
+    font-size: 2rem;
     padding: 10px;
-    color: white;
-    margin-bottom: 3%;
+    color: #f9f9f9;
+    margin-bottom: 6rem;
 `
 
 const Description = styled.p`
