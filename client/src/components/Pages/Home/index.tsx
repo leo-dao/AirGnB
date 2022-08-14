@@ -22,29 +22,40 @@ const Main = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
-    user-select: none;
+
+    @media (max-width: 768px) {
+        margin-top: 60px;
+        margin-bottom: 160px;
+    }
 `
 
 const Title = styled.h1`
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: white;
     margin-bottom: 0.7rem;
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
     ;
 `
 
 const Subtitle = styled.h2`
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 10px;
     color: #f9f9f9;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
+
+    @media (max-width: 900px) { 
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
 `
 
 const Description = styled.p`
-    margin-top: 20%;
     font-size: 20px;
     text-align: center;
-    color: white;
+    color: black;
 `
 
 const Home = () => {
@@ -57,6 +68,10 @@ const Home = () => {
                 <Subtitle>Connect with local musicians and trade gear </Subtitle>
                 <Search />
             </Main>
+            <Description>
+                We are a platform that connects local musicians and local music
+                gear.
+            </Description>
         </Container >
     )
 };

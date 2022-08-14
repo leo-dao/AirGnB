@@ -6,12 +6,24 @@ import drums from '../../../assets/drums.mp4'
 const Video = styled.video`
     max-width: 100%;
     z-index: 1;
-    margin-bottom: 3%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    margin-bottom: 10%;
 
-@media  (max-width: 768px) {
+    // keep??
+    border-bottom-left-radius: 20% 25px;
+    border-bottom-right-radius: 20% 25px;
+    
+    height: 90vh;
 
-} 
-
+    @media only screen and (max-width: 600px) {
+        // fits both zoomed in desktop and mobile
+        height: 600px;
+    }
 `
 
 const VideoBg = () => {
