@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../Atoms/Button";
-import UserButton from "../../Atoms/UserButton";
 import useFindUser from "../../../hooks/useFindUser";
 import { UserOutlined } from "@ant-design/icons";
-
 
 interface ToggleProps {
     display: boolean
@@ -15,6 +13,15 @@ const Container = styled.div.attrs((props: ToggleProps) => props)`
     justify-content: center;
     border-bottom: 1px solid grey;
     display: ${props => props.display ? 'flex' : 'none'};
+    z-index: 2;
+    position: fixed;
+
+    height: 100px;
+    top:50px;
+    right:0;
+    bottom:0;
+    left:0;
+
     @media (min-width: 600px) {
         display: none;
     }
@@ -50,6 +57,7 @@ const ToggleNav = (props: ToggleProps) => {
     let user: any = useFindUser();
     var account = user ? `/account` : "/sign-in";
     var post = user ? "/post-ad" : "/sign-in";
+
 
     return (
         <Container

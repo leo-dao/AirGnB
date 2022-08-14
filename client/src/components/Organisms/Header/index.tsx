@@ -12,6 +12,7 @@ interface HeaderProps {
 const Container = styled.div`
     width: 100%;
     height: 100%;
+
 `
 
 const StyledHeader = styled.div.attrs((props: HeaderProps) => props)`
@@ -25,8 +26,8 @@ const StyledHeader = styled.div.attrs((props: HeaderProps) => props)`
     width: 100%;
     height: 70px;
 
-    @media (max-width: 750px) {
-        vertical-align: middle;
+    @media (max-width: 768px) {
+        height: 50px;
     }
 `
 
@@ -40,13 +41,17 @@ const TitleStyled = styled.a`
         color: white;
         transform: scale(1.03);
     }
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
 `
 
 const SubtitleStyled = styled.div`
     font-style: italic;
     font-size: 1rem;
     margin-left: 1rem;
-    @media (max-width: 1000px) {
+    @media (max-width: 768px) {
         display: none;
     }
     color: #c7c7c7;
@@ -71,26 +76,52 @@ const MenuStyled = styled(MenuOutlined)`
 
 const Header = () => {
 
-    const [visibility, setVisibility] = React.useState(false);
-
-    const flip = () => {
-        setVisibility(!visibility);
-    }
-
     const home = (window.location.pathname === '/');
 
-    const [background, setBackground] = React.useState(home ? 'none' : 'linear-gradient(87deg,#181923,#17324c)');
+    const backgroundColor = 'linear-gradient(87deg,#181923,#17324c)';
+
+    const [menuOpen, openMenu] = React.useState(false);
+    const [background, setBackground] = React.useState(home ? 'none' : backgroundColor);
+
+    const maxHeight = 30;
+
+    const flip = () => {
+        openMenu(!menuOpen);
+
+
+        if (home) {
+            if (menuOpen) {
+                if (document.body.scrollTop > maxHeight || document.documentElement.scrollTop > maxHeight) {
+                    setBackground(backgroundColor);
+                }
+                else {
+
+                    setBackground('none');
+                }
+            }
+            else {
+                setBackground(backgroundColor);
+            }
+
+        }
+    }
 
     const scroll = () => {
         if (home) {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                setBackground('linear-gradient(87deg,#181923,#17324c)');
+            if (document.body.scrollTop > maxHeight || document.documentElement.scrollTop > maxHeight) {
+                setBackground(backgroundColor);
             }
             else {
-                setBackground('none');
+                if (menuOpen) {
+                    setBackground(backgroundColor);
+                }
+                else {
+                    setBackground('none');
+                }
             }
         }
     }
+
 
     window.onscroll = scroll;
 
@@ -103,13 +134,12 @@ const Header = () => {
                 </SubtitleStyled>
 
                 <ButtonContainer>
-
                     <HeaderButtons />
                     <MenuStyled onClick={flip} />
                 </ButtonContainer>
             </StyledHeader >
             <ToggleNav
-                display={visibility}
+                display={menuOpen}
             />
         </Container>
     )

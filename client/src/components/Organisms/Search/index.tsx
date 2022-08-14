@@ -12,6 +12,8 @@ const Container = styled.div`
     align-items: center;
     gap: 0.2%;
 
+    max-width: 100%;
+
     @media (max-width: 900px) {
         flex-direction: column;
     }
@@ -48,11 +50,17 @@ const Search = () => {
 
     return (
         <Container>
-            <SortCategories onClick={Select} category={category} />
+            <SortCategories
+                onClick={Select}
+                category={category}
+            />
             <LocationFilter
                 data={data}
-                onSelect={onSelect} />
-            <SearchBox onSearch={onSearch} />
+                onSelect={onSelect}
+            />
+            <SearchBox
+                onSearch={onSearch}
+            />
         </Container>
     )
 }

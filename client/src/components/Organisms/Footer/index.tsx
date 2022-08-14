@@ -51,10 +51,6 @@ const SocialMedia = styled.div`
     * {
     color: #9a9a9a;
     font-size: 1.2em;
-    &:hover {
-        color: white;
-        cursor: pointer;
-    }
     }
 `;
 
@@ -70,8 +66,22 @@ const StyledP = styled.p`
     color: #9a9a9a;
     margin: 0;
     font-size: 1.2em;
-    `;
+`;
 
+const SocialIcon = styled.div`
+    // make a square container for the icons
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
+        * {
+            color: white;
+        }
+    }
+    `;
 
 const Footer = () => {
     return (
@@ -88,9 +98,15 @@ const Footer = () => {
                     <Link href="/faq">FAQ</Link>
                 </Bottom>
                 <SocialMedia>
-                    <InstagramOutlined />
-                    <FacebookOutlined />
-                    <TwitterOutlined />
+                    <SocialIcon>
+                        <InstagramOutlined />
+                    </SocialIcon>
+                    <SocialIcon>
+                        <FacebookOutlined />
+                    </SocialIcon>
+                    <SocialIcon>
+                        <TwitterOutlined />
+                    </SocialIcon>
                 </SocialMedia>
             </Content>
         </StyledFooter>

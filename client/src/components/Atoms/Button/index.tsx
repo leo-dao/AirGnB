@@ -49,6 +49,11 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
         background: none;
         border-bottom: 1px solid #d4d1d1;
     };
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+
     `}
 
         ${(props: ButtonProps) =>
