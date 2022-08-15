@@ -2,6 +2,7 @@ import React from "react";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
 import VideoBg from "../../Organisms/VideoBg";
+import CategoryCards from "../../Molecules/CategoryCards";
 
 
 const Container = styled.div`
@@ -58,6 +59,9 @@ const Description = styled.p`
     color: black;
 `
 
+// Start leasing your gear and get paid today!
+// Rent gear from local musicians and  !
+
 const Home = () => {
 
     return (
@@ -65,13 +69,10 @@ const Home = () => {
             <VideoBg />
             <Main>
                 <Title>Lend or borrow musical instruments</Title>
-                <Subtitle>Connect with local musicians and trade gear </Subtitle>
+                <Subtitle>Connect with local musicians</Subtitle>
                 <Search />
             </Main>
-            <Description>
-                We are a platform that connects local musicians and local music
-                gear.
-            </Description>
+            <CategoryCards />
         </Container >
     )
 };

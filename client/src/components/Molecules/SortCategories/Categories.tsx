@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu } from 'antd';
 import styled from "styled-components";
+import categories from "../../../utils/categories";
 
 interface Props {
     onClick: (e: any) => void;
@@ -29,39 +30,14 @@ const Categories = (props: Props) => {
                 fontSize: "18px",
                 backgroundColor: "#FAFAFA",
             }}>
-            <Menu.Item key="Guitars">
-                Guitars
-            </Menu.Item>
-            <Menu.Item key="Basses">
-                Basses
-            </Menu.Item>
-            <Menu.Item key="Drums">
-                Drums
-            </Menu.Item>
-            <Menu.Item key="Keyboards">
-                Keyboards
-            </Menu.Item>
-            <Menu.Item key="Amplifiers">
-                Amplifiers
-            </Menu.Item>
-            <Menu.Item key="Effects">
-                Effects
-            </Menu.Item>
-            <Menu.Item key="Microphones">
-                Microphones
-            </Menu.Item>
-            <Menu.Item key="Wind Instruments">
-                Wind Instruments
-            </Menu.Item>
-            <Menu.Item key="Brass">
-                Brass
-            </Menu.Item>
-            <Menu.Item key="Speakers">
-                Speakers
-            </Menu.Item>
-            <Menu.Item key="Others">
-                Others
-            </Menu.Item>
+            {categories.map((category) => {
+                return (
+                    <Menu.Item key={category.name}>
+                        {category.name}
+                    </Menu.Item>
+                )
+            }
+            )}
         </StyledMenu>
     )
 };

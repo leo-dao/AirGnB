@@ -10,6 +10,7 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     text-align: center;
     cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
     width: 300px;
+    max-width: 90vw;
     height: 50px;
     transition: all 0.2s ease-in-out;
     &:hover {
