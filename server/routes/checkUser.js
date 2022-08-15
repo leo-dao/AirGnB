@@ -13,18 +13,18 @@ router.get('/', async (req, res, next) => {
         token = req.headers.authorization.split(' ')[1];
     }
 
-    /* if (!token) {
+    if (token === undefined) {
         return next(new ErrorResponse('Not authorized to access this route', 401))
-    } */
+    }
 
     try {
         const decrypted = jwt.verify(token, process.env.JWT_SECRET)
 
         const user = await User.findById(decrypted.id);
 
-        /* if (!user) {
+        if (!user) {
             return next(new ErrorResponse('No user found matching this id', 404))
-        } */
+        }
 
         res.send(user);
         next();

@@ -6,8 +6,9 @@ import Error from "../../Molecules/Error";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { LineOutlined } from "@ant-design/icons";
-import { adData } from "../../../fakeData";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Ad } from "../../../utils/interfaces";
 
 const Container = styled.div`
     display: flex;
@@ -78,6 +79,20 @@ const BookAd = () => {
     let params = useParams();
 
     let _id = params._id;
+
+    const [ad, setAd] = React.useState<Ad>();
+
+    useEffect(() => {
+        axios.post('/getAd', {
+            id: _id
+        }).then(res => {
+            setAd(res.data);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+        , [_id]);
+
     let startDate = params.startDate!;
     let endDate = params.endDate!;
 
@@ -85,10 +100,6 @@ const BookAd = () => {
     const state = location.state as State;
     const { totalPrice } = state;
     const { numDays } = state;
-
-    const ad = adData.find(ad => ad._id === _id);
-
-
 
     if (!user) {
         return <Error msg='You must be logged in to book an ad' />

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { User } from '../interfaces';
+import { User } from '../utils/interfaces';
 import axios from "axios";
 
 
@@ -12,6 +12,11 @@ const useFindUser = () => {
 
     // Sending the token to the server and getting the user
     useEffect(() => {
+
+        if (token === undefined) {
+            setUser(undefined);
+            return
+        }
         axios.get('/checkUser', {
             headers: {
                 'Authorization': `Bearer ${token}`

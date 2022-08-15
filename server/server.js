@@ -12,6 +12,7 @@ const registerRoute = require('./routes/register');
 const postAdRoute = require('./routes/postAd');
 const signInRoute = require('./routes/signIn');
 const getAdsRoute = require('./routes/getAds');
+const getAdRoute = require('./routes/getAd');
 const getUsersRoute = require('./routes/getUsers');
 const checkUserRoute = require('./routes/checkUser')
 const getImagesRoute = require('./routes/getImages');
@@ -32,6 +33,7 @@ app.use('/register', registerRoute);
 app.use('/postAd', postAdRoute);
 app.use('/signIn', signInRoute);
 app.use('/getAds', getAdsRoute);
+app.use('/getAd', getAdRoute);
 app.use('/getUsers', getUsersRoute)
 app.use('/checkUser', checkUserRoute);
 app.use('/getImages', getImagesRoute);
