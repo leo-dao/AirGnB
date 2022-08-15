@@ -4,7 +4,7 @@ import User from "../../Molecules/UserInfo/interfaces";
 import UserInfo from "../../Molecules/UserInfo"
 import Error from "../../Molecules/Error/index";
 import AdCardList from "../../Organisms/AdCardList/index";
-import { Ad } from "../../../interfaces";
+import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
 import useFindUser from "../../../hooks/useFindUser";
 import axios from "axios";
@@ -45,7 +45,6 @@ const UserProfile = () => {
             setUser(undefined);
             return
         }
-
         userProfileById(params.userId)
             .then((u) => setUser(u))
             .catch((err) => { console.log(err); setUser(undefined) })

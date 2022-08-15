@@ -1,8 +1,7 @@
 import React from "react";
 import AdCard from "../AdCard";
-import { Ad } from "../../../interfaces";
+import { Ad } from "../../../utils/interfaces";
 import type { AdCardProps } from "../AdCard/index";
-import { userData, adData } from "../../../fakeData";
 import { List } from 'antd';
 import styled from "styled-components";
 import axios from "axios";

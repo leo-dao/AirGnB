@@ -1,6 +1,6 @@
 import React from "react";
 import AdCard from "../../Organisms/AdCard";
-import { Ad, AdImage, User } from "../../../interfaces";
+import { Ad, AdImage, User } from "../../../utils/interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
 import Error from "../../Molecules/Error";
 import useFindUser from "../../../hooks/useFindUser";

@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../../../interfaces";
+import { User } from "../../../utils/interfaces";
 import Avatar from "antd/lib/avatar/avatar";
 import { Rate } from 'antd';
 import styled from 'styled-components';

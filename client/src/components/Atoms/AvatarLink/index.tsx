@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar } from "antd";
-import { User } from "../../../interfaces";
+import { User } from "../../../utils/interfaces";
 import { Link } from "react-router-dom";
 
 interface Props {

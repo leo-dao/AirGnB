@@ -1,6 +1,6 @@
 import React from "react";
 import AdCardList from "../../Organisms/AdCardList";
-import { Ad } from "../../../interfaces";
+import { Ad } from "../../../utils/interfaces";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
 

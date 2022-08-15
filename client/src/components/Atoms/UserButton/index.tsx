@@ -11,8 +11,6 @@ const UserButton = (props: Props) => {
 
     let user: any = useFindUser();
     var account = user ? `/account` : "/sign-in";
-    var post = user ? "/post-ad" : "/sign-in";
-
 
     return (
         <Button

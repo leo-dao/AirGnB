@@ -5,7 +5,7 @@ import UserInfo from '../../Molecules/UserInfoCard';
 import CardCover from '../../Atoms/CardCover';
 import Price from '../../Atoms/Price';
 import styled from 'styled-components';
-import { User, Ad, AdImage } from '../../../interfaces';
+import { User, Ad, AdImage } from '../../../utils/interfaces';
 
 const CardWrapper = styled.div`
     background-color: white;

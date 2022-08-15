@@ -10,7 +10,7 @@ import Button from "../../Atoms/Button";
 import useFindUser from "../../../hooks/useFindUser";
 import useFindImages from "../../../hooks/useFindImages";
 import axios from "axios";
-import { Ad } from "../../../interfaces";
+import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
 
 const CenterContainer = styled.div`
@@ -89,6 +89,7 @@ const AdProfile = () => {
     let params = useParams();
 
     const [ads, setAds] = React.useState<Ad[]>([]);
+
     React.useEffect(() => {
         axios.get('/getAds')
             .then(function (res) {

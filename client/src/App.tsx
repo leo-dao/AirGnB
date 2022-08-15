@@ -7,7 +7,6 @@ import Header from './components/Organisms/Header';
 import Footer from './components/Organisms/Footer';
 import AdProfile from './components/Pages/AdProfile';
 import UserProfile from './components/Pages/UserProfile';
-import { userData, adData } from "./fakeData"
 import SignIn from './components/Molecules/SignIn';
 import Register from './components/Molecules/Register';
 import Error from './components/Molecules/Error';
