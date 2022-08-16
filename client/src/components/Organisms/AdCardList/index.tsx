@@ -53,21 +53,28 @@ const AdCardList = (props: Props) => {
 
     const ads: Ad[] = [];
 
-
-
     allAds.forEach((ad) => {
-        if (ad.category === params.category && ad.user.location === params.location) {
-            ads.push(ad);
+
+        // if there is a category in the url, filter by category
+        if (params.category) {
+            if (ad.category === params.category) {
+                ads.push(ad);
+            }
+        }
+
+        if (params.search) {
+            if (ad.title.toLowerCase().includes(params.search.toLowerCase())) {
+                ads.push(ad);
+            }
+        }
+        if (params.location) {
+            console.log(ad);
+            if (ad.user.location?.toLowerCase() === (params.location.toLowerCase())) {
+                ads.push(ad);
+            }
         }
 
     })
-
-    /*   if (params.category !== "") {
-      }
-  
-      if (params.location !== "") {
-      } */
-
 
     const result = ads.length === 1 ? " result" : " results";
 

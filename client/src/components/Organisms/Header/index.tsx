@@ -12,7 +12,6 @@ interface HeaderProps {
 const Container = styled.div`
     width: 100%;
     height: 100%;
-
 `
 
 const StyledHeader = styled.div.attrs((props: HeaderProps) => props)`
@@ -87,7 +86,6 @@ const Header = () => {
 
     const flip = () => {
         openMenu(!menuOpen);
-
 
         if (home) {
             if (menuOpen) {

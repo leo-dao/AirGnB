@@ -40,20 +40,26 @@ const Search = () => {
         setLocation(value);
     }
 
-    const onSearch = (value: string) => {
+    /*  const onSearch = (value: string) => {
+ 
+         if (category !== '' && location !== '') {
+             window.location.href = "/listings?category=" + category + "&location=" + location + "&search=" + value;
+         }
+         console.log('Fill in the search!')
+     } */
 
-        if (category !== '' && location !== '') {
-            window.location.href = "/listings?category=" + category + "&location=" + location + "&search=" + value;
+    const onSearch = (value: string) => {
+        if (location !== '') {
+            window.location.href = `/listings?location=${location}&search=${value}`;
         }
-        console.log('Fill in the search!')
-    }
+    };
 
     return (
         <Container>
-            <SortCategories
+            {/* <SortCategories
                 onClick={Select}
                 category={category}
-            />
+            /> */}
             <LocationFilter
                 data={data}
                 onSelect={onSelect}

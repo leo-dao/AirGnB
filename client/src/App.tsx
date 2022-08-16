@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.css';
 import Home from './components/Pages/Home';
-import Catalog from './components/Pages/Catalog';
+import Listings from './components/Pages/Listings';
 import Header from './components/Organisms/Header';
 import Footer from './components/Organisms/Footer';
 import AdProfile from './components/Pages/AdProfile';
@@ -23,7 +23,7 @@ function App() {
         <Route path="/"
           element={<Home />} />
         <Route path="/listings"
-          element={<Catalog />} />
+          element={<Listings />} />
         <Route path="/profile/:userId"
           element={<UserProfile />} />
         <Route path="/account"

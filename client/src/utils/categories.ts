@@ -11,7 +11,7 @@ import brass from '../assets/categories/trumpet.webp';
 
 const categories = [
     {
-        name: 'Guitar',
+        name: 'Guitars',
         img: guitar,
         type: [
             {
@@ -77,7 +77,7 @@ const categories = [
         ]
     },
     {
-        name: 'Guitar/Bass Amplifier',
+        name: 'Guitar/Bass Amplifiers',
         img: amp,
         type: [
             'Combo',
@@ -119,7 +119,7 @@ const categories = [
         ]
     },
     {
-        name: 'Microphone',
+        name: 'Microphones',
         img: mic,
         type: [
             'Dynamic',

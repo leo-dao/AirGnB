@@ -22,7 +22,7 @@ const SearchContainer = styled.div`
 `;
 
 
-const Catalog = () => {
+const Listings = () => {
 
     return (
         <Container>
@@ -36,4 +36,4 @@ const Catalog = () => {
     )
 }
 
-export default Catalog;
+export default Listings;
