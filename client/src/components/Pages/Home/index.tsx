@@ -3,6 +3,7 @@ import Search from "../../Organisms/Search";
 import styled from "styled-components";
 import VideoBg from "../../Organisms/VideoBg";
 import CategoryCards from "../../Molecules/CategoryCards";
+import Pitch from "../../Molecules/Pitch";
 
 
 const Container = styled.div`
@@ -53,15 +54,6 @@ const Subtitle = styled.h2`
     }
 `
 
-const Description = styled.p`
-    font-size: 20px;
-    text-align: center;
-    color: black;
-`
-
-// Start leasing your gear and get paid today!
-// Rent gear from local musicians and  !
-
 const Home = () => {
 
     return (
@@ -73,6 +65,7 @@ const Home = () => {
                 <Search />
             </Main>
             <CategoryCards />
+            <Pitch />
         </Container >
     )
 };

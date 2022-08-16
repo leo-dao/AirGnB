@@ -13,6 +13,8 @@ import Error from './components/Molecules/Error';
 import PostAd from './components/Pages/PostAd';
 import BookAd from './components/Pages/BookAd';
 import UserAccount from './components/Pages/UserAccount';
+import LeaserInfo from './components/Pages/LeaserInfo';
+import RenterInfo from './components/Pages/RenterInfo';
 
 function App() {
 
@@ -27,8 +29,7 @@ function App() {
         <Route path="/profile/:userId"
           element={<UserProfile />} />
         <Route path="/account"
-          element={<UserAccount />}
-        />
+          element={<UserAccount />} />
         <Route path="/listings/:_id"
           element={<AdProfile />} />
         <Route path="/post-ad"
@@ -39,6 +40,10 @@ function App() {
           element={<SignIn />} />
         <Route path="/register"
           element={<Register />} />
+        <Route path="/leaser-info"
+          element={<LeaserInfo />} />
+        <Route path="/renter-info"
+          element={<RenterInfo />} />
         <Route path="*"
           element={<Error msg="" />} />
       </Routes>
