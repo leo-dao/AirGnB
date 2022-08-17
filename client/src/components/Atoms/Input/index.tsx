@@ -50,6 +50,7 @@ interface InputProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     min?: number;
     isPassword?: boolean;
+    name?: string;
 }
 
 const Input = (props: InputProps) => {
@@ -61,6 +62,7 @@ const Input = (props: InputProps) => {
             required={props.required}
             onChange={props.onChange}
             minLength={props.min}
+            name={props.name}
         />
     )
 

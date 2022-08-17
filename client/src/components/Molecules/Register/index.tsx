@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password';
 import Button from "../../Atoms/Button";
@@ -27,6 +27,7 @@ const Form = styled.form`
     width: 100%;
     gap: 50px;
     max-width: 500px;
+    background-color: black;
 `;
 
 const Container = styled.div`
@@ -35,6 +36,8 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-color: black;
+
 `
 const ExtraLocationContainer = styled.div`
     display: flex;
@@ -131,9 +134,10 @@ const Register = (props: RegisterProps) => {
     const [formData, updateFormData] = React.useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value, e.target.name);
         updateFormData({
             ...formData,
-            [e.target.placeholder.toLowerCase().replace(/\s/g, '')]: e.target.value
+            [e.target.name]: e.target.value
         });
     }
 
@@ -146,13 +150,15 @@ const Register = (props: RegisterProps) => {
 
     const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         handleChange(e);
-        passwordMatch(); // not called the first time so delay??
     }
+
+    useEffect(() => {
+        passwordMatch();
+    }, [formData])
 
     const passwordMatch = () => {
 
-
-
+        console.log(formData.password, formData.confirmpassword);
         if (formData.confirmpassword !== formData.password) {
             updateError(
                 {
@@ -214,10 +220,10 @@ const Register = (props: RegisterProps) => {
             <Container>
                 <Reg1>
                     <Guideline>1. Enter your information</Guideline>
-                    <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
-                    <Input placeholder={"Name"} type={"text"} onChange={handleChange} required />
-                    <Password placeholder={"Password"} onChange={handlePassword} />
-                    <Password placeholder={"Confirm password"} onChange={handlePassword} />
+                    <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} required />
+                    <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} required />
+                    <Password placeholder={"Password"} name='password' onChange={handlePassword} />
+                    <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
                     <ExtraLocationContainer>
                         <ContainerLocation>
                             <Location

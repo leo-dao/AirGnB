@@ -15,6 +15,7 @@ const Container = styled.div`
 interface Props {
     placeholder: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    name?: string;
 }
 
 const Password = (props: Props) => {
@@ -44,6 +45,7 @@ const Password = (props: Props) => {
                 min={5}
                 onChange={props.onChange}
                 isPassword
+                name={props.name}
             />
             <EyeOutlined
                 onClick={makeVisible}
