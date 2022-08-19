@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import TopLink from "../../../utils/TopLink";
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-
     align-items: center;
     @media (max-width: 768px) {
         flex-direction: column;
@@ -26,15 +27,15 @@ const Box = styled.div`
     max-width: 70%;
     `;
 
-const Title = styled.a`
+const Title = styled(TopLink)`
     font-weight: bold;
     font-size: 1.5rem;
     color: white;
     margin-bottom: 1rem;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     &:hover {
-        color: #f3f3f3;
-        transform: scale(1.02);
+        color: white;
+        text-decoration: underline;
     }
 `;
 
@@ -50,7 +51,7 @@ const Pitch = () => {
     return (
         <Container>
             <Box>
-                <Title href="/leaser-info">
+                <Title to="/leaser-info">
                     Become a leaser
                 </Title>
                 <StyledText>
@@ -59,7 +60,7 @@ const Pitch = () => {
                 </StyledText>
             </Box>
             <Box>
-                <Title href="/renter-info">
+                <Title to="/renter-info">
                     Start renting
                 </Title>
                 <StyledText>

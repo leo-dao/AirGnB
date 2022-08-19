@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { DownOutlined } from '@ant-design/icons';
-import { Link } from "react-router-dom";
+import TopLink from "../../../utils/TopLink";
 
 interface DropdownProps {
     title: React.ReactNode;
@@ -61,7 +61,7 @@ const DropdownItem = styled.div`
     }
 `;
 
-const HiddenLink = styled(Link)`
+const HiddenLink = styled(TopLink)`
     text-decoration: none;
     width: 100%;
     color: black;

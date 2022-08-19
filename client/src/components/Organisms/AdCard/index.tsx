@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import TopLink from '../../../utils/TopLink';
 import UserProps from "../../Molecules/UserInfo/interfaces";
 import UserInfo from '../../Molecules/UserInfoCard';
 import CardCover from '../../Atoms/CardCover';
@@ -76,9 +76,9 @@ const AdCard = (props: AdCardProps) => {
         );
     }
     return (
-        <Link to={`/listings/${props._id}`} target="_blank">
+        <TopLink to={`/listings/${props._id}`} target="_blank">
             {Card}
-        </Link >
+        </TopLink >
     )
 };
 

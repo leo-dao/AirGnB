@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import TopLink from "../../../utils/TopLink";
 
 const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     background: ${props => props.secondary ? '#e9e9e9' : '#0A6EDD'};
@@ -103,12 +103,12 @@ const Button = (props: ButtonProps) => {
 
     if (props.goTo) {
         button = (
-            <Link
+            <TopLink
                 to={`${props.goTo}`}
                 state={props.state}
             >
                 {button}
-            </Link>
+            </TopLink>
         )
     }
     return (button)

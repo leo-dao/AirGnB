@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-// import instagram, facebook, twitter from antd icons
+import TopLink from "../../../utils/TopLink";
 import { InstagramOutlined, FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
+
 
 const StyledFooter = styled.div`
     background-color: #212121;
@@ -54,7 +55,7 @@ const SocialMedia = styled.div`
     }
 `;
 
-const Link = styled.a`
+const Link = styled(TopLink)`
     color: #9a9a9a;
     text-decoration: none;
     &:hover {
@@ -90,12 +91,12 @@ const Footer = () => {
                 <img /> {/* logo */}
                 <StyledP>AirGnB @2022</StyledP>
                 <Bottom>
-                    <Link href="/about">About</Link>
-                    <Link href="/privacy">Privacy</Link>
-                    <Link href="/terms">Terms</Link>
-                    <Link href="/contact">Contact</Link>
-                    <Link href="/sitemap">Sitemap</Link>
-                    <Link href="/faq">FAQ</Link>
+                    <Link to="/about">About</Link>
+                    <Link to="/privacy">Privacy</Link>
+                    <Link to="/terms">Terms</Link>
+                    <Link to="/contact">Contact</Link>
+                    <Link to="/sitemap">Sitemap</Link>
+                    <Link to="/faq">FAQ</Link>
                 </Bottom>
                 <SocialMedia>
                     <SocialIcon>

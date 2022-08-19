@@ -1,7 +1,7 @@
 import React from "react";
 import categories from "../../../utils/categories";
 import styled from "styled-components";
-import grey from "../../../assets/grey.jpeg";
+import TopLink from "../../../utils/TopLink";
 
 const Container = styled.div`
     display: flex;
@@ -41,8 +41,8 @@ const Card = styled.div`
     transition: all 0.2s ease-in-out;
     &:hover {
         cursor: pointer;
-        transform: translateY(-3px);
-        color: red;
+        transform: translateY(-1px);
+        filter: brightness(0.9);
     }
 
     @media (max-width: 768px) {
@@ -83,18 +83,17 @@ const CategoryCards = () => {
             <CardsContainer>
                 {allCategories.map((category) => {
                     return (
-                        <Card
-                            onClick={() => {
-                                window.location.href = `/listings?category=${category.name}`;
-                            }}>
-                            <ImageContainer>
-                                <StyledImage
-                                    src={category.img}
-                                    alt={category.name}
-                                />
-                            </ImageContainer>
-                            <StyledName>{category.name}</StyledName>
-                        </Card>
+                        <TopLink to={`/listings?category=${category.name}`}>
+                            <Card>
+                                <ImageContainer>
+                                    <StyledImage
+                                        src={category.img}
+                                        alt={category.name}
+                                    />
+                                </ImageContainer>
+                                <StyledName>{category.name}</StyledName>
+                            </Card>
+                        </TopLink>
                     )
                 })}
             </CardsContainer>
