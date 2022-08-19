@@ -4,23 +4,20 @@ import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     background: ${props => props.secondary ? '#e9e9e9' : '#0A6EDD'};
+    color: ${props => props.secondary ? 'black' : '#FFFFFF'};
     border-radius: 40px;
     box-sizing: border-box;
-    color: ${props => props.secondary ? 'black' : '#FFFFFF'};
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
-    line-height: 24px;
-    opacity: 1;
-    outline: 0 solid transparent;
-    padding: 8px 18px;
+    padding: 10px 20px;
     user-select: none;
-    touch-action: manipulation;
-    width: 140px;
     min-width: 80px;
+    max-width: 200px;
     word-break: break-word;
     border: ${props => props.secondary ? '10' : '0'};
-    transition: 0.2s;
+    transition: 0.3s;
+    letter-spacing: 0.8px;
     &:hover {
         transform: translateY(-0.5px) scale(1.03);
         background-color: ${props => props.secondary ? 'whitesmoke' : '#085bba'};
@@ -43,11 +40,9 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
     background: none;
     border-radius: 0px;
     font-size: 18px;
-    transition: 0s;
-    width: 110px;
+    transition: 0.3s;
     &:hover {
         background: none;
-        border-bottom: 1px solid #d4d1d1;
     };
 
     @media (max-width: 768px) {

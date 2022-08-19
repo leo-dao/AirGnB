@@ -2,38 +2,77 @@ import React from "react";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
 import useFindUser from "../../../hooks/useFindUser";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Dropdown from "../../Atoms/Dropdown";
+
 
 const StyledHeaderButtons = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
+
+    gap: 90px;
+
     @media (max-width: 600px) {
+        flex-direction: column;
         display: none;
     }
 `;
 
-const Space = styled.div`
-    margin-left: 10px;
+const LearnTitle = styled.div`
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    `;
+
+const RegisterButton = styled.button`
+    background: none;
+    border: 1px solid white;
+    padding: 5px 20px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        transform: scale(1.03);
+    }
 `;
+
+
 
 const HeaderButtons = () => {
 
     let user: any = useFindUser();
     var post = user ? "/post-ad" : "/sign-in";
 
+    const userButton = user ? (
+        <UserButton header />
+    ) : (
+        <div style={{ gap: '10px' }}>
+            <Button goTo="/sign-in" text='Sign in' header />
+            <Link to='/register'> <RegisterButton>Register</RegisterButton></Link>
+        </div>
+    );
+
     return (
         <StyledHeaderButtons>
             <Button
                 text="Post ad"
-                onClick={() => window.location.href = post}
+                goTo={post}
                 header
             />
-            <Space />
-            <Space />
-            <UserButton
-                header
+            <Dropdown
+                title={<LearnTitle>Learn</LearnTitle>}
+                items={[
+                    { value: "About us", goTo: "/about-us" },
+                    { value: "Contact us", goTo: "/contact-us" },
+                    { value: "FAQ", goTo: "/faq" },
+                ]}
             />
-        </StyledHeaderButtons>
+            {userButton}
+        </StyledHeaderButtons >
     )
 }
 
