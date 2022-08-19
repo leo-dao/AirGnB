@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { DownOutlined } from '@ant-design/icons';
+import { Link } from "react-router-dom";
 
 interface DropdownProps {
     title: React.ReactNode;
@@ -12,34 +13,59 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
 `;
 
 const Title = styled.div`
+    display: flex;
     flex-direction: row;
-
+    align-items: center;
+    gap: 5px;
+    width: 100%;
     &:hover {
         cursor: pointer;
-        .anticon-down {
-            transform: rotate(180deg);
-        }
     }
 `;
 
-const Menu = styled.div`
+const DropdownMenu = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    z-index: 100;
+    margin-top: 10px;
     top: 100%;
-    left: 0;
-    right: 0;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    left: 20;
+    width: 150%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0, 0.5);
 `;
 
+const DropdownItem = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 5px;
+    border-bottom: 0.5px solid #ccc;
+    transition: 0.1s ease-in-out;
+    &:hover {
+        background: #eeeeee;
+        cursor: pointer;
+        color: black
+    }
+`;
+
+const HiddenLink = styled(Link)`
+    text-decoration: none;
+    width: 100%;
+    color: black;
+`;
 
 const Dropdown = (props: DropdownProps) => {
 
@@ -47,21 +73,43 @@ const Dropdown = (props: DropdownProps) => {
     const toggle = () => setIsOpen(!isOpen);
     const [selection, setSelection] = useState([]);
 
+    // Closing the dropdown if the user clicks outside of it
+    useEffect(() => {
+        function onWindowClick(e: any) {
+            if (e.target.className.includes('dropdown')) {
+                return;
+            }
+            else {
+                setIsOpen(false);
+            }
+        }
+        window.addEventListener('click', onWindowClick);
+        return () => {
+            window.removeEventListener('click', onWindowClick);
+        };
+    }, []);
+
+
 
     return (
-        <Container onClick={toggle}>
-            <Title>
+        <Container onClick={toggle} className="dropdown">
+            <Title className="dropdown">
                 {props.title}
-                <DownOutlined />
+                <DownOutlined
+                    style={{ color: 'white' }}
+                />
             </Title>
             {isOpen &&
-                <div className="dd-list">
+                <DropdownMenu>
                     {props.items.map((item: any) => (
-                        <div className="dd-list-item" key={item.id} onClick={() => setSelection(item)}>
-                            <span>{item.value}</span>
-                        </div>
+                        <HiddenLink to={item.goTo}>
+                            <DropdownItem
+                                key={item.id}>
+                                {item.value}
+                            </DropdownItem>
+                        </HiddenLink>
                     ))}
-                </div>
+                </DropdownMenu>
 
             }
         </Container>

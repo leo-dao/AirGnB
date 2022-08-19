@@ -38,9 +38,9 @@ const StyledButton = styled.button.attrs((props: ButtonProps) => props)`
         props.header &&
         css`
     background: none;
-    border-radius: 0px;
-    font-size: 18px;
-    transition: 0.3s;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
     &:hover {
         background: none;
     };

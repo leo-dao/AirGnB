@@ -11,8 +11,11 @@ const StyledHeaderButtons = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 15px;
 
-    gap: 90px;
+    & > * {
+        font-size: 14px;
+    }
 
     @media (max-width: 600px) {
         flex-direction: column;
@@ -21,7 +24,6 @@ const StyledHeaderButtons = styled.div`
 `;
 
 const LearnTitle = styled.div`
-    font-size: 1.2rem;
     font-weight: bold;
     color: white;
     `;
@@ -31,7 +33,6 @@ const RegisterButton = styled.button`
     border: 1px solid white;
     padding: 5px 20px;
     color: white;
-    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
@@ -59,16 +60,23 @@ const HeaderButtons = () => {
     return (
         <StyledHeaderButtons>
             <Button
-                text="Post ad"
+                text="Post an ad"
                 goTo={post}
                 header
             />
+            <Button
+                text="Browse"
+                goTo="/listings"
+                header
+            />
             <Dropdown
-                title={<LearnTitle>Learn</LearnTitle>}
+                title={<LearnTitle className="dropdown">Learn more</LearnTitle>}
                 items={[
                     { value: "About us", goTo: "/about-us" },
-                    { value: "Contact us", goTo: "/contact-us" },
+                    { value: "How renting works", goTo: "/renter-info" },
+                    { value: "How leasing works", goTo: "/leaser-info" },
                     { value: "FAQ", goTo: "/faq" },
+                    { value: "Insurance", goTo: "/insurance" },
                 ]}
             />
             {userButton}
