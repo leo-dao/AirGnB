@@ -3,9 +3,9 @@ import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password'
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
-import Login from "../../Atoms/Login";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
+import Close from "../../Atoms/Close";
 import axios from "axios";
 
 const Form = styled.form`
@@ -13,20 +13,57 @@ const Form = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 500px;
+    gap: 50px;
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: 10;
+    background: linear-gradient(87deg,#17324c, #000000);
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+`;
+
+const Header = styled.h1`
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+`;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
 `;
 
 const ButtonContainer = styled.div`
     display: flex;
-    width: 100%;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
     align-items: center;
-    margin-top: 5%;
-    @media (max-width: 800px) {
-        flex-direction: column;
-        gap: 5px;
+    justify-content: center;
+`;
+
+const StyledButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #176fc1;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    height: 3em;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #175996;
+        cursor: pointer;
     }
 `;
 
@@ -65,28 +102,29 @@ const SignIn = () => {
             });
     }
 
-    const sign = (
-        <Form onSubmit={signIn}>
-            <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
-            <Password placeholder={"Password"} onChange={handleChange} />
-            <ButtonContainer>
-                <Button
-                    text={"Sign in"}
-                    secondary
-                    type={"submit"}
-                />
-                <Button
-                    text={"Create profile"}
-                    onClick={() => window.location.href = '/register'}
-                />
-            </ButtonContainer>
-            <ErrorMessage msg={errMsg} on={errOn} />
-        </Form>
-    );
-
     return (
-        <Login form={sign} />
-    )
+        <Form onSubmit={signIn}>
+            <Header>Welcome back</Header>
+            <Container>
+                <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
+                <Password placeholder={"Password"} onChange={handleChange} />
+                <ButtonContainer>
+                    <Button
+                        type="submit"
+                        text="Sign In" />
+                    <Button
+                        text='Create Account'
+                        goTo="/register"
+                        secondary />
+                </ButtonContainer>
+
+            </Container>
+
+            <ErrorMessage msg={errMsg} on={errOn} />
+
+            <Close />
+        </Form >
+    );
 };
 
 export default SignIn;

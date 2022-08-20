@@ -3,42 +3,47 @@ import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password';
 import Button from "../../Atoms/Button";
 import styled from "styled-components";
-import Login from "../../Atoms/Login";
 import ErrorMessage from "../../Atoms/ErrorMessage";
-import FileSubmit from "../FileSubmit"
+import FileSubmit from "../../Molecules/FileSubmit"
 import { AxiosResponse } from "axios";
 import Location from "../../Atoms/Location";
 import { EyeOutlined } from "@ant-design/icons";
-import SortCategories from "../SortCategories";
-import LongInput from '../../Atoms/LongInput';
+import SortCategories from "../../Molecules/SortCategories";
 import { useNavigate } from "react-router-dom";
+import Close from "../../Atoms/Close";
 const axios = require('axios').default;
-
-interface RegisterProps {
-    reg2?: boolean;
-    reg3?: boolean;
-}
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     gap: 50px;
-    max-width: 500px;
-    background-color: black;
+    max-width: 100vw;
+    max-height: 100vh;
+    z-index: 10;
+    background: linear-gradient(87deg,#17324c, #000000);
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
 `;
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: black;
+    width: 30%;
+`;
 
-`
+const Header = styled.h1`
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+`;
+
 const ExtraLocationContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -47,25 +52,6 @@ const ExtraLocationContainer = styled.div`
     padding: 10px;
     margin: 10px;
 `
-
-const Guideline = styled.h2`
-    color: white;
-    `;
-
-const Reg1 = styled.div`
-    width: 100%;
-`
-
-const Reg2 = styled.div.attrs((props: RegisterProps) => props)`
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
-    margin-bottom: -30px;
-    display: ${props => props.reg2 ? 'flex' : 'none'};
-`;
 
 const ContainerLocation = styled.div`
     display: flex;
@@ -84,7 +70,7 @@ const ContainerLocation = styled.div`
     }
 `
 
-const Register = (props: RegisterProps) => {
+const Register = () => {
 
 
     const navigate = useNavigate();
@@ -129,7 +115,6 @@ const Register = (props: RegisterProps) => {
         avatar: null,
         confirmpassword: '',
     }
-    // DO NORMAL HANDLE CHANGE AND THEN CHECK IF THEIR EQUAL
 
     const [formData, updateFormData] = React.useState(initialState);
 
@@ -158,7 +143,6 @@ const Register = (props: RegisterProps) => {
 
     const passwordMatch = () => {
 
-        console.log(formData.password, formData.confirmpassword);
         if (formData.confirmpassword !== formData.password) {
             updateError(
                 {
@@ -212,64 +196,41 @@ const Register = (props: RegisterProps) => {
         }
     });
 
-    const register = (
-        <Form
-            onSubmit={createAccount}
-            encType="multipart/form-data"
-        >
+    return (
+        <Form onSubmit={createAccount} encType="multipart/form-data">
             <Container>
-                <Reg1>
-                    <Guideline>1. Enter your information</Guideline>
-                    <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} required />
-                    <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} required />
-                    <Password placeholder={"Password"} name='password' onChange={handlePassword} />
-                    <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
-                    <ExtraLocationContainer>
-                        <ContainerLocation>
-                            <Location
-                                onSelect={locationSelect}
-                                data={locations}
-                                register
-                            />
-                        </ContainerLocation>
-                        <EyeOutlined style={{ visibility: 'hidden' }} />
-                    </ExtraLocationContainer>
-                </Reg1>
+                <Header>Welcome to AirGnB</Header>
+                <Close />
+                <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} required />
+                <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} required />
+                <Password placeholder={"Password"} name='password' onChange={handlePassword} />
+                <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
+                <ExtraLocationContainer>
+                    <ContainerLocation>
+                        <Location
+                            onSelect={locationSelect}
+                            data={locations}
+                            register
+                        />
+                    </ContainerLocation>
+                    <EyeOutlined style={{ visibility: 'hidden' }} />
+                </ExtraLocationContainer>
             </Container>
-            <Reg2
-                reg2={
-                    formData.name !== '' &&
-                    formData.email !== '' &&
-                    !error.display
-                }
-            >
-                <Guideline>2. Upload your profile picture</Guideline>
-                <FileSubmit
-                    onChange={onSetFile}
-                    fileNames={file?.name ? [file?.name] : []}
-                />
-                <input type="text"
-                    placeholder="Enter a description about yourself" />
-            </Reg2>
-
+            <FileSubmit
+                onChange={onSetFile}
+                fileNames={file?.name ? [file?.name] : []}
+            />
             <SortCategories
                 onClick={onCategory}
                 category={category}
             />
             <ErrorMessage msg={error.msg} on={error.display} />
-
-
-
             <Button
-                text="Create profile"
+                text="Register"
                 type='submit'
             />
         </Form>
     )
-
-    return (
-        <Login form={register} />
-    );
 };
 
 export default Register;
