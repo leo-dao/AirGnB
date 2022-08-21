@@ -14,9 +14,9 @@ const Container = styled.div`
     `;
 
 const Main = styled.div`
+    display: flex;
     position: absolute;
-    margin-top: 100px;
-    top:0;
+    top:100px;
     left: 0;
     right: 0;
     text-align: center;
@@ -26,6 +26,7 @@ const Main = styled.div`
     text-align: center;
 
     @media (max-width: 768px) {
+        top: 50px;
         margin-top: 60px;
         margin-bottom: 160px;
     }
@@ -43,7 +44,7 @@ const Title = styled.h1`
 `
 
 const Subtitle = styled.h2`
-    font-size: 1.8rem;
+    font-size: 1.1rem;
     padding: 10px;
     color: #f9f9f9;
     margin-bottom: 5rem;

@@ -3,22 +3,24 @@ import HeaderButtons from '../../Molecules/HeaderButtons';
 import styled from 'styled-components';
 import { MenuOutlined } from '@ant-design/icons';
 import ToggleNav from '../../Molecules/ToggleNav';
+import { useEffect } from 'react';
 
-
-interface HeaderProps {
-    background?: string;
-};
 
 const Container = styled.div`
     width: 100%;
     height: 100%;
+    margin-bottom: 70px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 50px;
+    }
 `
 
-const StyledHeader = styled.div.attrs((props: HeaderProps) => props)`
-    background-image: ${props => props.background};
-    z-index: 2;
-    position: fixed;
+const StyledHeader = styled.div`
+    background: linear-gradient(87deg,#181923,#17324c);
     display: flex;
+    position: fixed;
+    z-index: 2;
     top: 0;
     flex-direction: row;
     align-items: center;
@@ -63,7 +65,7 @@ const ButtonContainer = styled.div`
 
 const MenuStyled = styled(MenuOutlined)`
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     transition: 0.2s;
     :hover {
         transform: scale(1.05);
@@ -75,57 +77,28 @@ const MenuStyled = styled(MenuOutlined)`
 
 const Header = () => {
 
-    const home = (window.location.pathname === '/');
-
-    const backgroundColor = 'linear-gradient(87deg,#181923,#17324c)';
-
     const [menuOpen, openMenu] = React.useState(false);
-    const [background, setBackground] = React.useState(home ? 'none' : backgroundColor);
-
-    const maxHeight = 30;
 
     const flip = () => {
         openMenu(!menuOpen);
 
-        if (home) {
-            if (menuOpen) {
-                if (document.body.scrollTop > maxHeight || document.documentElement.scrollTop > maxHeight) {
-                    setBackground(backgroundColor);
-                }
-                else {
+        // fixing side nav
+        const body = document.getElementsByTagName('body')[0];
 
-                    setBackground('none');
-                }
-            }
-            else {
-                setBackground(backgroundColor);
-            }
-
+        if (!menuOpen) {
+            body.style.overflow = 'hidden';
+            body.style.height = '100vh';
+        }
+        else {
+            body.style.overflow = 'visible';
+            body.style.height = 'auto';
         }
     }
-
-    const scroll = () => {
-        if (home) {
-            if (document.body.scrollTop > maxHeight || document.documentElement.scrollTop > maxHeight) {
-                setBackground(backgroundColor);
-            }
-            else {
-                if (menuOpen) {
-                    setBackground(backgroundColor);
-                }
-                else {
-                    setBackground('none');
-                }
-            }
-        }
-    }
-
-
-    window.onscroll = scroll;
 
     return (
-        <Container>
-            <StyledHeader background={background}>
+        <Container id='header'>
+            <StyledHeader>
+
                 <TitleStyled href="/">AirGnB</TitleStyled>
                 <SubtitleStyled>
                     Music rental made easy
@@ -138,6 +111,7 @@ const Header = () => {
             </StyledHeader >
             <ToggleNav
                 display={menuOpen}
+                close={flip}
             />
         </Container>
     )
