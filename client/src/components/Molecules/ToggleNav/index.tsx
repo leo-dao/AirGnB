@@ -4,7 +4,7 @@ import Button from "../../Atoms/Button";
 import useFindUser from "../../../hooks/useFindUser";
 import { CloseOutlined, UserOutlined } from "@ant-design/icons";
 import TopLink from '../../../utils/TopLink';
-import Close from "../../Atoms/Close";
+import { useEffect } from "react";
 
 interface ToggleProps {
     display: boolean,
@@ -13,19 +13,17 @@ interface ToggleProps {
 
 const Container = styled.div.attrs((props: ToggleProps) => props)`
     display: ${props => props.display ? 'flex' : 'none'};
-    background: white;
+    background-color: white;
     flex-direction: column;
-    justify-content: center;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-
-
-    z-index: 3;
+    z-index: 10;
     position: fixed;
     top: 0;
     left: 0;
-    overflow: hidden;
-    width: 35%;
 
+    min-width: 30%;
+    height: 100%;
+    overflow-y: scroll;
 
     & > * {
         user-select: none;
@@ -40,9 +38,10 @@ const Top = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
+    padding: 10px;
     height: 50px;
+    justify-content: center;
+    width: 80%;
     `;
 
 const Title = styled.div`
@@ -50,28 +49,27 @@ const Title = styled.div`
     font-weight: bold;
     `;
 
-const SubContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
 const StyledClose = styled(CloseOutlined)`
     color: #6d6d6d;
     padding: 0.5rem;
+    font-size: 1.3rem;
     border-radius: 50%;
-    margin-left: 0.5rem;
     &:hover {
         background: #ebebeb;
     }
 `;
 
+const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 const StyledLink = styled(TopLink)`
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 2%;
     padding: 5px;
-    border-top: 0.5px grey solid;
+    border-bottom: 0.5px grey solid;
     > * {
         color: black;
     }
@@ -90,21 +88,50 @@ const ToggleNav = (props: ToggleProps) => {
     var account = user ? `/account` : "/sign-in";
     var post = user ? "/post-ad" : "/sign-in";
 
+    useEffect(() => {
+        const handleClickOutside = (e: any) => {
+            if (e.target.id === "sitemask") {
+                props.close();
+            }
+        }
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        }
+    }, []);
+
 
     return (
-        <Container display={props.display}>
+        <Container display={props.display} id='side-bar'>
             <Top>
                 <StyledClose onClick={props.close} />
                 <Title>AirGnB</Title>
             </Top>
-            <SubContainer>
+            <ButtonContainer onClick={() => {
+                props.close();
+            }}>
                 <StyledLink to={post}>
-                    Post Ad
+                    Post an ad
                 </StyledLink>
                 <StyledLink to={account}>
                     <UserOutlined style={{ fontSize: '1.5rem' }} />
                 </StyledLink>
-            </SubContainer>
+                <StyledLink to='/about-us'>
+                    About us
+                </StyledLink>
+                <StyledLink to='/renter-info'>
+                    How renting works
+                </StyledLink>
+                <StyledLink to='/leaser-info'>
+                    How leasing works
+                </StyledLink>
+                <StyledLink to='/faq'>
+                    FAQ
+                </StyledLink>
+                <StyledLink to='/insurance'>
+                    Insurance
+                </StyledLink>
+            </ButtonContainer>
         </Container>
     )
 };

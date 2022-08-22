@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
+import styled from 'styled-components';
 import './App.css';
 import Home from './components/Pages/Home';
 import Listings from './components/Pages/Listings';
@@ -16,10 +17,23 @@ import UserAccount from './components/Pages/UserAccount';
 import LeaserInfo from './components/Pages/LeaserInfo';
 import RenterInfo from './components/Pages/RenterInfo';
 
+const Sitemask = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 3;
+    display: none;
+`;
+
+
 function App() {
 
   return (
     <div className="App">
+      <Sitemask id='sitemask' />
       <Header />
       <Routes>
         <Route path="/"
@@ -48,7 +62,7 @@ function App() {
           element={<Error msg="" />} />
       </Routes>
       <Footer />
-    </div >
+    </div>
   );
 }
 

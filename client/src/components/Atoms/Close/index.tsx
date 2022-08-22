@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, PropertySafetyFilled } from '@ant-design/icons';
 import TopLink from "../../../utils/TopLink";
+
+interface CloseProps {
+    onClick?: () => void;
+    to?: string;
+}
 
 const StyledClose = styled(CloseOutlined)`
     color: white;
@@ -22,11 +27,20 @@ const StyledClose = styled(CloseOutlined)`
     }
 `;
 
-const Close = () => {
+const Close = (props: CloseProps) => {
+
+    const close = <StyledClose onClick={props.onClick} />
+
+    if (props.to) {
+        return (
+            <TopLink to={props.to}>
+                <StyledClose onClick={props.onClick} />
+            </TopLink>
+        )
+    }
+
     return (
-        <TopLink to="/">
-            <StyledClose />
-        </TopLink>
+        <StyledClose onClick={props.onClick} />
     )
 };
 

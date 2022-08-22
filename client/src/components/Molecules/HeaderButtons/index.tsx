@@ -36,6 +36,7 @@ const RegisterButton = styled.button`
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    user-select: none;
     &:hover {
         transform: scale(1.03);
     }

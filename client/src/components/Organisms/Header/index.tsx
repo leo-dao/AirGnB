@@ -82,16 +82,21 @@ const Header = () => {
     const flip = () => {
         openMenu(!menuOpen);
 
-        // fixing side nav
+        // fixing side nav and sitemask
         const body = document.getElementsByTagName('body')[0];
+        const sitemask = document.getElementById('sitemask');
 
         if (!menuOpen) {
             body.style.overflow = 'hidden';
             body.style.height = '100vh';
+            //@ts-ignore
+            sitemask.style.display = 'block';
         }
         else {
             body.style.overflow = 'visible';
             body.style.height = 'auto';
+            //@ts-ignore
+            sitemask.style.display = 'none';
         }
     }
 
@@ -106,7 +111,7 @@ const Header = () => {
 
                 <ButtonContainer>
                     <HeaderButtons />
-                    <MenuStyled onClick={flip} />
+                    <MenuStyled id='toggle-nav' onClick={flip} />
                 </ButtonContainer>
             </StyledHeader >
             <ToggleNav
