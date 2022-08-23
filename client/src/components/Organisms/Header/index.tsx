@@ -42,20 +42,17 @@ const TitleStyled = styled.a`
         color: white;
         transform: scale(1.03);
     }
-
-    @media (max-width: 768px) {
-        font-size: 1.5rem;
-    }
 `
 
 const SubtitleStyled = styled.div`
     font-style: italic;
     font-size: 1rem;
     margin-left: 1rem;
-    @media (max-width: 768px) {
+    color: #c7c7c7;
+
+    @media (max-width: 400px) {
         display: none;
     }
-    color: #c7c7c7;
     `
 
 const ButtonContainer = styled.div`
@@ -65,12 +62,12 @@ const ButtonContainer = styled.div`
 
 const MenuStyled = styled(MenuOutlined)`
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     transition: 0.2s;
     :hover {
         transform: scale(1.05);
     }
-    @media (min-width: 600px) {
+    @media (min-width: 850px) {
         display: none;
     }
 `

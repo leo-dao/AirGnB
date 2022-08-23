@@ -20,8 +20,7 @@ const Container = styled.div.attrs((props: ToggleProps) => props)`
     position: fixed;
     top: 0;
     left: 0;
-
-    min-width: 30%;
+    min-width: 25%;
     height: 100%;
     overflow-y: scroll;
 
@@ -29,7 +28,7 @@ const Container = styled.div.attrs((props: ToggleProps) => props)`
         user-select: none;
     }
     
-    @media (min-width: 600px) {
+    @media (min-width: 850px) {
         display: none;
     }
 `;
@@ -38,15 +37,16 @@ const Top = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 10px;
-    height: 50px;
-    justify-content: center;
-    width: 80%;
+    padding: 5px;
+    justify-content: left;
+    gap: 20px;
+    border-bottom: 1.2px solid grey;
     `;
 
 const Title = styled.div`
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
+    padding: 5px;
     `;
 
 const StyledClose = styled(CloseOutlined)`
@@ -54,6 +54,7 @@ const StyledClose = styled(CloseOutlined)`
     padding: 0.5rem;
     font-size: 1.3rem;
     border-radius: 50%;
+    margin-left: 10px;
     &:hover {
         background: #ebebeb;
     }
@@ -68,7 +69,7 @@ const StyledLink = styled(TopLink)`
     color: black;
     font-size: 14px;
     margin-left: 2%;
-    padding: 5px;
+    padding: 10px;
     border-bottom: 0.5px grey solid;
     > * {
         color: black;
@@ -82,23 +83,45 @@ const StyledLink = styled(TopLink)`
     }
 `;
 
+const StyledUser = styled(UserOutlined)`
+    font-size: 1.3rem;
+`;
+
 const ToggleNav = (props: ToggleProps) => {
 
     let user: any = useFindUser();
-    var account = user ? `/account` : "/sign-in";
+
     var post = user ? "/post-ad" : "/sign-in";
 
+
+    var userOrLog = user ?
+        <StyledLink to='/account'>
+            <StyledUser />
+        </StyledLink>
+        :
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+        }}>
+            <StyledLink to="/sign-in">Sign In</StyledLink>
+            <StyledLink to="/register">Register</StyledLink>
+        </div>
+        ;
+
+
     useEffect(() => {
+
         const handleClickOutside = (e: any) => {
             if (e.target.id === "sitemask") {
                 props.close();
             }
-        }
+        };
+
         document.addEventListener("click", handleClickOutside);
         return () => {
             document.removeEventListener("click", handleClickOutside);
         }
-    }, []);
+    }, [props.display]);
 
 
     return (
@@ -113,9 +136,7 @@ const ToggleNav = (props: ToggleProps) => {
                 <StyledLink to={post}>
                     Post an ad
                 </StyledLink>
-                <StyledLink to={account}>
-                    <UserOutlined style={{ fontSize: '1.5rem' }} />
-                </StyledLink>
+                {userOrLog}
                 <StyledLink to='/about-us'>
                     About us
                 </StyledLink>

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
 import useFindUser from "../../../hooks/useFindUser";
-import { Link } from "react-router-dom";
+import TopLink from "../../../utils/TopLink";
 import styled from "styled-components";
 import Dropdown from "../../Atoms/Dropdown";
 
@@ -17,7 +17,7 @@ const StyledHeaderButtons = styled.div`
         font-size: 14px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 850px) {
         flex-direction: column;
         display: none;
     }
@@ -52,9 +52,9 @@ const HeaderButtons = () => {
     const userButton = user ? (
         <UserButton header />
     ) : (
-        <div style={{ gap: '10px' }}>
+        <div>
             <Button goTo="/sign-in" text='Sign in' header />
-            <Link to='/register'> <RegisterButton>Register</RegisterButton></Link>
+            <TopLink to='/register'> <RegisterButton>Register</RegisterButton></TopLink>
         </div>
     );
 
