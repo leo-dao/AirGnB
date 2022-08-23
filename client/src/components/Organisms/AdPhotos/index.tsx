@@ -5,41 +5,58 @@ import styled from "styled-components";
 
 const Container = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 20px;
+    & > * {
+        user-select: none;
+    }
 `;
 
 const MainPhotoStyled = styled.img`
-    max-width: 800px;
-    max-height: 500px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
+    max-width: 700px;
+    max-height: 500px;
+
+    @media (max-width: 850px) {
+        max-width: 100vw;
+        max-height: 70vh;
+    }
 `;
 
 const SubImagesStyled = styled.div`
     display: flex;
-    width: 800px;
-    height: 120px;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 5%;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 1px 0px black;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    @media (max-width: 850px) {
+        display: none;
+    }
 `;
 
 const SubImageStyled = styled.img`
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 10px;
-    margin: 5px;
     cursor: pointer;
+    opacity: 0.7;
+    transition: 0.2s;
+    &:hover {
+        opacity: 1;
+    }
+
+    ${(props: { selected: boolean }) => props.selected && `
+        opacity: 1;
+        box-shadow: 0 0 5px #17324c;
+    `}
 `;
 
 const AdPhotos = (props: AdCardProps) => {
 
-    const [image, setImage] = useState(props.images[0].img);  // first image is the default
+    // first image is the default
+    const [image, setImage] = useState(props.images[0].img);
     let index = props.images.findIndex(img => img.img === image);
 
     const goLeft = () => {
@@ -49,21 +66,23 @@ const AdPhotos = (props: AdCardProps) => {
     }
 
     const goRight = () => {
-        index++
+        index++;
         index = index > props.images.length - 1 ? 0 : index;
         setImage(props.images[index].img);
     }
 
     return (
         <Container>
-            <AdPhotoBg left={goLeft} right={goRight} image=
-                {<MainPhotoStyled src={image} />} />
             <SubImagesStyled>
                 {props.images.map(image => {
-                    return <SubImageStyled src={image.img}
+                    return <SubImageStyled
+                        src={image.img}
+                        selected={image.img === props.images[index].img}
                         onClick={() => { setImage(image.img); }} />
                 })}
             </SubImagesStyled>
+            <AdPhotoBg left={goLeft} right={goRight}
+                image={<MainPhotoStyled src={image} />} />
         </Container>
     )
 }

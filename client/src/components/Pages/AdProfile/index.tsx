@@ -13,31 +13,33 @@ import axios from "axios";
 import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
 
+// Testing
+import testAds from "../../../utils/testData/ads";
+
 const CenterContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 50px;
 `
 
 const Title = styled.h1`
-    font-size: 35px;
+    font-size: 2.5rem;
 `
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 
 const InfoContainer = styled.div`
     display: flex;  
     flex-direction: column;
     margin-left: 30px;
-    border: 0.5px solid black;
-    border-radius: 10px;
-    background-color: white;
-    padding: 20px;
-    width: 400px;
 `
 
 const PriceContainer = styled.div`
@@ -89,7 +91,6 @@ const AdProfile = () => {
     let params = useParams();
 
     const [ads, setAds] = React.useState<Ad[]>([]);
-
     React.useEffect(() => {
         axios.get('/getAds')
             .then(function (res) {
@@ -97,7 +98,10 @@ const AdProfile = () => {
             })
     }, [])
 
-    const currentAd = (ads.filter(ad => ad._id === params._id))[0];
+    //const currentAd = (ads.filter(ad => ad._id === params._id))[0];
+
+    // Testing
+    const currentAd = testAds[3];
 
     const [startDate, setStartDate] = useState(new Date());
 
@@ -117,7 +121,7 @@ const AdProfile = () => {
     var url = user ? booking : signIn;
 
     return (
-        <CenterContainer>
+        <div>
             <Title>{currentAd.title}</Title>
             <Container>
                 <AdPhotos
@@ -162,7 +166,7 @@ const AdProfile = () => {
                     </AdInfoContainer>
                 </InfoContainer>
             </Container>
-        </CenterContainer >
+        </div >
     )
 };
 

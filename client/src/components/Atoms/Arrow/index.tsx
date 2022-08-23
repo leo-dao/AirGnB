@@ -1,36 +1,39 @@
 import React from "react";
 import styled from 'styled-components';
+import { RightOutlined } from "@ant-design/icons";
 
-const StyledArrow = styled.div`
-    font-size: 30px;
+const StyledDirection = styled(RightOutlined)`
+    font-size: 20px;
     color: white;
-    border-radius: 40px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #a2a1a1;
     opacity: 0.5;
-    z-index: 1;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     &:hover {
-        background-color: black;
         opacity: 0.8;
     }
+
+    ${(props: { direction: string }) =>
+        props.direction === 'goLeft' && `
+        transform: rotate(180deg);
+    `}
+    
 `;
 
 interface ArrowProps {
     direction: () => void;
-    image: React.ReactNode;
 }
 
 const Arrow = (props: ArrowProps) => {
+
+    const direction = props.direction.name;
+
     return (
-        <StyledArrow onClick={props.direction}>
-            {props.image}
-        </StyledArrow>
+        <StyledDirection
+            direction={direction}
+            onClick={props.direction} />
     )
 }
 

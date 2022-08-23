@@ -1,28 +1,30 @@
 import React from "react";
 import Arrow from "../../Atoms/Arrow";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import styled from 'styled-components';
 
 const Container = styled.div`
-    width: 800px;
-    height: 500px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 1px black;
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    object-fit: cover;
+    width: 700px;
+    height: 500px;
+
+    @media (max-width: 850px) {
+        width: 100vw;
+        height: 70vh;
+    }
 `;
 
-const PhotoContainer = styled.div`
-    background-color: transparent;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+const LeftArrow = styled.div`
+    position: absolute;
+    left: 15px;
+`;
+
+const RightArrow = styled.div`
+    position: absolute;
+    right: 15px;
 `;
 
 interface Props {
@@ -35,19 +37,15 @@ const AdPhotoBg = (props: Props) => {
 
     return (
         <Container>
-            <Arrow
-                direction={props.left}
-                image={<ArrowLeftOutlined />}
-            />
-            <PhotoContainer>
-                {props.image}
-            </PhotoContainer>
-            <Arrow
-                direction={props.right}
-                image={<ArrowRightOutlined />}
-            />
+            <LeftArrow>
+                <Arrow direction={props.left} />
+            </LeftArrow>
+            {props.image}
+            <RightArrow>
+                <Arrow direction={props.right} />
+            </RightArrow>
         </Container>
     )
 }
 
-export default AdPhotoBg
+export default AdPhotoBg;
