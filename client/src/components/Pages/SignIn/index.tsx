@@ -122,7 +122,7 @@ const SignIn = () => {
 
             <ErrorMessage msg={errMsg} on={errOn} />
 
-            <Close />
+            <Close to='/' />
         </Form >
     );
 };

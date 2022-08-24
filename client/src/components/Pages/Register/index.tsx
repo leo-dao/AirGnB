@@ -35,6 +35,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 30%;
+    height: 60%;
 `;
 
 const Header = styled.h1`
@@ -84,12 +85,12 @@ const Register = () => {
             })
     }, []);
 
-    const locationSelect = (value: string) => {
+    /* const locationSelect = (value: string) => {
         updateFormData({
             ...formData,
             location: value
         })
-    }
+    } */
 
     const [file, setFile] = React.useState<File>();
 
@@ -101,16 +102,10 @@ const Register = () => {
         })
     }
 
-    const [category, setCategory] = React.useState<string>('');
-
-    const onCategory = (e: any) => {
-        setCategory(e.key);
-    }
-
     const initialState = {
         name: '',
         email: '',
-        location: '',
+        //location: '',
         password: '',
         avatar: null,
         confirmpassword: '',
@@ -160,12 +155,16 @@ const Register = () => {
         let formMissing = false;
 
         Object.entries(formData).forEach(element => {
-            if (element[1] === '' || element[1] === null) {
-                formMissing = true;
-                updateError({
-                    msg: `Missing ${element[0]}`,
-                    display: true
-                })
+
+            // avatar is not required
+            if (element[0] !== 'avatar') {
+                if (element[1] === '' || element[1] === null) {
+                    formMissing = true;
+                    updateError({
+                        msg: `Missing ${element[0]}`,
+                        display: true
+                    })
+                }
             }
         })
 
@@ -200,12 +199,12 @@ const Register = () => {
         <Form onSubmit={createAccount} encType="multipart/form-data">
             <Container>
                 <Header>Welcome to AirGnB</Header>
-                <Close />
+                <Close to='/' />
                 <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} required />
                 <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} required />
                 <Password placeholder={"Password"} name='password' onChange={handlePassword} />
                 <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
-                <ExtraLocationContainer>
+                {/* <ExtraLocationContainer>
                     <ContainerLocation>
                         <Location
                             onSelect={locationSelect}
@@ -214,15 +213,11 @@ const Register = () => {
                         />
                     </ContainerLocation>
                     <EyeOutlined style={{ visibility: 'hidden' }} />
-                </ExtraLocationContainer>
+                </ExtraLocationContainer> */}
             </Container>
             <FileSubmit
                 onChange={onSetFile}
                 fileNames={file?.name ? [file?.name] : []}
-            />
-            <SortCategories
-                onClick={onCategory}
-                category={category}
             />
             <ErrorMessage msg={error.msg} on={error.display} />
             <Button

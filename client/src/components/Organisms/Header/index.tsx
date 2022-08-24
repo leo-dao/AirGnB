@@ -9,11 +9,7 @@ import { useEffect } from 'react';
 const Container = styled.div`
     width: 100%;
     height: 100%;
-    margin-bottom: 70px;
-
-    @media (max-width: 768px) {
-        margin-bottom: 50px;
-    }
+    margin-bottom: 60px;
 `
 
 const StyledHeader = styled.div`
@@ -25,11 +21,7 @@ const StyledHeader = styled.div`
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 70px;
-
-    @media (max-width: 768px) {
-        height: 50px;
-    }
+    height: 60px;
 `
 
 const TitleStyled = styled.a`
