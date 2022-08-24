@@ -10,22 +10,25 @@ const Container = styled.div`
     & > * {
         user-select: none;
     }
+    @media (max-width: 850px) {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
 `;
 
 const MainPhotoStyled = styled.img`
     object-fit: contain;
     border-radius: 10px;
-    max-width: 800px;
-    max-height: 500px;
+    width: 800px;
+    height: 500px;
 
     @media (max-width: 1300px) {
-        max-width: 600px;
-        max-height: 400px;
+        width: 600px;
+        height: 400px;
     }
 
     @media (max-width: 850px) {
-        max-width: 100vw;
-        max-height: 70vh;
+        width: 90vw;
     }
 `;
 
@@ -35,7 +38,9 @@ const SubImagesStyled = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     @media (max-width: 850px) {
-        display: none;
+        flex-direction: row;
+        margin-top: 20px;
+        width: 100%;
     }
 `;
 
@@ -50,7 +55,6 @@ const SubImageStyled = styled.img`
     &:hover {
         opacity: 1;
     }
-
     ${(props: { selected: boolean }) => props.selected && `
         opacity: 1;
         box-shadow: 0 0 5px #17324c;

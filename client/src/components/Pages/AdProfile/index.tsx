@@ -13,19 +13,12 @@ import AdInfo from "../../Organisms/AdInfo";
 import axios from "axios";
 import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
+import Back from "../../Atoms/Back";
+import TopLink from "../../../utils/TopLink";
 
 // Testing
 import testAds from "../../../utils/testData/ads";
-import TopLink from "../../../utils/TopLink";
 
-const Title = styled.h1`
-    font-size: 35px;
-    letter-spacing: 0.4px;
-
-    @media (max-width: 1200px) {
-        font-size: 25px;
-    }
-`
 
 const Container = styled.div`
     display: flex;
@@ -34,13 +27,26 @@ const Container = styled.div`
 
     @media (max-width: 850px) {
         flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-left: 0px;
+    }
+`
+
+const Title = styled.h1`
+    font-size: 35px;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+
+    @media (max-width: 1200px) {
+        font-size: 25px;
     }
 `
 
 const InfoContainer = styled.div`
     display: flex;  
     flex-direction: column;
-    margin-left: 70px;
+    margin-left: 100px;
     justify-content: center;
     gap: 20px;
 
@@ -60,12 +66,15 @@ const StyledLink = styled(TopLink)`
     color: grey;
     text-decoration: underline;
     margin-left: 4px;
+    &:hover {
+        color: grey;
+        text-decoration: underline;
+    }
 `;
 
 const TotalPrice = styled.b`
     font-size: 25px;
-`
-
+`;
 
 const AdProfile = () => {
 
@@ -107,50 +116,42 @@ const AdProfile = () => {
     var url = user ? booking : signIn;
 
     return (
-        <div>
-            <div>Back to search</div>
-            <Container>
-                <AdPhotos
-                    _id={currentAd._id}
-                    user={currentAd.user}
-                    images={currentAd.images}
-                    title={currentAd.title}
-                    description={currentAd.description}
-                    price={currentAd.price}
+        <Container>
+            <AdPhotos
+                _id={currentAd._id}
+                user={currentAd.user}
+                images={currentAd.images}
+                title={currentAd.title}
+                description={currentAd.description}
+                price={currentAd.price}
+            />
+            <InfoContainer>
+                <Title>{currentAd.title}</Title>
+                <TotalPrice>{price}</TotalPrice>
+                <Policy>
+                    Learn more about our insurance policy
+                    <StyledLink to="/insurance">
+                        here
+                    </StyledLink>
+                </Policy>
+                <Availability
+                    startDate={startDate}
+                    endDate={endDate}
+                    setStartDate={setStartDate}
+                    setEndDate={setEndDate}
                 />
-                <InfoContainer>
-                    <Title>{currentAd.title}</Title>
-                    <TotalPrice>{price}</TotalPrice>
-                    <Policy>
-                        Learn more about our insurance policy
-                        <StyledLink to="/insurance">
-                            here
-                        </StyledLink>
-                    </Policy>
-                    <Availability
-                        startDate={startDate}
-                        endDate={endDate}
-                        setStartDate={setStartDate}
-                        setEndDate={setEndDate}
-                    />
-                    <Button
-                        disabled={endDate.getTime() === startDate.getTime()}
-                        text="Continue"
-                        goTo={url}
-                        state={{
-                            totalPrice: totalPrice,
-                            numDays: numDays,
-                        }}
-                    />
-                </InfoContainer>
-            </Container>
-        </div >
+                <Button
+                    disabled={endDate.getTime() === startDate.getTime()}
+                    text="Continue"
+                    goTo={url}
+                    state={{
+                        totalPrice: totalPrice,
+                        numDays: numDays,
+                    }}
+                />
+            </InfoContainer>
+        </Container>
     )
 };
 
 export default AdProfile;
-
-// check which div can be removed
-
-// top box: price total, start date, end date, then add rent (continue) button + add to favorites button
-// bottom box: Info: Price/day, Description, Smaller user contact

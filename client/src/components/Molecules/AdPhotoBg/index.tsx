@@ -10,15 +10,17 @@ const Container = styled.div`
     align-items: center;
     width: 800px;
     height: 500px;
+    margin-top: 20px;
 
     @media (max-width: 1300px) {
         width: 600px;
-        height: 400px;
+        height: 450px;
     }
 
     @media (max-width: 850px) {
-        width: 100vw;
-        height: 70vh;
+        width: 90vw;
+        height: auto;
+        margin-top: 0px;
     }
 `;
 
