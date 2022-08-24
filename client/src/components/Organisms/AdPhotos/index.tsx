@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 2%;
     & > * {
         user-select: none;
     }
@@ -15,8 +15,13 @@ const Container = styled.div`
 const MainPhotoStyled = styled.img`
     object-fit: contain;
     border-radius: 10px;
-    max-width: 700px;
+    max-width: 800px;
     max-height: 500px;
+
+    @media (max-width: 1300px) {
+        max-width: 600px;
+        max-height: 400px;
+    }
 
     @media (max-width: 850px) {
         max-width: 100vw;
@@ -29,7 +34,6 @@ const SubImagesStyled = styled.div`
     height: 100%;
     flex-direction: column;
     justify-content: space-evenly;
-
     @media (max-width: 850px) {
         display: none;
     }

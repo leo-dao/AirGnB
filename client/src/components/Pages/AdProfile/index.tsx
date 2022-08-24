@@ -9,29 +9,30 @@ import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
 import useFindUser from "../../../hooks/useFindUser";
 import useFindImages from "../../../hooks/useFindImages";
+import AdInfo from "../../Organisms/AdInfo";
 import axios from "axios";
 import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
 
 // Testing
 import testAds from "../../../utils/testData/ads";
-
-const CenterContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-`
+import TopLink from "../../../utils/TopLink";
 
 const Title = styled.h1`
-    font-size: 2.5rem;
+    font-size: 35px;
+    letter-spacing: 0.4px;
+
+    @media (max-width: 1200px) {
+        font-size: 25px;
+    }
 `
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
+    margin-left: 20px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 850px) {
         flex-direction: column;
     }
 `
@@ -39,50 +40,32 @@ const Container = styled.div`
 const InfoContainer = styled.div`
     display: flex;  
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 70px;
+    justify-content: center;
+    gap: 20px;
+
+    @media (max-width: 850px) {
+        display: flex;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
 `
 
-const PriceContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-`
+const Policy = styled.div`
+    color: grey;
+    font-size: 14px;
+`;
+
+const StyledLink = styled(TopLink)`
+    color: grey;
+    text-decoration: underline;
+    margin-left: 4px;
+`;
 
 const TotalPrice = styled.b`
-    font-size: 20px;
+    font-size: 25px;
 `
 
-const AdInfoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 30px;
-    border-top: 0.5px solid black;
-    height: 100%;
-`
-
-const StyledHeader = styled.h1`
-    font-size: 28px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-`
-
-const Info = styled.div`
-    display: flex;
-    flex-direction: column;   
-    align-items: center;
-    width: 100%;
-    gap: 15px;
-`
-
-const UserContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-`
 
 const AdProfile = () => {
 
@@ -101,11 +84,13 @@ const AdProfile = () => {
     //const currentAd = (ads.filter(ad => ad._id === params._id))[0];
 
     // Testing
-    const currentAd = testAds[3];
+    const currentAd = testAds[4];
 
     const [startDate, setStartDate] = useState(new Date());
 
-    const [endDate, setEndDate] = useState(new Date());
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const [endDate, setEndDate] = useState(tomorrow);
 
     if (!currentAd) {
         return <Error msg="Sorry, this ad does not exist" />
@@ -113,7 +98,8 @@ const AdProfile = () => {
 
     var numDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24));
     var totalPrice = currentAd.price * numDays;
-    var price = "TOTAL: " + totalPrice.toString() + " $";
+    var price = (`${totalPrice.toString()}$`);
+
 
     var booking = "/booking/" + currentAd._id + "+" + startDate.toISOString().slice(0, 10) + "+" + endDate.toISOString().slice(0, 10);
     var signIn = '/sign-in';
@@ -122,7 +108,7 @@ const AdProfile = () => {
 
     return (
         <div>
-            <Title>{currentAd.title}</Title>
+            <div>Back to search</div>
             <Container>
                 <AdPhotos
                     _id={currentAd._id}
@@ -133,37 +119,29 @@ const AdProfile = () => {
                     price={currentAd.price}
                 />
                 <InfoContainer>
-                    <PriceContainer>
-                        <TotalPrice>{price}</TotalPrice>
-                        <Availability
-                            startDate={startDate}
-                            endDate={endDate}
-                            setStartDate={setStartDate}
-                            setEndDate={setEndDate}
-                        />
-                        <Button
-                            disabled={endDate.getTime() === startDate.getTime()}
-                            text="Continue"
-                            goTo={url}
-                            state={{
-                                totalPrice: totalPrice,
-                                numDays: numDays,
-                            }}
-                        />
-                    </PriceContainer>
-                    <AdInfoContainer>
-                        <StyledHeader>Information: </StyledHeader>
-                        <Info>
-                            <Description description={currentAd.description} />
-                            <UserContainer>
-                                <UserInfo
-                                    user={currentAd.user}
-                                    fontSize={18}
-                                    avatarSize={60}
-                                />
-                            </UserContainer>
-                        </Info>
-                    </AdInfoContainer>
+                    <Title>{currentAd.title}</Title>
+                    <TotalPrice>{price}</TotalPrice>
+                    <Policy>
+                        Learn more about our insurance policy
+                        <StyledLink to="/insurance">
+                            here
+                        </StyledLink>
+                    </Policy>
+                    <Availability
+                        startDate={startDate}
+                        endDate={endDate}
+                        setStartDate={setStartDate}
+                        setEndDate={setEndDate}
+                    />
+                    <Button
+                        disabled={endDate.getTime() === startDate.getTime()}
+                        text="Continue"
+                        goTo={url}
+                        state={{
+                            totalPrice: totalPrice,
+                            numDays: numDays,
+                        }}
+                    />
                 </InfoContainer>
             </Container>
         </div >

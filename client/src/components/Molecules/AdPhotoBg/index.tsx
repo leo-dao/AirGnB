@@ -8,8 +8,13 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 700px;
+    width: 800px;
     height: 500px;
+
+    @media (max-width: 1300px) {
+        width: 600px;
+        height: 400px;
+    }
 
     @media (max-width: 850px) {
         width: 100vw;
