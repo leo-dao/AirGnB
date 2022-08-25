@@ -46,8 +46,10 @@ interface DropdownProps {
 const Dropdown = (props: DropdownProps) => {
 
     const [isOpen, setIsOpen] = React.useState(false);
-    const toggle = () => setIsOpen(!isOpen);
-    const [selection, setSelection] = useState([]);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    }
 
     // Closing the dropdown if the user clicks outside of it
     useEffect(() => {
