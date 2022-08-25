@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { DownOutlined } from '@ant-design/icons';
-import TopLink from "../../../utils/TopLink";
-
-interface DropdownProps {
-    title: React.ReactNode;
-    items: any;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
 
 const Container = styled.div`
     display: flex;
@@ -29,7 +22,7 @@ const Title = styled.div`
     }
 `;
 
-const DropdownMenu = styled.div`
+const Menu = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,27 +38,10 @@ const DropdownMenu = styled.div`
     box-shadow: 0 2px 5px rgba(0,0,0, 0.5);
 `;
 
-const DropdownItem = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-    width: 100%;
-    padding: 10px 5px;
-    border-bottom: 0.5px solid #ccc;
-    transition: 0.1s ease-in-out;
-    &:hover {
-        background: #eeeeee;
-        cursor: pointer;
-        color: black
-    }
-`;
-
-const HiddenLink = styled(TopLink)`
-    text-decoration: none;
-    width: 100%;
-    color: black;
-`;
+interface DropdownProps {
+    title: React.ReactNode;
+    menu: React.ReactNode;
+};
 
 const Dropdown = (props: DropdownProps) => {
 
@@ -90,28 +66,13 @@ const Dropdown = (props: DropdownProps) => {
     }, []);
 
 
-
     return (
         <Container onClick={toggle} className="dropdown">
             <Title className="dropdown">
                 {props.title}
-                <DownOutlined
-                    style={{ color: 'white' }}
-                />
+                <DownOutlined style={{ color: 'white' }} />
             </Title>
-            {isOpen &&
-                <DropdownMenu>
-                    {props.items.map((item: any) => (
-                        <HiddenLink to={item.goTo}>
-                            <DropdownItem
-                                key={item.id}>
-                                {item.value}
-                            </DropdownItem>
-                        </HiddenLink>
-                    ))}
-                </DropdownMenu>
-
-            }
+            {isOpen && <Menu>{props.menu}</Menu>}
         </Container>
     )
 };

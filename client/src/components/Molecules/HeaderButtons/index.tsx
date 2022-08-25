@@ -42,6 +42,23 @@ const RegisterButton = styled.button`
     }
 `;
 
+const DropdownLink = styled(TopLink)`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 5px;
+    border-bottom: 0.5px solid #ccc;
+    transition: 0.1s ease-in-out;
+    width: 100%;
+    color: black;
+    :hover {
+        background: #eeeeee;
+        cursor: pointer;
+        color: black
+    }
+`;
 
 
 const HeaderButtons = () => {
@@ -72,13 +89,14 @@ const HeaderButtons = () => {
             />
             <Dropdown
                 title={<LearnTitle className="dropdown">Learn more</LearnTitle>}
-                items={[
-                    { value: "About us", goTo: "/about-us" },
-                    { value: "How renting works", goTo: "/renter-info" },
-                    { value: "How leasing works", goTo: "/leaser-info" },
-                    { value: "FAQ", goTo: "/faq" },
-                    { value: "Insurance", goTo: "/insurance" },
-                ]}
+                menu={
+                    <div>
+                        <DropdownLink to="/about">About us</DropdownLink>
+                        <DropdownLink to="/faq">FAQ</DropdownLink>
+                        <DropdownLink to="/renter-info">How renting works</DropdownLink>
+                        <DropdownLink to="/leaser-info">How leaser works</DropdownLink>
+                    </div>
+                }
             />
             {userButton}
         </StyledHeaderButtons >
