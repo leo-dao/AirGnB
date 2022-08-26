@@ -5,6 +5,7 @@ import useFindUser from "../../../hooks/useFindUser";
 import { CloseOutlined, UserOutlined } from "@ant-design/icons";
 import TopLink from '../../../utils/TopLink';
 import { useEffect } from "react";
+import ts from "typescript";
 
 interface ToggleProps {
     display: boolean,
@@ -113,7 +114,15 @@ const ToggleNav = (props: ToggleProps) => {
 
         const handleClickOutside = (e: any) => {
             if (e.target.id === "sitemask") {
-                props.close();
+
+                // closing the navbar if opened
+                if (props.display) {
+                    props.close();
+                }
+                else {
+                    //@ts-ignore
+                    document.getElementById("sitemask").style.display = 'none';
+                }
             }
         };
 

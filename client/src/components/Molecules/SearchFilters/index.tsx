@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Dropdown from "../../Atoms/Dropdown";
 import categories from "../../../utils/categories";
+import Close from "../../Atoms/Close";
 import { useEffect } from "react";
 
 const FilterContainer = styled.div`
@@ -27,47 +28,54 @@ const FilterMenu = styled.div`
     background-color: white;
     border-radius: 10px;
     z-index: 3;
+    overflow-y: scroll;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 `;
 
 const SearchFilters = () => {
 
     const [showMenu, setShowMenu] = React.useState(false);
 
+    var sitemask = document.getElementById("sitemask");
+
     const onClick = () => {
         setShowMenu(!showMenu);
         //@ts-ignore
-        document.getElementById('sitemask').style.display = 'block';
+        sitemask.style.display = showMenu ? "none" : "block";
     };
 
     useEffect(() => {
-
-        // if clicked outside
-        function onWindowClick(e: any) {
-            if (e.target.className.includes('filter')) {
-                setShowMenu(true);
-                return;
-            }
-            else {
+        // check if user clicks outside
+        const handleClick = (e: any) => {
+            if (e.target.id === "sitemask") {
                 setShowMenu(false);
+                //@ts-ignore
+                sitemask.style.display = "none";
+            }
+
+            if (e.target.className.includes("filter")) {
+                setShowMenu(true);
+                //@ts-ignore
+                sitemask.style.display = "block";
             }
         }
-        window.addEventListener('click', onWindowClick);
+        document.addEventListener("click", handleClick);
         return () => {
-            window.removeEventListener('click', onWindowClick);
-        };
+            document.removeEventListener("click", handleClick);
+        }
     }, []);
 
     return (
         <FilterContainer>
-            <div className="filter" onClick={onClick}>
+            <div onClick={onClick} className="filter">
                 Filter
                 {showMenu ? (
                     <FilterMenu className="filter">
-                        <h1>Filter</h1>
+                        <Close black onClick={onClick} />
                     </FilterMenu>
                 ) : (null)}
             </div>
-
+            More stuff
         </FilterContainer>
     );
 };
