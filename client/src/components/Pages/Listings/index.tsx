@@ -3,24 +3,25 @@ import AdCardList from "../../Organisms/AdCardList";
 import { Ad } from "../../../utils/interfaces";
 import Search from "../../Organisms/Search";
 import styled from "styled-components";
+import SearchFilters from "../../Organisms/SearchFilters";
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     `;
 
 const SearchContainer = styled.div`
-    width: 100%;
-    padding: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 1rem;
     background-color: white;
-    box-shadow: 0px 1px 6px -2px black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 `;
 
+// have the filters modify the query in the params
 
 const Listings = () => {
 
@@ -28,6 +29,7 @@ const Listings = () => {
         <Container>
             <SearchContainer>
                 <Search />
+                <SearchFilters />
             </SearchContainer>
             <AdCardList
                 inputType="search"
