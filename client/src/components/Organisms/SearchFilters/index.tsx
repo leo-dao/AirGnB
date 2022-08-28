@@ -24,8 +24,8 @@ const FilterButton = styled.button`
     gap: 5px;
 `;
 
-const FilterMenu = styled.div`
-    display: flex;
+const FilterMenu = styled.div.attrs((props: any) => props)`
+    display: ${props => props.display ? 'flex' : 'none'};
     flex-direction: column;
     align-items: center;
     position: absolute;
@@ -55,6 +55,9 @@ const StyledTitle = styled.h2`
     border-bottom: 1px solid #e0e0e0;
 `;
 
+interface FilterProps {
+    display: boolean,
+};
 
 const SearchFilters = () => {
 
@@ -63,25 +66,33 @@ const SearchFilters = () => {
     var sitemask = document.getElementById("sitemask");
     const body = document.getElementsByTagName('body')[0];
 
-    const handleSitemask = () => {
+    const open = async () => {
+        setShowMenu(true);
         //@ts-ignore
-        sitemask.style.display = showMenu ? "none" : "block";
-        body.style.height = showMenu ? "100vh" : "auto";
-        body.style.overflow = showMenu ? "visible" : "hidden";
+        sitemask.style.display = "block";
+        body.style.height = "100vh";
+        body.style.overflow = "hidden";
     }
 
-    const onClick = () => {
-        setShowMenu(!showMenu);
-        handleSitemask();
+    const close = () => {
+        setShowMenu(false);
+        //@ts-ignore
+        sitemask.style.display = "none";
+        body.style.height = "auto";
+        body.style.overflow = "visible";
     };
 
     useEffect(() => {
         // check if user clicks outside
         const handleClick = (e: any) => {
-            console.log(e.target)
-            if (e.target.id === "sitemask") {
-                setShowMenu(false);
-                handleSitemask();
+
+            if (showMenu) {
+                if (e.target.id === "sitemask") {
+                    close();
+                }
+                else {
+                    return
+                }
             }
         }
         document.addEventListener("click", handleClick);
@@ -92,18 +103,16 @@ const SearchFilters = () => {
 
     return (
         <FilterContainer>
-            <div onClick={onClick} className="filter">
+            <div onClick={open} className="filter">
                 <FilterButton>
                     <FilterOutlined style={{ fontSize: '1.3rem' }} />
                     Filters
                 </FilterButton>
-                {showMenu ? (
-                    <FilterMenu className="filter">
-                        <StyledTitle>Filters</StyledTitle>
-                        <Close black onClick={onClick} />
-                        <Filters />
-                    </FilterMenu>
-                ) : (null)}
+                <FilterMenu className="filter" display={showMenu}>
+                    <StyledTitle>Filters</StyledTitle>
+                    <Close black onClick={close} />
+                    <Filters />
+                </FilterMenu>
             </div>
         </FilterContainer>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PriceFilter from "../../Molecules/PriceFilter";
 
 const FilterContainer = styled.div`
     display: flex;
@@ -16,15 +17,13 @@ const Title = styled.h1`
 `;
 
 
+
 const Filters = () => {
+
     return (
         <div>
             <FilterContainer>
-                <Title>Price</Title>
-                Max
-                <input />
-                Min
-                <input />
+                <PriceFilter />
             </FilterContainer>
             <FilterContainer>
                 <Title>Categories</Title>

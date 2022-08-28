@@ -94,7 +94,6 @@ const ToggleNav = (props: ToggleProps) => {
 
     var post = user ? "/post-ad" : "/sign-in";
 
-
     var userOrLog = user ?
         <StyledLink to='/account'>
             <StyledUser />
@@ -115,7 +114,7 @@ const ToggleNav = (props: ToggleProps) => {
         const handleClickOutside = (e: any) => {
             if (e.target.id === "sitemask") {
 
-                // closing the navbar if opened
+                // closing the navbar if already opened
                 if (props.display) {
                     props.close();
                 }
