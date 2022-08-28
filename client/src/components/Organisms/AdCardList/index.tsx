@@ -12,6 +12,7 @@ const SearchResultStyled = styled.h1`
     text-align: center;
     font-weight: bold;
     font-size: 30px;
+    margin-top: 100px;
 `;
 
 const Container = styled.div`

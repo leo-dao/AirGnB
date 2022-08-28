@@ -54,7 +54,9 @@ const Dropdown = (props: DropdownProps) => {
     // Closing the dropdown if the user clicks outside of it
     useEffect(() => {
         function onWindowClick(e: any) {
-            if (e.target.className.includes('dropdown')) {
+
+            // check if classname includes dropdown
+            if (e.target.className && typeof e.target.className.includes !== 'undefined' && (e.target.className.includes('dropdown'))) {
                 return;
             }
             else {

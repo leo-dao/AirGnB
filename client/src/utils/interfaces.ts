@@ -14,6 +14,13 @@ export interface AdImage {
     img: string;
 }
 
+export interface Rating {
+    user: User;
+    text: string;
+    score: number;
+}
+
+
 export interface Ad {
     _id: string;
     title: string;
@@ -22,5 +29,6 @@ export interface Ad {
     category: string;
     user: User;
     images: AdImage[];
+    // rating: Rating[];
 }
 
