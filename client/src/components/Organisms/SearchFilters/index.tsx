@@ -35,6 +35,7 @@ const FilterMenu = styled.div.attrs((props: any) => props)`
     width: 100%;
     max-width: 780px;
     height: 80vh;
+    max-height: 700px;
     border-radius: 12px;
     font-size: 1rem;
     padding: 5px 15px;
@@ -42,22 +43,9 @@ const FilterMenu = styled.div.attrs((props: any) => props)`
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     z-index: 5;
+    overflow: scroll;
 `;
 
-const StyledTitle = styled.h2`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: black;
-    margin-bottom: 1rem;
-    width: 80%;
-    border-bottom: 1px solid #e0e0e0;
-`;
-
-interface FilterProps {
-    display: boolean,
-};
 
 const SearchFilters = () => {
 
@@ -109,8 +97,6 @@ const SearchFilters = () => {
                     Filters
                 </FilterButton>
                 <FilterMenu className="filter" display={showMenu}>
-                    <StyledTitle>Filters</StyledTitle>
-                    <Close black onClick={close} />
                     <Filters />
                 </FilterMenu>
             </div>

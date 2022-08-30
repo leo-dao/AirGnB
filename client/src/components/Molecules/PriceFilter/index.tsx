@@ -1,18 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Title = styled.h1`
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black;
-    margin-bottom: 1rem;
-`;
-
 const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
     margin-bottom: 1rem;
     gap: 10px;
     `;
@@ -63,44 +58,24 @@ const Price = styled.div`
 
 const PriceFilter = () => {
 
-    const [min, setMin] = React.useState<number>();
-    const [max, setMax] = React.useState<number>();
-
-    const checkMin = (e: any) => {
-
-
-    }
-
-    const checkMax = (e: any) => {
-
-    }
-
     return (
-        <div style={{
-            margin: 'none',
-            padding: 'none',
-            width: '100%',
-            height: '100%',
-        }}>
-            <Title>Price</Title>
-            <Container className="parent">
-                <InputContainer>
-                    <p>Min</p>
-                    <Price>
-                        <p>$</p>
-                        <Input type='number' onChange={checkMin} />
-                    </Price>
-                </InputContainer>
-                -
-                <InputContainer>
-                    <p>Max</p>
-                    <Price>
-                        <p>$</p>
-                        <Input type='number' onChange={checkMax} />
-                    </Price>
-                </InputContainer>
-            </Container>
-        </div>
+        <Container>
+            <InputContainer>
+                <p>Min</p>
+                <Price>
+                    <p>$</p>
+                    <Input type='number' />
+                </Price>
+            </InputContainer>
+            -
+            <InputContainer>
+                <p>Max</p>
+                <Price>
+                    <p>$</p>
+                    <Input type='number' />
+                </Price>
+            </InputContainer>
+        </Container>
     );
 };
 

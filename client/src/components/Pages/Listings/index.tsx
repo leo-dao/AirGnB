@@ -8,14 +8,12 @@ import SearchFilters from "../../Organisms/SearchFilters";
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
     `;
 
 const SearchContainer = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    width: 100%;
     padding: 1rem;
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
