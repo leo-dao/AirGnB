@@ -41,17 +41,8 @@ const Button = styled.button.attrs((props: any) => props)`
     }
     `;
 
-const MoreButton = styled.button.attrs((props: any) => props)`
-    background: none;
-    border: none;
-    border-bottom: 1px solid black;
-    color: black;
-    cursor: pointer;
-    `;
-
 interface CategoryProps {
     complete: boolean;
-    text: string;
 };
 
 interface AllCategoryArray {

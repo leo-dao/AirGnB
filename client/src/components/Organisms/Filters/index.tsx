@@ -20,8 +20,11 @@ const Top = styled.div`
     width: 100%;
     border-bottom: 1px solid #e0e0e0;
     padding: 10px;
-    height: 50px;
     margin-bottom: 20px;
+    background: #fff;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
     `;
 
 const Title = styled.div`
@@ -56,9 +59,11 @@ const Bottom = styled.div`
     background-color: #fff;
     border-top: 1px solid #e0e0e0;
     padding: 10px;
+    position: sticky;
+    bottom: 0px;
 `;
 
-const MoreButton = styled.button.attrs((props: any) => props)`
+const MoreButton = styled.button`
     background: none;
     border: none;
     display: flex;
@@ -68,6 +73,7 @@ const MoreButton = styled.button.attrs((props: any) => props)`
     font-size: 0.9rem;
     color: black;
     cursor: pointer;
+    z-index: 1;
     `;
 
 const Filters = () => {
@@ -103,11 +109,10 @@ const Filters = () => {
                 <FilterContainer>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                         <Title>Categories</Title>
-                        <MoreButton onClick={flip}>Show more</MoreButton>
+                        <MoreButton onClick={flip}>{showText}</MoreButton>
                     </div>
                     <CategoriesFilter
                         complete={complete}
-                        text={showText}
                     />
                 </FilterContainer>
             </FiltersContainer>

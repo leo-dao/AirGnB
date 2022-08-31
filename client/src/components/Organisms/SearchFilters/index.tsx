@@ -38,12 +38,14 @@ const FilterMenu = styled.div.attrs((props: any) => props)`
     max-height: 700px;
     border-radius: 12px;
     font-size: 1rem;
-    padding: 5px 15px;
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     z-index: 5;
     overflow: scroll;
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
 `;
 
 
