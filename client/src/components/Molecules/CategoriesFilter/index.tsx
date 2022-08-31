@@ -14,11 +14,19 @@ const DefaultContainer = styled.div`
 `;
 
 const AllContainer = styled.div`
+    display: flex;  
+    flex-wrap: wrap;
+`;
+
+
+const SubContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    width: 100%;
+
+    Button {
+        margin: 5px
+    }
 `;
 
 const Button = styled.button.attrs((props: any) => props)`
@@ -41,7 +49,17 @@ const MoreButton = styled.button.attrs((props: any) => props)`
     cursor: pointer;
     `;
 
-const CategoriesFilter = () => {
+interface CategoryProps {
+    complete: boolean;
+    text: string;
+};
+
+interface AllCategoryArray {
+    name: string;
+    active: boolean;
+    parent: string;
+};
+const CategoriesFilter = (props: CategoryProps) => {
 
     const active = {
         'background-color': 'black',
@@ -60,15 +78,7 @@ const CategoriesFilter = () => {
         }
     });
 
-
-    interface categoryArray {
-        name: string;
-        active: boolean;
-        parent: string;
-    };
-
-    var subCategories: categoryArray[] = [];
-
+    var subCategories: AllCategoryArray[] = [];
     categoryList.map((category: any) => {
         if (category.name !== 'Other') {
             category.type.map((subCategory: any) => {
@@ -85,13 +95,6 @@ const CategoriesFilter = () => {
 
     const [subCategoriesState, setSubCategoriesState] = React.useState(subCategories);
     const [defaultCategoriesState, setDefaultCategoriesState] = React.useState(defaultCategories);
-    const [complete, setComplete] = React.useState(false);
-    const [showText, setShow] = React.useState('Show more');
-
-    const flip = (e: any) => {
-        setComplete(!complete);
-        showText === 'Show more' ? setShow('Show less') : setShow('Show more');
-    }
 
     var defaultClick = (e: any) => {
         const id = parseInt(e.target.id);
@@ -117,7 +120,6 @@ const CategoriesFilter = () => {
     };
 
     var defaultButtons = (
-
         <DefaultContainer>
             {defaultCategoriesState.map((category: any, index: any) => {
                 return (
@@ -133,34 +135,34 @@ const CategoriesFilter = () => {
         </DefaultContainer>
     );
 
-    // add dummy first element?
-
     let count = -1;
-    const allButtons = subCategoriesState.map((category: any) => {
-        count++;
-        return (
-            <div>
-                {count > 0 && category.parent !== subCategoriesState[count - 1].parent ?
-                    <div>
-                        <h5>{category.parent}</h5>
-                    </div>
-                    : null}
-                <Button
-                    id={count}
-                    onClick={allClick}
-                    style={category.active ? active : inactive}>
-                    {category.name}
-                </Button>
-            </div>
-        )
-    }
+    const allButtons = (
+        <AllContainer>
+            {subCategoriesState.map((category: any) => {
+                count++;
+                return (
+                    <SubContainer>
+                        {count === 0 ? <h2>{category.parent}</h2> : null}
+                        {count > 0 && category.parent !== subCategoriesState[count - 1].parent ?
+                            <h2>{category.parent}</h2>
+                            : null}
+                        <Button
+                            id={count}
+                            key={count}
+                            onClick={allClick}
+                            style={category.active ? active : inactive}>
+                            {category.name}
+                        </Button>
+                    </SubContainer>
+                )
+            })}
+        </AllContainer>
     );
 
 
     return (
         <div>
-            {complete ? allButtons : defaultButtons}
-            <MoreButton onClick={flip}>{showText}</MoreButton>
+            {props.complete ? allButtons : defaultButtons}
         </div>
     );
 };

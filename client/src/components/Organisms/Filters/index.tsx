@@ -24,10 +24,9 @@ const Top = styled.div`
     margin-bottom: 20px;
     `;
 
-const Title = styled.h2`
+const Title = styled.div`
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 1rem;
 `;
 
 const FiltersContainer = styled.div`
@@ -59,8 +58,19 @@ const Bottom = styled.div`
     padding: 10px;
 `;
 
-const Filters = () => {
+const MoreButton = styled.button.attrs((props: any) => props)`
+    background: none;
+    border: none;
+    display: flex;
+    position: relative;
+    left: 20px;
+    border-bottom: 1px solid black;
+    font-size: 0.9rem;
+    color: black;
+    cursor: pointer;
+    `;
 
+const Filters = () => {
 
     const clear = () => {
         console.log("clear");
@@ -70,6 +80,14 @@ const Filters = () => {
         console.log("apply");
         window.location.reload();
     }
+
+
+    const [complete, setComplete] = React.useState(false);
+    const [showText, setShow] = React.useState('Show more');
+    const flip = (e: any) => {
+        setComplete(!complete);
+        showText === 'Show more' ? setShow('Show less') : setShow('Show more');
+    };
 
     return (
         <Container>
@@ -83,8 +101,14 @@ const Filters = () => {
                     <PriceFilter />
                 </FilterContainer>
                 <FilterContainer>
-                    <Title>Categories</Title>
-                    <CategoriesFilter />
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <Title>Categories</Title>
+                        <MoreButton onClick={flip}>Show more</MoreButton>
+                    </div>
+                    <CategoriesFilter
+                        complete={complete}
+                        text={showText}
+                    />
                 </FilterContainer>
             </FiltersContainer>
             <Bottom>
