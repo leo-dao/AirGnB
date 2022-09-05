@@ -144,6 +144,9 @@ const ToggleNav = (props: ToggleProps) => {
                 <StyledLink to={post}>
                     Post an ad
                 </StyledLink>
+                <StyledLink to='/listings'>
+                    Browse
+                </StyledLink>
                 {userOrLog}
                 <StyledLink to='/about-us'>
                     About us

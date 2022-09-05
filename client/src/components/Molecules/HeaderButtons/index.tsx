@@ -60,6 +60,11 @@ const DropdownLink = styled(TopLink)`
     }
 `;
 
+const UserContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    `;
 
 const HeaderButtons = () => {
 
@@ -69,10 +74,10 @@ const HeaderButtons = () => {
     const userButton = user ? (
         <UserButton header />
     ) : (
-        <div>
+        <UserContainer>
             <Button goTo="/sign-in" text='Sign in' header />
             <TopLink to='/register'> <RegisterButton>Register</RegisterButton></TopLink>
-        </div>
+        </UserContainer>
     );
 
     return (
@@ -94,7 +99,7 @@ const HeaderButtons = () => {
                         <DropdownLink to="/about">About us</DropdownLink>
                         <DropdownLink to="/faq">FAQ</DropdownLink>
                         <DropdownLink to="/renter-info">How renting works</DropdownLink>
-                        <DropdownLink to="/leaser-info">How leaser works</DropdownLink>
+                        <DropdownLink to="/leaser-info">How leasing works</DropdownLink>
                     </div>
                 }
             />

@@ -24,7 +24,7 @@ const Sitemask = styled.div`
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.7);
-    z-index: 3;
+    z-index: 10;
     display: none;
 `;
 

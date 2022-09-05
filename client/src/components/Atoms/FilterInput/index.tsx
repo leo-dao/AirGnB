@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
-    border-radius: 20px;
+    border-radius: 15px;
+    padding: 10px;
     background-color: white;
-    border: 1px solid #142637;
+    border: 1px solid #bcbcbc;
     display: flex;
     align-items: center;
     text-align: center;
@@ -14,8 +15,9 @@ const FilterContainer = styled.div.attrs((props: FilterInputProps) => props)`
     height: 50px;
     transition: all 0.2s ease-in-out;
     &:hover {
-        border-color: #1eb5f0;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
+
     .ant-select-selection-placeholder {
         color: grey;
     }
