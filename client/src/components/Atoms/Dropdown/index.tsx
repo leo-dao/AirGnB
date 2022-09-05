@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { DownOutlined } from '@ant-design/icons';
+import Arrow from '../../../assets/arrow.png';
 
 const Container = styled.div`
     display: flex;
@@ -8,7 +8,9 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    width: 100%;
     cursor: pointer;
+    user-select: none;
 `;
 
 const Title = styled.div`
@@ -38,6 +40,17 @@ const Menu = styled.div`
     box-shadow: 0 2px 5px rgba(0,0,0, 0.5);
 `;
 
+const UpArrow = styled.img`
+    width: 12px;
+    filter: invert(1);
+    `;
+
+const DownArrow = styled.img`
+    width: 12px;
+    filter: invert(1);
+    transform: rotate(180deg);
+    `;
+
 interface DropdownProps {
     title: React.ReactNode;
     menu: React.ReactNode;
@@ -50,6 +63,10 @@ const Dropdown = (props: DropdownProps) => {
     const toggle = () => {
         setIsOpen(!isOpen);
     }
+
+    const arrow = isOpen ?
+        <UpArrow src={Arrow} alt="arrow" className="dropdown" /> :
+        <DownArrow src={Arrow} alt="arrow" className="dropdown" />;
 
     // Closing the dropdown if the user clicks outside of it
     useEffect(() => {
@@ -74,7 +91,7 @@ const Dropdown = (props: DropdownProps) => {
         <Container onClick={toggle} className="dropdown">
             <Title className="dropdown">
                 {props.title}
-                <DownOutlined style={{ color: 'white' }} />
+                {arrow}
             </Title>
             {isOpen && <Menu>{props.menu}</Menu>}
         </Container>
