@@ -16,7 +16,7 @@ const Location = (props: Props) => {
                 width: "100%",
                 fontSize: props.register ? '14px' : '18px',
                 color: props.register ? 'white' : 'black',
-                textAlign: props.register ? 'left' : 'center',
+                textAlign: 'center',
             }}
             showSearch
             bordered={false}

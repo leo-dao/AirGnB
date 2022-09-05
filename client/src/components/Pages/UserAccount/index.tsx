@@ -1,7 +1,7 @@
 import React from "react";
 import useFindUser from "../../../hooks/useFindUser";
 import styled from "styled-components";
-import logout from "../../../assets/logout.png";
+import logout from "../../../assets/icons/logout.png";
 import Button from "../../Atoms/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";

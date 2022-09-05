@@ -2,7 +2,7 @@ import React from "react";
 import { Select } from 'antd';
 import FilterInput from "../../Atoms/FilterInput/index";
 import Location from "../../Atoms/Location";
-const img = require('../../../assets/location.png')
+import LocationIcon from '../../../assets/icons/location.png';
 
 interface Props {
     data: any[];
@@ -28,7 +28,7 @@ const LocationFilter = (props: Props) => {
             }
             logo={
                 <img
-                    src={img}
+                    src={LocationIcon}
                     width={23}
                     height={30}
                 />

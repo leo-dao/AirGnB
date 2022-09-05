@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Arrow from '../../../assets/arrow.png';
+import Arrow from '../../../assets/icons/arrow.png';
 
 const Container = styled.div`
     display: flex;

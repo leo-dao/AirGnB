@@ -4,6 +4,7 @@ import Filters from "../Filters";
 import Close from "../../Atoms/Close";
 import { FilterOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
+import Filter from '../../../assets/icons/filter.webp';
 
 const FilterContainer = styled.div`
     display: flex;
@@ -12,17 +13,40 @@ const FilterContainer = styled.div`
 `;
 
 const FilterButton = styled.button`
-    background: none;
-    border: 1px solid white;
+    background: white;
     border-radius: 10px;
-    padding: 15px 20px;
+    border: none;
+    padding: 10px 15px;
     cursor: pointer;
     border: 1px solid #edededeb;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     gap: 5px;
+
+    // place left of search box
+    position: relative;
+    left: 80px;
+
+    @media (max-width: 900px) {
+        position: fixed;
+        bottom: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #0A6EDD;
+        color: white;
+        border: none;
+    }
 `;
+
+const StyledIcon = styled.img`
+    width: 20px;
+
+    @media (max-width: 900px) {
+        filter: invert(100%);
+    }
+`;
+
 
 const FilterMenu = styled.div.attrs((props: any) => props)`
     display: ${props => props.display ? 'flex' : 'none'};
@@ -41,7 +65,7 @@ const FilterMenu = styled.div.attrs((props: any) => props)`
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    z-index: 5;
+    z-index: 100;
     overflow: scroll;
     ::-webkit-scrollbar {
         width: 0px;
@@ -77,10 +101,11 @@ const SearchFilters = () => {
         const handleClick = (e: any) => {
 
             if (showMenu) {
-                if (e.target.id === "sitemask") {
+                if (e.target.id === "sitemask" || e.target.id === 'close') {
                     close();
                 }
                 else {
+                    console.log(e.target)
                     return
                 }
             }
@@ -95,7 +120,7 @@ const SearchFilters = () => {
         <FilterContainer>
             <div onClick={open} className="filter">
                 <FilterButton>
-                    <FilterOutlined style={{ fontSize: '1.3rem' }} />
+                    <StyledIcon src={Filter} />
                     Filters
                 </FilterButton>
                 <FilterMenu className="filter" display={showMenu}>

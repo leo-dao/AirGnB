@@ -9,11 +9,9 @@ import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
 import useFindUser from "../../../hooks/useFindUser";
 import useFindImages from "../../../hooks/useFindImages";
-import AdInfo from "../../Organisms/AdInfo";
 import axios from "axios";
 import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
-import Back from "../../Atoms/Back";
 import TopLink from "../../../utils/TopLink";
 
 // Testing
