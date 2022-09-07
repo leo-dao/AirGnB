@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Text = styled.p.attrs((props: Props) => props)`
+const Text = styled.div.attrs((props: Props) => props)`
     font-size: 18px;
     text-align: center;
     font-weight: bold;

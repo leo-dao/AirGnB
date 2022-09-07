@@ -7,64 +7,73 @@ import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import Close from "../../Atoms/Close";
 import axios from "axios";
+import TopLink from "../../../utils/TopLink";
 
-const Form = styled.form`
+const Background = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 50px;
-    max-width: 100vw;
-    max-height: 100vh;
-    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
     background: linear-gradient(87deg,#17324c, #000000);
-    position:absolute;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    left:0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 `;
 
-const Header = styled.h1`
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 20px;
-`;
-
-const Container = styled.div`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    background-color: white;
+    padding: 20px;
+    width: 40%;
+    border-radius: 5px;
 `;
 
-const ButtonContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+const Header = styled.h1`
+    font-size: 3rem;
+    font-weight: bold;
+`;
+
+const InputContainer = styled.div`
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    margin: 20px;
+    text-align: left;
+    display: inline;   
 `;
 
 const StyledButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #176fc1;
+    background-color: #2d67cc;
     color: white;
     font-weight: bold;
     width: 100%;
     height: 3em;
+    border-radius: 30px;
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
+    letter-spacing: 0.1em;
     transition: all 0.2s ease-in-out;
     &:hover{
         background-color: #175996;
         cursor: pointer;
     }
+`;
+
+const Socials = styled.div`
+    display: flex;
+    align-items: center;    
+    gap: 10px;
+    width: 100%;
 `;
 
 const SignIn = () => {
@@ -103,27 +112,22 @@ const SignIn = () => {
     }
 
     return (
-        <Form onSubmit={signIn}>
-            <Header>Welcome back</Header>
-            <Container>
-                <Input placeholder={"Email"} type={"email"} onChange={handleChange} required />
-                <Password placeholder={"Password"} onChange={handleChange} />
-                <ButtonContainer>
-                    <Button
-                        type="submit"
-                        text="Sign In" />
-                    <Button
-                        text='Create Account'
-                        goTo="/register"
-                        secondary />
-                </ButtonContainer>
+        <Background>
+            <Form onSubmit={signIn}>
+                <Header>Welcome back</Header>
+                <Socials>
+                </Socials>
+                <InputContainer>
+                    <ErrorMessage msg={errMsg} on={errOn} />
+                    <Input placeholder="Email" type="email" onChange={handleChange} required />
+                    <Password placeholder="Password" onChange={handleChange} forget />
+                </InputContainer>
+                <StyledButton>LOG IN</StyledButton>
+                <p>Not a member yet? <TopLink to='/register'>Register here</TopLink></p>
 
-            </Container>
-
-            <ErrorMessage msg={errMsg} on={errOn} />
-
-            <Close to='/' />
-        </Form >
+                <Close to='/' />
+            </Form>
+        </Background >
     );
 };
 
