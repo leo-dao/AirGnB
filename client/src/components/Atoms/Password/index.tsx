@@ -14,6 +14,7 @@ const Container = styled.div`
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 0 10px;
+    margin: 10px;
 `;
 
 const StyledInput = styled.input`
@@ -24,13 +25,13 @@ const StyledInput = styled.input`
 
 const ExtraContainer = styled.div`
     width: 100%;
-    margin: 10px;
+
 `;
 const ForgotLink = styled.a`
     text-decoration: none;
     cursor: pointer;
     position: relative;
-    top: 5px;
+    left: 10px;
 `;
 
 interface Props {

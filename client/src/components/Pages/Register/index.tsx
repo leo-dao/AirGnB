@@ -13,113 +13,90 @@ import { useNavigate } from "react-router-dom";
 import Close from "../../Atoms/Close";
 const axios = require('axios').default;
 
-const Form = styled.form`
+
+const Background = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 50px;
-    max-width: 100vw;
-    max-height: 100vh;
-    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
     background: linear-gradient(87deg,#17324c, #000000);
-    position:absolute;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    left:0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 `;
 
-const Container = styled.div`
+const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
-    height: 60%;
+    text-align: left;
+    background-color: white;
+    padding: 20px;
+    width: 40%;
+    border-radius: 5px;
 `;
 
 const Header = styled.h1`
-    font-size: 2.5rem;
+   font-size: 3rem;
     font-weight: bold;
-    color: white;
     margin-bottom: 20px;
 `;
 
-const ExtraLocationContainer = styled.div`
+const Terms = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;  
-    padding: 10px;
+    gap: 5px;
     margin: 10px;
-`
-
-const ContainerLocation = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     width: 100%;
- 
-    border-bottom: 1px solid grey;
-    &:hover{
-        transition: all 0.3s ease-in-out;
-        border-color: #1eb5f0;
-    }
+`;
 
-    .ant-select-selection-placeholder {
-        color: white;
+const StyledButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d67cc;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    height: 3em;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #175996;
+        cursor: pointer;
     }
-`
+`;
 
 const Register = () => {
 
 
     const navigate = useNavigate();
 
-    // LOCATION DATA
-    const [locationData, setLocationData] = React.useState<any[]>([]);
-    React.useEffect(() => {
-        axios.get('https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json')
-            .then((res: { data: React.SetStateAction<any[]>; }) => {
-                setLocationData(res.data);
-            })
-    }, []);
-
-    /* const locationSelect = (value: string) => {
-        updateFormData({
-            ...formData,
-            location: value
-        })
-    } */
-
-    const [file, setFile] = React.useState<File>();
-
-    const onSetFile = (e: any) => {
-        setFile(e.target.files[0]);
-        updateFormData({
-            ...formData,
-            avatar: e.target.files[0],
-        })
-    }
-
     const initialState = {
         name: '',
         email: '',
-        //location: '',
         password: '',
-        avatar: null,
         confirmpassword: '',
+        terms: false,
     }
 
     const [formData, updateFormData] = React.useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value, e.target.name);
         updateFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
-    }
+    };
 
     const noError = {
         msg: '',
@@ -130,7 +107,7 @@ const Register = () => {
 
     const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         handleChange(e);
-    }
+    };
 
     useEffect(() => {
         passwordMatch();
@@ -150,22 +127,27 @@ const Register = () => {
         }
     };
 
+    const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+        updateFormData({
+            ...formData,
+            [e.target.name]: e.target.checked
+        });
+    };
+
     const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
 
         let formMissing = false;
 
         Object.entries(formData).forEach(element => {
 
-            // avatar is not required
-            if (element[0] !== 'avatar') {
-                if (element[1] === '' || element[1] === null) {
-                    formMissing = true;
-                    updateError({
-                        msg: `Missing ${element[0]}`,
-                        display: true
-                    })
-                }
+            if (element[1] === '' || element[1] === null || element[1] === undefined || element[1] === false) {
+                formMissing = true;
+                updateError({
+                    msg: `Missing ${element[0]}`,
+                    display: true
+                })
             }
+
         })
 
         if (!formMissing) {
@@ -189,42 +171,24 @@ const Register = () => {
         e.preventDefault();
     }
 
-    const locations = locationData.map(item => {
-        return {
-            value: item.name + ", " + item.country,     // No subcountry for now
-        }
-    });
-
     return (
-        <Form onSubmit={createAccount} encType="multipart/form-data">
-            <Container>
+        <Background>
+            <Form onSubmit={createAccount} encType="multipart/form-data">
                 <Header>Welcome to AirGnB</Header>
                 <Close to='/' />
-                <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} required />
-                <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} required />
+                <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} />
+                <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} />
                 <Password placeholder={"Password"} name='password' onChange={handlePassword} />
                 <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
-                {/* <ExtraLocationContainer>
-                    <ContainerLocation>
-                        <Location
-                            onSelect={locationSelect}
-                            data={locations}
-                            register
-                        />
-                    </ContainerLocation>
-                    <EyeOutlined style={{ visibility: 'hidden' }} />
-                </ExtraLocationContainer> */}
-            </Container>
-            <FileSubmit
-                onChange={onSetFile}
-                fileNames={file?.name ? [file?.name] : []}
-            />
-            <ErrorMessage msg={error.msg} on={error.display} />
-            <Button
-                text="Register"
-                type='submit'
-            />
-        </Form>
+
+                <Terms>
+                    <input type="checkbox" name="terms" onChange={handleCheck} />
+                    <label htmlFor="terms">I agree to the terms and conditions</label>
+                </Terms>
+                <ErrorMessage msg={error.msg} on={error.display} />
+                <StyledButton type='submit'>CREATE ACCOUNT</StyledButton>
+            </Form>
+        </Background>
     )
 };
 

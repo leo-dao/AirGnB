@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password'
 import Button from "../../Atoms/Button";
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import Close from "../../Atoms/Close";
@@ -39,6 +39,7 @@ const Form = styled.form`
 const Header = styled.h1`
     font-size: 3rem;
     font-weight: bold;
+    margin-bottom: 20px;
 `;
 
 const InputContainer = styled.div`
@@ -74,6 +75,12 @@ const Socials = styled.div`
     align-items: center;    
     gap: 10px;
     width: 100%;
+`;
+
+const RegisterLink = styled.div`
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
 `;
 
 const SignIn = () => {
@@ -122,8 +129,10 @@ const SignIn = () => {
                     <Input placeholder="Email" type="email" onChange={handleChange} required />
                     <Password placeholder="Password" onChange={handleChange} forget />
                 </InputContainer>
-                <StyledButton>LOG IN</StyledButton>
-                <p>Not a member yet? <TopLink to='/register'>Register here</TopLink></p>
+                <StyledButton type='submit'>LOG IN</StyledButton>
+                <RegisterLink>Not a member yet?
+                    <TopLink to='/register'>Register here</TopLink>
+                </RegisterLink>
 
                 <Close to='/' />
             </Form>
