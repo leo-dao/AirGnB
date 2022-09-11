@@ -84,30 +84,7 @@ const StyledLink = styled(TopLink)`
     }
 `;
 
-const StyledUser = styled(UserOutlined)`
-    font-size: 1.3rem;
-`;
-
 const ToggleNav = (props: ToggleProps) => {
-
-    let user: any = useFindUser();
-
-    var post = user ? "/post-ad" : "/sign-in";
-
-    var userOrLog = user ?
-        <StyledLink to='/account'>
-            <StyledUser />
-        </StyledLink>
-        :
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-        }}>
-            <StyledLink to="/sign-in">Sign In</StyledLink>
-            <StyledLink to="/register">Register</StyledLink>
-        </div>
-        ;
-
 
     useEffect(() => {
 
@@ -141,13 +118,12 @@ const ToggleNav = (props: ToggleProps) => {
             <ButtonContainer onClick={() => {
                 props.close();
             }}>
-                <StyledLink to={post}>
+                <StyledLink to='/post-ad'>
                     Post an ad
                 </StyledLink>
                 <StyledLink to='/listings'>
                     Browse
                 </StyledLink>
-                {userOrLog}
                 <StyledLink to='/about-us'>
                     About us
                 </StyledLink>

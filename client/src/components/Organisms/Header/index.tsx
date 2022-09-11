@@ -3,8 +3,7 @@ import HeaderButtons from '../../Molecules/HeaderButtons';
 import styled from 'styled-components';
 import { MenuOutlined } from '@ant-design/icons';
 import ToggleNav from '../../Molecules/ToggleNav';
-import { useEffect } from 'react';
-
+import TopLink from '../../../utils/TopLink';
 
 const Container = styled.div`
     width: 100%;
@@ -24,7 +23,7 @@ const StyledHeader = styled.div`
     height: 60px;
 `
 
-const TitleStyled = styled.a`
+const TitleStyled = styled(TopLink)`
     font-size: 2.2rem;
     font-weight: bold;
     margin-left: 5%;
@@ -34,15 +33,19 @@ const TitleStyled = styled.a`
         color: white;
         transform: scale(1.03);
     }
+
+    @media (max-width: 400px) {
+        font-size: 1.5rem;
+    }
 `
 
 const SubtitleStyled = styled.div`
     font-style: italic;
     font-size: 1rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     color: #c7c7c7;
 
-    @media (max-width: 400px) {
+    @media (max-width: 700px) {
         display: none;
     }
     `
@@ -56,11 +59,17 @@ const MenuStyled = styled(MenuOutlined)`
     color: white;
     font-size: 2rem;
     transition: 0.2s;
+    margin-left: 5%;
     :hover {
         transform: scale(1.05);
     }
     @media (min-width: 850px) {
         display: none;
+    }
+
+    @media (max-width: 400px) {
+        margin-left: 2%;
+        font-size: 1.5rem;
     }
 `
 
@@ -93,14 +102,14 @@ const Header = () => {
         <Container id='header'>
             <StyledHeader>
 
-                <TitleStyled href="/">AirGnB</TitleStyled>
+                <MenuStyled id='toggle-nav' onClick={flip} />
+                <TitleStyled to='/'>AirGnB</TitleStyled>
                 <SubtitleStyled>
                     Music rental made easy
                 </SubtitleStyled>
 
                 <ButtonContainer>
                     <HeaderButtons />
-                    <MenuStyled id='toggle-nav' onClick={flip} />
                 </ButtonContainer>
             </StyledHeader >
             <ToggleNav

@@ -5,7 +5,7 @@ import useFindUser from "../../../hooks/useFindUser";
 import TopLink from "../../../utils/TopLink";
 import styled from "styled-components";
 import Dropdown from "../../Atoms/Dropdown";
-
+import LoginButtons from "../../Organisms/LoginButtons";
 
 const StyledHeaderButtons = styled.div`
     display: flex;
@@ -14,12 +14,22 @@ const StyledHeaderButtons = styled.div`
     gap: 15px;
 
     & > * {
-        font-size: 14px;
+        font-size: 13px;
     }
+`;
 
-    @media (max-width: 850px) {
-        flex-direction: column;
-        display: none;
+const HeaderLink = styled(TopLink)`
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+    width: 100%;
+    white-space: nowrap;
+    &:hover {
+        transform: scale(1.03);
     }
 `;
 
@@ -27,20 +37,6 @@ const LearnTitle = styled.div`
     font-weight: bold;
     color: white;
     `;
-
-const RegisterButton = styled.button`
-    background: none;
-    border: 1px solid white;
-    padding: 5px 20px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    user-select: none;
-    &:hover {
-        transform: scale(1.03);
-    }
-`;
 
 const DropdownLink = styled(TopLink)`
     display: flex;
@@ -60,50 +56,45 @@ const DropdownLink = styled(TopLink)`
     }
 `;
 
-const UserContainer = styled.div`
+const NonToggled = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    `;
+    width: 100%;
+    gap: 15px;
+    margin-right: 30px;
+    @media (max-width: 850px) {
+        display: none;
+    }
+`;
 
 const HeaderButtons = () => {
 
-    let user: any = useFindUser();
-    var post = user ? "/post-ad" : "/sign-in";
-
-    const userButton = user ? (
-        <UserButton header />
-    ) : (
-        <UserContainer>
-            <Button goTo="/sign-in" text='Sign in' header />
-            <TopLink to='/register'> <RegisterButton>Register</RegisterButton></TopLink>
-        </UserContainer>
-    );
-
     return (
         <StyledHeaderButtons>
-            <Button
-                text="Post an ad"
-                goTo={post}
-                header
-            />
-            <Button
-                text="Browse"
-                goTo="/listings"
-                header
-            />
-            <Dropdown
-                title={<LearnTitle className="dropdown">Learn more</LearnTitle>}
-                menu={
-                    <div>
-                        <DropdownLink to="/about">About us</DropdownLink>
-                        <DropdownLink to="/faq">FAQ</DropdownLink>
-                        <DropdownLink to="/renter-info">How renting works</DropdownLink>
-                        <DropdownLink to="/leaser-info">How leasing works</DropdownLink>
-                    </div>
-                }
-            />
-            {userButton}
+
+            <NonToggled>
+                <HeaderLink to={'post-ad'}>
+                    Post an Ad
+                </HeaderLink>
+                <HeaderLink to="/listings">
+                    Listings
+                </HeaderLink>
+
+                <Dropdown
+                    title={<LearnTitle className="dropdown">Learn more</LearnTitle>}
+                    menu={
+                        <div>
+                            <DropdownLink to="/about">About us</DropdownLink>
+                            <DropdownLink to="/faq">FAQ</DropdownLink>
+                            <DropdownLink to="/renter-info">How renting works</DropdownLink>
+                            <DropdownLink to="/leaser-info">How leasing works</DropdownLink>
+                        </div>
+                    }
+                />
+            </NonToggled>
+
+            <LoginButtons />
         </StyledHeaderButtons >
     )
 }
