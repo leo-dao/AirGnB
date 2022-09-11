@@ -99,7 +99,7 @@ const Filters = () => {
         <Container>
             <Top>
                 <Title>Filters</Title>
-                <Close black />
+                <Close />
             </Top>
             <FiltersContainer>
                 <FilterContainer>

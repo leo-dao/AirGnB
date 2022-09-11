@@ -8,8 +8,6 @@ import Header from './components/Organisms/Header';
 import Footer from './components/Organisms/Footer';
 import AdProfile from './components/Pages/AdProfile';
 import UserProfile from './components/Pages/UserProfile';
-import SignIn from './components/Pages/SignIn';
-import Register from './components/Pages/Register';
 import Error from './components/Molecules/Error';
 import PostAd from './components/Pages/PostAd';
 import BookAd from './components/Pages/BookAd';
@@ -50,10 +48,6 @@ function App() {
           element={<PostAd />} />
         <Route path="/booking/:_id+:startDate+:endDate"
           element={<BookAd />} />
-        <Route path="/sign-in"
-          element={<SignIn />} />
-        <Route path="/register"
-          element={<Register />} />
         <Route path="/leaser-info"
           element={<LeaserInfo />} />
         <Route path="/renter-info"

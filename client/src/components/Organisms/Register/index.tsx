@@ -1,46 +1,12 @@
 import React, { useEffect } from "react";
+import LoginForm from '../../Molecules/LoginForm';
 import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password';
-import Button from "../../Atoms/Button";
 import styled from "styled-components";
 import ErrorMessage from "../../Atoms/ErrorMessage";
-import FileSubmit from "../../Molecules/FileSubmit"
 import { AxiosResponse } from "axios";
-import Location from "../../Atoms/Location";
-import { EyeOutlined } from "@ant-design/icons";
-import SortCategories from "../../Molecules/SortCategories";
 import { useNavigate } from "react-router-dom";
-import Close from "../../Atoms/Close";
 const axios = require('axios').default;
-
-
-const Background = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100;
-    background: linear-gradient(87deg,#17324c, #000000);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-`;
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    background-color: white;
-    padding: 20px;
-    width: 40%;
-    border-radius: 5px;
-`;
 
 const Header = styled.h1`
    font-size: 3rem;
@@ -76,8 +42,12 @@ const StyledButton = styled.button`
     }
 `;
 
-const Register = () => {
+interface Props {
+    display: boolean;
+    close: () => void;
+}
 
+const Register = (props: Props) => {
 
     const navigate = useNavigate();
 
@@ -172,23 +142,24 @@ const Register = () => {
     }
 
     return (
-        <Background>
-            <Form onSubmit={createAccount} encType="multipart/form-data">
-                <Header>Welcome to AirGnB</Header>
-                <Close to='/' />
-                <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} />
-                <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} />
-                <Password placeholder={"Password"} name='password' onChange={handlePassword} />
-                <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
+        <LoginForm
+            onSubmit={createAccount}
+            display={props.display}
+            close={props.close}
+        >
+            <Header>Welcome to AirGnB</Header>
+            <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} />
+            <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} />
+            <Password placeholder={"Password"} name='password' onChange={handlePassword} />
+            <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
 
-                <Terms>
-                    <input type="checkbox" name="terms" onChange={handleCheck} />
-                    <label htmlFor="terms">I agree to the terms and conditions</label>
-                </Terms>
-                <ErrorMessage msg={error.msg} on={error.display} />
-                <StyledButton type='submit'>CREATE ACCOUNT</StyledButton>
-            </Form>
-        </Background>
+            <Terms>
+                <input type="checkbox" name="terms" onChange={handleCheck} />
+                <label htmlFor="terms">I agree to the terms and conditions</label>
+            </Terms>
+            <ErrorMessage msg={error.msg} on={error.display} />
+            <StyledButton type='submit'>CREATE ACCOUNT</StyledButton>
+        </LoginForm>
     )
 };
 
