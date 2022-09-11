@@ -80,7 +80,7 @@ const SearchFilters = () => {
     var sitemask = document.getElementById("sitemask");
     const body = document.getElementsByTagName('body')[0];
 
-    const open = async () => {
+    const open = () => {
         setShowMenu(true);
         //@ts-ignore
         sitemask.style.display = "block";
@@ -105,7 +105,6 @@ const SearchFilters = () => {
                     close();
                 }
                 else {
-                    console.log(e.target)
                     return
                 }
             }

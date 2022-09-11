@@ -1,4 +1,5 @@
 import guitar from '../assets/categories/guitar.jpeg';
+import acoustic from '../assets/categories/acoustic.jpeg';
 import bass from '../assets/categories/bass.webp';
 import drums from '../assets/categories/drums.jpeg';
 import keys from '../assets/categories/keys.webp';
@@ -11,45 +12,34 @@ import brass from '../assets/categories/trumpet.webp';
 
 const categories = [
     {
-        name: 'Guitars',
+        name: 'Electric guitars',
         img: guitar,
+        type:
+            [
+                'Solid Body',
+                'Hollow/Semi-Hollow Body',
+                'Non-6 String',
+            ],
+    },
+    {
+        name: 'Acoustic guitars',
+        img: acoustic,
         type: [
-            {
-                name: 'Electric',
-                subType: [
-                    'Solid Body',
-                    'Hollow/Semi-Hollow Body',
-                    'Non-6 String',
-                    'Other'
-                ],
-            },
-            {
-                name: 'Acoustic',
-                subType: [
-                    'Acoustic-Electric',
-                    'Classical',
-                    'Gipsy-jazz',
-                    '12-String',
-                    'Other'
-                ]
-            }
+            'Acoustic-Electric',
+            'Classical',
+            'Gipsy-jazz',
+            '12-String',
         ]
     },
     {
         name: 'Bass',
         img: bass,
         type: [
+            'J-bass',
+            'P-bass',
+            'Fretless',
+            'Non-4 string',
             'Acoustic',
-            {
-                name: 'Electric',
-                subType: [
-                    'J-bass',
-                    'P-bass',
-                    'Fretless',
-                    'Non-4 string',
-                    'Other'
-                ]
-            }
         ]
     },
     {
@@ -61,7 +51,6 @@ const categories = [
             'Kick',
             'Cymbals',
             'Percussion',
-            'Other'
         ]
     },
     {
@@ -73,7 +62,6 @@ const categories = [
             'Piano',
             'Midi',
             'Organ',
-            'Other'
         ]
     },
     {
@@ -83,11 +71,10 @@ const categories = [
             'Combo',
             'Head',
             'Cabinet',
-            'Other'
         ]
     },
     {
-        name: 'Effect pedal',
+        name: 'Effect pedals',
         img: pedal,
         type: [
             'Overdrive',
@@ -100,7 +87,6 @@ const categories = [
             'Filter',
             'Tuner',
             'Wah',
-            'Other'
         ]
     },
     {
@@ -115,7 +101,6 @@ const categories = [
             'Banjo',
             'Mandolin',
             'Lap Steel',
-            'Other'
         ]
     },
     {
@@ -127,7 +112,6 @@ const categories = [
             'Drums',
             'USB',
             'Wireless',
-            'Other'
         ]
     },
     {
@@ -140,7 +124,6 @@ const categories = [
             'Preamp',
             'Speakers',
             'Mixer',
-            'Other'
         ]
     },
     {
@@ -151,7 +134,6 @@ const categories = [
             'Trombone',
             'Saxophone',
             'Tuba',
-            'Other'
         ]
     },
     {

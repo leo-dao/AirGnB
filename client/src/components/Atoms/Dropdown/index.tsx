@@ -19,6 +19,7 @@ const Title = styled.div`
     align-items: center;
     gap: 5px;
     width: 100%;
+    white-space: nowrap;
     &:hover {
         cursor: pointer;
     }
