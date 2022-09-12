@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
-import useFindUser from "../../../hooks/useFindUser";
+import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import TopLink from "../../../utils/TopLink";
 import styled from "styled-components";
 import Dropdown from "../../Atoms/Dropdown";
@@ -12,7 +12,6 @@ const StyledHeaderButtons = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 15px;
-
     & > * {
         font-size: 13px;
     }
@@ -72,7 +71,6 @@ const HeaderButtons = () => {
 
     return (
         <StyledHeaderButtons>
-
             <NonToggled>
                 <HeaderLink to={'post-ad'}>
                     Post an Ad
@@ -93,7 +91,6 @@ const HeaderButtons = () => {
                     }
                 />
             </NonToggled>
-
             <LoginButtons />
         </StyledHeaderButtons >
     )

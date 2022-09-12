@@ -4,7 +4,7 @@ import { User } from '../utils/interfaces';
 import axios from "axios";
 
 
-const useFindUser = () => {
+const useFindLoggedUser = () => {
 
     let token = (JSON.parse(localStorage.getItem('authToken') || '{}')).token;
 
@@ -30,4 +30,4 @@ const useFindUser = () => {
     return user;
 }
 
-export default useFindUser;
+export default useFindLoggedUser;

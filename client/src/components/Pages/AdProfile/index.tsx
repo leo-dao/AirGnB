@@ -7,7 +7,7 @@ import UserInfo from "../../Molecules/UserInfoCard/index";
 import Availability from "../../Molecules/Availability";
 import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
-import useFindUser from "../../../hooks/useFindUser";
+import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import useFindImages from "../../../hooks/useFindImages";
 import axios from "axios";
 import { Ad } from "../../../utils/interfaces";
@@ -76,7 +76,7 @@ const TotalPrice = styled.b`
 
 const AdProfile = () => {
 
-    let user: any = useFindUser();
+    let user: any = useFindLoggedUser();
 
     let params = useParams();
 

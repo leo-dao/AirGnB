@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../Atoms/Button";
-import useFindUser from "../../../hooks/useFindUser";
+import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import Error from "../../Molecules/Error";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -75,7 +75,7 @@ interface State {
 
 const BookAd = () => {
 
-    let user = useFindUser();
+    let user = useFindLoggedUser();
     let params = useParams();
 
     let _id = params._id;
