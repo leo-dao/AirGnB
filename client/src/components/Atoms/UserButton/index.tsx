@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../Button";
-import useFindUser from "../../../hooks/useFindUser";
+import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
+
 import { UserOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
@@ -15,17 +16,20 @@ const StyledUser = styled(UserOutlined)`
     border: 1px solid #ccc;
 `;
 
-
-
 const UserButton = (props: Props) => {
 
-    let user: any = useFindUser();
-    var account = user ? `/account` : "/sign-in";
+    let user: any = useFindLoggedUser();
+
+    let page;
+
+    if (user !== undefined) {
+        const page = `/profile/${user._id}`;
+    }
 
     return (
         <Button
             component={<StyledUser />}
-            onClick={() => window.location.href = account}
+            goTo={page ? page : "/login"}
             header={props.header}
         />
     )

@@ -1,12 +1,11 @@
 import React from "react";
-import useFindUser from "../../../hooks/useFindUser";
+import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import styled from "styled-components";
 import logout from "../../../assets/icons/logout.png";
 import Button from "../../Atoms/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AxiosResponse } from "axios";
-import UserInfo from "../../Molecules/UserInfo";
 
 const Container = styled.div`
   width: 90%;
@@ -30,7 +29,7 @@ const StyledLogo = styled.img`
 const UserAccount = () => {
 
     const navigate = useNavigate();
-    let user: any = useFindUser();
+    let user: any = useFindLoggedUser();
 
     const logOut = () => {
         localStorage.removeItem('authToken');

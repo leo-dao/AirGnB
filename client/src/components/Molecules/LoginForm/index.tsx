@@ -10,11 +10,6 @@ const FormContainer = styled.form`
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
-    z-index: 100;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 `;
 
 interface Props {
@@ -45,17 +40,12 @@ const LoginForm = (props: Props) => {
 
 
     return (
-        <div style={{
-            display: props.display ? "block" : "none",
-            zIndex: 100,
-        }}>
-            <FormContainer
-                onSubmit={props.onSubmit}
-                encType='multipart/form-data'>
-                {props.children}
-                <Close onClick={props.close} />
-            </FormContainer>
-        </div>
+        <FormContainer
+            onSubmit={props.onSubmit}
+            encType='multipart/form-data'>
+            {props.children}
+            <Close onClick={props.close} />
+        </FormContainer>
     );
 };
 

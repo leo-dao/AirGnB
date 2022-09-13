@@ -112,6 +112,7 @@ const Header = () => {
                     <HeaderButtons />
                 </ButtonContainer>
             </StyledHeader >
+
             <ToggleNav
                 display={menuOpen}
                 close={flip}

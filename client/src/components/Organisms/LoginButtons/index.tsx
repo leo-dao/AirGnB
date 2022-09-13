@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import UserButton from "../../Atoms/UserButton";
-import useFindUser from "../../../hooks/useFindUser";
+import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import SignIn from "../SignIn";
 import Register from "../Register";
 
@@ -48,7 +48,7 @@ const LoginButtons = () => {
     const [showSignIn, setShowSignIn] = React.useState(false);
     const [showRegister, setShowRegister] = React.useState(false);
 
-    let user: any = useFindUser();
+    let user: any = useFindLoggedUser();
     var post = user ? "/post-ad" : "/sign-in";
 
     const userButton = user ? (
@@ -64,8 +64,26 @@ const LoginButtons = () => {
                 </RegisterButton>
             </UserContainer>
 
-            <Register display={showRegister} close={() => setShowRegister(false)} />
-            <SignIn display={showSignIn} close={() => setShowSignIn(false)} />
+            <div style={{
+                display: showRegister ? 'flex' : 'none',
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: '100'
+            }}>
+                <Register display={showRegister} close={() => setShowRegister(false)} />
+            </div>
+            <div style={{
+                display: showSignIn ? 'flex' : 'none',
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: '100'
+            }}>
+                <SignIn display={showSignIn} close={() => setShowSignIn(false)} />
+            </div>
         </div>
     );
 
