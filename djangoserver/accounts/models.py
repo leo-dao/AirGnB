@@ -32,7 +32,7 @@ class User(AbstractUser):
     date_joined = models.DateTimeField(auto_now_add=True)
 
     # Optional fields
-    avatar = models.ImageField(upload_to='profile_pics', blank=True)
+    #avatar = models.ImageField(upload_to='profile_pics', blank=True)
     location = models.CharField(max_length=150, blank=True)
     bio = models.TextField(max_length=500, blank=True)
 
@@ -52,6 +52,3 @@ class User(AbstractUser):
 
     def get_rating(self):
         return self.rating
-
-
-
