@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { MenuOutlined } from '@ant-design/icons';
 import ToggleNav from '../../Molecules/ToggleNav';
 import TopLink from '../../../utils/TopLink';
+import LoginButtons from '../LoginButtons';
 
 const Container = styled.div`
     width: 100%;
@@ -101,7 +102,6 @@ const Header = () => {
     return (
         <Container id='header'>
             <StyledHeader>
-
                 <MenuStyled id='toggle-nav' onClick={flip} />
                 <TitleStyled to='/'>AirGnB</TitleStyled>
                 <SubtitleStyled>
@@ -112,6 +112,8 @@ const Header = () => {
                     <HeaderButtons />
                 </ButtonContainer>
             </StyledHeader >
+
+            <LoginButtons />
 
             <ToggleNav
                 display={menuOpen}

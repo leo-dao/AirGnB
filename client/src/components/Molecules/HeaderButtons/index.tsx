@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
 import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
@@ -67,7 +67,65 @@ const NonToggled = styled.div`
     }
 `;
 
+const RegisterButton = styled.button`
+    background: none;
+    margin: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+    &:hover {
+        transform: scale(1.03);
+    }
+`;
+
+const SignInButton = styled.button`
+    background: none;
+    margin: none;
+    border: none;
+    white-space: nowrap;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    user-select: none;
+    &:hover {
+        transform: scale(1.03);
+    }
+`;
+
 const HeaderButtons = () => {
+
+
+    const showForm = (e: any) => {
+
+        const loginId = e.target.id.split('-')[0];
+        const loginForm = document.getElementById(loginId);
+        const sitemask = document.getElementById('sitemask');
+        const body = document.getElementById('body');
+
+        // @ts-ignore
+        if (loginForm.style.display === 'none') {
+            // @ts-ignore
+            loginForm.style.display = 'block';
+            // @ts-ignore
+            sitemask.style.display = 'block';
+            // @ts-ignore
+            body.style.overflow = "hidden";
+        }
+        else {
+            // @ts-ignore
+            loginForm.style.display = 'none';
+            // @ts-ignore
+            sitemask.style.display = 'none';
+            // @ts-ignore
+            body.style.overflow = "auto";
+        }
+
+    }
 
     return (
         <StyledHeaderButtons>
@@ -91,7 +149,12 @@ const HeaderButtons = () => {
                     }
                 />
             </NonToggled>
-            <LoginButtons />
+            <SignInButton onClick={showForm} id='signin-button'>
+                Sign In
+            </SignInButton>
+            <RegisterButton onClick={showForm} id='register-button'>
+                Register
+            </RegisterButton>
         </StyledHeaderButtons >
     )
 }
