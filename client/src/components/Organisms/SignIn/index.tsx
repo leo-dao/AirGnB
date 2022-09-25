@@ -56,12 +56,8 @@ const RegisterLink = styled.div`
     margin-top: 20px;
 `;
 
-interface Props {
-    display: boolean;
-    close: () => void;
-}
 
-const SignIn = (props: Props) => {
+const SignIn = () => {
 
     const navigate = useNavigate();
 
@@ -98,12 +94,12 @@ const SignIn = (props: Props) => {
 
     return (
         <LoginForm
+            id='signin'
             onSubmit={signIn}
-            display={props.display}
-            close={props.close}
         >
             <Header>Welcome back</Header>
             <Socials>
+                {/* add login through google and facebook */}
             </Socials>
             <InputContainer>
                 <ErrorMessage msg={errMsg} on={errOn} />

@@ -42,12 +42,7 @@ const StyledButton = styled.button`
     }
 `;
 
-interface Props {
-    display: boolean;
-    close: () => void;
-}
-
-const Register = (props: Props) => {
+const Register = () => {
 
     const navigate = useNavigate();
 
@@ -143,9 +138,8 @@ const Register = (props: Props) => {
 
     return (
         <LoginForm
+            id='register'
             onSubmit={createAccount}
-            display={props.display}
-            close={props.close}
         >
             <Header>Welcome to AirGnB</Header>
             <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} />
