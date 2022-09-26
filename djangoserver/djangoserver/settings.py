@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'accounts',
+    'listings',
     'graphene_django',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'graphql_auth',

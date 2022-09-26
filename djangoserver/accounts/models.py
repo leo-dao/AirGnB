@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from listings.models import Listing
 import uuid
 
 class UserAccountManager(BaseUserManager):
@@ -24,22 +25,22 @@ class UserAccountManager(BaseUserManager):
 
 class User(AbstractUser):
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(max_length=254, unique=True)
     username = models.CharField(max_length=150)
     password = models.CharField(max_length=150)
     rating = models.IntegerField(default=-1)
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
 
     # Optional fields
     #avatar = models.ImageField(upload_to='profile_pics', blank=True)
     location = models.CharField(max_length=150, blank=True)
     bio = models.TextField(max_length=500, blank=True)
 
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password', 'rating', 'id', 'date_joined']
-    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.email
@@ -52,3 +53,7 @@ class User(AbstractUser):
 
     def get_rating(self):
         return self.rating
+    
+    # Get all listings that the user has posted
+    def get_listings(self):
+            return Listing.objects.filter(leaser=self)
