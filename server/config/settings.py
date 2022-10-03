@@ -82,7 +82,7 @@ GRAPH_QL_JWT = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ROOT_URLCONF = 'djangoserver.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -107,7 +107,7 @@ STATICFILES_DIRS = [
     CLIENT_DIR / 'build' / 'static',
 ]
 
-WSGI_APPLICATION = 'djangoserver.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database

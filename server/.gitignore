@@ -1,4 +1,4 @@
+venv/
+__pycache__/
+migrations/
 .env
-uploads/
-node_modules/
-package-lock.json
