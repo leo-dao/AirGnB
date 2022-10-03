@@ -3,9 +3,7 @@ import { Dropdown } from 'antd';
 import styled from 'styled-components';
 
 const DropdownStyled = styled(Dropdown)`
-    width: auto;
-    
-        
+    width: auto; 
 `
 
 interface DropdownProps {

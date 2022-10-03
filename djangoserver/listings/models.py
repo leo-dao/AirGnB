@@ -10,8 +10,8 @@ class Listing(models.Model):
     category = models.CharField(max_length=150)
     price = models.DecimalField(max_digits=8, decimal_places=2)
 
-    leaser = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
-    renter = models.ForeignKey('accounts.User', on_delete=models.CASCADE, null=True, blank=True)
+    leaser = models.ForeignKey('accounts.User', on_delete=models.CASCADE, related_name='leaser')
+    renter = models.ForeignKey('accounts.User', on_delete=models.CASCADE, null=True, blank=True, related_name='renter')
 
     is_active = models.BooleanField(default=True)
     date_posted = models.DateTimeField(auto_now_add=True)

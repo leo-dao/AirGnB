@@ -29,8 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
     'accounts',
     'listings',
     'graphene_django',
@@ -90,7 +88,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            CLIENT_DIR / 'public',
+            CLIENT_DIR / 'build',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -102,6 +100,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+
+STATICFILES_DIRS = [
+    CLIENT_DIR / 'build' / 'static',
 ]
 
 WSGI_APPLICATION = 'djangoserver.wsgi.application'
