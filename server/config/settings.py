@@ -1,3 +1,4 @@
+import django
 from distutils.debug import DEBUG
 from pathlib import Path
 from telnetlib import AUTHENTICATION
@@ -8,6 +9,8 @@ from datetime import timedelta
 from dotenv import load_dotenv
 load_dotenv()
 
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
