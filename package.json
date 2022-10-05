@@ -1,0 +1,23 @@
+{
+  "name": "airgnb",
+  "version": "1.0.0",
+  "description": "Peer-to-peer musical instrument rental platform where users can rent or lease their gear.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd client && npm run start \" \"cd server && python3 manage.py runserver\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leo-dao/AirGnB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leo-dao/AirGnB/issues"
+  },
+  "homepage": "https://github.com/leo-dao/AirGnB#readme",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
