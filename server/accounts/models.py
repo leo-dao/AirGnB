@@ -19,6 +19,18 @@ class UserAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
+    def create_superuser(self, email, username, password):
+        user = self.create_user(
+            email=self.normalize_email(email),
+            password=password,
+            username=username,
+        )
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+    
     def delete_user(self, user):
         user.delete()
         return user
@@ -41,6 +53,12 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password', 'rating', 'id', 'date_joined']
+
+
+    objects = UserAccountManager()
+
+    def has_perm(self, perm, obj=None):
+        return self.is_admin
 
     def __str__(self):
         return self.email
