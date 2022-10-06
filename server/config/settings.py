@@ -4,7 +4,6 @@ from pathlib import Path
 from telnetlib import AUTHENTICATION
 import os
 from datetime import timedelta
-#import psycopg2
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,7 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -32,12 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
-    'listings',
     'graphene_django',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'graphql_auth',
     'django_filters',
+    'accounts',
+    'listings',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +50,7 @@ MIDDLEWARE = [
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
 
 GRAPHENE = {
     'SCHEMA': 'accounts.schema.schema',
@@ -120,7 +120,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql.psycopg2',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'AirGnB',
         'USER': 'postgres',
