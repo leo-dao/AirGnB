@@ -7,7 +7,6 @@ import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TopLink from "../../../utils/TopLink";
-import { PropertySafetyFilled } from "@ant-design/icons";
 
 const Header = styled.h1`
     font-size: 3rem;

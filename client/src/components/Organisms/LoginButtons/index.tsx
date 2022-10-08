@@ -9,6 +9,7 @@ const LoginButtons = () => {
         const handleClickOutside = (event: any) => {
             const signin = document.getElementById("signin");
             const register = document.getElementById("register");
+            const body = document.getElementsByTagName("body")[0];
 
             if (signin && register) {
                 if (signin.contains(event.target) || register.contains(event.target)) {
@@ -17,6 +18,8 @@ const LoginButtons = () => {
                 else {
                     signin.style.display = "none";
                     register.style.display = "none";
+                    body.style.overflow = "auto";
+                    body.style.height = "auto";
                 }
             }
         }

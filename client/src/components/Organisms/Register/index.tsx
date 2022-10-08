@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const axios = require('axios').default;
 
 const Header = styled.h1`
-   font-size: 3rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 20px;
 `;

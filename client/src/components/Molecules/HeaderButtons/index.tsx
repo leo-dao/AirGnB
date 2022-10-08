@@ -105,12 +105,12 @@ const HeaderButtons = () => {
         const loginId = e.target.id.split('-')[0];
         const loginForm = document.getElementById(loginId);
         const sitemask = document.getElementById('sitemask');
-        const body = document.getElementById('body');
+        const body = document.getElementsByTagName("body")[0];
 
         // @ts-ignore
         if (loginForm.style.display === 'none') {
             // @ts-ignore
-            loginForm.style.display = 'block';
+            loginForm.style.display = 'flex';
             // @ts-ignore
             sitemask.style.display = 'block';
             // @ts-ignore
