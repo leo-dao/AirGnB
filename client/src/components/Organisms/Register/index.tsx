@@ -63,6 +63,21 @@ const Register = () => {
         });
     };
 
+    const emailForm = {
+        errorMessage: '',
+        errorDisplay: false,
+        clicked: false,
+        value: formData.email,
+    }
+
+    const nameForm = {
+        errorMessage: '',
+        errorDisplay: false,
+        clicked: false,
+        value: formData.name,
+    }
+
+
     const noError = {
         msg: '',
         display: false,
@@ -103,12 +118,14 @@ const Register = () => {
 
         let formMissing = false;
 
+        // Check if any fields are empty and if so set error to the first empty field
+
         Object.entries(formData).forEach(element => {
 
             if (element[1] === '' || element[1] === null || element[1] === undefined || element[1] === false) {
                 formMissing = true;
                 updateError({
-                    msg: `Missing ${element[0]}`,
+                    msg: 'Please fill out all fields',
                     display: true
                 })
             }
@@ -136,22 +153,45 @@ const Register = () => {
         e.preventDefault();
     }
 
+
     return (
         <LoginForm
             id='register'
             onSubmit={createAccount}
         >
             <Header>Welcome to AirGnB</Header>
-            <Input placeholder={"Email"} type="email" name='email' onChange={handleChange} />
-            <Input placeholder={"Name"} type={"text"} name='name' onChange={handleChange} />
-            <Password placeholder={"Password"} name='password' onChange={handlePassword} />
-            <Password placeholder={"Confirm password"} name='confirmpassword' onChange={handlePassword} />
+            <Input
+                placeholder="Email"
+                type="email"
+                name='email'
+                onChange={handleChange}
+                onBlur={() => { emailForm.clicked = true; }}
+                error={emailForm.errorMessage}
+                errorDisplay={emailForm.errorDisplay}
+            />
+            <Input
+                placeholder="Name"
+                type="text"
+                name='name'
+                onChange={handleChange}
+                onBlur={() => { nameForm.clicked = true; }}
+                error={nameForm.errorMessage}
+                errorDisplay={nameForm.errorDisplay}
+            />
+            <Password
+                placeholder="Password"
+                name='password'
+                onChange={handlePassword}
+            />
+            <Password
+                placeholder="Confirm password"
+                name='confirmpassword'
+                onChange={handlePassword} />
 
             <Terms>
                 <input type="checkbox" name="terms" onChange={handleCheck} />
                 <label htmlFor="terms">I agree to the terms and conditions</label>
             </Terms>
-            <ErrorMessage msg={error.msg} on={error.display} />
             <StyledButton type='submit'>CREATE ACCOUNT</StyledButton>
         </LoginForm>
     )

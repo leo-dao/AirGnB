@@ -14,13 +14,6 @@ const Header = styled.h1`
     margin-bottom: 20px;
 `;
 
-const InputContainer = styled.div`
-    width: 100%;
-    margin: 20px;
-    text-align: left;
-    display: inline;   
-`;
-
 const StyledButton = styled.button`
     display: flex;
     align-items: center;
@@ -65,6 +58,11 @@ const SignIn = () => {
         password: ''
     }
 
+    const emailErr = {
+        message: 'Email not found',
+        display: false
+    }
+
     const [errMsg, updateErrMsg] = React.useState('');
     const [errOn, updateErr] = React.useState(false);
     const [formData, updateFormData] = React.useState(initialState);
@@ -88,6 +86,7 @@ const SignIn = () => {
             .catch(err => {
                 updateErrMsg(err.response.data.error);
                 updateErr(true);
+
             });
     }
 
@@ -97,15 +96,34 @@ const SignIn = () => {
             onSubmit={signIn}
         >
             <Header>Welcome back</Header>
-            <Socials>
-                {/* add login through google and facebook */}
-            </Socials>
-            <InputContainer>
-                <ErrorMessage msg={errMsg} on={errOn} />
-                <Input placeholder="Email" type="email" onChange={handleChange} required />
-                <Password placeholder="Password" onChange={handleChange} forget />
-            </InputContainer>
+            {/* <Socials>
+                // TODO: Add socials
+            </Socials> */}
+
+            <Input
+                placeholder="Email"
+                type="email"
+                onChange={handleChange}
+                required
+                // unique error message for email
+                error='Email cannot be empty'
+                errorDisplay={emailErr.display}
+            />
+            <Password
+                placeholder="Password"
+                //error='Password cannot be empty'
+                //errorDisplay={passwordErr.display}
+                onChange={handleChange}
+            />
+            <ErrorMessage
+                msg={errMsg}
+                on={errOn}
+            />
+
             <StyledButton type='submit'>LOG IN</StyledButton>
+
+            <TopLink to='/register'>Forgot password?</TopLink>
+
             <RegisterLink>Not a member yet?
                 <TopLink to='/register'>Register here</TopLink>
             </RegisterLink>
