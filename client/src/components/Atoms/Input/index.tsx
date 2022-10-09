@@ -1,5 +1,7 @@
+import { ButtonProps } from "antd";
 import React from "react";
 import styled from "styled-components";
+import ErrorMessage from "../ErrorMessage";
 
 
 const OldStyledInput = styled.input`
@@ -33,37 +35,67 @@ const OldStyledInput = styled.input`
     }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input.attrs((props: ButtonProps) => props)`
     width: 100%;
     height: 40px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: ${props => props.errorDisplay ? "2px solid red" : "1px solid #ccc"};
     padding: 0 10px;
     outline: none;
-    margin: 10px;
+    margin: 5px;
 `;
+
+const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    `;
 
 interface InputProps {
     type?: string,
     placeholder?: string,
     required?: boolean,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     min?: number;
     name?: string;
+    error?: string;
+    errorDisplay?: boolean;
 }
 
 const Input = (props: InputProps) => {
 
-    return (
+    const input = (
         <StyledInput
             type={props.type}
             placeholder={props.placeholder}
             required={props.required}
             onChange={props.onChange}
             minLength={props.min}
+            onBlur={props.onBlur}
             name={props.name}
+            // ignoring html error message
+            onInvalid={(e: React.ChangeEvent<HTMLInputElement>) => {
+                e.currentTarget.setCustomValidity(' ')
+            }}
         />
     )
+
+    // Input that supports error handling
+    if (props.error !== undefined && props.errorDisplay !== undefined) {
+        return (
+            <Container>
+                {input}
+                <ErrorMessage
+                    msg={props.error}
+                    on={props.errorDisplay} />
+            </Container>
+        )
+    }
+
+    return input;
 }
 
 export default Input;
