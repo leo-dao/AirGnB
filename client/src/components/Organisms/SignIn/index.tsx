@@ -58,10 +58,19 @@ const SignIn = () => {
         password: ''
     }
 
-    const emailErr = {
-        message: 'Email not found',
+    const emailError = {
+        message: '',
         display: false
     }
+
+    const [emailErrorState, updateEmailError] = React.useState(emailError);
+
+    const passwordError = {
+        message: '',
+        display: false
+    }
+
+    const [passwordErrorState, updatePasswordError] = React.useState(passwordError);
 
     const [errMsg, updateErrMsg] = React.useState('');
     const [errOn, updateErr] = React.useState(false);
@@ -72,10 +81,43 @@ const SignIn = () => {
             ...formData,
             [e.target.placeholder.toLowerCase()]: e.target.value
         })
+
+        // Removing error message when user starts typing if error is displayed
+        if (e.target.value !== '') {
+            if (e.target.placeholder.toLowerCase() === 'email') {
+                updateEmailError({
+                    message: '',
+                    display: false
+                })
+            } else {
+                updatePasswordError({
+                    message: '',
+                    display: false
+                })
+            }
+        }
     }
 
 
     const signIn = (e: React.FormEvent<HTMLFormElement>) => {
+
+        e.preventDefault();
+
+        if (formData.email === '') {
+            updateEmailError({
+                message: 'Email is required',
+                display: true
+            })
+            return;
+        }
+
+        if (formData.password === '') {
+            updatePasswordError({
+                message: 'Password is required',
+                display: true
+            })
+            return;
+        }
 
         e.preventDefault();
         axios.post('/signIn', formData)
@@ -86,7 +128,6 @@ const SignIn = () => {
             .catch(err => {
                 updateErrMsg(err.response.data.error);
                 updateErr(true);
-
             });
     }
 
@@ -105,13 +146,26 @@ const SignIn = () => {
                 type="email"
                 onChange={handleChange}
                 required
-                // unique error message for email
-                error='Email cannot be empty'
-                errorDisplay={emailErr.display}
+                onBlur={() => {
+                    if (formData.email === '') {
+                        updateEmailError({
+                            message: 'Email cannot be empty',
+                            display: true
+                        })
+                    }
+                    else if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                        updateEmailError({
+                            message: 'Email is not valid',
+                            display: true
+                        })
+                    }
+                }}
+                error={emailErrorState.message}
+                errorDisplay={emailErrorState.display}
             />
             <Password
                 placeholder="Password"
-                //error='Password cannot be empty'
+                //error={passwordErr.message}
                 //errorDisplay={passwordErr.display}
                 onChange={handleChange}
             />
@@ -122,7 +176,7 @@ const SignIn = () => {
 
             <StyledButton type='submit'>LOG IN</StyledButton>
 
-            <TopLink to='/register'>Forgot password?</TopLink>
+            <TopLink to='/'>Forgot password?</TopLink>
 
             <RegisterLink>Not a member yet?
                 <TopLink to='/register'>Register here</TopLink>

@@ -80,6 +80,8 @@ const Input = (props: InputProps) => {
             onInvalid={(e: React.ChangeEvent<HTMLInputElement>) => {
                 e.currentTarget.setCustomValidity(' ')
             }}
+            errorDisplay={props.errorDisplay}
+            error={props.error}
         />
     )
 

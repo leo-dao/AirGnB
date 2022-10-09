@@ -54,6 +54,16 @@ const Register = () => {
         terms: false,
     }
 
+
+    const [emailError, setEmailError] = React.useState({
+        message: '',
+        display: false
+    });
+    const [nameError, setNameError] = React.useState({
+        message: '',
+        display: false
+    });
+
     const [formData, updateFormData] = React.useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,22 +71,20 @@ const Register = () => {
             ...formData,
             [e.target.name]: e.target.value
         });
+
+        if (e.target.name === 'email') {
+            setEmailError({
+                message: '',
+                display: false
+            });
+        }
+        if (e.target.name === 'name') {
+            setNameError({
+                message: '',
+                display: false
+            });
+        }
     };
-
-    const emailForm = {
-        errorMessage: '',
-        errorDisplay: false,
-        clicked: false,
-        value: formData.email,
-    }
-
-    const nameForm = {
-        errorMessage: '',
-        errorDisplay: false,
-        clicked: false,
-        value: formData.name,
-    }
-
 
     const noError = {
         msg: '',
@@ -119,7 +127,6 @@ const Register = () => {
         let formMissing = false;
 
         // Check if any fields are empty and if so set error to the first empty field
-
         Object.entries(formData).forEach(element => {
 
             if (element[1] === '' || element[1] === null || element[1] === undefined || element[1] === false) {
@@ -165,18 +172,38 @@ const Register = () => {
                 type="email"
                 name='email'
                 onChange={handleChange}
-                onBlur={() => { emailForm.clicked = true; }}
-                error={emailForm.errorMessage}
-                errorDisplay={emailForm.errorDisplay}
+                onBlur={() => {
+                    if (formData.email === '') {
+                        setEmailError({
+                            message: 'Email is required',
+                            display: true
+                        })
+                    }
+                    else if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                        setEmailError({
+                            message: 'Email is not valid',
+                            display: true
+                        })
+                    }
+                }}
+                error={emailError.message}
+                errorDisplay={emailError.display}
             />
             <Input
                 placeholder="Name"
                 type="text"
                 name='name'
                 onChange={handleChange}
-                onBlur={() => { nameForm.clicked = true; }}
-                error={nameForm.errorMessage}
-                errorDisplay={nameForm.errorDisplay}
+                onBlur={() => {
+                    if (formData.name === '') {
+                        setNameError({
+                            message: 'Name is required',
+                            display: true
+                        })
+                    }
+                }}
+                error={nameError.message}
+                errorDisplay={nameError.display}
             />
             <Password
                 placeholder="Password"
