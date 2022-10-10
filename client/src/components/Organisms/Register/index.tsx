@@ -4,6 +4,7 @@ import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password';
 import styled from "styled-components";
 import ErrorMessage from "../../Atoms/ErrorMessage";
+import PasswordStrengthBar from 'react-password-strength-bar';
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 const axios = require('axios').default;
@@ -12,6 +13,10 @@ const Header = styled.h1`
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 20px;
+`;
+
+const PasswordContainer = styled.div`
+    width: 100%;
 `;
 
 const Terms = styled.div`
@@ -54,15 +59,14 @@ const Register = () => {
         terms: false,
     }
 
+    const noError = {
+        message: '',
+        display: false,
+    }
 
-    const [emailError, setEmailError] = React.useState({
-        message: '',
-        display: false
-    });
-    const [nameError, setNameError] = React.useState({
-        message: '',
-        display: false
-    });
+    const [emailError, setEmailError] = React.useState(noError);
+    const [nameError, setNameError] = React.useState(noError);
+    const [passwordError, setPasswordError] = React.useState(noError);
 
     const [formData, updateFormData] = React.useState(initialState);
 
@@ -71,48 +75,17 @@ const Register = () => {
             ...formData,
             [e.target.name]: e.target.value
         });
-
-        if (e.target.name === 'email') {
-            setEmailError({
-                message: '',
-                display: false
-            });
-        }
-        if (e.target.name === 'name') {
-            setNameError({
-                message: '',
-                display: false
-            });
-        }
     };
 
-    const noError = {
+    const noError2 = {
         msg: '',
         display: false,
     }
 
-    const [error, updateError] = React.useState(noError);
+    const [error, updateError] = React.useState(noError2);
 
     const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         handleChange(e);
-    };
-
-    useEffect(() => {
-        passwordMatch();
-    }, [formData])
-
-    const passwordMatch = () => {
-
-        if (formData.confirmpassword !== formData.password) {
-            updateError(
-                {
-                    msg: "Passwords don't match",
-                    display: true
-                })
-        }
-        else {
-            updateError(noError)
-        }
     };
 
     const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -173,17 +146,14 @@ const Register = () => {
                 name='email'
                 onChange={handleChange}
                 onBlur={() => {
-                    if (formData.email === '') {
-                        setEmailError({
-                            message: 'Email is required',
-                            display: true
-                        })
-                    }
-                    else if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                    if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
                         setEmailError({
                             message: 'Email is not valid',
                             display: true
                         })
+                    }
+                    else {
+                        setEmailError(noError);
                     }
                 }}
                 error={emailError.message}
@@ -195,26 +165,42 @@ const Register = () => {
                 name='name'
                 onChange={handleChange}
                 onBlur={() => {
-                    if (formData.name === '') {
+                    if (formData.name.length < 3 || formData.name.length > 20) {
                         setNameError({
-                            message: 'Name is required',
+                            message: 'Name must be between 3 and 20 characters',
                             display: true
                         })
+                    }
+                    else {
+                        setNameError(noError);
                     }
                 }}
                 error={nameError.message}
                 errorDisplay={nameError.display}
             />
-            <Password
-                placeholder="Password"
-                name='password'
-                onChange={handlePassword}
-            />
-            <Password
-                placeholder="Confirm password"
-                name='confirmpassword'
-                onChange={handlePassword} />
-
+            <PasswordContainer>
+                <Password
+                    placeholder="Password"
+                    onChange={handlePassword}
+                    onBlur={() => {
+                        if (formData.password.length < 8) {
+                            setPasswordError({
+                                message: 'Password must be at least 8 characters',
+                                display: true
+                            })
+                        }
+                        else {
+                            setPasswordError(noError);
+                        }
+                    }}
+                    error={passwordError.message}
+                    errorDisplay={passwordError.display}
+                />
+                <PasswordStrengthBar
+                    password={formData.password}
+                    minLength={8}
+                />
+            </PasswordContainer>
             <Terms>
                 <input type="checkbox" name="terms" onChange={handleCheck} />
                 <label htmlFor="terms">I agree to the terms and conditions</label>

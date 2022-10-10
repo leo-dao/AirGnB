@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import Eye from '../../../assets/icons/eye.svg';
+import ErrorMessage from '../ErrorMessage';
 import EyeCrossed from '../../../assets/icons/eye-crossed.svg';
 
-
-const Container = styled.div`
+const PasswordContainer = styled.div.attrs((props: PasswordProps) => props)`
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
     height: 40px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: ${props => props.errorDisplay ? "2px solid red" : "1px solid #ccc"};
     padding: 0 10px;
     margin: 10px;
 `;
@@ -23,25 +22,23 @@ const StyledInput = styled.input`
     width: 100%;
 `;
 
-const ExtraContainer = styled.div`
+const ErrorContainer = styled.div`
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    `;
 
-`;
-const ForgotLink = styled.a`
-    text-decoration: none;
-    cursor: pointer;
-    position: relative;
-    left: 10px;
-`;
-
-interface Props {
+interface PasswordProps {
     placeholder: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    name?: string;
-    forget?: boolean;
+    onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    error?: string;
+    errorDisplay?: boolean;
 }
 
-const Password = (props: Props) => {
+const Password = (props: PasswordProps) => {
 
     const [visibleDisplay, setVisible] = React.useState('initial');
     const [invisibleDisplay, setInvisible] = React.useState('none');
@@ -59,15 +56,22 @@ const Password = (props: Props) => {
         setVisible('initial');
     };
 
-    const Password = (
-        <Container>
+    const password = (
+        <PasswordContainer
+            errorDisplay={props.errorDisplay}
+            error={props.error}
+        >
             <StyledInput
                 placeholder={props.placeholder}
                 type={type}
                 required
                 min={5}
                 onChange={props.onChange}
-                name={props.name}
+                onBlur={props.onBlur}
+                onInvalid={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    e.currentTarget.setCustomValidity(' ')
+                }}
+                name='password'
             />
 
             <img src={Eye} alt="eye" style={{
@@ -83,22 +87,22 @@ const Password = (props: Props) => {
                 height: '2em',
                 cursor: 'pointer'
             }} onClick={makeInvisible} />
-
-        </Container>
+        </PasswordContainer>
     );
 
-    if (props.forget) {
+
+    if (props.error !== undefined && props.errorDisplay !== undefined) {
         return (
-            <ExtraContainer>
-                {Password}
-                <ForgotLink>Forgot Password?</ForgotLink>
-            </ExtraContainer>
-        );
+            <ErrorContainer>
+                {password}
+                <ErrorMessage
+                    msg={props.error}
+                    on={props.errorDisplay} />
+            </ErrorContainer>
+        )
     }
 
-    return (
-        Password
-    )
+    return password;
 };
 
 export default Password;
