@@ -35,7 +35,7 @@ const OldStyledInput = styled.input`
     }
 `;
 
-const StyledInput = styled.input.attrs((props: ButtonProps) => props)`
+const StyledInput = styled.input.attrs((props: InputProps) => props)`
     width: 100%;
     height: 40px;
     border-radius: 5px;

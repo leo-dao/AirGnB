@@ -58,19 +58,12 @@ const SignIn = () => {
         password: ''
     }
 
-    const emailError = {
+    const noError = {
         message: '',
         display: false
     }
 
-    const [emailErrorState, updateEmailError] = React.useState(emailError);
-
-    const passwordError = {
-        message: '',
-        display: false
-    }
-
-    const [passwordErrorState, updatePasswordError] = React.useState(passwordError);
+    const [emailError, updateEmailError] = React.useState(noError);
 
     const [errMsg, updateErrMsg] = React.useState('');
     const [errOn, updateErr] = React.useState(false);
@@ -82,20 +75,6 @@ const SignIn = () => {
             [e.target.placeholder.toLowerCase()]: e.target.value
         })
 
-        // Removing error message when user starts typing if error is displayed
-        if (e.target.value !== '') {
-            if (e.target.placeholder.toLowerCase() === 'email') {
-                updateEmailError({
-                    message: '',
-                    display: false
-                })
-            } else {
-                updatePasswordError({
-                    message: '',
-                    display: false
-                })
-            }
-        }
     }
 
 
@@ -111,13 +90,6 @@ const SignIn = () => {
             return;
         }
 
-        if (formData.password === '') {
-            updatePasswordError({
-                message: 'Password is required',
-                display: true
-            })
-            return;
-        }
 
         e.preventDefault();
         axios.post('/signIn', formData)
@@ -147,26 +119,18 @@ const SignIn = () => {
                 onChange={handleChange}
                 required
                 onBlur={() => {
-                    if (formData.email === '') {
-                        updateEmailError({
-                            message: 'Email cannot be empty',
-                            display: true
-                        })
-                    }
-                    else if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+                    if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
                         updateEmailError({
                             message: 'Email is not valid',
                             display: true
                         })
                     }
                 }}
-                error={emailErrorState.message}
-                errorDisplay={emailErrorState.display}
+                error={emailError.message}
+                errorDisplay={emailError.display}
             />
             <Password
                 placeholder="Password"
-                //error={passwordErr.message}
-                //errorDisplay={passwordErr.display}
                 onChange={handleChange}
             />
             <ErrorMessage
