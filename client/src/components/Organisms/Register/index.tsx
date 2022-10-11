@@ -133,6 +133,28 @@ const Register = () => {
         e.preventDefault();
     }
 
+    // check if user clicks outside of form and so reset register form
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+
+            if (event.target.id === 'sitemask' || event.target.id === 'close') {
+
+                // Removeing error messages
+                setEmailError(noError);
+                setNameError(noError);
+                setPasswordError(noError);
+                // Resetting all inputs
+                updateFormData(initialState);
+                const inputs = document.querySelectorAll('input');
+                inputs.forEach((input) => {
+                    input.value = '';
+                }
+                )
+
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <LoginForm

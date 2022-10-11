@@ -7,6 +7,7 @@ import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TopLink from "../../../utils/TopLink";
+import { useEffect } from "react";
 
 const Header = styled.h1`
     font-size: 3rem;
@@ -63,10 +64,10 @@ const SignIn = () => {
         display: false
     }
 
-    const [emailError, updateEmailError] = React.useState(noError);
+    const [emailError, setEmailError] = React.useState(noError);
 
-    const [errMsg, updateErrMsg] = React.useState('');
-    const [errOn, updateErr] = React.useState(false);
+    const [errMsg, setErrorMessage] = React.useState('');
+    const [errOn, setError] = React.useState(false);
     const [formData, updateFormData] = React.useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +84,7 @@ const SignIn = () => {
         e.preventDefault();
 
         if (formData.email === '') {
-            updateEmailError({
+            setEmailError({
                 message: 'Email is required',
                 display: true
             })
@@ -98,10 +99,30 @@ const SignIn = () => {
                 navigate('/');
             })
             .catch(err => {
-                updateErrMsg(err.response.data.error);
-                updateErr(true);
+                setErrorMessage(err.response.data);
+                setError(true);
             });
-    }
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+
+            if (event.target.id === 'sitemask' || event.target.id === 'close') {
+
+                // Removeing error messages
+                setEmailError(noError);
+                // Resetting all inputs
+                updateFormData(initialState);
+                const inputs = document.querySelectorAll('input');
+                inputs.forEach((input) => {
+                    input.value = '';
+                }
+                )
+
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <LoginForm
@@ -120,7 +141,7 @@ const SignIn = () => {
                 required
                 onBlur={() => {
                     if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-                        updateEmailError({
+                        setEmailError({
                             message: 'Email is not valid',
                             display: true
                         })

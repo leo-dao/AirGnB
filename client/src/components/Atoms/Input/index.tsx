@@ -69,6 +69,7 @@ const Input = (props: InputProps) => {
 
     const input = (
         <StyledInput
+            id='input'
             type={props.type}
             placeholder={props.placeholder}
             required={props.required}
