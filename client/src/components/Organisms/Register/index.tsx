@@ -151,6 +151,8 @@ const Register = () => {
                 }
                 )
 
+                const terms = document.querySelector('input[name="terms"]') as HTMLInputElement;
+                terms.checked = false;
             }
         }
         document.addEventListener("mousedown", handleClickOutside);
