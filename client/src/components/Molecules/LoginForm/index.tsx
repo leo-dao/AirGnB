@@ -4,8 +4,11 @@ import Close from "../../Atoms/Close";
 
 interface LoginProps {
     children: React.ReactNode;
+    childrenBottom?: React.ReactNode;
     onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
     id: string;
+    header: string;
+    submit: string;
 }
 
 const FormContainer = styled.form.attrs((props: LoginProps) => props)`
@@ -18,11 +21,44 @@ const FormContainer = styled.form.attrs((props: LoginProps) => props)`
     align-items: center;
     justify-content: center;
     background-color: white;
-    padding: 30px;
-    border-radius: 5px;
+    padding: 50px;
+    border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
     z-index: 100;
+
+    @media (max-width: 768px) {
+        width: 90%;
+    }
 `;
+
+const Header = styled.h1`
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+`;
+
+const StyledButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d67cc;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    height: 3em;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #175996;
+        cursor: pointer;
+    }
+`;
+
+
 
 const LoginForm = (props: LoginProps) => {
 
@@ -45,7 +81,10 @@ const LoginForm = (props: LoginProps) => {
             id={props.id}
             onSubmit={props.onSubmit}
             encType='multipart/form-data'>
+            <Header>{props.header}</Header>
             {props.children}
+            <StyledButton type='submit'>{props.submit}</StyledButton>
+            {props.childrenBottom}
             <Close onClick={close} />
         </FormContainer>
     );
