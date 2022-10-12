@@ -9,42 +9,11 @@ import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 const axios = require('axios').default;
 
-const Header = styled.h1`
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-`;
-
-const PasswordContainer = styled.div`
-    width: 100%;
-`;
-
 const Terms = styled.div`
     display: flex;
     gap: 5px;
     margin: 10px;
     width: 100%;
-`;
-
-const StyledButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2d67cc;
-    color: white;
-    font-weight: bold;
-    width: 100%;
-    height: 3em;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    transition: all 0.2s ease-in-out;
-    &:hover{
-        background-color: #175996;
-        cursor: pointer;
-    }
 `;
 
 const Register = () => {
@@ -162,8 +131,9 @@ const Register = () => {
         <LoginForm
             id='register'
             onSubmit={createAccount}
+            header='Welcome to AirGnB'
+            submit="CREATE ACCOUNT"
         >
-            <Header>Welcome to AirGnB</Header>
             <Input
                 placeholder="Email"
                 type="email"
@@ -202,7 +172,7 @@ const Register = () => {
                 error={nameError.message}
                 errorDisplay={nameError.display}
             />
-            <PasswordContainer>
+            <div style={{ width: '100%' }}>
                 <Password
                     placeholder="Password"
                     onChange={handlePassword}
@@ -224,12 +194,11 @@ const Register = () => {
                     password={formData.password}
                     minLength={8}
                 />
-            </PasswordContainer>
+            </div>
             <Terms>
                 <input type="checkbox" name="terms" onChange={handleCheck} />
                 <label htmlFor="terms">I agree to the terms and conditions</label>
             </Terms>
-            <StyledButton type='submit'>CREATE ACCOUNT</StyledButton>
         </LoginForm>
     )
 };

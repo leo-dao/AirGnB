@@ -9,33 +9,6 @@ import axios from "axios";
 import TopLink from "../../../utils/TopLink";
 import { useEffect } from "react";
 
-const Header = styled.h1`
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-`;
-
-const StyledButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #2d67cc;
-    color: white;
-    font-weight: bold;
-    width: 100%;
-    height: 3em;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    transition: all 0.2s ease-in-out;
-    &:hover{
-        background-color: #175996;
-        cursor: pointer;
-    }
-`;
-
 const Socials = styled.div`
     display: flex;
     align-items: center;    
@@ -43,10 +16,32 @@ const Socials = styled.div`
     width: 100%;
 `;
 
-const RegisterLink = styled.div`
+const Bottom = styled.div`
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
     margin-top: 20px;
+    width: 100%;
+`;
+
+const ForgotPassword = styled.div`
+    color: #175996;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+`;
+
+const RegisterLink = styled.span`
+    margin-left: 5px;
+    color: #175996;
+    font-weight: bold;
+    &:hover{
+        cursor: pointer;
+        color: #2d67cc;
+    }
 `;
 
 
@@ -74,8 +69,7 @@ const SignIn = () => {
         updateFormData({
             ...formData,
             [e.target.placeholder.toLowerCase()]: e.target.value
-        })
-
+        });
     }
 
 
@@ -124,16 +118,13 @@ const SignIn = () => {
         document.addEventListener("mousedown", handleClickOutside);
     }, []);
 
-    return (
-        <LoginForm
-            id='signin'
-            onSubmit={signIn}
-        >
-            <Header>Welcome back</Header>
-            {/* <Socials>
-                // TODO: Add socials
-            </Socials> */}
-
+    const signInJSX = (
+        <div style={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        }}>
             <Input
                 placeholder="Email"
                 type="email"
@@ -154,19 +145,46 @@ const SignIn = () => {
                 placeholder="Password"
                 onChange={handleChange}
             />
+            <ForgotPassword onClick={() => {
+                const signin = document.getElementById('signin');
+                const forgot = document.getElementById('forgot');
+                // @ts-ignore
+                signin.style.display = 'none';
+                // @ts-ignore
+                forgot.style.display = 'block';
+            }}>Forgot password?</ForgotPassword>
+
             <ErrorMessage
                 msg={errMsg}
                 on={errOn}
             />
+        </div>
+    )
 
-            <StyledButton type='submit'>LOG IN</StyledButton>
-
-            <TopLink to='/'>Forgot password?</TopLink>
-
-            <RegisterLink>Not a member yet?
-                <TopLink to='/register'>Register here</TopLink>
-            </RegisterLink>
-        </LoginForm>
+    return (
+        <LoginForm
+            id='signin'
+            onSubmit={signIn}
+            submit='SIGN IN'
+            header='Welcome back'
+            children={signInJSX}
+            childrenBottom={
+                <div>Not a member yet?
+                    <RegisterLink
+                        onClick={() => {
+                            const register = document.getElementById('register');
+                            // @ts-ignore
+                            register.style.display = 'block';
+                            const signin = document.getElementById('signin');
+                            // @ts-ignore
+                            signin.style.display = 'none';
+                        }}
+                    >
+                        Register here
+                    </RegisterLink>
+                </div>
+            }
+        />
     );
 };
 
