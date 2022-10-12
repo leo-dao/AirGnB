@@ -3,15 +3,19 @@ import { LinkProps } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const UnstyledLink = styled(Link)`
+interface Props extends LinkProps {
+    hoverColor?: string;
+}
+
+const UnstyledLink = styled(Link).attrs((props: Props) => props)`
     background: none;
     border: none;
     :hover {
-        color: white;
+        color: ${(props) => props.hoverColor ? props.hoverColor : 'white'};
     }
 `;
 
-const TopLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
+const TopLink = React.forwardRef<HTMLAnchorElement, Props>((props, ref) => {
     return <UnstyledLink {...props} ref={ref} onClick={() => window.scrollTo(0, 0)} />
 });
 

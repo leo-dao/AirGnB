@@ -9,7 +9,7 @@ interface LoginProps {
     id: string;
     header: string;
     submit: string;
-}
+};
 
 const FormContainer = styled.form.attrs((props: LoginProps) => props)`
     display: none;
