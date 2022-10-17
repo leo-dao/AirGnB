@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'graphql_auth',
     'django_filters',
+    'corsheaders',
     'accounts',
     'listings',
 ]
@@ -47,13 +48,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
 
 
 GRAPHENE = {
-    'SCHEMA': 'accounts.schema.schema',
+    'SCHEMA': 'config.schema.schema',
     'MIDDLEWARE': [
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
     ],
@@ -106,6 +108,10 @@ TEMPLATES = [
     },
 ]
 
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
+]
 
 STATICFILES_DIRS = [
     CLIENT_DIR / 'build' / 'static',
