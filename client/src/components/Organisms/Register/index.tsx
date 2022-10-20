@@ -7,6 +7,7 @@ import ErrorMessage from "../../Atoms/ErrorMessage";
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
+import { gql, useMutation } from '@apollo/client';
 const axios = require('axios').default;
 
 const Terms = styled.div`
@@ -24,7 +25,6 @@ const Register = () => {
         name: '',
         email: '',
         password: '',
-        confirmpassword: '',
         terms: false,
     }
 
@@ -46,12 +46,12 @@ const Register = () => {
         });
     };
 
-    const noError2 = {
-        msg: '',
+    const noFormError = {
+        message: '',
         display: false,
     }
 
-    const [error, updateError] = React.useState(noError2);
+    const [formError, updateFormError] = React.useState(noFormError);
 
     const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
         handleChange(e);
@@ -64,7 +64,22 @@ const Register = () => {
         });
     };
 
-    const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
+    const REGISTER = gql`
+        mutation register($username: String!, $email: String!, $password1: String!, $password2: String!) {
+            register(username: $username, email: $email, password1: $password1, password2: $password2) {
+                success
+                errors
+                token
+                refreshToken
+            }
+        }
+    `;
+
+    const [Register, { data, loading, error }] = useMutation(REGISTER);
+
+    const CreateAccount = (e: React.FormEvent<HTMLFormElement>) => {
+
+        e.preventDefault();
 
         let formMissing = false;
 
@@ -73,33 +88,34 @@ const Register = () => {
 
             if (element[1] === '' || element[1] === null || element[1] === undefined || element[1] === false) {
                 formMissing = true;
-                updateError({
-                    msg: 'Please fill out all fields',
+                updateFormError({
+                    message: 'Please fill out all fields',
                     display: true
                 })
             }
 
-        })
+        });
 
         if (!formMissing) {
-            e.preventDefault();
 
-            axios.post('/register', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+            Register({
+                variables: {
+                    username: formData.name,
+                    email: formData.email,
+                    password1: formData.password,
+                    password2: formData.password,
                 }
-            }).then((res: AxiosResponse<any, any>) => {
-                localStorage.setItem('authToken', JSON.stringify(res.data));
-                navigate('/');
-
-            }).catch((err: any) => {
-                updateError(
-                    { msg: err.response.data.error, display: true }
-                )
             });
+
+            if (error) {
+                console.log(error);
+                console.log(data);
+            }
+
+            console.log("clicked")
+
         }
 
-        e.preventDefault();
     }
 
     // check if user clicks outside of form and so reset register form
@@ -130,7 +146,7 @@ const Register = () => {
     return (
         <LoginForm
             id='register'
-            onSubmit={createAccount}
+            onSubmit={CreateAccount}
             header='Welcome to AirGnB'
             submit="CREATE ACCOUNT"
         >
