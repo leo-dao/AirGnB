@@ -5,10 +5,8 @@ import Password from '../../Atoms/Password';
 import styled from "styled-components";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import PasswordStrengthBar from 'react-password-strength-bar';
-import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 import { gql, useMutation } from '@apollo/client';
-const axios = require('axios').default;
 
 const Terms = styled.div`
     display: flex;
@@ -96,7 +94,9 @@ const Register = () => {
 
         });
 
-        if (!formMissing) {
+
+        // check if there are any errors and if not submit the form
+        if (!formMissing && !emailError.display && !nameError.display && !passwordError.display) {
 
             Register({
                 variables: {
@@ -107,13 +107,44 @@ const Register = () => {
                 }
             });
 
-            if (error) {
-                console.log(error);
-                console.log(data);
+            if (!loading && !data.register.success) {
+
+                for (const error in data.register.errors) {
+
+                    // gettting the first error message from the array
+                    const errorMessage = Object.values(data.register.errors[error][0])[0];
+
+                    if (error === 'email') {
+                        setEmailError({
+                            // @ts-ignore
+                            message: errorMessage,
+                            display: true,
+                        })
+                    }
+
+                    if (error === 'username') {
+                        setNameError({
+                            // @ts-ignore
+                            message: errorMessage,
+                            display: true,
+                        })
+                    }
+
+                    if (error === 'password1' || error === 'password2') {
+                        setPasswordError({
+                            // @ts-ignore
+                            message: errorMessage,
+                            display: true,
+                        })
+                    }
+
+                }
+            } else if (!loading && data.register.success) {
+                localStorage.setItem('token', data.register.token);
+                navigate('/');
+                window.location.reload();
+
             }
-
-            console.log("clicked")
-
         }
 
     }

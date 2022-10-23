@@ -5,7 +5,7 @@ import Password from '../../Atoms/Password'
 import styled from "styled-components";
 import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { gql, useMutation } from '@apollo/client';
 import TopLink from "../../../utils/TopLink";
 import { useEffect } from "react";
 
@@ -60,20 +60,23 @@ const SignIn = () => {
     }
 
     const [emailError, setEmailError] = React.useState(noError);
-
-    const [errMsg, setErrorMessage] = React.useState('');
-    const [errOn, setError] = React.useState(false);
+    const [passwordError, setPasswordErrorMessage] = React.useState(noError);
     const [formData, updateFormData] = React.useState(initialState);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        updateFormData({
-            ...formData,
-            [e.target.placeholder.toLowerCase()]: e.target.value
-        });
-    }
+    const SIGNIN = gql`
+        mutation tokenAuth($email: String!, $password: String!) {
+            tokenAuth(email: $email, password: $password) {
+                success,
+                errors,
+                token,
+                refreshToken,
+            }
+        }
+    `;
 
+    const [tokenAuth, { data, loading, error }] = useMutation(SIGNIN);
 
-    const signIn = (e: React.FormEvent<HTMLFormElement>) => {
+    const SignIn = (e: React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault();
 
@@ -85,17 +88,36 @@ const SignIn = () => {
             return;
         }
 
-
-        e.preventDefault();
-        axios.post('/signIn', formData)
-            .then(res => {
-                localStorage.setItem('authToken', JSON.stringify(res.data));
-                navigate('/');
-            })
-            .catch(err => {
-                setErrorMessage(err.response.data);
-                setError(true);
+        else {
+            tokenAuth({
+                variables: {
+                    email: formData.email,
+                    password: formData.password
+                }
             });
+
+            if (error) {
+                setEmailError({
+                    message: 'Email or password is incorrect',
+                    display: true
+                })
+                setPasswordErrorMessage({
+                    message: 'Email or password is incorrect',
+                    display: true
+                })
+            }
+            else {
+                setEmailError(noError);
+                setPasswordErrorMessage(noError);
+
+                if (data.tokenAuth.success) {
+                    localStorage.setItem('token', data.tokenAuth.token);
+                    localStorage.setItem('refreshToken', data.tokenAuth.refreshToken);
+                    navigate('/');
+                    window.location.reload();
+                }
+            }
+        }
     };
 
     useEffect(() => {
@@ -128,22 +150,28 @@ const SignIn = () => {
             <Input
                 placeholder="Email"
                 type="email"
-                onChange={handleChange}
-                required
-                onBlur={() => {
-                    if (!formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-                        setEmailError({
-                            message: 'Email is not valid',
-                            display: true
-                        })
-                    }
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    updateFormData({
+                        ...formData,
+                        email: e.target.value
+                    })
+                    setEmailError(noError);
                 }}
+                required
                 error={emailError.message}
                 errorDisplay={emailError.display}
             />
             <Password
                 placeholder="Password"
-                onChange={handleChange}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    updateFormData({
+                        ...formData,
+                        password: e.target.value
+                    })
+                    setPasswordErrorMessage(noError);
+                }}
+                error={passwordError.message}
+                errorDisplay={passwordError.display}
             />
             <ForgotPassword onClick={() => {
                 const signin = document.getElementById('signin');
@@ -154,17 +182,14 @@ const SignIn = () => {
                 forgot.style.display = 'block';
             }}>Forgot password?</ForgotPassword>
 
-            <ErrorMessage
-                msg={errMsg}
-                on={errOn}
-            />
+
         </div>
     )
 
     return (
         <LoginForm
             id='signin'
-            onSubmit={signIn}
+            onSubmit={SignIn}
             submit='SIGN IN'
             header='Welcome back'
             children={signInJSX}
