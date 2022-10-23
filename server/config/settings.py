@@ -108,13 +108,15 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    CLIENT_DIR / 'build' / 'static',
+]
+STATIC_URL = 'static/'
+
+
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:3000"
-]
-
-STATICFILES_DIRS = [
-    CLIENT_DIR / 'build' / 'static',
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
@@ -166,12 +168,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
