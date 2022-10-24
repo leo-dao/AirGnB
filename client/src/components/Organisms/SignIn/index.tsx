@@ -7,7 +7,8 @@ import ErrorMessage from "../../Atoms/ErrorMessage";
 import { useNavigate } from "react-router-dom";
 import { gql, useMutation } from '@apollo/client';
 import TopLink from "../../../utils/TopLink";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { AuthContext } from "../../../authContext";
 
 const Socials = styled.div`
     display: flex;
@@ -49,6 +50,8 @@ const SignIn = () => {
 
     const navigate = useNavigate();
 
+    const context = useContext(AuthContext);
+
     const initialState = {
         email: '',
         password: ''
@@ -74,7 +77,37 @@ const SignIn = () => {
         }
     `;
 
-    const [tokenAuth, { data, loading, error }] = useMutation(SIGNIN);
+    const [tokenAuth, { data, loading, error }] = useMutation(SIGNIN, {
+        onCompleted: (data) => {
+            if (data.tokenAuth.success) {
+                context.login(data.tokenAuth);
+                navigate('/');
+                window.location.reload();
+            }
+            else {
+                data.tokenAuth.errors.map((error: any) => {
+                    setEmailError({
+                        message: 'Email or password is incorrect',
+                        display: true
+                    })
+                    setPasswordErrorMessage({
+                        message: 'Email or password is incorrect',
+                        display: true
+                    })
+                })
+            }
+        },
+        onError: (error) => {
+            setEmailError({
+                message: 'Email or password is incorrect',
+                display: true
+            })
+            setPasswordErrorMessage({
+                message: 'Email or password is incorrect',
+                display: true
+            })
+        }
+    });
 
     const SignIn = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -96,27 +129,6 @@ const SignIn = () => {
                 }
             });
 
-            if (error) {
-                setEmailError({
-                    message: 'Email or password is incorrect',
-                    display: true
-                })
-                setPasswordErrorMessage({
-                    message: 'Email or password is incorrect',
-                    display: true
-                })
-            }
-            else {
-                setEmailError(noError);
-                setPasswordErrorMessage(noError);
-
-                if (data.tokenAuth.success) {
-                    localStorage.setItem('authToken', data.tokenAuth.token);
-                    localStorage.setItem('refreshToken', data.tokenAuth.refreshToken);
-                    navigate('/');
-                    window.location.reload();
-                }
-            }
         }
     };
 
