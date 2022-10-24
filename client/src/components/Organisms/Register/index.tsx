@@ -140,7 +140,8 @@ const Register = () => {
 
                 }
             } else if (!loading && data.register.success) {
-                localStorage.setItem('token', data.register.token);
+                localStorage.setItem('authToken', data.register.token);
+                localStorage.setItem('refreshToken', data.register.refreshToken);
                 navigate('/');
                 window.location.reload();
 

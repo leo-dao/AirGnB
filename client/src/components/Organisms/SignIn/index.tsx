@@ -111,7 +111,7 @@ const SignIn = () => {
                 setPasswordErrorMessage(noError);
 
                 if (data.tokenAuth.success) {
-                    localStorage.setItem('token', data.tokenAuth.token);
+                    localStorage.setItem('authToken', data.tokenAuth.token);
                     localStorage.setItem('refreshToken', data.tokenAuth.refreshToken);
                     navigate('/');
                     window.location.reload();

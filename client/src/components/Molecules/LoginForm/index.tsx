@@ -20,6 +20,7 @@ const FormContainer = styled.form.attrs((props: LoginProps) => props)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     background-color: white;
     padding: 50px;
     border-radius: 10px;
