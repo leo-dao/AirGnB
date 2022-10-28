@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import Button from "../../Atoms/Button";
 import UserButton from "../../Atoms/UserButton";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import TopLink from "../../../utils/TopLink";
 import styled from "styled-components";
 import Dropdown from "../../Atoms/Dropdown";
@@ -99,6 +99,7 @@ const SignInButton = styled.button`
 
 const HeaderButtons = () => {
 
+    const { user } = useContext(AuthContext);
 
     const showForm = (e: any) => {
 
@@ -149,12 +150,18 @@ const HeaderButtons = () => {
                     }
                 />
             </NonToggled>
-            <SignInButton onClick={showForm} id='signin-button'>
-                Sign In
-            </SignInButton>
-            <RegisterButton onClick={showForm} id='register-button'>
-                Register
-            </RegisterButton>
+            {user ? (
+                <UserButton header />
+            ) : (
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <SignInButton onClick={showForm} id='signin-button'>
+                        Sign In
+                    </SignInButton>
+                    <RegisterButton onClick={showForm} id='register-button'>
+                        Register
+                    </RegisterButton>
+                </div>
+            )}
         </StyledHeaderButtons >
     )
 }
