@@ -26,6 +26,7 @@ const FormContainer = styled.form.attrs((props: LoginProps) => props)`
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
     z-index: 100;
+    overflow: scroll;
 
     @media (max-width: 768px) {
         width: 90%;

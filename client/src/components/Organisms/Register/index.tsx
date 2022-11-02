@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import LoginForm from '../../Molecules/LoginForm';
 import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password';
@@ -18,6 +19,7 @@ const Terms = styled.div`
 const Register = () => {
 
     const navigate = useNavigate();
+    const context = useContext(AuthContext);
 
     const initialState = {
         name: '',
@@ -73,7 +75,20 @@ const Register = () => {
         }
     `;
 
-    const [Register, { data, loading, error }] = useMutation(REGISTER);
+    const [Register, { data, loading, error }] = useMutation(REGISTER,
+        {
+            onCompleted: (data) => {
+                if (data.register.success) {
+                    context.login(data.register);
+                    navigate('/');
+                    window.location.reload();
+                }
+            },
+            onError: (error) => {
+                console.log(error);
+            }
+        }
+    );
 
     const CreateAccount = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -144,7 +159,6 @@ const Register = () => {
                 localStorage.setItem('refreshToken', data.register.refreshToken);
                 navigate('/');
                 window.location.reload();
-
             }
         }
 
