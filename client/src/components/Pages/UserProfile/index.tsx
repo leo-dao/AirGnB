@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import { useParams } from "react-router-dom";
+import { useQuery, gql } from "@apollo/client";
 import Error from "../../Molecules/Error/index";
 import { Ad } from "../../../utils/interfaces";
 import styled from "styled-components";
@@ -7,7 +9,6 @@ import Avatar from "antd/lib/avatar/avatar";
 import { Rate } from "antd";
 import axios from "axios";
 import Button from "../../Atoms/Button";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 
 const Container = styled.div`
     display: flex;
@@ -61,64 +62,65 @@ const userProfileById = (userId: string) => {
     })
 }
 
+const GET_USER = gql`
+    query user($id: String!) {
+        user(id: $id) {
+            email
+        }
+    }
+`;
+
+const GET_ADS = gql`
+    query ads($id: String!) {
+        ads(id: $id) {
+            id
+            }
+        }
+`;
+
 const UserProfile = () => {
 
     let params = useParams();
+    const context = useContext(AuthContext);
 
-    const [currentUser, setUser] = React.useState<any>();
-    const [isLoggedUser, setIsLoggedUser] = React.useState<boolean>(false);
+    const { loading, error, data } = useQuery(GET_USER, {
+        variables: { id: params.userId },
+    });
 
-    const loggedUser = useFindLoggedUser();
-
-    useEffect(() => {
-
-        if (!params.userId) {
-            setUser(undefined);
-            return
-        }
-        userProfileById(params.userId)
-            .then((u) => {
-                setUser(u);
-            }
-            )
-            .catch((err) => { console.log(err); setUser(undefined) })
-    }, []);
-
-    useEffect(() => {
-        if (loggedUser) {
-            setIsLoggedUser(loggedUser._id === currentUser._id)
-        }
-    }, [loggedUser])
+    const profileUser = data;
 
 
+    // Getting the current user in session
+    const loggedUser = context.user;
 
-    const [ads, setAds] = React.useState<Ad[]>([]);
-    useEffect(() => {
-        axios.get('/getAds')
-            .then(function (res) {
-                setAds(res.data);
-            })
-    }, [])
+    const [isLoggedUser, setIsLoggedUser] = React.useState(true);
 
-    if (!currentUser) {
+    if (loggedUser) {
+        console.log(loggedUser);
+        //setIsLoggedUser(loggedUser.id === params.userId);
+    }
+
+    // GET ALL ADS BY USER ID
+
+    if (!profileUser) {
         return <Error msg="Sorry, this user does not exist" />
     }
 
-    const userAds = ads.filter(ad => ad.user._id === currentUser._id);
+    let userAds: Ad[] = [];
     const numAds = userAds.length;
     const ad = numAds === 1 ? "ad" : "ads";
-    const signUpDateString = (new Date(currentUser.createdAt)).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    const signUpDateString = (new Date(profileUser.createdAt)).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
     return (
         <Container>
             <Background />
             <Info>
-                <Avatar src={currentUser.avatar} size={100} />
-                <Name>{currentUser.name}</Name>
-                <Location>{currentUser.location}</Location>
+                <Avatar src={profileUser.avatar} size={100} />
+                <Name>{profileUser.name}</Name>
+                <Location>{profileUser.location}</Location>
                 <p>Member since {signUpDateString}</p>
-                <Rate defaultValue={currentUser.rating} disabled />
-                <p>{currentUser.numRatings} {currentUser.numRatings === 1 ? "rating" : "ratings"}</p>
+                <Rate defaultValue={profileUser.rating} disabled />
+                <p>{profileUser.numRatings} {profileUser.numRatings === 1 ? "rating" : "ratings"}</p>
 
 
                 {/* <div style={{
@@ -136,7 +138,7 @@ const UserProfile = () => {
 
             </Info>
             <Listings>
-                <p> {currentUser.name} has {numAds} available {ad}</p>
+                <p> {profileUser.name} has {numAds} available {ad}</p>
             </Listings>
         </Container >
 
