@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from django.utils.encoding import force_str
-django.utils.encoding.force_text = force_str
+django.utils.encoding.force_text = force_str  # type: ignore
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,7 +134,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
