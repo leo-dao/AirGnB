@@ -1,7 +1,7 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import Button from "../Button";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
-
 import { UserOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
@@ -18,18 +18,23 @@ const StyledUser = styled(UserOutlined)`
 
 const UserButton = (props: Props) => {
 
-    let user: any = useFindLoggedUser();
+    const context = useContext(AuthContext);
 
-    let page;
 
-    if (user !== undefined) {
-        const page = `/profile/${user._id}`;
+    // TODO: Add a dropdown menu that allows the user to logout, view their profile, and edit their account
+
+
+    let profileLink;
+
+    if (context.user) {
+        // @ts-ignore
+        profileLink = `/profile/${context.user.sub}`
     }
 
     return (
         <Button
             component={<StyledUser />}
-            goTo={page ? page : "/login"}
+            goTo={profileLink}
             header={props.header}
         />
     )

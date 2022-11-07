@@ -1,11 +1,10 @@
-import React from "react";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import styled from "styled-components";
 import logout from "../../../assets/icons/logout.png";
 import Button from "../../Atoms/Button";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { AxiosResponse } from "axios";
+import Error from "../../Molecules/Error";
+import TopLink from "../../../utils/TopLink";
 
 const Container = styled.div`
   width: 90%;
@@ -28,35 +27,40 @@ const StyledLogo = styled.img`
 
 const UserAccount = () => {
 
-    const navigate = useNavigate();
-    let user: any = useFindLoggedUser();
+    const context = useContext(AuthContext);
 
-    const logOut = () => {
-        localStorage.removeItem('authToken');
-        navigate('/');
+    if (!context.user) {
+        return (
+            <Error
+                msg='You must be logged in to view this page'
+            />
+        )
     }
 
-    const deleteAccount = () => {
+    const userID: string = Object.values(context.user)[0] as string;
 
-        axios.post('/deleteUser', user).then((res: AxiosResponse<any, any>) => {
-            logOut();
 
-        }).catch((err: any) => {
-            console.log(err)
-        });
-    };
+    // TODO: Have mutliple components that to edit different parts of the user's account
+    // 1. Update email and password, delete account
+    // 2. Update name, location, bio, avatar and banner image
+    // 3. Update payment info
+    // 4. Update notification settings
 
     return (
         <Container>
 
-            <Logout onClick={logOut}>
+            <TopLink
+                to={`/profile/${userID}`}
+            />
+
+
+            <Logout onClick={() => {
+                context.logout();
+                window.location.href = "/";
+            }}>
                 <p>Logout</p>
                 <StyledLogo src={logout} />
             </Logout>
-            <Button
-                text="Delete account"
-                onClick={deleteAccount}
-            />
         </Container>
         // add link to public profile (userProfile)
     )

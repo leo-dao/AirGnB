@@ -89,16 +89,19 @@ const UserProfile = () => {
 
     const profileUser = data;
 
-
     // Getting the current user in session
-    const loggedUser = context.user;
+    const token = context.user;
 
+    // Checking if the user page is the current user
     const [isLoggedUser, setIsLoggedUser] = React.useState(true);
 
-    if (loggedUser) {
-        console.log(loggedUser);
-        //setIsLoggedUser(loggedUser.id === params.userId);
-    }
+    useEffect(() => {
+
+        if (token) {
+            setIsLoggedUser(Object.values(token)[0] === params.userId);
+        }
+
+    }, [params.userId]);
 
     // GET ALL ADS BY USER ID
 
@@ -133,7 +136,7 @@ const UserProfile = () => {
                 </div> */}
 
                 {isLoggedUser &&
-                    <Button goTo="edit-profile" text="Edit profile" />
+                    <Button goTo="/account-settings" text="Edit profile" />
                 }
 
             </Info>

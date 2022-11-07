@@ -40,7 +40,7 @@ function App() {
           element={<Listings />} />
         <Route path="/profile/:userId"
           element={<UserProfile />} />
-        <Route path="/account"
+        <Route path="/account-settings"
           element={<UserAccount />} />
         <Route path="/listings/:_id"
           element={<AdProfile />} />
