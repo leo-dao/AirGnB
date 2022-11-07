@@ -80,8 +80,7 @@ const Register = () => {
             onCompleted: (data) => {
                 if (data.register.success) {
                     context.login(data.register);
-                    navigate('/');
-                    window.location.reload();
+                    window.location.href = '/';
                 }
             },
             onError: (error) => {
@@ -127,11 +126,10 @@ const Register = () => {
                 for (const error in data.register.errors) {
 
                     // gettting the first error message from the array
-                    const errorMessage = Object.values(data.register.errors[error][0])[0];
+                    const errorMessage: string = Object.values(data.register.errors[error][0])[0] as string;
 
                     if (error === 'email') {
                         setEmailError({
-                            // @ts-ignore
                             message: errorMessage,
                             display: true,
                         })
@@ -139,7 +137,6 @@ const Register = () => {
 
                     if (error === 'username') {
                         setNameError({
-                            // @ts-ignore
                             message: errorMessage,
                             display: true,
                         })
@@ -147,18 +144,12 @@ const Register = () => {
 
                     if (error === 'password1' || error === 'password2') {
                         setPasswordError({
-                            // @ts-ignore
                             message: errorMessage,
                             display: true,
                         })
                     }
 
                 }
-            } else if (!loading && data.register.success) {
-                localStorage.setItem('authToken', data.register.token);
-                localStorage.setItem('refreshToken', data.register.refreshToken);
-                navigate('/');
-                window.location.reload();
             }
         }
 

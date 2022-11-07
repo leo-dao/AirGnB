@@ -1,4 +1,5 @@
 import React, { useReducer, createContext } from 'react';
+import { gql } from '@apollo/client';
 import jwtDecode from 'jwt-decode';
 
 
@@ -15,6 +16,7 @@ if (localStorage.getItem('authToken')) {
     // convert to json
     const JWT = JSON.parse(JSON.stringify(decodedToken));
 
+    // check if token is expired
     if (JWT.exp * 1000 < Date.now()) {
         localStorage.removeItem('authToken');
     } else {
@@ -47,6 +49,7 @@ function AuthProvider(props: any) {
     const [state, dispatch] = useReducer(authReducer, initialState);
 
     function login(userData: any) {
+
         localStorage.setItem('authToken', userData.token);
         dispatch({
             type: 'LOGIN',

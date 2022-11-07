@@ -16,7 +16,7 @@ ReactDOM.render(
           <App />
         </React.StrictMode >
       </BrowserRouter>
-    </ApolloProvider>,
+    </ApolloProvider>
   </AuthProvider>,
   document.getElementById('root')
 );

@@ -1,14 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { gql, useMutation, useQuery } from '@apollo/client';
+import TopLink from "../../../utils/TopLink";
+import { useEffect, useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import LoginForm from '../../Molecules/LoginForm';
 import Input from "../../Atoms/Input";
 import Password from '../../Atoms/Password'
 import styled from "styled-components";
 import ErrorMessage from "../../Atoms/ErrorMessage";
-import { useNavigate } from "react-router-dom";
-import { gql, useMutation } from '@apollo/client';
-import TopLink from "../../../utils/TopLink";
-import { useEffect, useContext } from "react";
-import { AuthContext } from "../../../authContext";
+
 
 const Socials = styled.div`
     display: flex;
@@ -66,25 +67,27 @@ const SignIn = () => {
     const [passwordError, setPasswordErrorMessage] = React.useState(noError);
     const [formData, updateFormData] = React.useState(initialState);
 
-    const SIGNIN = gql`
+    const SIGN_IN = gql`
         mutation tokenAuth($email: String!, $password: String!) {
             tokenAuth(email: $email, password: $password) {
                 success,
                 errors,
                 token,
-                refreshToken,
+                refreshToken
             }
         }
     `;
 
-    const [tokenAuth, { data, loading, error }] = useMutation(SIGNIN, {
+
+    const [tokenAuth, { data, loading, error }] = useMutation(SIGN_IN, {
         onCompleted: (data) => {
             if (data.tokenAuth.success) {
+                // Setting JWT token in local storage
                 context.login(data.tokenAuth);
-                navigate('/');
-                window.location.reload();
+                window.location.href = '/';
             }
             else {
+
                 data.tokenAuth.errors.map((error: any) => {
                     setEmailError({
                         message: 'Email or password is incorrect',
@@ -128,7 +131,6 @@ const SignIn = () => {
                     password: formData.password
                 }
             });
-
         }
     };
 
@@ -152,7 +154,7 @@ const SignIn = () => {
         document.addEventListener("mousedown", handleClickOutside);
     }, []);
 
-    const signInJSX = (
+    const signInTSX = (
         <div style={{
             width: '100%',
             display: 'flex',
@@ -204,7 +206,7 @@ const SignIn = () => {
             onSubmit={SignIn}
             submit='SIGN IN'
             header='Welcome back'
-            children={signInJSX}
+            children={signInTSX}
             childrenBottom={
                 <div>Not a member yet?
                     <RegisterLink
