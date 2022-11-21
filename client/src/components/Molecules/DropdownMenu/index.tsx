@@ -17,7 +17,7 @@ const DropdownMenu = (props: DropdownProps) => {
         <DropdownStyled
             overlay={props.menu}
             trigger={['click']}
-            placement="bottomCenter"
+            placement="bottom"
             disabled={props.disabled}
         >
             <a onClick={e => e.preventDefault()}>

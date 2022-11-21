@@ -1,6 +1,5 @@
 import React from 'react';
 import TopLink from '../../../utils/TopLink';
-import UserProps from "../../Molecules/UserInfo/interfaces";
 import UserInfo from '../../Molecules/UserInfoCard';
 import CardCover from '../../Atoms/CardCover';
 import Price from '../../Atoms/Price';

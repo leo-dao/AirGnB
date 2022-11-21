@@ -34,7 +34,7 @@ const UserInfo = (props: UserInfoProps) => {
     if (props.type === "card") {
         return (
             <Container>
-                <h1>{props.user.name}</h1>
+                <h1>{props.user.username}</h1>
                 <Rate defaultValue={props.user.rating} allowHalf disabled />
             </Container>
         )
@@ -43,7 +43,7 @@ const UserInfo = (props: UserInfoProps) => {
     return (
         <Container>
             <Avatar src={props.user.avatar} size={100} />
-            <h1>{props.user.name}</h1>
+            <h1>{props.user.username}</h1>
             <h2>{props.user.location}</h2>
             <Rate defaultValue={props.user.rating} allowHalf disabled />
             {props.user.numRatings ? ratings : null}

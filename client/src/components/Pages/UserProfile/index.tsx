@@ -119,7 +119,7 @@ const UserProfile = () => {
             <Background />
             <Info>
                 <Avatar src={profileUser.avatar} size={100} />
-                <Name>{profileUser.name}</Name>
+                <Name>{profileUser.username}</Name>
                 <Location>{profileUser.location}</Location>
                 <p>Member since {signUpDateString}</p>
                 <Rate defaultValue={profileUser.rating} disabled />
@@ -141,7 +141,7 @@ const UserProfile = () => {
 
             </Info>
             <Listings>
-                <p> {profileUser.name} has {numAds} available {ad}</p>
+                <p> {profileUser.username} has {numAds} available {ad}</p>
             </Listings>
         </Container >
 

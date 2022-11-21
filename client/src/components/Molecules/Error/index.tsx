@@ -16,6 +16,7 @@ const Error = (props: Props) => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            padding: "20px"
         }}>
             <Result
                 status="404"

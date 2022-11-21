@@ -1,5 +1,5 @@
 import React from "react";
-import User from "../UserInfo/interfaces";
+import { User } from "../../../utils/interfaces";
 import AvatarLink from "../../Atoms/AvatarLink";
 import UserInfo from "../UserInfo";
 import styled from 'styled-components';

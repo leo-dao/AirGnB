@@ -1,6 +1,6 @@
 const user = {
     _id: '5f4e9c9c9c9c9c9c9c9c9c9c',
-    name: 'John Doe',
+    username: 'John Doe',
     email: 'email@mail.co',
     password: 'password',
     avatar: 'https://static.wikia.nocookie.net/avatar/images/6/6b/Adult_Aang.png/revision/latest?cb=20170709183126',
