@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import AdCard from "../../Organisms/AdCard";
 import { Ad, AdImage, User } from "../../../utils/interfaces";
 import AdPostForm from "../../Organisms/AdPostForm";
 import Error from "../../Molecules/Error";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import { useNavigate } from 'react-router-dom';
 import grey from "../../../assets/grey.jpeg";
 import styled from "styled-components";
@@ -27,10 +27,10 @@ display: none;
 const PostAd = () => {
 
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
 
     // Getting the user object and stringifying it 
     // to send it as formData to server
-    const user: User = useFindLoggedUser()!;
     let userStr: string = JSON.stringify(user);
 
     const initialState = {

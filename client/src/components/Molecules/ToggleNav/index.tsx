@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../Atoms/Button";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import { CloseOutlined, UserOutlined } from "@ant-design/icons";
 import TopLink from '../../../utils/TopLink';
 import { useEffect } from "react";

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import { useParams } from "react-router-dom";
 import type { AdCardProps } from "../../Organisms/AdCard/index";
 import Error from "../../Molecules/Error/index";
@@ -7,7 +8,6 @@ import UserInfo from "../../Molecules/UserInfoCard/index";
 import Availability from "../../Molecules/Availability";
 import Description from "../../Molecules/Description";
 import Button from "../../Atoms/Button";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import useFindImages from "../../../hooks/useFindImages";
 import axios from "axios";
 import { Ad } from "../../../utils/interfaces";
@@ -76,7 +76,7 @@ const TotalPrice = styled.b`
 
 const AdProfile = () => {
 
-    let user: any = useFindLoggedUser();
+    const { user } = useContext(AuthContext);
 
     let params = useParams();
 

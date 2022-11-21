@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../authContext";
 import styled from "styled-components";
 import Button from "../../Atoms/Button";
-import useFindLoggedUser from "../../../hooks/useFindLoggedUser";
 import Error from "../../Molecules/Error";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -75,7 +75,7 @@ interface State {
 
 const BookAd = () => {
 
-    let user = useFindLoggedUser();
+    const { user } = useContext(AuthContext);
     let params = useParams();
 
     let _id = params._id;
